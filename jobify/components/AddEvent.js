@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import DatePicker from "react-native-datepicker";
+import DateTimePicker from "@react-native-community/datetimepicker"
 import {
   StyleSheet,
   Text,
@@ -21,7 +22,28 @@ export default function AddEvent() {
   const [nbrWaiter, setNbrWaiter] = useState("");
   const [nbrChef, setNbrChef] = useState("");
   const [nbrCleaningWorker, setNbrCleaningWorker] = useState("");
+  const [date,setDate] = useState(new Date());
+  const [mode,setMode] = useState('date');
+  const [show,setShow] = useState(false);
+  const [text,setText] = useState('Empty');
+  const [textTime,setTextTime] = useState('Empty');
+  
   /* handelChange functions here*/
+  const onChange = (eventt,selectedDate) =>{
+      const currentDate = selectedDate || date;
+      setShow(Platform.Version==="android")
+      setDate(currentDate)
+      let tempDate = new Date(currentDate)
+      let fDate = tempDate.getDate()+ '/'+ (tempDate.getMonth()+1)+'/'+ tempDate.getFullYear();
+      let fTime = 'Time of the Event : '+ tempDate.getHours() + ' h : '+tempDate.getMinutes() + ' m ';
+      setText(fDate)
+      setTextTime(fTime)
+      console.log(fDate + '('+ fTime + ')');
+  }
+  const showMode = (currentMode)=>{
+      setShow(true)
+      setMode(currentMode)
+  }
   const onChangeeventNameHandler = (eventName) => {
     setEventName(eventName);
   };
@@ -94,18 +116,18 @@ const onSubmitFormHandler = async (event) => {
     });
 }
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View>
+    // <ScrollView contentContainerStyle={styles.container}>
+      <View Style={styles.container}>
         <View style={styles.wrapper}>
           {/* {isLoading ? (
             <Text style={styles.formHeading}> Creating resource </Text>
           ) : ( */}
-          <Text style={styles.formHeading}>Create new user</Text>
+          <Text style={styles.formHeading}>Create  new Event</Text>
         </View>
         <View style={styles.wrapper}>
           <TextInput
             placeholder="Event Name"
-            placeholderTextColor="#ffffff"
+            placeholderTextColor= "#252526"
             style={styles.input}
             value={eventName}
             // editable={!isLoading}
@@ -115,28 +137,56 @@ const onSubmitFormHandler = async (event) => {
         <View style={styles.wrapper}>
           <TextInput
             placeholder="Location"
-            placeholderTextColor="#ffffff"
+            placeholderTextColor= "#252526"
             style={styles.input}
             value={location}
             // editable={!isLoading}
             onChangeText={onChangelocationHandler}
           />
         </View>
-
-        <View style={styles.wrapper}>
+        {/* <View style={styles.wrapper}>
           <DatePicker
             placeholder="Date Of The Event"
-            placeholderTextColor="#ffffff"
+            placeholderTextColor= "#252526"
+            
             mode="datetime"
             style={styles.input}
             value={date_time}
             onChangeText={onChangedate_timeHandler}
           />
+        </View> */}
+        <Text>{text}</Text>
+        <View style={styles.addWrapper}>
+            <Button 
+             title="DatePicker"
+             onPress={()=> showMode('date')}
+             value={date_time}
+             onChangeText={onChangedate_timeHandler}
+             />
         </View>
+        <Text>{textTime}</Text>
+        <View style={styles.addWrapper}>
+            <Button 
+             title="timePicker"
+             onPress={()=> showMode('time')}
+             value={date_time}
+             onChangeText={onChangedate_timeHandler}
+             />
+        </View>
+        {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
+      )}
         <View style={styles.wrapper}>
           <TextInput
             placeholder=" Duration"
-            placeholderTextColor="#ffffff"
+            placeholderTextColor= "#252526"
             style={styles.input}
             value={duration}
             // editable={!isLoading}
@@ -146,7 +196,7 @@ const onSubmitFormHandler = async (event) => {
         <View style={styles.wrapper}>
           <TextInput
             placeholder="DailyPay"
-            placeholderTextColor="#ffffff"
+            placeholderTextColor= "#252526"
             style={styles.input}
             value={dailyPay}
             // editable={!isLoading}
@@ -157,7 +207,7 @@ const onSubmitFormHandler = async (event) => {
         <View style={styles.wrapper}>
           <TextInput
             placeholder="nbrWaiter"
-            placeholderTextColor="#ffffff"
+            placeholderTextColor= "#252526"
             style={styles.input}
             value={nbrWaiter}
             // editable={!isLoading}
@@ -167,7 +217,7 @@ const onSubmitFormHandler = async (event) => {
         <View style={styles.wrapper}>
           <TextInput
             placeholder="nbrChef"
-            placeholderTextColor="#ffffff"
+            placeholderTextColor= "#252526"
             style={styles.input}
             value={nbrChef}
             // editable={!isLoading}
@@ -177,7 +227,7 @@ const onSubmitFormHandler = async (event) => {
         <View style={styles.wrapper}>
           <TextInput
             placeholder="nbrCleaningWorker"
-            placeholderTextColor="#ffffff"
+            placeholderTextColor= "#252526"
             style={styles.input}
             value={nbrCleaningWorker}
             // editable={!isLoading}
@@ -194,35 +244,48 @@ const onSubmitFormHandler = async (event) => {
           />
         </View>
       </View>
-    </ScrollView>
+    // </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252526",
+    backgroundColor: '#F2F2F2',
     alignItems: "center",
     justifyContent: "center",
+    // width:"100%"
     // marginTop: Platform.OS === "android" ? 0 : Constants.statusBarHeight,
   },
   formHeading: {
-    color: "#ffffff",
+    color:  "#252526",
   },
   wrapper: {
     marginBottom: 10,
   },
   input: {
-    borderWidth: 2,
-    borderColor: "grey",
-    minWidth: 200,
-    textAlignVertical: "center",
-    paddingLeft: 10,
-    borderRadius: 20,
-    color: "#ffffff",
+    paddingVertical:5,
+    paddingHorizontal:15,
+    width:250,
+    backgroundColor:'#fff',
+    borderRadius:60,
+    borderWidth:1,
   },
   submitButton: {
     backgroundColor: "gray",
     padding: 100,
+    
   },
+  addWrapper:{
+    width:60,
+    height:60,
+    backgroundColor:'#fff',
+    borderRadius:60,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor:'#fff',
+    borderWidth:1,
+    
+  },
+  
 });
