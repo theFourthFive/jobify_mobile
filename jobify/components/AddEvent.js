@@ -1,23 +1,162 @@
-// import axios from "axios";
-// import React, { useState } from "react";
-// import {
-//   StyleSheet,
-//   Text,
-//   ScrollView,
-//   View,
-//   Button,
-//   Platform,
-//   TextInput,
-// } from "react-native";
-// export default function AddEvent() {
-//     const [eventName, setEventName] = useState("");
-//     const [eventDate, setEventDate] = useState("");
-//     const [eventDuration, setEventDuration] = useState("");
-//     const [pricePerDay, setPricePerDay] = useState("");
-//     const [waiterQte, setWaiterQte] = useState("");
-//     return(
-//         <View> 
-//             <Text>Add Event working</Text>
-//         </View>
-//     )
-// }
+import axios from "axios";
+import React, { useState } from "react";
+import DatePicker from 'react-native-datepicker';
+import {
+  StyleSheet,
+  Text,
+  ScrollView,
+  View,
+  Button,
+  Platform,
+  TextInput,
+ 
+} from "react-native";
+export default function AddEvent() {
+    const [companyId, setCompanyId] = useState("");
+    const [eventName, setEventName] = useState("");
+    const [location, setLocation] = useState("");
+    const [date_time, setDate_time] = useState("");
+    const [imageUri, setImageUri] = useState("");
+    const [duration, setDuration] = useState("");
+    const [dailyPay, setDailyPay] = useState("");
+    const [nbrWaiter, setNbrWaiter] = useState("");
+    const [nbrChef, setNbrChef] = useState("");
+    const [nbrCleaningWorker, setNbrCleaningWorker] = useState("");
+    /* handelChange functions here*/
+    const onChangeeventNameHandler = (eventName) => {
+        setEventName(eventName);
+      };
+      const onChangelocationHandler = (location) => {
+        setLocation(location);
+      };
+      const onChangedate_timeHandler = (date_time) => {
+        setDate_time(date_time);
+      };
+      const onChangeimageUriHandler = (imageUri) => {
+        setImageUri(imageUri);
+      };
+      const onChangedurationHandler = (duration) => {
+        setDuration(duration);
+      };
+      const onChangedailyPayHandler = (dailyPay) => {
+        setDailyPay(dailyPay);
+      };
+      const onChangenbrWaiterHandler = (nbrWaiter) => {
+        setNbrWaiter(nbrWaiter);
+      };
+      const onChangenbrChefHandler = (nbrChef) => {
+        setNbrChef(nbrChef);
+      };
+      const onChangenbrCleaningWorkerHandler = (nbrCleaningWorker) => {
+        setNbrCleaningWorker(nbrCleaningWorker);
+      };
+      axios.post('/addEvent', {
+        companyId,
+        eventName,
+        location,
+        date_time,
+        imageUri,
+        duration,
+        dailyPay,
+        nbrWaiter,
+        nbrChef,
+        nbrCleaningWorker,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    return(
+        <ScrollView contentContainerStyle={styles.container}>
+      <View>
+        <View style={styles.wrapper}>
+          {/* {isLoading ? (
+            <Text style={styles.formHeading}> Creating resource </Text>
+          ) : ( */}
+            <Text style={styles.formHeading}>Create new user</Text>
+          
+        </View>
+        <View style={styles.wrapper}>
+          <TextInput
+            placeholder="Event Name"
+            placeholderTextColor="#ffffff"
+            style={styles.input}
+            value={eventName}
+            // editable={!isLoading}
+            onChangeText={onChangeeventNameHandler}
+          />
+        </View>
+        <View style={styles.wrapper}>
+          <TextInput
+            placeholder="Location"
+            placeholderTextColor="#ffffff"
+            style={styles.input}
+            value={ location}
+            // editable={!isLoading}
+            onChangeText={onChangelocationHandler}
+          />
+        </View>
+       
+        <View style={styles.wrapper}>
+        <DatePicker
+         placeholder="Date Of The Event"
+         placeholderTextColor="#ffffff"
+         mode="datetime"
+         style={styles.input}
+         value={date_time}
+         onChangeText={onChangedate_timeHandler}
+       />
+        </View>
+        {/* <View style={styles.wrapper}>
+          <TextInput
+            placeholder="Email"
+            placeholderTextColor="#ffffff"
+            style={styles.input}
+            value={email}
+            editable={!isLoading}
+            onChangeText={onChangeEmailHandler}
+          />
+        </View> */}
+        {/* <View>
+          <Button
+            title="Submit"
+            onPress={onSubmitFormHandler}
+            style={styles.submitButton}
+            disabled={isLoading}
+          />
+        </View> */}
+      </View>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#252526",
+    alignItems: "center",
+    justifyContent: "center",
+    // marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
+  },
+  formHeading: {
+    color: "#ffffff",
+  },
+  wrapper: {
+    marginBottom: 10,
+  },
+  input: {
+    borderWidth: 2,
+    borderColor: "grey",
+    minWidth: 200,
+    textAlignVertical: "center",
+    paddingLeft: 10,
+    borderRadius: 20,
+    color: "#ffffff",
+  },
+  submitButton: {
+    backgroundColor: "gray",
+    padding: 100,
+  },
+});
