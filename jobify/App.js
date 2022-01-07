@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
@@ -42,6 +43,22 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+=======
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text,ScrollView  , View } from 'react-native';
+import AddEvent from './components/AddEvent'; 
+import EventList from './components/EventsList';
+
+export default function App(navigation) {
+  return (
+    <View  style={styles.container}>
+     
+      <EventList/>
+
+      <StatusBar style="auto" />
+    </View >
+>>>>>>> 243c1645143ce454b6dc1f6edcf7c34b84552544
   );
 }
 
