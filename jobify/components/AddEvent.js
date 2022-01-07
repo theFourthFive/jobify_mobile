@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import DatePicker from "react-native-datepicker";
-import DateTimePicker from "@react-native-community/datetimepicker"
+// import DatePicker from "react-native-datepicker";
+// import DateTimePicker from "@react-native-community/datetimepicker"
 import {
   StyleSheet,
   Text,
@@ -97,7 +97,7 @@ export default function AddEvent() {
 //   }
 const onSubmitFormHandler = async (event) => {
   axios
-    .post("/addEvent", {
+    .post("http://192.168.11.13:3000/addEvent", {
       companyId,
       eventName,
       location,
