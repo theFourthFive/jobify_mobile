@@ -1,18 +1,25 @@
 import React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-// import  ProfilScreen from './components/Workers/ProfilScreen'
-import EditProfilScreen from './components/Workers/EditProfilScreen';
-export default function App() {
+import AddEvent from './components/AddEvent';
+import ProfilScreen from './components/Workers/ProfilScreen';
+import EditProfilScreen  from './components/Workers/EditProfilScreen'
+
+
+
+export default function App(navigation) {
   return (
     <View style={styles.container}>
-      {/* <Text>your are fucked but it's okay </Text> */}
-      <EditProfilScreen />
-    
-      <View>
-      
-      {/* <ProfilScreen/>  */}
-      </View>
-      
+      {/* <Text>hello aziz!</Text>
+      <Text>this is the home screen !</Text> */}
+      {/* <Button
+        title="Go to AddEvent"
+        onPress={() => navigation.navigate('AddEvent')}
+      /> */}
+      {/* <AddEvent/> */}
+      {/* <ProfilScreen/> */}
+      <EditProfilScreen/>
+      <StatusBar style="auto" />
     </View>
 
   );
