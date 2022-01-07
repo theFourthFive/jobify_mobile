@@ -1,17 +1,17 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import  ProfilScreen from './components/Workers/ProfilScreen'
-// import EditProfilScreen from './components/Workers/EditProfilScreen';
+// import  ProfilScreen from './components/Workers/ProfilScreen'
+import EditProfilScreen from './components/Workers/EditProfilScreen';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>your are fucked but it's okay </Text>
-      {/* <EditProfilScreen /> */}
+      {/* <Text>your are fucked but it's okay </Text> */}
+      <EditProfilScreen />
       <StatusBar style="auto" />
       <View>
       
-      <ProfilScreen/>
+      {/* <ProfilScreen/> */}
       </View>
       
     </View>

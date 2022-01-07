@@ -32,9 +32,10 @@ export default function ProfilScreen() {
             <Text style={styles.userbtntxt}>follow</Text>
           </TouchableOpacity>
           <TouchableOpacity  style={styles.userbtn}
-                onPress={() => {
-                  navigation.navigate('EditProfile');
-                }}>
+                // onPress={() => {
+                //   navigation.navigate('EditProfile');
+                // }}
+                >
             <Text style={styles.userbtntxt}>Edit</Text>
           </TouchableOpacity>
         </View>
