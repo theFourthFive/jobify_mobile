@@ -43,9 +43,11 @@ export default function AddEvent() {
   const showMode = (currentMode)=>{
       setShow(true)
       setMode(currentMode)
+      
   }
   const onChangeeventNameHandler = (eventName) => {
     setEventName(eventName);
+    console.log(eventName)
   };
   const onChangelocationHandler = (location) => {
     setLocation(location);
