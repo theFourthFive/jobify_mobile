@@ -84,28 +84,6 @@ export default function AddEvent() {
   const onChangenbrCleaningWorkerHandler = (nbrCleaningWorker) => {
     setNbrCleaningWorker(nbrCleaningWorker);
   };
-  //   const onSubmitFormHandler = async (event) => {
-  //     try {
-  //         const response = await axios.post("/addEvent", {
-  //             companyId,
-  //             eventName,
-  //             location,
-  //             date_time,
-  //             imageUri,
-  //             duration,
-  //             dailyPay,
-  //             nbrWaiter,
-  //             nbrChef,
-  //             nbrCleaningWorker,
-  //           })}
-  //   .then(function (response) {
-  //           console.log(response);
-  //         })
-  //         .catch(function (error) {
-  //           console.log(error);
-  //         });
-
-  //   }
   const onSubmitFormHandler = async (event) => {
     let url = 'http://localhost:3000/addEvent'
     axios
@@ -169,17 +147,7 @@ export default function AddEvent() {
           onChangeText={onChangeimageUriHandler}
         />
       </View>
-      {/* <View style={styles.wrapper}>
-          <DatePicker
-            placeholder="Date Of The Event"
-            placeholderTextColor= "#252526"
-            
-            mode="datetime"
-            style={styles.input}
-            value={date_time}
-            onChangeText={onChangedate_timeHandler}
-          />
-        </View> */}
+      
       <View style={styles.wrapper}>
         <TextInput
           placeholder=" date_time"
@@ -242,40 +210,7 @@ export default function AddEvent() {
           onChangeText={onChangenbrCleaningWorkerHandler}
         />
       </View>
-       {/* <View style={styles.addWrapper}>
-      <View style={styles.addWrapper}>
-        <Button
-          title="The Date"
-          onPress={() => showMode("date")}
-          value={date_time}
-          onChangeText={onChangedate_timeHandler}
-        />
-        <Text style={styles.thedate}>{text}</Text>
-      </View>
-      </View>
-
-     <View style={styles.addWrapper}>
      
-      <View style={styles.addWrapper}>
-        <Button
-          title="The Time " 
-          onPress={() => showMode("time")}
-          value={date_time}
-          onChangeText={onChangedate_timeHandler}
-        />
-         <Text style={styles.thedate}>{textTime}</Text>
-      </View>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
-          onChange={onChange}
-        />
-      )}
-      </View> */}
 
       <View>
         <Button
