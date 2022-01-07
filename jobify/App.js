@@ -1,29 +1,17 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AddEvent from './components/AddEvent';
-import ProfilScreen from './components/Workers/ProfilScreen';
-import EditProfilScreen  from './components/Workers/EditProfilScreen'
+import { StyleSheet, Text,ScrollView  , View } from 'react-native';
+import AddEvent from './components/AddEvent'; 
+import EventList from './components/EventsList';
 
-
-const Stack = createNativeStackNavigator();
-export default function App() {
+export default function App(navigation) {
   return (
-    <View style={styles.container}>
-      {/* <Text>hello aziz!</Text>
-      <Text>this is the home screen !</Text> */}
-      {/* <Button
-        title="Go to AddEvent"
-        onPress={() => navigation.navigate('AddEvent')}
-      /> */}
-      {/* <AddEvent/> */}
-      {/* <ProfilScreen/> */}
-      <EditProfilScreen/>
-      <StatusBar style="auto" />
-    </View>
+    <View  style={styles.container}>
+     
+      <EventList/>
 
+      <StatusBar style="auto" />
+    </View >
   );
 }
 
