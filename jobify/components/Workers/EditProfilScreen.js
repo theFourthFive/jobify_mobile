@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-// import SelectDropdown from "react-native-select-dropdown";
+import Ionicons from "react-native-vector-icons/Ionicons";
+// import Icon from '@mdi/react'
+// import { mdiAccount } from '@mdi/js'
+
 import {
   Image,
   StyleSheet,
@@ -19,25 +21,26 @@ import {
 
 export default function EditProfilScreen() {
   const [WorkerId, setWorkerId] = useState("");
-  const [FirstName, setFirstName] = useState("");
+  const [firstName, setfirstName] = useState("");
   const [LasttName, setLastName] = useState("");
   const [Email, setEmail] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
   const [imageUrl, setimageUrl] = useState("");
-  const [Location, setLocation] = useState("");
+  const [City, setCity] = useState("");
   const [CVUrl, setCVUrl] = useState("");
   const [availibility, setavailibility] = useState("");
   const [password, setpassword] = useState("");
-  // const [avgRating,setavgRating]=useState('')
-  // const [Cathegorield,setCathegorield]=useState('')
-  const handelChangeLocation = (Location) => {
-    setLocation(Location);
+  const [avgRating, setavgRating] = useState("");
+
+  // handel change function
+  const handelChangeCity = (City) => {
+    setCity(City);
   };
   const handelChangeWorkerId = (WorkerId) => {
     setWorkerId(WorkerId);
   };
-  const handelChangeFirstName = (FirstName) => {
-    setFirstName(FirstName);
+  const handelChangefirstName = (firstName) => {
+    setfirstName(firstName);
   };
   const handelChangeLasttName = (LasttName) => {
     setLastName(LasttName);
@@ -65,8 +68,8 @@ export default function EditProfilScreen() {
     axios
       .post("/edit", {
         WorkerId,
-        Location,
-        FirstName,
+        City,
+        firstName,
         LasttName,
         Email,
         phoneNumber,
@@ -85,100 +88,107 @@ export default function EditProfilScreen() {
   };
 
   return (
-    // <ScrollView contentContainerStyle={styles.container}>
     <View Style={styles.container}>
       <View style={styles.wrapper}>
         <Image
           style={styles.Img}
           source={{
-            uri: "https://reactnative.dev/img/tiny_logo.png",
+            uri: "https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg",
           }}
         />
         <Text style={styles.formHeading}>Edit Photo</Text>
       </View>
-      <View style={styles.wrapper}>
+
+      <View style={styles.action}>
         <FontAwesome name="user-o" color="#333333" size={20} />
         <TextInput
           placeholder="FirstName"
           placeholderTextColor="#252526"
-          style={styles.input}
-          value={FirstName}
-          // editable={!isLoading}
-          onChangeText={handelChangeFirstName}
+          style={styles.textInput}
+          value={firstName}
+          onChangeText={handelChangefirstName}
         />
       </View>
-      <View style={styles.wrapper}>
+      <View style={styles.action}>
         <FontAwesome name="user-o" color="#333333" size={20} />
         <TextInput
           placeholder="LasttName"
           placeholderTextColor="#252526"
-          style={styles.input}
+          style={styles.textInput}
           value={LasttName}
-          // editable={!isLoading}
           onChangeText={handelChangeLasttName}
         />
       </View>
-      <View style={styles.wrapper}>
+      <View style={styles.action}>
+        <FontAwesome name="user-o" color="#333333" size={20} />
+
+        {/* <Icon path={mdiAccount}
+        title="User Profile"
+        size={1}
+        horizontal
+        vertical
+        rotate={90}
+        color="red"
+        spin/> */}
+        <TextInput
+          placeholder="Email"
+          placeholderTextColor="#252526"
+          style={styles.textInput}
+          value={Email}
+          onChangeText={handelChangeEmail}
+        />
+      </View>
+      <View style={styles.action}>
         <Feather name="phone" color="#333333" size={20} />
         <TextInput
           placeholder="phoneNumber"
           placeholderTextColor="#252526"
-          style={styles.input}
+          style={styles.textInput}
           value={phoneNumber}
-          // editable={!isLoading}
           onChangeText={handelChangephoneNumber}
         />
       </View>
-      <View style={styles.wrapper}>
-        
+      <View style={styles.action}>
+        <Ionicons name="ios-clipboard-outline" color="#333333" size={20} />
         <TextInput
           placeholder="About_Me"
           placeholderTextColor="#252526"
-          style={styles.input}
+          style={styles.textInput}
           value={phoneNumber}
-          // editable={!isLoading}
           onChangeText={handelChangephoneNumber}
         />
       </View>
-      <View style={styles.wrapper}>
-        {/* <TextInput
+
+      <View style={styles.action}>
+        <Picker
           placeholder="availibility"
           placeholderTextColor="#252526"
-          style={styles.input}
-          value={availibility}
-          // editable={!isLoading}
-          onChangeText={handelChangeavailibility}
-        /> */}
-        <Picker
-         placeholder="availibility"
           Value={availibility}
           style={styles.picker}
-          // onChangeText={handelChangeavailibility}
-         
+          onChangeText={handelChangeavailibility}
         >
-          <Picker.Item label={'Monday'} value="Monday" />
-          <Picker.Item label={'Tuesday'} value="Tuesday" />
-          <Picker.Item label={'Wednesday'} value="Tuesday" />
-          <Picker.Item label={'Thursday'} valu e= "Tuesday" />
-          <Picker.Item label={' Friday'} value="Tuesday" />
-          <Picker.Item label={'Saturday'} value="Tuesday" />
-          <Picker.Item label={'sunday'} value="Tuesday" />
-
+          <Picker.Item label={"Monday"} value="Monday" />
+          <Picker.Item label={"Tuesday"} value="Tuesday" />
+          <Picker.Item label={"Wednesday"} value="Tuesday" />
+          <Picker.Item label={"Thursday"} valu e="Tuesday" />
+          <Picker.Item label={" Friday"} value="Tuesday" />
+          <Picker.Item label={"Saturday"} value="Tuesday" />
+          <Picker.Item label={"sunday"} value="Tuesday" />
         </Picker>
       </View>
-      <View style={styles.wrapper}>
+
+      <View style={styles.action}>
         <MaterialCommunityIcons
           name="map-marker-outline"
           color="#333333"
           size={20}
         />
         <TextInput
-          placeholder="Location"
+          placeholder="City"
           placeholderTextColor="#252526"
-          style={styles.input}
-          value={Location}
-          // editable={!isLoading}
-          onChangeText={handelChangeLocation}
+          style={styles.textInput}
+          value={City}
+          onChangeText={handelChangeCity}
         />
       </View>
 
@@ -187,7 +197,6 @@ export default function EditProfilScreen() {
           title="Update"
           onPress={onUpdatzFormHandler}
           style={styles.UpdateButton}
-          // disabled={isLoading}
         />
       </View>
     </View>
@@ -196,17 +205,22 @@ export default function EditProfilScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F2F2F2",
+
     alignItems: "center",
     justifyContent: "center",
   },
-  picker:{
+  textInput: {
+    marginTop: Platform.Version === "android" ? 0 : -20,
+    paddingLeft: 9,
+    paddingRight: 182,
+    color: "#333333",
+  },
+  picker: {
     paddingTop: 40,
     alignItems: "center",
-    height: 50, 
-    width: 150 ,
+    height: 50,
+    width: 150,
     borderRadius: 60,
-
   },
   formHeading: {
     color: "#252526",
@@ -214,18 +228,17 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     marginBottom: 10,
+    marginLeft: 105,
   },
-  wrapper: {
+  action: {
+    flexDirection: "row",
+    marginTop: 10,
     marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f2f2f2",
+    paddingBottom: 8,
   },
-  input: {
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-    width: 250,
-    backgroundColor: "#fff",
-    borderRadius: 60,
-    borderWidth: 1,
-  },
+
   submitButton: {
     backgroundColor: "gray",
     padding: 100,
@@ -244,5 +257,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 105,
   },
 });

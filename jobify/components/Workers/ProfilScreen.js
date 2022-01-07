@@ -1,4 +1,7 @@
-import { useContext,useState  } from "react";
+import React  from "react";
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack'
+// const Stack = createNativeStackNavigator();
 import {
   Text,
   StyleSheet,
@@ -8,47 +11,35 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-
 export default function ProfilScreen() {
-  const [FirstName,setFirstName]=useState('')
-  const handelChangeFirstName = (FirstName)=>{
-    setFirstName(FirstName)
-  }
-  // const {user,logout}=useContext('')
+ 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <View>
         <Image
           style={styles.Img}
           source={{
-            uri: "https://reactnative.dev/img/tiny_logo.png",
+            uri: "https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg",
           }}
         />
-        <Text style={styles.userName}>helloooooooooo</Text>
-        <Text style={styles.aboutuser}>hello ggggg</Text>
+        <Text style={styles.formHeading}>hello</Text>
+        <Text style={styles.aboutuser}>hello again </Text>
 
         <View style={styles.userBtnWrapper}>
           <TouchableOpacity style={styles.userbtn}>
             <Text style={styles.userbtntxt}>follow</Text>
           </TouchableOpacity>
-          <TouchableOpacity  style={styles.userbtn}
-                // onPress={() => {
-                //   navigation.navigate('EditProfile');
-                // }}
-                >
+          <TouchableOpacity  style={styles.userbtn}>
             <Text style={styles.userbtntxt}>Edit</Text>
-          </TouchableOpacity>
-        </View>
-      <View >
-        <Text>FirstName:{FirstName}</Text>
-        <Text>LastName:{FirstName}</Text>
-        <Text>Email:{FirstName}</Text>
-        <Text>FirstName:{FirstName}</Text>
-        <Text>FirstName:{FirstName}</Text>
+         </TouchableOpacity>
 
+        </View>
+        <View >
+           <Text>FirstName:</Text>
+          <Text>LastName:</Text>
+          <Text>Email:</Text>
+          </View>
       </View>
-      </View>
-      {/* </ScrollView> */}
     </SafeAreaView>
   );
 }
@@ -61,15 +52,24 @@ const styles = StyleSheet.create({
     bottom:75,
   },
   Img: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
+    width: 100,
+    height: 100,
+    borderRadius: 5,
+    marginLeft: 60,
   },
-  userName: {
+  // userName: {
+  //   fontSize: 18,
+  //   fontWeight: 'bold',
+  //   marginTop: 10,
+  //   marginBottom: 10,
+  // },
+  formHeading: {
+    color: "#252526",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 10,
     marginBottom: 10,
+    marginLeft: 80,
   },
   aboutuser: {
     fontSize: 12,
