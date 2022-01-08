@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 export default function ProfilScreen() {
- 
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <View>
