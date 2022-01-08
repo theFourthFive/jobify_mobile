@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import AddEvent from './components/AddEvent';
+// import AddEvent from './components/AddEvent';
 import ProfilScreen from './components/Workers/ProfilScreen';
 import EditProfilScreen  from './components/Workers/EditProfilScreen'
 
@@ -17,8 +17,8 @@ export default function App(navigation) {
         onPress={() => navigation.navigate('AddEvent')}
       /> */}
       {/* <AddEvent/> */}
-      {/* <ProfilScreen/> */}
-      <EditProfilScreen/>
+      <ProfilScreen/>
+      {/* <EditProfilScreen/> */}
       <StatusBar style="auto" />
     </View>
 

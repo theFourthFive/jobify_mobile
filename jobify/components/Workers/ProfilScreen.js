@@ -14,7 +14,8 @@ import {
 export default function ProfilScreen() {
  
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <View style={styles.container}>
+    <SafeAreaView style={{  backgroundColor: "#fff" }}>
       <View>
         <Image
           style={styles.Img}
@@ -22,8 +23,8 @@ export default function ProfilScreen() {
             uri: "https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg",
           }}
         />
-        <Text style={styles.formHeading}>hello</Text>
-        <Text style={styles.aboutuser}>hello again </Text>
+        <Text style={styles.formHeading}>helloooooooooo</Text>
+        <Text style={styles.aboutuser}>hello ggggg</Text>
 
         <View style={styles.userBtnWrapper}>
           <TouchableOpacity style={styles.userbtn}>
@@ -41,6 +42,7 @@ export default function ProfilScreen() {
           </View>
       </View>
     </SafeAreaView>
+    </View>
   );
 }
 
@@ -48,8 +50,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 20,
-    bottom:75,
+    alignItems:'center',
+    justifyContent:'center',
   },
   Img: {
     width: 100,
@@ -63,13 +65,13 @@ const styles = StyleSheet.create({
   //   marginTop: 10,
   //   marginBottom: 10,
   // },
-  formHeading: {
+   formHeading: {
     color: "#252526",
     fontSize: 18,
     fontWeight: "bold",
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 80,
+    marginLeft: 105,
   },
   aboutuser: {
     fontSize: 12,

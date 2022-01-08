@@ -66,9 +66,9 @@ export default function EditProfilScreen() {
 
   const onUpdatzFormHandler = async (event) => {
     axios
-      .post("/edit", {
+      .post("/update", {
         WorkerId,
-        City,
+        City, 
         firstName,
         LasttName,
         Email,
