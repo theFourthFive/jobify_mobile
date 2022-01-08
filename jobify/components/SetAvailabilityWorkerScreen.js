@@ -1,16 +1,72 @@
-import { StyleSheet, Text, View, Button } from "react-native";
+import React, { useState } from "react";
 
-export default function SetAvailabilityWorkerScreen({ navigation }) {
+// prettier-ignore
+import { StyleSheet, Text, View, Pressable, FlatList, TouchableWithoutFeedback, Keyboard, Button } from "react-native";
+import CheckBox from "react-native-checkbox";
+import axios from "axios";
+// import DayItem from "./DaysItem";
+
+// prettier-ignore
+export default function SetAvailabilityWorkerScreen({ navigation, onPress, title = "Save", userId = 0 }) {
+  const [dayAvailability, setDayAvailability] = useState([
+    { text: "Monday", key: 0, available: false },
+    { text: "Tuesday", key: 1, available: false },
+    { text: "Wednesday", key: 2, available: false },
+    { text: "Thursday", key: 3, available: false },
+    { text: "Friday", key: 4, available: false },
+    { text: "Saturday", key: 5, available: false },
+    { text: "Sunday", key: 6, available: false },
+  ]);
+
   return (
-    <View style={styles.container}>
-      <View styles={styles.menu}>
-        <Text>Availability Worker Screen</Text>
-        <Button
-          title="Routes Menu"
-          onPress={() => navigation.navigate("Routes")}
-        />
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.container}>
+        <View style={styles.content}>
+          <View style={styles.list}>
+            {dayAvailability.map((day) => (
+              <CheckBox
+              key={day.key}
+                labelStyle={{ color: "grey", fontSize: 20 }}
+                label={day.text}
+                checked={day.available}
+                onChange={() =>
+                  setDayAvailability((prevState) =>
+                    prevState.map((each_day) => {
+                      if (each_day.key === day.key)
+                        each_day.available = !each_day.available;
+                      return each_day;
+                    })
+                  )
+                }
+              />
+            ))}
+
+            <Pressable style={styles.button} onPress={async () => {
+                let dayAvailable = dayAvailability.filter((day)=> day.available).map((day)=>{
+                  if(day.available){
+                    // console.log(day.text)
+                    return day.text
+                  } else return ""
+                }).join()
+                console.log(dayAvailable)
+                try {
+                  // let response = await axios.put(`http://localhost:3000/workers/${userId}/availability`)
+                  let response = await axios.get(`http://localhost:3000/`)
+                  console.log(response)
+                } catch (error) {
+                  console.log(error)
+                }
+                navigation.navigate("Profil")
+              }}
+            >
+              <Text style={styles.text}>
+                {title}
+              </Text>
+            </Pressable>
+          </View>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -23,5 +79,34 @@ const styles = StyleSheet.create({
   },
   menu:{
     flex: 1,
-  }
+  },
+  content: {
+    flex: 1,
+    padding: 40,
+    // alignItems: "center",
+    // backgroundColor: "pink",
+  },
+  list: {
+    flex: 1,
+    marginTop: 20,
+    // margin: 20,
+    // backgroundColor: "yellow",
+  },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop:20,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
+  },
+  text: {
+    fontSize: 20,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
 });
