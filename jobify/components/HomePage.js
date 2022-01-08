@@ -1,13 +1,12 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import Router from './router/router';
-
-const App=()=> {
+const HomePage=()=> {
   return (
-    <NavigationContainer>
-      <Router/>
-    </NavigationContainer>
+    <View>
+        <Text>
+            Home Pageee
+        </Text>
+    </View>
   );
 }
 
@@ -19,4 +18,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default App
+export default HomePage
