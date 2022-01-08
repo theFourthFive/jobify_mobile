@@ -37,6 +37,11 @@ const styles = StyleSheet.create({
           height : 60,
           width : 100,
           borderRadius : 100
+      },campany:{
+
+        fontSize : 20 , 
+        fontWeight : 'bold'
+
       }
     
 })
