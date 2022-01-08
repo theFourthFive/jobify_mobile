@@ -9,7 +9,7 @@ import ProfilScreen from "./components/Workers/ProfilScreen";
 import EditProfilScreen from "./components/Workers/EditProfilScreen";
 import RoutesMenuScreen from "./components/RoutesMenuScreen";
 import SetAvailabilityWorkerScreen from "./components/SetAvailabilityWorkerScreen";
-
+import EventList from "./components/EventsList";
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
@@ -39,6 +39,11 @@ export default function App() {
           name="AddEvent"
           component={AddEvent}
           options={{ title: "Add Event" }}
+        />
+       <Stack.Screen
+          name="EventList"
+          component={EventList}
+          options={{ title: "EventList" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
