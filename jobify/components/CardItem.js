@@ -50,7 +50,7 @@ const  CardItem = (props) => {
   console.log(props);
   var handleSubmit= ()=>{
     var URL = "http://localhost:3000/events/subscribe"
-   axios.post( url , {eventID : props.event.eventID , userID : 1 }).then(res => {
+   axios.post( URL , {eventID : props.event.eventID , workerId : 1 , companyId : 1 }).then(res => {
      console.log(res);
    })
   }
