@@ -18,6 +18,10 @@ export default function RoutesMenuScreen({ navigation }) {
       />
       <Text></Text>
       <Button
+        title="Events"
+        onPress={() => navigation.navigate("EventList")}
+      />
+      <Button
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
       />
@@ -33,6 +37,7 @@ export default function RoutesMenuScreen({ navigation }) {
         title="AddEvent"
         onPress={() => navigation.navigate("AddEvent")}
       />
+
     </View>
   );
 }
