@@ -17,24 +17,17 @@ export default function RoutesMenuScreen({ navigation }) {
         isChecked={isSelected}
         leftText={"CheckBox"}
       /> */}
-      <CheckBox
-        label="Label"
-        checked={isSelected}
-        onChange={(checked) => setSelection(!isSelected)}
-      />
+
       <Text></Text>
-      <Button
-        title="Events"
-        onPress={() => navigation.navigate("EventList")}
-      />
-      <Button
+      <Button title="Events" onPress={() => navigation.navigate("EventList")} />
+      {/* <Button
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
-      />
-      <Button
+      /> */}
+      {/* <Button
         title="Edit your Profile"
         onPress={() => navigation.navigate("EditProfile")}
-      />
+      /> */}
       <Button
         title="Worker: Profil"
         onPress={() => navigation.navigate("Profil")}
@@ -43,7 +36,6 @@ export default function RoutesMenuScreen({ navigation }) {
         title="AddEvent"
         onPress={() => navigation.navigate("AddEvent")}
       />
-
     </View>
   );
 }

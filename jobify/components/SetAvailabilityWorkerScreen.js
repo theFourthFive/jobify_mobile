@@ -56,20 +56,21 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
             ))}
 
             <Pressable style={styles.button} onPress={async () => {
-                let dayAvailable = 
-                console.log(dayAvailable)
+                let dayAvailable = dayAvailability.filter((day)=> day.available).map((day)=>{
+                  if(day.available){
+                    // console.log(day.text)
+                    return day.text
+                  } else return ""
+                }).join()
+                // console.log(dayAvailable)
                 try {
-                  let response = await axios.put(`http://192.168.11.180:3000/workers/${userId}/availability`,dayAvailability.filter((day)=> day.available).map((day)=>{
-                    if(day.available){
-                      // console.log(day.text)
-                      return day.text
-                    } else return ""
-                  }).join())
-                  // console.log(response.data)
+                  let response = await axios.put(`http://192.168.11.180:3000/workers/${userId}/availability`,{availability:dayAvailable})
+                  console.log(response.data)
+                  navigation.navigate("Profil")
+
                 } catch (error) {
                   console.log(error)
                 }
-                navigation.navigate("Profil")
               }}
             >
               <Text style={styles.text}>
