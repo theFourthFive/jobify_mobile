@@ -3,6 +3,7 @@ import React, { useState } from "react";
 // prettier-ignore
 import { StyleSheet, Text, View, Pressable, FlatList, TouchableWithoutFeedback, Keyboard, Button } from "react-native";
 import CheckBox from "react-native-checkbox";
+// import Toggle from "react-toggle";
 import axios from "axios";
 // import DayItem from "./DaysItem";
 
@@ -39,20 +40,32 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
                   )
                 }
               />
+              // <Toggle
+              //   key={day.key}
+              //   value={"AAAA"}
+              //   defaultChecked={day.available}
+              //   onChange={() =>
+              //     setDayAvailability((prevState) =>
+              //     prevState.map((each_day) => {
+              //       if (each_day.key === day.key)
+              //         each_day.available = !each_day.available;
+              //       return each_day;
+              //     })
+              //   )}
+              //   />
             ))}
 
             <Pressable style={styles.button} onPress={async () => {
-                let dayAvailable = dayAvailability.filter((day)=> day.available).map((day)=>{
-                  if(day.available){
-                    // console.log(day.text)
-                    return day.text
-                  } else return ""
-                }).join()
+                let dayAvailable = 
                 console.log(dayAvailable)
                 try {
-                  // let response = await axios.put(`http://localhost:3000/workers/${userId}/availability`)
-                  let response = await axios.get(`http://localhost:3000/`)
-                  console.log(response)
+                  let response = await axios.put(`http://192.168.11.180:3000/workers/${userId}/availability`,dayAvailability.filter((day)=> day.available).map((day)=>{
+                    if(day.available){
+                      // console.log(day.text)
+                      return day.text
+                    } else return ""
+                  }).join())
+                  // console.log(response.data)
                 } catch (error) {
                   console.log(error)
                 }
