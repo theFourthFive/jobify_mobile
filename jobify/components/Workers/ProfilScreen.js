@@ -11,8 +11,8 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-export default function ProfilScreen() {
- 
+export default function ProfilScreen({ navigation }) {
+
   return (
     <View style={styles.container}>
     <SafeAreaView style={{  backgroundColor: "#fff" }}>
@@ -30,7 +30,7 @@ export default function ProfilScreen() {
           <TouchableOpacity style={styles.userbtn}>
             <Text style={styles.userbtntxt}>follow</Text>
           </TouchableOpacity>
-          <TouchableOpacity  style={styles.userbtn}>
+          <TouchableOpacity  onPress={() => navigation.navigate("EditProfile")} style={styles.userbtn}>
             <Text style={styles.userbtntxt}>Edit</Text>
          </TouchableOpacity>
 
