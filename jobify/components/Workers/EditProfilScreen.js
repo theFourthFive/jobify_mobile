@@ -19,7 +19,7 @@ import {
   TextInput,
 } from "react-native";
 
-export default function EditProfilScreen() {
+export default function EditProfilScreen({ navigation }) {
   const [WorkerId, setWorkerId] = useState("");
   const [firstName, setfirstName] = useState("");
   const [LasttName, setLastName] = useState("");
@@ -66,9 +66,9 @@ export default function EditProfilScreen() {
 
   const onUpdatzFormHandler = async (event) => {
     axios
-      .post("/edit", {
+      .post("/update", {
         WorkerId,
-        City,
+        City, 
         firstName,
         LasttName,
         Email,
@@ -88,9 +88,12 @@ export default function EditProfilScreen() {
   };
 
   return (
-    <View Style={styles.container}>
+    <ScrollView  Style={styles.container}>
+    <View>
       <View style={styles.wrapper}>
         <Image
+         value={imageUrl}
+         onPress={handelChangeimageUrl}
           style={styles.Img}
           source={{
             uri: "https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg",
@@ -159,7 +162,7 @@ export default function EditProfilScreen() {
         />
       </View>
 
-      <View style={styles.action}>
+      {/* <View style={styles.action}  onPress={() => navigation.navigate("SetAvailabilityWorker")}>
         <Picker
           placeholder="availibility"
           placeholderTextColor="#252526"
@@ -175,7 +178,11 @@ export default function EditProfilScreen() {
           <Picker.Item label={"Saturday"} value="Tuesday" />
           <Picker.Item label={"sunday"} value="Tuesday" />
         </Picker>
-      </View>
+      </View> */}
+       <Button
+        title=" Availability"
+        onPress={() => navigation.navigate("SetAvailabilityWorker")}
+      />
 
       <View style={styles.action}>
         <MaterialCommunityIcons
@@ -195,11 +202,14 @@ export default function EditProfilScreen() {
       <View>
         <Button
           title="Update"
-          onPress={onUpdatzFormHandler}
+          // onPress={onUpdatzFormHandler}
+          onPress={() => navigation.navigate("Profil")}
           style={styles.UpdateButton}
         />
+       
       </View>
     </View>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
@@ -237,6 +247,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#f2f2f2",
     paddingBottom: 8,
+    marginLeft:12,
   },
 
   submitButton: {
@@ -260,5 +271,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginLeft: 105,
+    
   },
 });
