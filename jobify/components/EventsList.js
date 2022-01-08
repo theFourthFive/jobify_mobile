@@ -20,12 +20,20 @@ const  EventList = () => {
   })
  
  },[])
+ 
+function refresh(){
+
+  const URL = "http://localhost:3000/events/"
+  axios.get(URL).then((res)=>{
+    setevents(res.data)  })
+}
+
 
 console.log(events);
   return (
  <View style={styles.container} >
  <ScrollView >
- {events.map((ele,i)=><CardItem key={i} event={ele} />)}
+ {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh} />)}
 
   </ScrollView>
  </View>

@@ -52,7 +52,10 @@ const  CardItem = (props) => {
     var URL = "http://localhost:3000/events/subscribe"
    axios.post( URL , {eventID : props.event.eventID , workerId : 1 , companyId : 1 }).then(res => {
      console.log(res);
+     props.reset()
    })
+
+   props.reff()
   }
   return (
  <View style={styles.card_template}>
