@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text,ScrollView,View,Image,StyleSheet,Button } from 'react-native';
 import moment from 'moment';
-
+import axios from 'axios'
 const styles = StyleSheet.create({
     card_template:{
         flex: 1,
@@ -48,6 +48,12 @@ const styles = StyleSheet.create({
 
 const  CardItem = (props) => {
   console.log(props);
+  var handleSubmit= ()=>{
+    var URL = "http://localhost:3000/events/subscribe"
+   axios.post( url , {eventID : props.event.eventID , userID : 1 }).then(res => {
+     console.log(res);
+   })
+  }
   return (
  <View style={styles.card_template}>
     <Image
@@ -68,6 +74,7 @@ const  CardItem = (props) => {
           title="Subscribe"
           style={styles.submitButton}
           // disabled={isLoading}
+          onPress={handleSubmit}
         />
     </view>  
  </View>
