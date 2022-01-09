@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // prettier-ignore
 import { StyleSheet, Text, View, Pressable, FlatList, TouchableWithoutFeedback, Keyboard, Button } from "react-native";
-import CheckBox from "react-native-checkbox";
+// import CheckBox from "react-native-checkbox";
 import axios from "axios";
 // import DayItem from "./DaysItem";
 
@@ -23,7 +23,7 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.list}>
-            {dayAvailability.map((day) => (
+            {/* {dayAvailability.map((day) => (
               <CheckBox
               key={day.key}
                 labelStyle={{ color: "grey", fontSize: 20 }}
@@ -39,7 +39,7 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
                   )
                 }
               />
-            ))}
+            ))} */}
 
             <Pressable style={styles.button} onPress={async () => {
                 let dayAvailable = dayAvailability.filter((day)=> day.available).map((day)=>{

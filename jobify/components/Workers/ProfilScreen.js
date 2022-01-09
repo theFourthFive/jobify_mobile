@@ -1,4 +1,6 @@
-import React  from "react";
+import React , {useState , useEffect} from "react";
+import axios from "axios";
+import moment from "moment";
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack'
 // const Stack = createNativeStackNavigator();
@@ -11,33 +13,40 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-export default function ProfilScreen() {
+export default function ProfilScreen({ navigation}) {
+ 
+  var [worker,setworker] = useState({workerId : 1})
 
+  useEffect(() => {
+    const URL  =  `http://192.168.1.246:3000/workers/profile/${worker.workerId}`;
+    axios.get(URL).then(res=>{setworker(res.data)}).catch(err=>{
+      console.log(err);
+    })
+  },[])
+
+console.log(worker);
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+    <SafeAreaView style={{ backgroundColor: "#fff" }}>
       <View>
-        <Image
-          style={styles.Img}
-          source={{
-            uri: "https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg",
-          }}
-        />
-        <Text style={styles.formHeading}>hello</Text>
-        <Text style={styles.aboutuser}>hello again </Text>
+      <Image source={{uri: 'https://scontent.ftun2-1.fna.fbcdn.net/v/t39.30808-6/248023235_10215346462573249_509336240872393244_n.jpg?_nc_cat=104&cb=c578a115-7e291d1f&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=DXNav1tJONcAX_QnsV2&_nc_ht=scontent.ftun2-1.fna&oh=00_AT_8RpZbJ07yc7BZ3TsZV93MjOQbW9B1tS2RYzGnfoEzOQ&oe=61DE96C9'}}
+       style={styles.Img} />
+
+        <Text style={styles.formHeading}>{worker.firstName }</Text>
+        <Text style={styles.aboutuser}> </Text>
 
         <View style={styles.userBtnWrapper}>
           <TouchableOpacity style={styles.userbtn}>
             <Text style={styles.userbtntxt}>follow</Text>
           </TouchableOpacity>
-          <TouchableOpacity  style={styles.userbtn}>
+          <TouchableOpacity   onPress={() => navigation.navigate("EditProfile")} style={styles.userbtn}>
             <Text style={styles.userbtntxt}>Edit</Text>
          </TouchableOpacity>
 
         </View>
         <View >
-           <Text>FirstName:</Text>
-          <Text>LastName:</Text>
-          <Text>Email:</Text>
+           <Text>Email: {worker.Email}</Text>
+          <Text>phoneNumber: {worker.phoneNumber}</Text>
+          <Text>joined from : {moment(worker.createdAt).fromNow()}</Text>
           </View>
       </View>
     </SafeAreaView>
@@ -50,12 +59,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
     bottom:75,
+    alignItems: "center"
   },
   Img: {
     width: 100,
     height: 100,
-    borderRadius: 5,
-    marginLeft: 60,
+    borderRadius: 80,
+    marginLeft: 285,
   },
   // userName: {
   //   fontSize: 18,
@@ -69,7 +79,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 80,
+    marginLeft: 310,
   },
   aboutuser: {
     fontSize: 12,

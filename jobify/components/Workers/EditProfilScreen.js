@@ -19,7 +19,7 @@ import {
   TextInput,
 } from "react-native";
 
-export default function EditProfilScreen() {
+export default function EditProfilScreen({ navigation}) {
   const [WorkerId, setWorkerId] = useState("");
   const [firstName, setfirstName] = useState("");
   const [LasttName, setLastName] = useState("");
@@ -159,8 +159,8 @@ export default function EditProfilScreen() {
         />
       </View>
 
-      <View style={styles.action}>
-        <Picker
+      {/* <View style={styles.action}>
+      <Picker
           placeholder="availibility"
           placeholderTextColor="#252526"
           Value={availibility}
@@ -175,7 +175,11 @@ export default function EditProfilScreen() {
           <Picker.Item label={"Saturday"} value="Tuesday" />
           <Picker.Item label={"sunday"} value="Tuesday" />
         </Picker>
-      </View>
+      </View>  */}
+      <Button
+        title=" Availability"
+        onPress={() => navigation.navigate("SetAvailabilityWorker")}
+      />
 
       <View style={styles.action}>
         <MaterialCommunityIcons

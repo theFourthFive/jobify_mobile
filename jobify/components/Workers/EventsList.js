@@ -4,7 +4,7 @@ import CardItem from './CardItem';
 import axios from 'axios';
 const styles = StyleSheet.create({
  container: {
-     marginTop:200,
+     marginTop:5,
      alignItems: "center"
  }
 })
@@ -13,7 +13,7 @@ const  EventList = () => {
   var [events , setevents] = useState([])
 
  useEffect( () =>{
-   const URL = "http://localhost:3000/events/"
+   const URL = "http://192.168.1.246:3000/events/"
   axios.get(URL).then((res)=>{
     setevents(res.data)
   
@@ -23,7 +23,7 @@ const  EventList = () => {
  
 function refresh(){
 
-  const URL = "http://localhost:3000/events/"
+  const URL = "http://192.168.1.246:3000/events/"
   axios.get(URL).then((res)=>{
     setevents(res.data)  })
 }
