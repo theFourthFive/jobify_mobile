@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 // import CheckBox from "react-native-check-box";
-import CheckBox from "react-native-checkbox";
+// import CheckBox from "react-native-checkbox";
 
 export default function RoutesMenuScreen({ navigation }) {
   const [isSelected, setSelection] = useState(false);
@@ -17,16 +17,9 @@ export default function RoutesMenuScreen({ navigation }) {
         isChecked={isSelected}
         leftText={"CheckBox"}
       /> */}
-      <CheckBox
-        label="Label"
-        checked={isSelected}
-        onChange={(checked) => setSelection(!isSelected)}
-      />
+
       <Text></Text>
-      <Button
-        title="Events"
-        onPress={() => navigation.navigate("EventList")}
-      />
+      <Button title="Events" onPress={() => navigation.navigate("EventList")} />
       {/* <Button
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
@@ -43,7 +36,6 @@ export default function RoutesMenuScreen({ navigation }) {
         title="AddEvent"
         onPress={() => navigation.navigate("AddEvent")}
       />
-
     </View>
   );
 }
