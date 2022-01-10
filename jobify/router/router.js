@@ -6,12 +6,13 @@ import HomePage from '../components/HomePage.js';
 import SignupCompany from '../components/SignupCompany.js'
 
 
-import AddEvent from "../components/AddEvent";
+import AddEvent from "../components/companies/AddEvent";
 import ProfilScreen from "../components/Workers/ProfilScreen";
 import EditProfilScreen from "../components/Workers/EditProfilScreen";
 import RoutesMenuScreen from "../components/RoutesMenuScreen";
-import SetAvailabilityWorkerScreen from "../components/SetAvailabilityWorkerScreen";
-import EventList from "../components/EventsList";
+import SetAvailabilityWorkerScreen from "../components/Workers/SetAvailabilityWorkerScreen";
+import EventList from "../components/Workers/EventsList";
+
 const Stack = createNativeStackNavigator();
 
 const Router=()=> {

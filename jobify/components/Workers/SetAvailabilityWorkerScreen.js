@@ -24,7 +24,7 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.list}>
-            {dayAvailability.map((day) => (
+            * {dayAvailability.map((day) => (
               <CheckBox
               key={day.key}
                 labelStyle={{ color: "grey", fontSize: 20 }}

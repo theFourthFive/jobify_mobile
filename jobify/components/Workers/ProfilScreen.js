@@ -1,4 +1,6 @@
-import React from "react";
+import React , {useState , useEffect} from "react";
+import axios from "axios";
+import server from "../ipConfig/serverIp"
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack'
 // const Stack = createNativeStackNavigator();
@@ -6,16 +8,24 @@ import React from "react";
 // prettier-ignore
 import { Text, StyleSheet, Image, View, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 export default function ProfilScreen({ navigation }) {
+
+  var [profile , setProfile]= useState()
+  useEffect(() => {
+    getInfo(1)
+  })
+
+function getInfo(id) {
+  var  URL = `${server.Ip}/workers/profile/${id}`
+  axios.get(URL).catch((res)=> {
+     setProfile(res)
+  })
+}
+
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ backgroundColor: "#fff" }}>
         <View>
-          <Image
-            style={styles.Img}
-            source={{
-              uri: "https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg",
-            }}
-          />
+
           <Text style={styles.formHeading}>helloooooooooo</Text>
           <Text style={styles.aboutuser}>hello ggggg</Text>
 
@@ -51,8 +61,8 @@ const styles = StyleSheet.create({
   Img: {
     width: 100,
     height: 100,
-    borderRadius: 5,
-    marginLeft: 60,
+    borderRadius: 80,
+    marginLeft: 285,
   },
   // userName: {
   //   fontSize: 18,
