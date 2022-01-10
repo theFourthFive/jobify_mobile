@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View,Alert } from "react-native";
+import { Button, StyleSheet, Text, View,Alert,TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { TextInput } from "react-native-gesture-handler";
+
 import { useState } from "react";
 import Axios from "axios";
 
