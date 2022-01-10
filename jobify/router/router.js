@@ -6,6 +6,7 @@ import EditProfilScreen from "../components/Workers/EditProfilScreen";
 import RoutesMenuScreen from "../components/RoutesMenuScreen";
 import SetAvailabilityWorkerScreen from "../components/SetAvailabilityWorkerScreen";
 import EventList from "../components/EventsList";
+import AboutUs from "../components/AboutUs";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +47,11 @@ const Router = () => {
         name="EventList"
         component={EventList}
         options={{ title: "EventList" }}
+      />
+      <Stack.Screen
+        name="AboutUs"
+        component={AboutUs}
+        options={{ title: "About us" }}
       />
     </Stack.Navigator>
     // </Stack.Navigator>
