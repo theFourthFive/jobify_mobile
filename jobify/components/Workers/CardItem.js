@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
 
 const CardItem = (props) => {
   var handleSubmit = () => {
+    
     var URL = `${server.Ip}/events/subscribe`;
     axios
       .post(URL, { eventID: props.event.eventID, workerId: 1, companyId: 1 })
@@ -66,6 +67,9 @@ const CardItem = (props) => {
 
     props.reff();
   };
+
+
+  
   return (
     <View style={styles.card_template}>
       <Image style={styles.card_image} source={{ uri: props.event.imageUri }} />

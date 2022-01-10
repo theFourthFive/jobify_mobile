@@ -5,11 +5,9 @@ import Router from './router/router';
 
 const App=()=> {
   return (
-    <View>
     <NavigationContainer>
-      <Router/>
+      <Router></Router>
     </NavigationContainer>
-    </View>
   );
 }
 
