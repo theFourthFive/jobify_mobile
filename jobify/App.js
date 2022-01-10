@@ -13,6 +13,7 @@ import EventList from "./components/EventsList";
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
+    <View>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
@@ -47,6 +48,7 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    </View>
   );
 }
 
