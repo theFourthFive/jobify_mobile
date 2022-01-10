@@ -1,12 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View,Alert } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { TextInput } from "react-native-gesture-handler";
+import { Button, StyleSheet, Text, View,Alert,TextInput } from "react-native";
+
 import { useState } from "react";
 import Axios from "axios";
-
-
+import server from "./ipConfig/serverIp"
 export default function Signup({ navigation }) {
   const sendmsg=()=>{
     var mailOptions = {
@@ -15,7 +12,7 @@ export default function Signup({ navigation }) {
       subject:"jobify",
       text: "bob"
   }
-    Axios.post('http://localhost:4000/nodemailer/nodemailer',mailOptions).then(data=>{
+    Axios.post(`${server.Ip}/nodemailer/nodemailer,mailOptions`).then(data=>{
       console.log(data)
       console.log('==========',Email)
     })
@@ -30,12 +27,12 @@ export default function Signup({ navigation }) {
     // })
     var bob = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
     
-    Axios.post("http://localhost:4000/worker/signup",bob)
+    Axios.post(`${server.Ip}/worker/signup`,bob)
       .then(function (response) {
-        console.log(response);
+      
       })
       .catch(function (error) {
-        console.log(error);
+      
       });
       Alert.alert(
         "Confirm",

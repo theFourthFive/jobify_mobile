@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import * as React from 'react';
 import {useState} from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TextInput } from 'react-native-gesture-handler';
-import { Button, StyleSheet, Text, View,Alert } from 'react-native';
-import { RadioButton } from 'react-native-paper';
+
+import { Button, StyleSheet, Text, View,Alert ,TextInput } from 'react-native';
+// import { RadioButton } from 'react-native-paper';
 
 
 export default function FilterPage({ navigation }) {
