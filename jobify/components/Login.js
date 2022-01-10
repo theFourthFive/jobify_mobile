@@ -1,7 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TextInput } from 'react-native-gesture-handler';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View ,TextInput} from 'react-native';
 import { useState } from 'react';
 import axios from 'axios';
 export default function Login({ navigation }) {

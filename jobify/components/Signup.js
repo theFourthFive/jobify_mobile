@@ -1,10 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View,Alert } from "react-native";
+import { TextInput , Button, StyleSheet, Text, View,Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { TextInput } from "react-native-gesture-handler";
+
 import { useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 
 
 export default function Signup({ navigation }) {
@@ -15,7 +15,7 @@ export default function Signup({ navigation }) {
       subject:"jobify",
       text: "bob"
   }
-    Axios.post('http://localhost:4000/nodemailer/nodemailer',mailOptions).then(data=>{
+  axios.post('http://localhost:4000/nodemailer/nodemailer',mailOptions).then(data=>{
       console.log(data)
       console.log('==========',Email)
     })
@@ -30,7 +30,7 @@ export default function Signup({ navigation }) {
     // })
     var bob = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
     
-    Axios.post("http://localhost:4000/worker/signup",bob)
+  axios.post("http://localhost:4000/worker/signup",bob)
       .then(function (response) {
         console.log(response);
       })
