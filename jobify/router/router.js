@@ -1,11 +1,16 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Signup from "../components/Signup.js";
+import Login from "../components/Login.js";
+import FilterPage from "../components/FilterPage.js";
+import HomePage from "../components/HomePage.js";
+import SignupCompany from "../components/SignupCompany.js";
 
-import AddEvent from "../components/AddEvent";
+import AddEvent from "../components/companies/AddEvent";
 import ProfilScreen from "../components/Workers/ProfilScreen";
 import EditProfilScreen from "../components/Workers/EditProfilScreen";
 import RoutesMenuScreen from "../components/RoutesMenuScreen";
-import SetAvailabilityWorkerScreen from "../components/SetAvailabilityWorkerScreen";
-import EventList from "../components/EventsList";
+import SetAvailabilityWorkerScreen from "../components/Workers/SetAvailabilityWorkerScreen";
+import EventList from "../components/Workers/EventsList";
 import AboutUs from "../components/AboutUs";
 
 const Stack = createNativeStackNavigator();
@@ -17,7 +22,11 @@ const Router = () => {
     //     headerShown: false,
     //   }}
     // >
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Routes">
+      <Stack.Screen name="FilterPage" component={FilterPage} />
+      <Stack.Screen name="Signup" component={Signup} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="HomePage" component={HomePage} />
       <Stack.Screen
         name="Routes"
         component={RoutesMenuScreen}
@@ -53,8 +62,8 @@ const Router = () => {
         component={AboutUs}
         options={{ title: "About us" }}
       />
+      <Stack.Screen name="SignupCompany" component={SignupCompany} />
     </Stack.Navigator>
-    // </Stack.Navigator>
   );
 };
 export default Router;

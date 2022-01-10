@@ -1,12 +1,9 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native"; //
-import { createNativeStackNavigator } from "@react-navigation/native-stack"; //
-import Router from "./router/router";
+import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import Router from './router/router';
 
-const Stack = createNativeStackNavigator();
-export default function App() {
+const App=()=> {
   return (
     <NavigationContainer>
       <Router></Router>
@@ -23,3 +20,4 @@ const styles = StyleSheet.create({
     bottom: 50,
   },
 });
+export default App
