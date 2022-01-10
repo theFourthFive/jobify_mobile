@@ -2,6 +2,7 @@ import React , {useState , useEffect} from 'react';
 import {Text,ScrollView,View,Image,StyleSheet} from 'react-native';
 import CardItem from './CardItem';
 import axios from 'axios';
+import server from "../ipConfig/serverIp"
 const styles = StyleSheet.create({
  container: {
      marginTop:5,
@@ -13,7 +14,7 @@ const  EventList = () => {
   var [events , setevents] = useState([])
 
  useEffect( () =>{
-   const URL = "http://192.168.1.246:3000/events/"
+   const URL = `${server.Ip}/events/`
   axios.get(URL).then((res)=>{
     setevents(res.data)
   
@@ -23,7 +24,7 @@ const  EventList = () => {
  
 function refresh(){
 
-  const URL = "http://192.168.1.246:3000/events/"
+  const URL = `${server.Ip}/events/`
   axios.get(URL).then((res)=>{
     setevents(res.data)  })
 }

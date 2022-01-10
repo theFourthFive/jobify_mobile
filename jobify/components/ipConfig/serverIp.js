@@ -1,3 +1,7 @@
-var server = { Ip : "192.168.1.246"}
+var server = { Ip : "http://192.168.11.1615180:3000"}
 
-export default server
+export default server  
+
+
+  
+

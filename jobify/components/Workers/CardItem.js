@@ -1,4 +1,5 @@
 import React from "react";
+import server from "../ipConfig/serverIp"
 import {
   Text,
   ScrollView,
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 350,
     height: 250,
+    marginBottom : 480 
   },
   card_image: {
     width: 350,
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
 
 const CardItem = (props) => {
   var handleSubmit = () => {
-    var URL = "http://192.168.1.246:3000/events/subscribe";
+    var URL = `${server.Ip}/events/subscribe`;
     axios
       .post(URL, { eventID: props.event.eventID, workerId: 1, companyId: 1 })
       .then((res) => {

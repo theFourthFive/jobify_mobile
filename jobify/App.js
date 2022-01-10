@@ -4,12 +4,12 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native"; //
 import { createNativeStackNavigator } from "@react-navigation/native-stack"; //
 
-import AddEvent from "./components/AddEvent";
+import AddEvent from "./components/companies/AddEvent";
 import ProfilScreen from "./components/Workers/ProfilScreen";
 import EditProfilScreen from "./components/Workers/EditProfilScreen";
 import RoutesMenuScreen from "./components/RoutesMenuScreen";
-import SetAvailabilityWorkerScreen from "./components/SetAvailabilityWorkerScreen";
-import EventList from "./components/EventsList";
+import SetAvailabilityWorkerScreen from "./components/Workers/SetAvailabilityWorkerScreen";
+import EventList from "./components/Workers/EventsList";
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
