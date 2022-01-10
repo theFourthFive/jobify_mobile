@@ -12,7 +12,7 @@ export default function Login({ navigation }) {
     .catch(error=>{
       console.error(error)
     })
-    navigation.navigate('HomePage')
+    navigation.navigate('Routes')
   }
   const [Email, onChangeEmail] = useState(null);
   const [Password, onChangePassword] = useState(null);
