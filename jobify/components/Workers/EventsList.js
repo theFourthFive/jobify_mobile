@@ -26,7 +26,9 @@ function refresh(){
 
   const URL = `${server.Ip}/events/`
   axios.get(URL).then((res)=>{
-    setevents(res.data)  })
+    setevents(res.data)  }).catch((err)=>{
+      console.log(err);
+    })
 }
 
 

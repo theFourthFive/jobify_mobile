@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 // prettier-ignore
 import { StyleSheet, Text, View, Pressable, FlatList, TouchableWithoutFeedback, Keyboard, Button } from "react-native";
-// import CheckBox from "react-native-checkbox";
+import CheckBox from "react-native-checkbox";
+// import Toggle from "react-toggle";
 import axios from "axios";
 // import DayItem from "./DaysItem";
 
@@ -23,7 +24,7 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
       <View style={styles.container}>
         <View style={styles.content}>
           <View style={styles.list}>
-            {/* {dayAvailability.map((day) => (
+            * {dayAvailability.map((day) => (
               <CheckBox
               key={day.key}
                 labelStyle={{ color: "grey", fontSize: 20 }}
@@ -39,7 +40,20 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
                   )
                 }
               />
-            ))} */}
+              // <Toggle
+              //   key={day.key}
+              //   value={"AAAA"}
+              //   defaultChecked={day.available}
+              //   onChange={() =>
+              //     setDayAvailability((prevState) =>
+              //     prevState.map((each_day) => {
+              //       if (each_day.key === day.key)
+              //         each_day.available = !each_day.available;
+              //       return each_day;
+              //     })
+              //   )}
+              //   />
+            ))}
 
             <Pressable style={styles.button} onPress={async () => {
                 let dayAvailable = dayAvailability.filter((day)=> day.available).map((day)=>{
@@ -48,15 +62,15 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
                     return day.text
                   } else return ""
                 }).join()
-                console.log(dayAvailable)
+                // console.log(dayAvailable)
                 try {
-                  // let response = await axios.put(`http://localhost:3000/workers/${userId}/availability`)
-                  let response = await axios.get(`http://localhost:3000/`)
-                  console.log(response)
+                  let response = await axios.put(`http://192.168.11.180:3000/workers/${userId}/availability`,{availability:dayAvailable})
+                  console.log(response.data)
+                  navigation.navigate("Profil")
+
                 } catch (error) {
                   console.log(error)
                 }
-                navigation.navigate("Profil")
               }}
             >
               <Text style={styles.text}>

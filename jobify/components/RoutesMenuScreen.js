@@ -19,17 +19,14 @@ export default function RoutesMenuScreen({ navigation }) {
       /> */}
 
       <Text></Text>
-      <Button
-        title="Events"
-        onPress={() => navigation.navigate("EventList")}
-      />
+      <Button title="Events" onPress={() => navigation.navigate("EventList")} />
       {/* <Button
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
       /> */}
       {/* <Button
         title="Edit your Profile"
-      
+        onPress={() => navigation.navigate("EditProfile")}
       /> */}
       <Button
         title="Worker: Profil"
@@ -39,7 +36,6 @@ export default function RoutesMenuScreen({ navigation }) {
         title="AddEvent"
         onPress={() => navigation.navigate("AddEvent")}
       />
-
     </View>
   );
 }
