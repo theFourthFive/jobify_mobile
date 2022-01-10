@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 350,
     height: 250,
-    marginBottom : 480 
+    marginBottom : 480,
+    shadowColor: "#e3fcf9",
+
   },
   card_image: {
     width: 350,
