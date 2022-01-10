@@ -18,9 +18,9 @@ export default function App() {
         title="Go to AddEvent"
         onPress={() => navigation.navigate('AddEvent')}
       /> */}
-      {/* <AddEvent/> */}
+      <AddEvent/>
       {/* <ProfilScreen/> */}
-      <EditProfilScreen/>
+      {/* <EditProfilScreen/> */}
       <StatusBar style="auto" />
     </View>
 
