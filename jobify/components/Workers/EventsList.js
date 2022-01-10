@@ -5,8 +5,9 @@ import axios from 'axios';
 import server from "../ipConfig/serverIp"
 const styles = StyleSheet.create({
  container: {
-     marginTop:5,
+     marginTop:80,
      alignItems: "center"
+  
  }
 })
 
