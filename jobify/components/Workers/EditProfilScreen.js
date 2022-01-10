@@ -4,7 +4,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { Picker } from "@react-native-picker/picker";6     
+// import { Picker } from "@react-native-picker/picker";
 // import Icon from '@mdi/react'
 // import { mdiAccount } from '@mdi/js'
 
