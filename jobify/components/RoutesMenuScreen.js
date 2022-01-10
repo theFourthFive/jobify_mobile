@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 // import CheckBox from "react-native-check-box";
-import CheckBox from "react-native-checkbox";
+// import CheckBox from "react-native-checkbox";
 
 export default function RoutesMenuScreen({ navigation }) {
   const [isSelected, setSelection] = useState(false);
