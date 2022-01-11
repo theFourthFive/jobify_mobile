@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button, StyleSheet, Text, TextInput, View,ScrollView,FlatList } from 'react-native';
 import server from "./ipConfig/serverIp.js"
 import axios from 'axios';
+
 import EventHomePage from './EventHomePage.js';
 import UsersHomePage from './UsersHomePage.js';
 
@@ -10,8 +11,8 @@ const HomePage=()=> {
   var [offers , setoffers] = useState([])
   var [users,setusers] = useState([])
  useEffect( () =>{
-   const URL = `${server.Ip}/event/event`
-   const URL1 = `${server.Ip}/worker/users`
+   const URL = `${server.Ip}/events/`
+   const URL1 = `${server.Ip}/workers/`
   axios.get(URL).then((response)=>{
     setoffers(response.data)
   }).catch(err=>{
