@@ -19,9 +19,9 @@ export default function RoutesMenuScreen({ navigation }) {
       /> */}
 
       <Button
-      style={styles.button}
-      title="FilterPage"
-      onPress={() => navigation.navigate("FilterPage")}
+        style={styles.button}
+        title="FilterPage"
+        onPress={() => navigation.navigate("FilterPage")}
       />
       <Button
         style={styles.button}
@@ -36,31 +36,36 @@ export default function RoutesMenuScreen({ navigation }) {
       <Button
         style={styles.button}
         title="HomePage"
-      onPress={() => navigation.navigate("HomePage")}
+        onPress={() => navigation.navigate("HomePage")}
       />
 
-      <Button style={styles.button} title="Events" onPress={() => navigation.navigate("EventList")} />
       <Button
-       style={styles.button}
+        style={styles.button}
+        title="Events"
+        onPress={() => navigation.navigate("EventList")}
+      />
+      {/* <Button
+        style={styles.button}
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
-      />
-      <Button
-       style={styles.button}
+      /> */}
+      {/* <Button
+        style={styles.button}
         title="Edit your Profile"
         onPress={() => navigation.navigate("EditProfile")}
-      />
+      />  */}
       <Button
-       style={styles.button}
+        style={styles.button}
         title="Worker: Profil"
         onPress={() => navigation.navigate("Profil")}
       />
+      
       <Button
-       style={styles.button}
+        style={styles.button}
         title="AddEvent"
         onPress={() => navigation.navigate("AddEvent")}
       />
-
+      <Button title="AboutUs" onPress={() => navigation.navigate("AboutUs")} />
     </View>
   );
 }
@@ -72,9 +77,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // justifyContent: "center",
   },
-  button:{
-    flex:1,
+  button: {
+    flex: 1,
     alignItems: "center",
-    padding:20,
-  }
+    padding: 20,
+  },
 });

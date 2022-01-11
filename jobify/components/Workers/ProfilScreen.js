@@ -12,12 +12,15 @@ export default function ProfilScreen({ navigation }) {
   var [profile , setProfile]= useState()
   useEffect(() => {
     getInfo(1)
-  })
+  },[])
 
 function getInfo(id) {
-  var  URL = `${server.Ip}/workers/profile/${id}`
-  axios.get(URL).catch((res)=> {
-     setProfile(res)
+  var  URL = `${server.Ip}/workers/profile/${1}`
+  axios.get(URL).then((result)=>{
+    setProfile(result.data)
+    console.log(profile,"===============")
+  }).catch((err)=> {
+    console.log(err)
   })
 }
 
@@ -26,7 +29,7 @@ function getInfo(id) {
       <SafeAreaView style={{ backgroundColor: "#fff" }}>
         <View>
 
-          <Text style={styles.formHeading}>helloooooooooo</Text>
+          <Text style={styles.formHeading}>FirstName:</Text>
           <Text style={styles.aboutuser}>hello ggggg</Text>
 
           <View style={styles.userBtnWrapper}>
@@ -63,6 +66,8 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 80,
     marginLeft: 285,
+    
+
   },
   // userName: {
   //   fontSize: 18,
@@ -77,6 +82,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     marginLeft: 105,
+
+color: "#1C0D33",
   },
   aboutuser: {
     fontSize: 12,
