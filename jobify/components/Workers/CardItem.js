@@ -72,12 +72,7 @@ const CardItem = (props) => {
   
   return (
     <View style={styles.card_template}>
-             <Button
-          title="Subscribe"
-          style={styles.submitButton}
-          // disabled={isLoading}
-          onPress={handleSubmit}
-        />
+          
       <Image style={styles.card_image} source={{ uri: props.event.imageUri }} />
       <View>
         <Text style={styles.card_title}>
@@ -101,7 +96,12 @@ const CardItem = (props) => {
         />
 
         <Text style={styles.campany}>{"\n"}movenpick </Text>
- 
+        <Button
+          title="Subscribe"
+          style={styles.submitButton}
+          // disabled={isLoading}
+          onPress={handleSubmit}
+        />
       </View>
     </View>
   );
