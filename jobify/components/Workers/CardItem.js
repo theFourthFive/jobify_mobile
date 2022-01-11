@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Button,
+
 } from "react-native";
 import moment from "moment";
 import axios from "axios";
@@ -21,8 +22,7 @@ const styles = StyleSheet.create({
   },
   card_image: {
     width: 350,
-    height: 250,
-    borderRadius: 25,
+    height: 50
   },
   card_title: {
     fontSize: 20,
@@ -39,11 +39,8 @@ const styles = StyleSheet.create({
     height: 30,
     width: 150,
   },
-  submitButton: {
-    backgroundColor: "gray",
-    padding: 100,
-  },
-  campany_image: {
+
+ campany_image: {
     height: 60,
     width: 100,
     borderRadius: 100,
@@ -55,23 +52,19 @@ const styles = StyleSheet.create({
 });
 
 const CardItem = (props) => {
-  var handleSubmit = () => {
-    
-    var URL = `${server.Ip}/events/subscribe`;
-    axios
-      .post(URL, { eventID: props.event.eventID, workerId: 1, companyId: 1 })
-      .then((res) => {
-        console.log(res);
-        props.reset();
-      });
 
-    props.reff();
-  };
+
+
+  var subscribe = () => {
+    
+    console.log("helloooooo");
+  }
 
 
   
   return (
     <View style={styles.card_template}>
+
       <Image style={styles.card_image} source={{ uri: props.event.imageUri }} />
       <View>
         <Text style={styles.card_title}>
@@ -95,11 +88,10 @@ const CardItem = (props) => {
         />
 
         <Text style={styles.campany}>{"\n"}movenpick </Text>
-        <Button
+       <Button
           title="Subscribe"
-          style={styles.submitButton}
           // disabled={isLoading}
-          onPress={handleSubmit}
+          onPress={subscribe}
         />
       </View>
     </View>
