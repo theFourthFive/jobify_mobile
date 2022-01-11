@@ -10,8 +10,8 @@ const HomePage=()=> {
   var [offers , setoffers] = useState([])
   var [users,setusers] = useState([])
  useEffect( () =>{
-   const URL = `${server.Ip}/event/event`
-   const URL1 = `${server.Ip}/worker/users`
+   const URL = `${server.Ip}/events/`
+   const URL1 = `${server.Ip}/workers/`
   axios.get(URL).then((response)=>{
     setoffers(response.data)
   }).catch(err=>{
@@ -27,7 +27,7 @@ const HomePage=()=> {
 
 
 
-console.log(".bob.",users)
+
   return (
     <View>
       <ScrollView  vertical={true} >

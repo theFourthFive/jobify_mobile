@@ -33,9 +33,10 @@ export default function Signup({ navigation }) {
     //   res.send(data)
     // })
     var worker = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
-    
+      console.log(worker);
     Axios.post(`${server.Ip}/workers/signup`,worker)
       .then((response)=>{
+        console.log(response.data , "<==================================")
         if(response.data === "user exists")
           
           {
@@ -46,28 +47,14 @@ export default function Signup({ navigation }) {
           else
           {
             console.log(response.data, "<============== USER CREATED");
-            Alert.alert(
-              "Confirm",
-              "Are You Sure About Your Informations ?",  
-              [
-                {
-                  text: "Cancel",
-                  onPress: () => console.log("Cancel Pressed"),
-                  style: "cancel"
-                },
-                { text: "Confirme", onPress: () => navigation.navigate("Login") }
-              ],
-              { cancelable: false }
-            )
+            Alert.alert("you has been registred successfuly")
+            navigation.navigate("Login")
           }
         
       })
       .catch((error)=>{
         console.log(error);
       });
-      
-
-      
       
       sendmsg()
   };

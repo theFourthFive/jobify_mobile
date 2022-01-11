@@ -18,7 +18,6 @@ const  EventList = () => {
    const URL = `${server.Ip}/events/`
   axios.get(URL).then((res)=>{
     setevents(res.data)
-  
   })
  
  },[])
