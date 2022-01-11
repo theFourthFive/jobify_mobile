@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import DatePicker from "react-native-datepicker";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import server from "../ipConfig/serverIp";
+// import DatePicker from "react-native-datepicker";
+// import DateTimePicker from "@react-native-community/datetimepicker";
 
 import {
   StyleSheet,

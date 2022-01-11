@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, Touchable, TouchableOpacityBase, TouchableOpacity,Icon } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 // import CheckBox from "react-native-check-box";
 // import CheckBox from "react-native-checkbox";
 
 export default function RoutesMenuScreen({ navigation }) {
   const [isSelected, setSelection] = useState(false);
   return (
+   
     <View style={styles.container}>
       <Text>Routes Menu Screen</Text>
       {/* <CheckBox
@@ -37,6 +39,8 @@ export default function RoutesMenuScreen({ navigation }) {
         onPress={() => navigation.navigate("AddEvent")}
       />
     </View>
+   
+    
   );
 }
 
@@ -48,5 +52,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     // justifyContent: "center",
+  },
+  floatingActionButton:{
+    backgroundColor:'red',
+    width:55,
+    height:55,
+    position:'absolute',
+    bottom:45,
+    right:10,
+    borderRadius:100,
+    justifyContent:'center',
+    alignItems:'center'
   },
 });

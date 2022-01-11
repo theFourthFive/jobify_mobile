@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TextInput } from 'react-native-gesture-handler';
-import { Button, StyleSheet, Text, View } from 'react-native';
+
+import { Button, StyleSheet, Text, View ,TextInput} from 'react-native';
 import { useState } from 'react';
+import server from "./ipConfig/serverIp"
 import axios from 'axios';
 export default function Login({ navigation }) {
   const enter=()=>{
-    axios.post("http://localhost:4000/worker/login",{Email:Email,password:Password} ).then(data=>{
+    axios.post(`${server.Ip}/worker/login`,{Email:Email,password:Password} ).then(data=>{
       console.log(data)
 })
     .catch(error=>{
