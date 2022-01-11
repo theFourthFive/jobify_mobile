@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   card_image: {
     width: 350,
-    height: 250,
+    height: 100,
     borderRadius: 25,
   },
   card_title: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   time: { fontSize: 20, paddingBottom: 10 },
 
   button: {
-    height: 30,
+    height: 20,
     width: 150,
   },
   submitButton: {
@@ -72,12 +72,21 @@ const CardItem = (props) => {
   
   return (
     <View style={styles.card_template}>
+   
           
       <Image style={styles.card_image} source={{ uri: props.event.imageUri }} />
+      
       <View>
+        
         <Text style={styles.card_title}>
           {props.event.eventName} {"\n"}
         </Text>
+        <Button
+          title="Subscribe"
+          style={styles.submitButton}
+          // disabled={isLoading}
+          onPress={handleSubmit}
+        />
         <Text style={styles.price}>
           payment {props.event.dailyPay} Dt /day {"\n"}
         </Text>
@@ -96,12 +105,7 @@ const CardItem = (props) => {
         />
 
         <Text style={styles.campany}>{"\n"}movenpick </Text>
-        <Button
-          title="Subscribe"
-          style={styles.submitButton}
-          // disabled={isLoading}
-          onPress={handleSubmit}
-        />
+     
       </View>
     </View>
   );
