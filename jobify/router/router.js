@@ -4,7 +4,7 @@ import Login from "../components/Login.js";
 import FilterPage from "../components/FilterPage.js";
 import HomePage from "../components/HomePage.js";
 import SignupCompany from "../components/SignupCompany.js";
-
+import  ProfileCom from "../components/companies/ProfileCom"
 import AddEvent from "../components/companies/AddEvent";
 import ProfilScreen from "../components/Workers/ProfilScreen";
 import EditProfilScreen from "../components/Workers/EditProfilScreen";
@@ -61,6 +61,11 @@ const Router = () => {
         name="AboutUs"
         component={AboutUs}
         options={{ title: "About us" }}
+      />
+      <Stack.Screen
+        name=" ProfileCom"
+        component={ProfileCom}
+        options={{ title: " ProfileCom" }}
       />
       <Stack.Screen name="SignupCompany" component={SignupCompany} />
     </Stack.Navigator>
