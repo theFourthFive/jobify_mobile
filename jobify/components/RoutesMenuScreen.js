@@ -7,7 +7,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 export default function RoutesMenuScreen({ navigation }) {
   const [isSelected, setSelection] = useState(false);
   return (
-   
+   <>
     <View style={styles.container}>
       <Text>Routes Menu Screen</Text>
       {/* <CheckBox
@@ -20,26 +20,58 @@ export default function RoutesMenuScreen({ navigation }) {
         leftText={"CheckBox"}
       /> */}
 
-      <Text></Text>
-      <Button title="Events" onPress={() => navigation.navigate("EventList")} />
-      {/* <Button
+      <Button
+        style={styles.button}
+        title="FilterPage"
+        onPress={() => navigation.navigate("FilterPage")}
+      />
+      <Button
+        style={styles.button}
+        title="Signup"
+        onPress={() => navigation.navigate("Signup")}
+      />
+      <Button
+        style={styles.button}
+        title="Login"
+        onPress={() => navigation.navigate("Login")}
+      />
+      <Button
+        style={styles.button}
+        title="HomePage"
+        onPress={() => navigation.navigate("HomePage")}
+      />
+
+      <Button
+        style={styles.button}
+        title="Events"
+        onPress={() => navigation.navigate("EventList")}
+      />
+      <Button
+        style={styles.button}
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
-      /> */}
-      {/* <Button
+      />
+      <Button
+        style={styles.button}
         title="Edit your Profile"
         onPress={() => navigation.navigate("EditProfile")}
-      /> */}
+      />
       <Button
+        style={styles.button}
         title="Worker: Profil"
         onPress={() => navigation.navigate("Profil")}
       />
-      <Button
+      {/* <Button
+        style={styles.button}
         title="AddEvent"
         onPress={() => navigation.navigate("AddEvent")}
-      />
+      /> */}
+      <Button title="AboutUs" onPress={() => navigation.navigate("AboutUs")} />
     </View>
-   
+    <TouchableOpacity onPress={() => navigation.navigate("AddEvent")}  style={styles.addWrapper}>
+     <Text style={styles.addText} >+</Text>
+    </TouchableOpacity>
+    </>
     
   );
 }
@@ -53,15 +85,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // justifyContent: "center",
   },
-  floatingActionButton:{
-    backgroundColor:'red',
-    width:55,
-    height:55,
-    position:'absolute',
-    bottom:45,
-    right:10,
-    borderRadius:100,
-    justifyContent:'center',
-    alignItems:'center'
+  button: {
+    flex: 1,
+    alignItems: "center",
+    padding: 20,
+  },
+  addWrapper: {
+    width: 60,
+    height: 60,
+    backgroundColor: '#FFF',
+    borderRadius: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#C0C0C0',
+    borderWidth: 1,
+    left:'80%',
   },
 });

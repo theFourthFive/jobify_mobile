@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 
 
 export default function SignupCompany({ navigation }) {
@@ -15,7 +15,7 @@ export default function SignupCompany({ navigation }) {
       subject:"jobify",
       text: "bob"
   }
-    Axios.post('http://localhost:4000/nodemailer/nodemailer',mailOptions).then(data=>{
+    axios.post('http://localhost:4000/nodemailer/nodemailer',mailOptions).then(data=>{
       console.log(data)
       console.log('==========',Email)
     })
@@ -24,13 +24,13 @@ export default function SignupCompany({ navigation }) {
     })
   }
   const post = () => {
-    // Axios.post('http://localhost:4000/worker/signup/',data,(req,res)=>{
+    // axios.post('http://localhost:4000/worker/signup/',data,(req,res)=>{
     //   console.log(req.body)
     //   res.send(data)
     // })
     var bob = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
     
-    Axios.post("http://localhost:4000/company/signup",bob)
+    axios.post("http://localhost:4000/company/signup",bob)
       .then(function (response) {
         console.log(response);
       })
