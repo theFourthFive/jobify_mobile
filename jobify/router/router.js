@@ -17,12 +17,8 @@ const Stack = createNativeStackNavigator();
 
 const Router = () => {
   return (
-    // <Stack.Navigator
-    //   screenOptions={{
-    //     headerShown: false,
-    //   }}
-    // >
-    <Stack.Navigator initialRouteName="Routes">
+   
+    <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="FilterPage" component={FilterPage} />
       <Stack.Screen name="Signup" component={Signup} />
       <Stack.Screen name="Login" component={Login} />
@@ -30,43 +26,34 @@ const Router = () => {
       <Stack.Screen
         name="Routes"
         component={RoutesMenuScreen}
-        options={{ title: "Routes Menu Screen" }}
+       
       />
       <Stack.Screen
         name="SetAvailabilityWorker"
         component={SetAvailabilityWorkerScreen}
-        options={{ title: "My availabilities" }}
+        
       />
       <Stack.Screen
         name="EditProfile"
         component={EditProfilScreen}
-        options={{ title: "Edit your Profile" }}
+        
       />
       <Stack.Screen
         name="Profil"
         component={ProfilScreen}
-        options={{ title: "My profile" }}
-      />
+              />
       <Stack.Screen
         name="AddEvent"
         component={AddEvent}
-        options={{ title: "Add Event" }}
-      />
+             />
       <Stack.Screen
         name="EventList"
         component={EventList}
-        options={{ title: "EventList" }}
-      />
+             />
       <Stack.Screen
         name="AboutUs"
         component={AboutUs}
-        options={{ title: "About us" }}
-      />
-      <Stack.Screen
-        name=" ProfileCom"
-        component={ProfileCom}
-        options={{ title: " ProfileCom" }}
-      />
+            />
       <Stack.Screen name="SignupCompany" component={SignupCompany} />
     </Stack.Navigator>
   );

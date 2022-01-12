@@ -46,31 +46,27 @@ export default function RoutesMenuScreen({ navigation }) {
         title="Events"
         onPress={() => navigation.navigate("EventList")}
       />
-      <Button
+      {/* <Button
         style={styles.button}
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
-      />
-      <Button
+      /> */}
+      {/* <Button
         style={styles.button}
         title="Edit your Profile"
         onPress={() => navigation.navigate("EditProfile")}
-      />
+      />  */}
       <Button
         style={styles.button}
         title="Worker: Profil"
         onPress={() => navigation.navigate("Profil")}
       />
-       <Button
-        style={styles.button}
-        title="Company: Profil"
-        onPress={() => navigation.navigate("ProfileCom")}
-      />
-      {/* <Button
+      
+      <Button
         style={styles.button}
         title="AddEvent"
         onPress={() => navigation.navigate("AddEvent")}
-      /> */}
+      /> 
       <Button title="AboutUs" onPress={() => navigation.navigate("AboutUs")} />
     </View>
     <TouchableOpacity onPress={() => navigation.navigate("AddEvent")}  style={styles.addWrapper}>
