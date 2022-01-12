@@ -3,6 +3,7 @@ import {Text,ScrollView,View,Image,StyleSheet, Button} from 'react-native';
 import CardItem from './CardItem';
 import axios from 'axios';
 import server from "../ipConfig/serverIp"
+ import connectedUser from '../../session/localStorage'
 const styles = StyleSheet.create({
  container: {
      marginTop:80,
