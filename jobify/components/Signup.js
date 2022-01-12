@@ -5,13 +5,6 @@ import { useState } from "react";
 import Axios from "axios";
 import server from "./ipConfig/serverIp"
 export default function Signup({ navigation }) {
-
-  const [FirstName, onChangeFirstName] = useState(null);
-  const [LastName, onChangeLastName] = useState(null);
-  const [Email, onChangeEmail] = useState(null);
-  const [Password, onChangePassword] = useState(null);
-  const [PhoneNumber, onChangePhoneNumber] = useState(null);
-
   const sendmsg=()=>{
     var mailOptions = {
       from:"bob479402@gmail.com",
@@ -32,46 +25,37 @@ export default function Signup({ navigation }) {
     //   console.log(req.body)
     //   res.send(data)
     // })
-    var worker = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
+    var bob = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
     
-    Axios.post(`${server.Ip}/workers/signup`,worker)
-      .then((response)=>{
-        if(response.data === "user exists")
-          
-          {
-            console.log(response.data)
-            Alert.alert("user already exists")
-          
-         }
-          else
-          {
-            console.log(response.data, "<============== USER CREATED");
-            Alert.alert(
-              "Confirm",
-              "Are You Sure About Your Informations ?",  
-              [
-                {
-                  text: "Cancel",
-                  onPress: () => console.log("Cancel Pressed"),
-                  style: "cancel"
-                },
-                { text: "Confirme", onPress: () => navigation.navigate("Login") }
-              ],
-              { cancelable: false }
-            )
-          }
-        
-      })
-      .catch((error)=>{
-        console.log(error);
-      });
+    Axios.post(`${server.Ip}/worker/signup`,bob)
+      .then(function (response) {
       
-
+      })
+      .catch(function (error) {
+      
+      });
+      Alert.alert(
+        "Confirm",
+        "Are You Sure About Your Informations ?",  
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "Confirme", onPress: () => navigation.navigate("Login") }
+        ],
+        { cancelable: false }
+      )
       
       
       sendmsg()
   };
-
+  const [FirstName, onChangeFirstName] = useState(null);
+  const [LastName, onChangeLastName] = useState(null);
+  const [Email, onChangeEmail] = useState(null);
+  const [Password, onChangePassword] = useState(null);
+  const [PhoneNumber, onChangePhoneNumber] = useState(null);
   return (
     <View style={styles.container}>
       <Text style={styles.signup}>Sign Up</Text>
