@@ -16,10 +16,12 @@ import {Animated,Navigator, Dimensions, Image, Platform, Button, StyleSheet,Touc
 // import Router from './router/router';
 import 'react-native-gesture-handler';
 import AddEvant from '../components/companies/AddEvent'
+import MapComp from '../components/mapComp';
 import plus from '../assets/plus.png'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { useRef } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import RoutesMenuScreen from '../components/RoutesMenuScreen';
 /*
 
 
@@ -57,7 +59,7 @@ const Home=()=> {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
   return (
     <NavigationContainer>
-      <Tab.Navigator tabBarOptions={{
+      <Tab.Navigator  tabBarOptions={{
         showLabel: false,
         // Floating Tab Bar...
         style: {
@@ -84,7 +86,7 @@ const Home=()=> {
 
           // Tab ICons....
         }
-        <Tab.Screen name={"Home"} component={HomeScreen} options={{
+        <Tab.Screen name={"Home"} component={RoutesMenuScreen} options={{
           tabBarIcon: ({ focused }) => (
             <View style={{
               // centring Tab Button...
@@ -108,7 +110,7 @@ const Home=()=> {
           }
         })}></Tab.Screen>
 
-        <Tab.Screen name={"Search"} component={SearchScreen} options={{
+        <Tab.Screen name={"Search"} component={MapComp} options={{
           tabBarIcon: ({ focused }) => (
             <View style={{
               // centring Tab Button...
@@ -242,8 +244,6 @@ function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Home!</Text>
-      
-      
     </View>
   );
 }
@@ -256,13 +256,13 @@ function NotificationScreen() {
   );
 }
 
-function SearchScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Search!</Text>
-    </View>
-  );
-}
+// function SearchScreen() {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Search!</Text>
+//     </View>
+//   );
+// }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
