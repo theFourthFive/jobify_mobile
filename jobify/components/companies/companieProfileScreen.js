@@ -6,24 +6,24 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 
 import { Text, StyleSheet, Image, View, SafeAreaView, ScrollView,ImageBackground, TouchableOpacity } from "react-native";
-export default function ProfilScreen({ navigation }) {
+export default function companieProfileScreen({ navigation }) {
   var [profile, setProfile] = useState();
   useEffect(() => {
     getInfo(1);
   }, []);
 
-  function getInfo(id) {
-    var URL = `${server.Ip}/workers/profile/${1}`;
-    axios
-      .get(URL)
-      .then((result) => {
-        setProfile(result.data);
-        console.log(profile, "===============");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  // function getInfo(id) {
+  //   var URL = `${server.Ip}/workers/profile/${1}`;
+  //   axios
+  //     .get(URL)
+  //     .then((result) => {
+  //       setProfile(result.data);
+  //       console.log(profile, "===============");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
   return (
     <View style={styles.container}>
@@ -34,7 +34,7 @@ export default function ProfilScreen({ navigation }) {
               name="account-edit"
               size={25}
 
-              onPress={() => navigation.navigate("EditProfile")}
+              onPress={() => navigation.navigate("EditProfil")}
             />
           </View>
 
@@ -56,21 +56,21 @@ export default function ProfilScreen({ navigation }) {
             </View>
           </ImageBackground>
 
-          <Text style={styles.formHeading}>FirstName:</Text>
+          <Text style={styles.formHeading}>label</Text>
 
           <View style={styles.userBtnWrapper}>
             <TouchableOpacity style={styles.userbtn}>
               <Text style={styles.userbtntxt}>follow</Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => navigation.navigate("EditProfile")}
               style={styles.userbtn}
             >
               <Text style={styles.userbtntxt}>Edit</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <View>
-            <Text>FirstName:</Text>
+            <Text>label</Text>
             <Text>LastName:</Text>
             <Text>Email:</Text>
           </View>

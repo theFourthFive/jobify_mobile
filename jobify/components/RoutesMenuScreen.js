@@ -49,17 +49,32 @@ export default function RoutesMenuScreen({ navigation }) {
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
       /> */}
-      <Button
+      {/* <Button
         style={styles.button}
-        title="Edit your Profile"
+        title="Edit  worker Profile"
         onPress={() => navigation.navigate("EditProfile")}
+      />  */}
+      
+
+<Button
+        style={styles.button}
+        title="Edit companie Profile"
+        onPress={() => navigation.navigate("EditProfil")}
       /> 
       <Button
+      
         style={styles.button}
         title="Worker: Profil"
         onPress={() => navigation.navigate("Profil")}
       />
       
+      <Button
+      
+      style={styles.button}
+      title="companie: Profil"
+      onPress={() => navigation.navigate("profile")}
+    />
+
       <Button
         style={styles.button}
         title="AddEvent"
