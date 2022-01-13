@@ -7,18 +7,18 @@ import colors from '../assets/colors/colors';
 
 const data = [
   {
-    title: 'Save time by tracking your studies',
-    text: 'Schedule your classes, assignments, quizzes and more',
+    title: 'Are you tired of job searching',
+    text: 'Since covid started a lot of people lost their jobs',
     image: require('../assets/images/Onboard1.png'),
   },
   {
-    title: 'Stay on top of your education',
-    text: 'Reduce your stress, increase your productivity',
+    title: 'Jobify can help you find one',
+    text: 'this is world we created this app just to help you',
     image: require('../assets/images/Onboard2.png'),
   },
   {
     title: 'Spend more time doing the things you love',
-    text: 'Get started within five minutes',
+    text: 'So what are you waiting for',
     image: require('../assets/images/Onboard3.png'),
   },
 ];
