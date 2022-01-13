@@ -1,5 +1,5 @@
 import React , {useState , useEffect} from 'react';
-import {Text,ScrollView,View,Image,StyleSheet, Button} from 'react-native';
+import {Text,ScrollView,View,Image,StyleSheet} from 'react-native';
 import CardItem from './CardItem';
 import axios from 'axios';
 import server from "../ipConfig/serverIp"
@@ -32,17 +32,12 @@ function refresh(){
     })
 }
 
-function ty(){
-  console.log("hello");
-}
 
-
+console.log(events);
   return (
  <View style={styles.container} >
- 
  <ScrollView >
-
- {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh} t={ty} />)}
+ {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh} />)}
 
   </ScrollView>
  </View>

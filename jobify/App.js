@@ -1,23 +1,21 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import Router from './router/router';
 
-const App=()=> {
+import React, {useState} from 'react';
+import Home from './componet onboarding/Home';
+import Onboarding from './componet onboarding/Onboarding';
+
+const App = () => {
+  const [showOnboard, setShowOnboard] = useState(true);
+
+  const handleOnboardFinish = () => {
+    setShowOnboard(false);
+  };
+
   return (
-    <NavigationContainer>
-      <Router/>
-    </NavigationContainer>
+    <>
+      {showOnboard && <Onboarding handleDone={handleOnboardFinish} />}
+      {!showOnboard && <Home />}
+    </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: "#F2F2F2",
-    alignItems: "center",
-    justifyContent: "center",
-    bottom: 50,
-  },
-});
-export default App
+export default App;
