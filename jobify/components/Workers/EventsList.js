@@ -1,9 +1,9 @@
 import React , {useState , useEffect} from 'react';
-import {Text,ScrollView,View,Image,StyleSheet, Button} from 'react-native';
+import {Text,ScrollView,View,Image,StyleSheet, Button,AsyncStorage} from 'react-native';
 import CardItem from './CardItem';
 import axios from 'axios';
 import server from "../ipConfig/serverIp"
- import connectedUser from '../../session/localStorage'
+
 const styles = StyleSheet.create({
  container: {
      marginTop:80,
@@ -15,11 +15,14 @@ const styles = StyleSheet.create({
 const  EventList = () => {
   var [events , setevents] = useState([])
 
- useEffect( () =>{
-   const URL = `${server.Ip}/events/`
-  axios.get(URL).then((res)=>{
-    setevents(res.data)
-  })
+ useEffect( async() =>{
+   try{
+   const connectedUser = await AsyncStorage.getItem("session")
+   const URL = `${server.Ip}/events/worker/${connectedUser}`
+   const res = await axios.get(URL)
+   console.log(res);
+    // setevents(res.data)
+   }catch(err){console.log(err)}
  
  },[])
  
@@ -32,9 +35,6 @@ function refresh(){
     })
 }
 
-function ty(){
-  console.log("hello");
-}
 
 
   return (
@@ -42,7 +42,7 @@ function ty(){
  
  <ScrollView >
 
- {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh} t={ty} />)}
+ {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh}  />)}
 
   </ScrollView>
  </View>
