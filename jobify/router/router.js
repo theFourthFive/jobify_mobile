@@ -62,6 +62,7 @@ const Router = () => {
         component={AboutUs}
         options={{ title: "About us" }}
       />
+     
       <Stack.Screen name="SignupCompany" component={SignupCompany} />
     </Stack.Navigator>
   );

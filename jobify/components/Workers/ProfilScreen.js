@@ -9,21 +9,15 @@ import { Text, StyleSheet, Image, View, SafeAreaView, ScrollView,ImageBackground
 export default function ProfilScreen({ navigation }) {
   var [profile, setProfile] = useState();
   useEffect(() => {
-    getInfo(1);
-  }, []);
+    getInfo(1)
+  })
 
-  function getInfo(id) {
-    var URL = `${server.Ip}/workers/profile/${1}`;
-    axios
-      .get(URL)
-      .then((result) => {
-        setProfile(result.data);
-        console.log(profile, "===============");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+function getInfo(id) {
+  var  URL = `${server.Ip}/workers/profile/${id}`
+  axios.get(URL).catch((res)=> {
+     setProfile(res)
+  })
+}
 
   return (
     <View style={styles.container}>
