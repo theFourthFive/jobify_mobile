@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   card_image: {
     width: 350,
-    height: 100,
+    height: 250,
     borderRadius: 25,
   },
   card_title: {
@@ -38,11 +38,14 @@ const styles = StyleSheet.create({
   time: { fontSize: 20, paddingBottom: 10 },
 
   button: {
-    height: 20,
+    height: 30,
     width: 150,
   },
-
- campany_image: {
+  submitButton: {
+    backgroundColor: "gray",
+    padding: 100,
+  },
+  campany_image: {
     height: 60,
     width: 100,
     borderRadius: 100,
@@ -63,12 +66,8 @@ useEffect(()=>{
   
   return (
     <View style={styles.card_template}>
-   
-          
       <Image style={styles.card_image} source={{ uri: props.event.imageUri }} />
-      
       <View>
-        
         <Text style={styles.card_title}>
           {props.event.eventName} {"\n"}
         </Text>
@@ -96,7 +95,12 @@ useEffect(()=>{
         />
 
         <Text style={styles.campany}>{"\n"}movenpick </Text>
-     
+        <Button
+          title="Subscribe"
+          style={styles.submitButton}
+          // disabled={isLoading}
+          onPress={handleSubmit}
+        />
       </View>
     </View>
   );

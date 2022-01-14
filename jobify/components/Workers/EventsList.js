@@ -56,7 +56,6 @@ var subscribe = async(eventID) => {
 
   return (
  <View style={styles.container} >
- 
  <ScrollView >
 
  {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh} sub={subscribe} />)}

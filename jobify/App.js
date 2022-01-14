@@ -1,23 +1,31 @@
+
+import React, {useState} from 'react';
+import Home from './componetOnboarding/Home';
+import Onboarding from './componetOnboarding/Onboarding';
 import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Router from './router/router';
 
-const App=()=> {
+const Stack = createNativeStackNavigator();
+
+
+
+const App = () => {
+  const [showOnboard, setShowOnboard] = useState(true);
+
+  const handleOnboardFinish = () => {
+    setShowOnboard(false);
+  };
+
   return (
     <NavigationContainer>
       <Router/>
     </NavigationContainer>
+    // <>
+    //   {showOnboard && <Onboarding handleDone={handleOnboardFinish} />}
+    //   {!showOnboard && <Home />}
+    // </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: "#F2F2F2",
-    alignItems: "center",
-    justifyContent: "center",
-    bottom: 50,
-  },
-});
-export default App
+export default App;

@@ -5,13 +5,6 @@ import { useState } from "react";
 import Axios from "axios";
 import server from "./ipConfig/serverIp"
 export default function Signup({ navigation }) {
-
-  const [FirstName, onChangeFirstName] = useState(null);
-  const [LastName, onChangeLastName] = useState(null);
-  const [Email, onChangeEmail] = useState(null);
-  const [Password, onChangePassword] = useState(null);
-  const [PhoneNumber, onChangePhoneNumber] = useState(null);
-
   const sendmsg=()=>{
     var mailOptions = {
       from:"bob479402@gmail.com",
@@ -51,14 +44,13 @@ export default function Signup({ navigation }) {
             navigation.navigate("Login")
           }
         
-      })
-      .catch((error)=>{
-        console.log(error);
-      });
-      
-      sendmsg()
-  };
-
+      }).catch(error=>{console.log(error);})
+   
+  const [FirstName, onChangeFirstName] = useState(null);
+  const [LastName, onChangeLastName] = useState(null);
+  const [Email, onChangeEmail] = useState(null);
+  const [Password, onChangePassword] = useState(null);
+  const [PhoneNumber, onChangePhoneNumber] = useState(null);
   return (
     <View style={styles.container}>
       <Text style={styles.signup}>Sign Up</Text>
