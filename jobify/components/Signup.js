@@ -82,7 +82,7 @@ export default function Signup({ navigation }) {
       </Text>
     </View>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   container: {
@@ -132,5 +132,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     textDecorationLine: "underline",
-  },
-});
+  }
+})
