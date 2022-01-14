@@ -61,17 +61,20 @@ export default function ProfilScreen({ navigation }) {
             <TouchableOpacity style={styles.userbtn}>
               <Text style={styles.userbtntxt}>follow</Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => getInfo(10)}
               style={styles.userbtn}
             >
               <Text style={styles.userbtntxt}>Edit</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <View>
-            <Text>FirstName:{profile.firstName}</Text>
-            <Text>LastName:</Text>
-            <Text>Email:</Text>
+            <Text>FirstName:       {profile.firstName}</Text>
+            <Text>LastName:        {profile.LastName}</Text>
+            <Text>Email:           {profile.Email}</Text>
+            <Text>PhoneNumber:     {profile.phoneNumber}</Text>
+            {/* <Text>updatedAt:           {profile.updatedAt}</Text> */}
+
           </View>
         </View>
       </SafeAreaView>

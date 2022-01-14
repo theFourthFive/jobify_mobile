@@ -7,23 +7,14 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import { Text, StyleSheet, Image, View, SafeAreaView, ScrollView,ImageBackground, TouchableOpacity } from "react-native";
 export default function companieProfileScreen({ navigation }) {
-  var [profile, setProfile] = useState();
-  useEffect(() => {
-    getInfo(1);
-  }, []);
-
-  // function getInfo(id) {
-  //   var URL = `${server.Ip}/workers/profile/${1}`;
-  //   axios
-  //     .get(URL)
-  //     .then((result) => {
-  //       setProfile(result.data);
-  //       console.log(profile, "===============");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
+  var [profile, setProfile] = useState({});
+  useEffect(async () => {
+    var URL = `${server.Ip}/company/profile`;
+    var prof = await axios.get(URL);
+  
+    setProfile(prof.data);
+    console.log(prof.data,);
+  });
 
   return (
     <View style={styles.container}>
@@ -34,7 +25,7 @@ export default function companieProfileScreen({ navigation }) {
               name="account-edit"
               size={25}
 
-              onPress={() => navigation.navigate("EditProfil")}
+              onPress={() => navigation.navigate("companyEditProfile")}
             />
           </View>
 
@@ -56,7 +47,7 @@ export default function companieProfileScreen({ navigation }) {
             </View>
           </ImageBackground>
 
-          <Text style={styles.formHeading}>label</Text>
+          <Text style={styles.formHeading}>label:{profile.label} </Text>
 
           <View style={styles.userBtnWrapper}>
             <TouchableOpacity style={styles.userbtn}>

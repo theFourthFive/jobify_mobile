@@ -51,15 +51,36 @@ export default function RoutesMenuScreen({ navigation }) {
         title="Worker: Add Availability"
         onPress={() => navigation.navigate("SetAvailabilityWorker")}
       />
-      <Button
+      {/* <Button
         style={styles.button}
         title="Edit your Profile"
         onPress={() => navigation.navigate("EditProfile")}
-      />
+      /> */}
+
+{/* <Button
+        style={styles.button}
+        title="Edit your Profile"
+        onPress={() => navigation.navigate("companyEditProfile")}
+      /> */}
+
+
+
       <Button
         style={styles.button}
         title="Worker: Profil"
         onPress={() => navigation.navigate("Profil")}
+      />
+
+       <Button
+        style={styles.button}
+        title="company: Profil"
+        onPress={() => navigation.navigate("Profilcompany")}
+      />
+
+      <Button
+        style={styles.button}
+        title="Onboarding"
+        onPress={() => navigation.navigate("Onboarding")}
       />
       {/* <Button
         style={styles.button}
@@ -68,9 +89,6 @@ export default function RoutesMenuScreen({ navigation }) {
       /> */}
       <Button title="AboutUs" onPress={() => navigation.navigate("AboutUs")} />
     </View>
-    <TouchableOpacity onPress={() => navigation.navigate("AddEvent")}  style={styles.addWrapper}>
-     <Text style={styles.addText} >+</Text>
-    </TouchableOpacity>
     </>
     
   );

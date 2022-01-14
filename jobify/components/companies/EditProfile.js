@@ -56,7 +56,7 @@ export default function EditProfile({ navigation }) {
   },[])
 
   function UpdateInfo(id) {
-    var  URL = `${server.Ip}/workers/updateprofile/${1}`
+    var  URL = `${server.Ip}/company/updateprofile/${1}`
     axios.post(URL).then((result)=>{
       // setProfile(result.data)
       companyId,
