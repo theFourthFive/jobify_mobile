@@ -3,29 +3,18 @@ import axios from "axios";
 import server from "../ipConfig/serverIp";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-import {
-  Text,
-  StyleSheet,
-  Image,
-  View,
-  SafeAreaView,
-  ScrollView,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
-export default function ProfilScreen({ navigation }) {
+
+
+import { Text, StyleSheet, Image, View, SafeAreaView, ScrollView,ImageBackground, TouchableOpacity } from "react-native";
+export default function companieProfileScreen({ navigation }) {
   var [profile, setProfile] = useState({});
   useEffect(async () => {
-    var URL = `${server.Ip}/workers/profile/${10}`;
+    var URL = `${server.Ip}/company/profile`;
     var prof = await axios.get(URL);
-    console.log(prof.data);
+  
     setProfile(prof.data);
-  }, []);
-  // const getInfo = async (id) => {
-  //   var URL = `${server.Ip}/workers/profile/${id}`;
-  //   const res = await axios.get(URL);
-  //   setProfile(res.data);
-  // };
+    console.log(prof.data,);
+  });
 
   return (
     <View style={styles.container}>
@@ -35,13 +24,14 @@ export default function ProfilScreen({ navigation }) {
             <MaterialCommunityIcons.Button
               name="account-edit"
               size={25}
-              onPress={() => navigation.navigate("EditProfile")}
+
+              onPress={() => navigation.navigate("companyEditProfile")}
             />
           </View>
 
           <ImageBackground
             source={{
-              uri: profile.imageUrl,
+              uri: "https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png",
             }}
             style={{ height: 100, width: 100, marginLeft: 25 }}
             imageStyle={{ borderRadius: 15 }}
@@ -52,29 +42,28 @@ export default function ProfilScreen({ navigation }) {
                 justifyContent: "center",
                 alignItems: "center",
               }}
-            ></View>
+            >
+             
+            </View>
           </ImageBackground>
 
-          <Text style={styles.formHeading}></Text>
+          <Text style={styles.formHeading}>label:{profile.label} </Text>
 
           <View style={styles.userBtnWrapper}>
             <TouchableOpacity style={styles.userbtn}>
               <Text style={styles.userbtntxt}>follow</Text>
             </TouchableOpacity>
             {/* <TouchableOpacity
-              onPress={() => getInfo(10)}
+              onPress={() => navigation.navigate("EditProfile")}
               style={styles.userbtn}
             >
               <Text style={styles.userbtntxt}>Edit</Text>
             </TouchableOpacity> */}
           </View>
           <View>
-            <Text>FirstName:       {profile.firstName}</Text>
-            <Text>LastName:        {profile.LastName}</Text>
-            <Text>Email:           {profile.Email}</Text>
-            <Text>PhoneNumber:     {profile.phoneNumber}</Text>
-            {/* <Text>updatedAt:           {profile.updatedAt}</Text> */}
-
+            <Text>label</Text>
+            <Text>LastName:</Text>
+            <Text>Email:</Text>
           </View>
         </View>
       </SafeAreaView>
@@ -97,9 +86,9 @@ const styles = StyleSheet.create({
   },
   Icon: {
     backgroundColor: "#fff",
-    height: 50,
+    height:50,
     width: 50,
-    color: "#000",
+    color:"#000"
   },
 
   formHeading: {

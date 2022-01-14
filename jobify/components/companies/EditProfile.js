@@ -18,31 +18,25 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
 
-export default function EditProfileScreen({ navigation }) {
+export default function EditProfile({ navigation }) {
 
-  const [WorkerId, setWorkerId] = useState("");
-  const [firstName, setfirstName] = useState("");
-  const [LasttName, setLastName] = useState("");
+  const [ companyId, setcompanyId] = useState("");
+  const [Bussinessfield, setBussinessfield] = useState("");
+  const [label, setlabel] = useState("");
   const [Email, setEmail] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
   const [imageUrl, setimageUrl] = useState("");
-  const [City, setCity] = useState("");
-  const [CVUrl, setCVUrl] = useState("");
-  const [availibility, setavailibility] = useState("");
   const [password, setpassword] = useState("");
-  const [avgRating, setavgRating] = useState("");
+  
 
-  const handelChangeCity = (City) => {
-    setCity(City);
+  const handelChangecompanyId = ( companyId) => {
+    setcompanyId( companyId);
   };
-  const handelChangeWorkerId = (WorkerId) => {
-    setWorkerId(WorkerId);
+  const handelChangeBussinessfield = (Bussinessfield) => {
+    setBussinessfield(Bussinessfield);
   };
-  const handelChangefirstName = (firstName) => {
-    setfirstName(firstName);
-  };
-  const handelChangeLasttName = (LasttName) => {
-    setLastName(LasttName);
+  const handelChangelabel = (label) => {
+    setLastName(label);
   };
   const handelChangeEmail = (Email) => {
     setEmail(Email);
@@ -53,12 +47,6 @@ export default function EditProfileScreen({ navigation }) {
   const handelChangeimageUrl = (imageUrl) => {
     setimageUrl(imageUrl);
   };
-  const handelChangeCVUrl = (CVUrl) => {
-    setCVUrl(CVUrl);
-  };
-  const handelChangeavailibility = (availibility) => {
-    setavailibility(availibility);
-  };
   const handelChangepassword = (password) => {
     setpassword(password);
   };
@@ -68,18 +56,15 @@ export default function EditProfileScreen({ navigation }) {
   },[])
 
   function UpdateInfo(id) {
-    var  URL = `${server.Ip}/workers/updateprofile/${1}`
+    var  URL = `${server.Ip}/company/updateprofile/${1}`
     axios.post(URL).then((result)=>{
       // setProfile(result.data)
-      WorkerId,
-      City,
-      firstName,
-      LasttName,
+      companyId,
+      Bussinessfield,
+      label,
       Email,
       phoneNumber,
       imageUrl,
-      CVUrl,
-      availibility,
       password,
       console.log(profile,"===============")
     }).catch((err)=> {
@@ -217,7 +202,7 @@ export default function EditProfileScreen({ navigation }) {
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="First Name"
+            placeholder="Label"
             placeholderTextColor="#666666"
             autoCorrect={false}
             style={[
@@ -231,7 +216,7 @@ export default function EditProfileScreen({ navigation }) {
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="Last Name"
+            placeholder="Bussinessfield"
             placeholderTextColor="#666666"
             autoCorrect={false}
             style={[
@@ -287,20 +272,6 @@ export default function EditProfileScreen({ navigation }) {
             // onChangeText={handelChangephoneNumber}
           />
         </View>
-        <View style={styles.action}>
-          <Icon name="map-marker-outline" color={colors.text} size={20} />
-          <TextInput
-            placeholder="City"
-            placeholderTextColor="#666666"
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
 
 
   {/* <View style={styles.action}  >
@@ -318,16 +289,8 @@ export default function EditProfileScreen({ navigation }) {
       </View> */}
 
 
-
-        <TouchableOpacity
-          style={styles.commandButton}
-          onPress={() => navigation.navigate("SetAvailabilityWorker")}
-        >
-          <Text style={styles.panelButtonTitle}>Availability</Text>
-        </TouchableOpacity>
-
         <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-          <Text style={styles.panelButtonTitle}>Submit</Text>
+          <Text style={styles.panelButtonTitle}>Update</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
