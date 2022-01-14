@@ -99,7 +99,7 @@ useEffect(()=>{
           title="Subscribe"
           style={styles.submitButton}
           // disabled={isLoading}
-          onPress={handleSubmit}
+          onPress={props.sub(props.event.eventID)}
         />
       </View>
     </View>
