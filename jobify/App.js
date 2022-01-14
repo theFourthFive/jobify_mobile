@@ -1,15 +1,16 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import Router from './router/router';
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { Button, StyleSheet, Text, View } from "react-native";
+import Router from "./router/router";
 
-const App=()=> {
+const App = () => {
   return (
     <NavigationContainer>
-      <Router></Router>
+      <Router />
+      <Tab />
     </NavigationContainer>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -20,4 +21,4 @@ const styles = StyleSheet.create({
     bottom: 50,
   },
 });
-export default App
+export default App;
