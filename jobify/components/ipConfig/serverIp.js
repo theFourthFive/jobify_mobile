@@ -1,7 +1,3 @@
-var server = { Ip : "http://192.168.11.160:3000"}
+var server = { Ip: "http://192.168.11.2:5000" };
 
-export default server  
-
-
-  
-
+export default server;

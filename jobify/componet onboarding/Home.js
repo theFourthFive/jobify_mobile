@@ -20,6 +20,7 @@ import plus from '../assets/plus.png'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { useRef } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ProfilScreen from '../components/Workers/ProfilScreen'
 /*
 
 
@@ -181,7 +182,7 @@ const Home=()=> {
           }
         })}></Tab.Screen>
 
-        <Tab.Screen name={"Settings"} component={SettingsScreen} options={{
+        <Tab.Screen name={"Settings"} component={ProfilScreen} options={{
           tabBarIcon: ({ focused }) => (
             <View style={{
               // centring Tab Button...
