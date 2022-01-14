@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import server from "../ipConfig/serverIp"
 import {
   Text,
@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Button,
+  AsyncStorage
 
 } from "react-native";
 import moment from "moment";
@@ -53,12 +54,10 @@ const styles = StyleSheet.create({
 });
 
 const CardItem = (props) => {
+useEffect(()=>{
+  console.log(props);
+})
 
-
-
-  var subscribe = () => {
-    // axios.post('/subscribe',{wor)
-  }
 
 
   
@@ -77,7 +76,7 @@ const CardItem = (props) => {
           title="Subscribe"
           style={styles.submitButton}
           // disabled={isLoading}
-          onPress={subscribe}
+          onPress={()=>props.sub(props.event.eventID)}
         />
         <Text style={styles.price}>
           payment {props.event.dailyPay} Dt /day {"\n"}
@@ -93,7 +92,7 @@ const CardItem = (props) => {
 
         <Image
           style={styles.campany_image}
-          source={{ uri: "https://bit.ly/31BkjO6" }}
+          source={{ uri: props.event.imageUrl }}
         />
 
         <Text style={styles.campany}>{"\n"}movenpick </Text>

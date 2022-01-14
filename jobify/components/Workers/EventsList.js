@@ -13,27 +13,44 @@ const styles = StyleSheet.create({
 })
 
 const  EventList = () => {
+
   var [events , setevents] = useState([])
 
  useEffect( async() =>{
-   try{
-   const connectedUser = await AsyncStorage.getItem("session")
-   const URL = `${server.Ip}/events/worker/${connectedUser}`
-   const res = await axios.get(URL)
-   console.log(res);
-    // setevents(res.data)
-   }catch(err){console.log(err)}
+
+  await refresh()
  
  },[])
  
-function refresh(){
+async function refresh(){
+  try{
+    const connectedUser = await AsyncStorage.getItem("session")
+    const URL = `${server.Ip}/events/worker/${connectedUser}`
+    const res = await axios.get(URL)
+     setevents(res.data[0])
+    }catch(err){console.log(err)}
 
-  const URL = `${server.Ip}/events`
-  axios.get(URL).then((res)=>{
-    setevents(res.data)  }).catch((err)=>{
-      console.log(err);
-    })
 }
+
+
+var subscribe = async(eventID) => {
+   
+  const workerId  = await AsyncStorage.getItem("session")
+  const subscribeData = {workerId , eventID}
+  const URL = `${server.Ip}/events/subscribe`
+  axios.post(URL,subscribeData).then(res=>{
+    var x = events 
+    x.pop()
+    setevents(x)
+    console.log("==============================>>>>",events.eventID , "<===================")
+  }).catch(err=>{console.log(err)})
+
+
+
+ alert("subscription passed successfully")
+
+}
+
 
 
 
@@ -42,7 +59,7 @@ function refresh(){
  
  <ScrollView >
 
- {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh}  />)}
+ {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh} sub={subscribe} />)}
 
   </ScrollView>
  </View>
