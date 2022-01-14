@@ -12,7 +12,7 @@ import {
   export default function ProfileCom(){
     return (
     <View>
-        <Text>this is company profil</Text>
+        <Text>thi is company profiley</Text>
     </View>
     )
   }

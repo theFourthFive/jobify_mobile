@@ -1,80 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React , {useState , useEffect} from "react";
 import axios from "axios";
-import server from "../ipConfig/serverIp";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import server from "../ipConfig/serverIp"
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack'
+// const Stack = createNativeStackNavigator();
 
-import {
-  Text,
-  StyleSheet,
-  Image,
-  View,
-  SafeAreaView,
-  ScrollView,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+// prettier-ignore
+import { Text, StyleSheet, Image, View, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 export default function ProfilScreen({ navigation }) {
-  var [profile, setProfile] = useState({});
-  useEffect(async () => {
-    var URL = `${server.Ip}/workers/profile/${10}`;
-    var prof = await axios.get(URL);
-    console.log(prof.data);
-    setProfile(prof.data);
-  }, []);
-  // const getInfo = async (id) => {
-  //   var URL = `${server.Ip}/workers/profile/${id}`;
-  //   const res = await axios.get(URL);
-  //   setProfile(res.data);
-  // };
+
+  var [profile , setProfile]= useState()
+  useEffect(() => {
+    getInfo(1)
+  })
+
+function getInfo(id) {
+  var  URL = `${server.Ip}/workers/profile/${id}`
+  axios.get(URL).catch((res)=> {
+     setProfile(res)
+  })
+}
 
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ backgroundColor: "#fff" }}>
         <View>
-          <View style={styles.Icon}>
-            <MaterialCommunityIcons.Button
-              name="account-edit"
-              size={25}
-              onPress={() => navigation.navigate("EditProfile")}
-            />
-          </View>
 
-          <ImageBackground
-            source={{
-              uri: profile.imageUrl,
-            }}
-            style={{ height: 100, width: 100, marginLeft: 25 }}
-            imageStyle={{ borderRadius: 15 }}
-          >
-            <View
-              style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            ></View>
-          </ImageBackground>
-
-          <Text style={styles.formHeading}></Text>
+          <Text style={styles.formHeading}>helloooooooooo</Text>
+          <Text style={styles.aboutuser}>hello ggggg</Text>
 
           <View style={styles.userBtnWrapper}>
             <TouchableOpacity style={styles.userbtn}>
               <Text style={styles.userbtntxt}>follow</Text>
             </TouchableOpacity>
-            {/* <TouchableOpacity
-              onPress={() => getInfo(10)}
+            <TouchableOpacity
+              onPress={() => navigation.navigate("EditProfile")}
               style={styles.userbtn}
             >
               <Text style={styles.userbtntxt}>Edit</Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
           </View>
           <View>
-            <Text>FirstName:       {profile.firstName}</Text>
-            <Text>LastName:        {profile.LastName}</Text>
-            <Text>Email:           {profile.Email}</Text>
-            <Text>PhoneNumber:     {profile.phoneNumber}</Text>
-            {/* <Text>updatedAt:           {profile.updatedAt}</Text> */}
-
+            <Text>FirstName:</Text>
+            <Text>LastName:</Text>
+            <Text>Email:</Text>
           </View>
         </View>
       </SafeAreaView>
@@ -95,13 +64,12 @@ const styles = StyleSheet.create({
     borderRadius: 80,
     marginLeft: 285,
   },
-  Icon: {
-    backgroundColor: "#fff",
-    height: 50,
-    width: 50,
-    color: "#000",
-  },
-
+  // userName: {
+  //   fontSize: 18,
+  //   fontWeight: 'bold',
+  //   marginTop: 10,
+  //   marginBottom: 10,
+  // },
   formHeading: {
     color: "#252526",
     fontSize: 18,
@@ -109,8 +77,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     marginLeft: 105,
-
-    color: "#1C0D33",
   },
   aboutuser: {
     fontSize: 12,
