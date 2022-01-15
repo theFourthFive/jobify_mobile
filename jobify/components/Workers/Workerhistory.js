@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 // prettier-ignore
-import { Button, StyleSheet,ScrollView, Text,Image, View,AsyncStorage,TouchableWithoutFeedback} from 'react-native';
+import { Button, StyleSheet,ScrollView, Text,Image, View,AsyncStorage, TouchableWithoutFeedback, Alert} from 'react-native';
 import { Rating, AirbnbRating } from "react-native-ratings";
 import moment from "moment";
 import server from "../ipConfig/serverIp";
@@ -20,7 +20,7 @@ const b80 = "80%";
 const b90 = "90%";
 const b100 = "100%";
 
-const Workerhistory = () => {
+const Workerhistory = ({ navigation }) => {
   var [events, setevents] = useState([]);
   var [user, setuser] = useState([]);
   useEffect(async () => {
@@ -54,7 +54,18 @@ const Workerhistory = () => {
     try {
       const connectedUser = await AsyncStorage.getItem("session");
       const URL = `${server.Ip}/events/unsubscribe/${id}/${connectedUser}`;
-      alert("this subscription will be canceled");
+      Alert.alert(`Success`, "This subscription will be canceled", [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        // },
+        // { text: "Home", onPress: () => navigation.goBack() },
+        {
+          text: "Continue",
+          onPress: () => navigation.push("Workerhistory"),
+        },
+      ]);
+      // alert("this subscription will be canceled");
       axios
         .delete(URL)
         .then((res) => {

@@ -26,7 +26,7 @@ const Notifications = () => {
         options={{
           headerShown: true,
           title: "Home page",
-          // headerLeft: () => <View />,
+          headerLeft: () => <View />,
         }}
       />
       {/* <NotificationsStack.Screen

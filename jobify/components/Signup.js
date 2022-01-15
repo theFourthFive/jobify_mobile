@@ -25,32 +25,27 @@ export default function Signup({ navigation }) {
     //   console.log(req.body)
     //   res.send(data)
     // })
-    var bob = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
-    
-    Axios.post(`${server.Ip}/worker/signup`,bob)
-      .then(function (response) {
-      
-      })
-      .catch(function (error) {
-      
-      });
-      Alert.alert(
-        "Confirm",
-        "Are You Sure About Your Informations ?",  
-        [
+    var worker = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
+      console.log(worker);
+    Axios.post(`${server.Ip}/workers/signup`,worker)
+      .then((response)=>{
+        console.log(response.data , "<==================================")
+        if(response.data === "user exists")
+          
           {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel"
-          },
-          { text: "Confirme", onPress: () => navigation.navigate("Login") }
-        ],
-        { cancelable: false }
-      )
-      
-      
-      sendmsg()
-  };
+            console.log(response.data)
+            Alert.alert("user already exists")
+          
+         }
+          else
+          {
+            console.log(response.data, "<============== USER CREATED");
+            Alert.alert("you has been registred successfuly")
+            navigation.navigate("Login")
+          }
+        
+      }).catch(error=>{console.log(error);})
+   
   const [FirstName, onChangeFirstName] = useState(null);
   const [LastName, onChangeLastName] = useState(null);
   const [Email, onChangeEmail] = useState(null);
@@ -87,7 +82,7 @@ export default function Signup({ navigation }) {
       </Text>
     </View>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   container: {
@@ -137,5 +132,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     textDecorationLine: "underline",
-  },
-});
+  }
+})

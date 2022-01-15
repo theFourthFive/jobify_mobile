@@ -1,20 +1,52 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View, TextInput } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  AsyncStorage,
+  Alert,
+} from "react-native";
 import { useState } from "react";
 import server from "./ipConfig/serverIp";
 import axios from "axios";
+
 export default function Login({ navigation }) {
-  const enter = () => {
-    axios
-      .post(`${server.Ip}/worker/login`, { Email: Email, password: Password })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    navigation.navigate("Routes");
+  const login = async () => {
+    const URL = `${server.Ip}/workers/login`;
+    console.log(URL);
+    const worker = { Email: Email, password: Password };
+    try {
+      const { data } = await axios.post(URL, worker);
+      if (!String(data).includes("false")) {
+        const workerId = JSON.stringify(data.id);
+        await AsyncStorage.setItem("session", workerId);
+        Alert.alert(
+          `Welcome ${data.firstName}`,
+          "You're now connected to your account",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            // },
+            // { text: "Home", onPress: () => navigation.goBack() },
+            {
+              text: "Continue",
+              onPress: () => navigation.navigate("HomeWorker"),
+            },
+          ]
+        );
+        // alert("Welcome" + " " + data.firstName);
+        // navigation.navigate("HomeWorker");
+      } else {
+        alert("Login ERROR");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   const [Email, onChangeEmail] = useState(null);
   const [Password, onChangePassword] = useState(null);
   return (
@@ -37,19 +69,13 @@ export default function Login({ navigation }) {
           style={styles.inputs}
         ></TextInput>
       </View>
-      <View>
-        <Button
-          color="#5FCFFF"
-          title="Login"
-          onPress={() => navigation.navigate("HomeWorker")}
-        />
-        <View style={styles.space} />
-        <Button
-          color="#5FCFFF"
-          title="Signup"
-          onPress={() => navigation.navigate("FilterPage")}
-        />
-      </View>
+      <Button color="#5FCFFF" title="Login" onPress={() => login()} />
+      <View style={styles.space} />
+      <Button
+        color="#5FCFFF"
+        title="Signup"
+        onPress={() => navigation.navigate("FilterPage")}
+      />
       <StatusBar style="auto" />
     </View>
   );
@@ -62,13 +88,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  inputs: {
-    height: 50,
-    width: 300,
-    borderRadius: 20,
-    backgroundColor: "#EFEFEF",
-    padding: 15,
-  },
   space: {
     height: 20,
   },
@@ -76,11 +95,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 30,
   },
+  inputs: {
+    height: 50,
+    width: 300,
+    borderRadius: 20,
+    backgroundColor: "#EFEFEF",
+    padding: 15,
+  },
   blockInput: {
     margin: 10,
   },
   signup: {
-    paddingTop: 1,
     fontFamily: "Roboto",
     fontWeight: "bold",
     fontSize: 24,

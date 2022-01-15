@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import server from "../ipConfig/serverIp"
 import {
   Text,
@@ -7,22 +7,27 @@ import {
   Image,
   StyleSheet,
   Button,
+  AsyncStorage
+
 } from "react-native";
 import moment from "moment";
 import axios from "axios";
+
+
 const styles = StyleSheet.create({
   card_template: {
     flex: 1,
-    width: 350,
-    height: 250,
+    width: "100%",
+    height: "80%",
     marginBottom : 480,
-    shadowColor: "#e3fcf9",
+    marginTop: "30%",
 
   },
   card_image: {
-    width: 350,
-    height: 250,
-    borderRadius: 25,
+    width: "100%",
+    height: "60%",
+    borderRadius: 30,
+ 
   },
   card_title: {
     fontSize: 20,
@@ -36,47 +41,46 @@ const styles = StyleSheet.create({
   time: { fontSize: 20, paddingBottom: 10 },
 
   button: {
-    height: 30,
-    width: 150,
+    height: "20%",
+    width: "100%",
   },
   submitButton: {
-    backgroundColor: "gray",
-    padding: 100,
+    padding: "1%",
   },
   campany_image: {
-    height: 60,
-    width: 100,
+    height: 150,
+    width: 150,
     borderRadius: 100,
   },
   campany: {
     fontSize: 20,
     fontWeight: "bold",
   },
+  cardContainer :{
+    backgroundColor : "#E9E5E3",
+    marginBottom : "5%",
+    borderRadius : 100
+    
+  }
 });
 
 const CardItem = (props) => {
-  var handleSubmit = () => {
-    
-    var URL = `${server.Ip}/events/subscribe`;
-    axios
-      .post(URL, { eventID: props.event.eventID, workerId: 1, companyId: 1 })
-      .then((res) => {
-        console.log(res);
-        props.reset();
-      });
+useEffect(()=>{
+  console.log(props);
+})
 
-    props.reff();
-  };
 
 
   
   return (
+    <View style={styles.cardContainer}>
     <View style={styles.card_template}>
       <Image style={styles.card_image} source={{ uri: props.event.imageUri }} />
       <View>
         <Text style={styles.card_title}>
           {props.event.eventName} {"\n"}
         </Text>
+
         <Text style={styles.price}>
           payment {props.event.dailyPay} Dt /day {"\n"}
         </Text>
@@ -91,17 +95,20 @@ const CardItem = (props) => {
 
         <Image
           style={styles.campany_image}
-          source={{ uri: "https://bit.ly/31BkjO6" }}
+          source={{ uri: props.event.imageUrl }}
         />
 
-        <Text style={styles.campany}>{"\n"}movenpick </Text>
+<Text style={styles.card_title}>
+          {props.event.label} {"\n"}
+        </Text>
         <Button
           title="Subscribe"
           style={styles.submitButton}
           // disabled={isLoading}
-          onPress={handleSubmit}
+          onPress={()=>props.sub(props.event.eventID)}
         />
       </View>
+    </View>
     </View>
   );
 };
