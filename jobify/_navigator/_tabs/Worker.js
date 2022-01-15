@@ -24,6 +24,7 @@ import ProfileScreen from "../../components/Workers/ProfilScreen";
 import WorkerProfile from "../_stacks/WorkerProfile";
 import WorkerHome from "../_stacks/HomeWorker";
 import WorkerEvents from "../_stacks/WorkerEvents";
+import Notification from "../_stacks/Notifications";
 
 const Worker = () => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
@@ -112,7 +113,7 @@ const Worker = () => {
 
       <TabWorker.Screen
         name={"Notifications"}
-        component={NotificationScreen}
+        component={Notification}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
