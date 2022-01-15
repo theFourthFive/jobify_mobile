@@ -11,7 +11,8 @@ const UsersHomePage=(props)=> {
                     <Text>{props.user.firstName} {props.user.LastName}</Text>
                     <Text>Adress.....</Text>
                 </View>
-                    <AirbnbRating style={styles.star} count={5} size={25} showRating={false} startingValue={1}  ratingColor='#f94368' ratingBackgroundColor='#f9b313' type='custom' />
+                    <AirbnbRating style={styles.star} count={props.user.avgRating} isDisabled={true} onFinishRating={(x)=>{alert("thanks for your help" , x)}} reviews = {['Terrible', 'Bad', 'Okay', 'Good', 'Great']} defaultRating={9} size={25} showRating={true} startingValue={5}  ratingColor='#f94368' ratingBackgroundColor='#f9b313' type='custom' />
+                    
             </View>
         </View>
     );
