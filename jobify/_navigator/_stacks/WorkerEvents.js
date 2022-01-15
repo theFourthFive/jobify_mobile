@@ -11,13 +11,32 @@ import Worker from "../_tabs/Worker";
 import EditProfilScreen from "../../components/Workers/EditProfilScreen";
 import SetAvailabilityWorkerScreen from "../../components/Workers/SetAvailabilityWorkerScreen";
 import ProfilScreen from "../../components/Workers/ProfilScreen";
+import HomePage from "../../components/HomePage";
+import EventList from "../../components/Workers/EventsList";
 
-const WorkerProfileStack = createNativeStackNavigator();
+const WorkerEventsStack = createNativeStackNavigator();
 
-const WorkerProfile = () => {
+const WorkerEvents = () => {
   return (
-    <WorkerProfileStack.Navigator initialRouteName="ProfileScreen">
-      <WorkerProfileStack.Screen
+    <WorkerEventsStack.Navigator initialRouteName="EventList">
+      <WorkerEventsStack.Screen
+        name="HomePage"
+        component={HomePage}
+        options={{
+          headerShown: true,
+          title: "Home page",
+          // headerLeft: () => <View />,
+        }}
+      />
+      <WorkerEventsStack.Screen
+        name="EventList"
+        component={EventList}
+        options={{
+          headerShown: true,
+          title: "Events list",
+        }}
+      />
+      <WorkerEventsStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
@@ -26,7 +45,7 @@ const WorkerProfile = () => {
           // headerLeft: () => <View />,
         }}
       />
-      <WorkerProfileStack.Screen
+      <WorkerEventsStack.Screen
         name="EditProfile"
         component={EditProfilScreen}
         options={{
@@ -35,7 +54,7 @@ const WorkerProfile = () => {
           // headerLeft: () => <View />,
         }}
       />
-      <WorkerProfileStack.Screen
+      <WorkerEventsStack.Screen
         name="SetAvailabilityWorker"
         component={SetAvailabilityWorkerScreen}
         options={{
@@ -44,7 +63,7 @@ const WorkerProfile = () => {
           // headerLeft: () => <View />,
         }}
       />
-      <WorkerProfileStack.Screen
+      <WorkerEventsStack.Screen
         name="Profil"
         component={ProfilScreen}
         options={{
@@ -52,7 +71,7 @@ const WorkerProfile = () => {
           title: "My profile",
         }}
       />
-      {/* <WorkerProfileStack.Screen
+      {/* <WorkerEventsStack.Screen
         name="Signup"
         component={Signup}
         options={{
@@ -61,7 +80,7 @@ const WorkerProfile = () => {
           headerLeft: () => <View />,
         }}
       />
-      <WorkerProfileStack.Screen
+      <WorkerEventsStack.Screen
         name="FilterPage"
         component={FilterPage}
         options={{
@@ -70,7 +89,7 @@ const WorkerProfile = () => {
           headerLeft: () => <View />,
         }}
       />
-      <WorkerProfileStack.Screen
+      <WorkerEventsStack.Screen
         name="Routes"
         component={RoutesMenuScreen}
         options={{
@@ -78,7 +97,7 @@ const WorkerProfile = () => {
           title: "Routes Menu Screen",
         }}
       />
-      <WorkerProfileStack.Screen
+      <WorkerEventsStack.Screen
         name="SignupCompany"
         component={SignupCompany}
         options={{
@@ -86,7 +105,7 @@ const WorkerProfile = () => {
           title: "About us",
         }}
       />
-      <WorkerProfileStack.Screen
+      <WorkerEventsStack.Screen
         name="Onboarding"
         component={Onboarding}
         options={{
@@ -94,7 +113,7 @@ const WorkerProfile = () => {
           title: "About us",
         }}
       />
-      <WorkerProfileStack.Screen
+      <WorkerEventsStack.Screen
         name="HomeWorker"
         component={Worker}
         options={{
@@ -102,7 +121,7 @@ const WorkerProfile = () => {
           title: "About us",
         }}
       /> */}
-    </WorkerProfileStack.Navigator>
+    </WorkerEventsStack.Navigator>
   );
 };
-export default WorkerProfile;
+export default WorkerEvents;

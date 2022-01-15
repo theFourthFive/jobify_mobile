@@ -22,6 +22,8 @@ import EventsList from "../../components/Workers/EventsList";
 import AddEvent from "../../components/companies/AddEvent";
 import ProfileScreen from "../../components/Workers/ProfilScreen";
 import WorkerProfile from "../_stacks/WorkerProfile";
+import WorkerHome from "../_stacks/HomeWorker";
+import WorkerEvents from "../_stacks/WorkerEvents";
 
 const Worker = () => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
@@ -33,10 +35,12 @@ const Worker = () => {
       }}
     >
       <TabWorker.Screen
-        name={"Home"}
+        name={"HomeWorker"}
         // component={AllRouter}
-        component={HomePage}
+        // component={HomePage}
+        component={WorkerHome}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <FontAwesome5
@@ -59,10 +63,11 @@ const Worker = () => {
       />
 
       <TabWorker.Screen
-        name={"Search"}
+        name={"Event list"}
         // component={SearchScreen}
-        component={EventsList}
+        component={WorkerEvents}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <FontAwesome5
@@ -88,6 +93,7 @@ const Worker = () => {
         name={"AddEvent"}
         component={AddEvent}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image source={plus} resizeMode="contain" style={styles.plusIcon} />
           ),
@@ -108,6 +114,7 @@ const Worker = () => {
         name={"Notifications"}
         component={NotificationScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <FontAwesome5
@@ -130,9 +137,10 @@ const Worker = () => {
       />
 
       <TabWorker.Screen
-        name={"Settings"}
+        name={"Profile"}
         component={WorkerProfile}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <FontAwesome5
@@ -153,7 +161,7 @@ const Worker = () => {
           },
         })}
       />
-      <TabWorker.Screen
+      {/* <TabWorker.Screen
         name={"Routes"}
         component={AllRouter}
         options={{
@@ -176,7 +184,7 @@ const Worker = () => {
             }).start();
           },
         })}
-      />
+      /> */}
     </TabWorker.Navigator>
   );
 };

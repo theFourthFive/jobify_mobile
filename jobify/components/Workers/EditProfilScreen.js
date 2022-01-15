@@ -68,7 +68,7 @@ export default function EditProfilScreen({ navigation }) {
     axios
       .post("/update", {
         WorkerId,
-        City, 
+        City,
         firstName,
         LasttName,
         Email,
@@ -88,44 +88,44 @@ export default function EditProfilScreen({ navigation }) {
   };
 
   return (
-    <ScrollView  Style={styles.container}>
-    <View>
-      <View style={styles.wrapper}>
-        <Image
-         value={imageUrl}
-         onPress={handelChangeimageUrl}
-          style={styles.Img}
-          source={{
-            uri: "https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg",
-          }}
-        />
-        <Text style={styles.formHeading}>Edit Photo</Text>
-      </View>
+    <ScrollView Style={styles.container}>
+      <View>
+        <View style={styles.wrapper}>
+          <Image
+            value={imageUrl}
+            onPress={handelChangeimageUrl}
+            style={styles.Img}
+            source={{
+              uri: "https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg",
+            }}
+          />
+          <Text style={styles.formHeading}>Edit Photo</Text>
+        </View>
 
-      <View style={styles.action}>
-        <FontAwesome name="user-o" color="#333333" size={20} />
-        <TextInput
-          placeholder="FirstName"
-          placeholderTextColor="#252526"
-          style={styles.textInput}
-          value={firstName}
-          onChangeText={handelChangefirstName}
-        />
-      </View>
-      <View style={styles.action}>
-        <FontAwesome name="user-o" color="#333333" size={20} />
-        <TextInput
-          placeholder="LasttName"
-          placeholderTextColor="#252526"
-          style={styles.textInput}
-          value={LasttName}
-          onChangeText={handelChangeLasttName}
-        />
-      </View>
-      <View style={styles.action}>
-        <FontAwesome name="user-o" color="#333333" size={20} />
+        <View style={styles.action}>
+          <FontAwesome name="user-o" color="#333333" size={20} />
+          <TextInput
+            placeholder="FirstName"
+            placeholderTextColor="#252526"
+            style={styles.textInput}
+            value={firstName}
+            onChangeText={handelChangefirstName}
+          />
+        </View>
+        <View style={styles.action}>
+          <FontAwesome name="user-o" color="#333333" size={20} />
+          <TextInput
+            placeholder="LasttName"
+            placeholderTextColor="#252526"
+            style={styles.textInput}
+            value={LasttName}
+            onChangeText={handelChangeLasttName}
+          />
+        </View>
+        <View style={styles.action}>
+          <FontAwesome name="user-o" color="#333333" size={20} />
 
-        {/* <Icon path={mdiAccount}
+          {/* <Icon path={mdiAccount}
         title="User Profile"
         size={1}
         horizontal
@@ -133,36 +133,36 @@ export default function EditProfilScreen({ navigation }) {
         rotate={90}
         color="red"
         spin/> */}
-        <TextInput
-          placeholder="Email"
-          placeholderTextColor="#252526"
-          style={styles.textInput}
-          value={Email}
-          onChangeText={handelChangeEmail}
-        />
-      </View>
-      <View style={styles.action}>
-        <Feather name="phone" color="#333333" size={20} />
-        <TextInput
-          placeholder="phoneNumber"
-          placeholderTextColor="#252526"
-          style={styles.textInput}
-          value={phoneNumber}
-          onChangeText={handelChangephoneNumber}
-        />
-      </View>
-      <View style={styles.action}>
-        <Ionicons name="ios-clipboard-outline" color="#333333" size={20} />
-        <TextInput
-          placeholder="About_Me"
-          placeholderTextColor="#252526"
-          style={styles.textInput}
-          value={phoneNumber}
-          onChangeText={handelChangephoneNumber}
-        />
-      </View>
+          <TextInput
+            placeholder="Email"
+            placeholderTextColor="#252526"
+            style={styles.textInput}
+            value={Email}
+            onChangeText={handelChangeEmail}
+          />
+        </View>
+        <View style={styles.action}>
+          <Feather name="phone" color="#333333" size={20} />
+          <TextInput
+            placeholder="phoneNumber"
+            placeholderTextColor="#252526"
+            style={styles.textInput}
+            value={phoneNumber}
+            onChangeText={handelChangephoneNumber}
+          />
+        </View>
+        <View style={styles.action}>
+          <Ionicons name="ios-clipboard-outline" color="#333333" size={20} />
+          <TextInput
+            placeholder="About_Me"
+            placeholderTextColor="#252526"
+            style={styles.textInput}
+            value={phoneNumber}
+            onChangeText={handelChangephoneNumber}
+          />
+        </View>
 
-      {/* <View style={styles.action}  onPress={() => navigation.navigate("SetAvailabilityWorker")}>
+        {/* <View style={styles.action}  onPress={() => navigation.navigate("SetAvailabilityWorker")}>
         <Picker
           placeholder="availibility"
           placeholderTextColor="#252526"
@@ -179,36 +179,36 @@ export default function EditProfilScreen({ navigation }) {
           <Picker.Item label={"sunday"} value="Tuesday" />
         </Picker>
       </View> */}
-       <Button
-        title=" Availability"
-        onPress={() => navigation.navigate("SetAvailabilityWorker")}
-      />
-
-      <View style={styles.action}>
-        <MaterialCommunityIcons
-          name="map-marker-outline"
-          color="#333333"
-          size={20}
-        />
-        <TextInput
-          placeholder="City"
-          placeholderTextColor="#252526"
-          style={styles.textInput}
-          value={City}
-          onChangeText={handelChangeCity}
-        />
-      </View>
-
-      <View>
         <Button
-          title="Update"
-          // onPress={onUpdatzFormHandler}
-          onPress={() => navigation.navigate("Profil")}
-          style={styles.UpdateButton}
+          title=" Availability"
+          onPress={() => navigation.navigate("SetAvailabilityWorker")}
         />
-       
+
+        <View style={styles.action}>
+          <MaterialCommunityIcons
+            name="map-marker-outline"
+            color="#333333"
+            size={20}
+          />
+          <TextInput
+            placeholder="City"
+            placeholderTextColor="#252526"
+            style={styles.textInput}
+            value={City}
+            onChangeText={handelChangeCity}
+          />
+        </View>
+
+        <View>
+          <Button
+            title="Update"
+            // onPress={onUpdatzFormHandler}
+            // onPress={() => navigation.navigate("Profil")}
+            onPress={() => navigation.goBack()} // instead of push the profile screen into the stack, we simply go back to that component
+            style={styles.UpdateButton}
+          />
+        </View>
       </View>
-    </View>
     </ScrollView>
   );
 }
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#f2f2f2",
     paddingBottom: 8,
-    marginLeft:12,
+    marginLeft: 12,
   },
 
   submitButton: {
@@ -271,6 +271,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginLeft: 105,
-    
   },
 });

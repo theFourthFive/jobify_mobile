@@ -39,7 +39,8 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
         setDayAvailability(data)
       } catch (error) {
         console.log(error)
-        navigation.navigate("RoutesMenuScreen")
+        // navigation.navigate("RoutesMenuScreen")
+        navigation.goBack()
       }
     } else {
       setDayAvailability([
@@ -140,7 +141,7 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
                         //   onPress: () => console.log("Cancel Pressed"),
                         // },
                         // { text: "Home", onPress: () => navigation.goBack() },
-                        { text: "Bob", onPress: () => navigation.goBack() },
+                        { text: "Next", onPress: () => navigation.goBack() },
                       ]
                     );
                     console.log("Response:", response.data)
