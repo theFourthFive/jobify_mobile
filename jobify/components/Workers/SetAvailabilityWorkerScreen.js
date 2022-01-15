@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import server from "../ipConfig/serverIp";
-// console.warn = () => {};
+console.warn = () => {};
 
 // prettier-ignore
 import { StyleSheet, Text, View, Pressable, FlatList, TouchableWithoutFeedback, Keyboard, Button, Alert, TouchableOpacity } from "react-native";
@@ -10,7 +10,8 @@ import axios from "axios";
 // import DayItem from "./DaysItem";
 
 // prettier-ignore
-export default function SetAvailabilityWorkerScreen({ navigation, onPress, title = "Save", userId = 11, propsAvailibility }) {
+export default function SetAvailabilityWorkerScreen({ navigation, onPress, title = "Save", userId = 12, propsAvailibility }) {
+  // navigation.navigate("Login")
 
   // example: ["Monday", "Tuesday","Wednesday"]
   // const [dayAvailable, setDayAvailable] = useState(async()=>{

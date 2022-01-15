@@ -1,21 +1,20 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Button, View } from "react-native";
 
-import Signup from "../components/Signup.js";
-import Login from "../components/Login.js";
-import FilterPage from "../components/FilterPage.js";
-import HomePage from "../components/HomePage.js";
-import SignupCompany from "../components/SignupCompany.js";
-import RoutesMenuScreen from "../components/RoutesMenuScreen";
-import AddEvent from "../components/companies/AddEvent";
-import ProfilScreen from "../components/Workers/ProfilScreen";
-import EditProfilScreen from "../components/Workers/EditProfilScreen";
-import SetAvailabilityWorkerScreen from "../components/Workers/SetAvailabilityWorkerScreen";
-import EventList from "../components/Workers/EventsList";
-import AboutUs from "../components/AboutUs";
-import MapComp from "../components/MapComp";
-import Onboarding from "../componetOnboarding/Onboarding";
-console.log("AAAAAAAA", Onboarding);
+import Signup from "../../components/Signup.js";
+import Login from "../../components/Login.js";
+import FilterPage from "../../components/FilterPage.js";
+import HomePage from "../../components/HomePage.js";
+import SignupCompany from "../../components/SignupCompany.js";
+import RoutesMenuScreen from "../../components/RoutesMenuScreen";
+import AddEvent from "../../components/companies/AddEvent";
+import ProfilScreen from "../../components/Workers/ProfilScreen";
+import EditProfilScreen from "../../components/Workers/EditProfilScreen";
+import SetAvailabilityWorkerScreen from "../../components/Workers/SetAvailabilityWorkerScreen";
+import EventList from "../../components/Workers/EventsList";
+import AboutUs from "../../components/AboutUs";
+import MapComp from "../../components/MapComp";
+import Onboarding from "../../componetOnboarding/Onboarding";
 const Stack = createNativeStackNavigator();
 
 const Router = () => {

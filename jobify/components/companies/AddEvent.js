@@ -85,7 +85,7 @@ export default function AddEvent() {
     setNbrCleaningWorker(nbrCleaningWorker);
   };
   const onSubmitFormHandler = async (event) => {
-    let url = 'http://localhost:3000/addEvent'
+    let url = `${server.Ip}/addEvent`
     axios
       .post(url, {
       
