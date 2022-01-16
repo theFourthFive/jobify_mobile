@@ -23,9 +23,11 @@ const b100 = "100%";
 const Workerhistory = ({ navigation }) => {
   var [events, setevents] = useState([]);
   var [user, setuser] = useState([]);
-  useEffect(async () => {
-    getuser();
-    refresh();
+  useEffect(() => {
+    (async () => {
+      getuser();
+      refresh();
+    })();
   }, []);
 
   var getuser = async () => {
@@ -100,7 +102,7 @@ const Workerhistory = ({ navigation }) => {
       </View>
       <ScrollView style={styles.userhis} vertical={true}>
         {events.map((ele, i) => (
-          <View style={styles.userhiss}>
+          <View style={styles.userhiss} key={i}>
             <View style={styles.alloff1}>
               <Image style={styles.imgg} source={{ uri: ele.imageUri }}></Image>
               <View style={styles.userrhis}>
