@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -19,7 +19,6 @@ import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
 
 export default function EditProfileScreen({ navigation }) {
-
   const [WorkerId, setWorkerId] = useState("");
   const [firstName, setfirstName] = useState("");
   const [LasttName, setLastName] = useState("");
@@ -64,29 +63,32 @@ export default function EditProfileScreen({ navigation }) {
   };
 
   useEffect(() => {
-    UpdateInfo(1)
-  },[])
+    UpdateInfo(1);
+  }, []);
 
   function UpdateInfo(id) {
-    var  URL = `${server.Ip}/workers/updateprofile/${1}`
-    axios.post(URL).then((result)=>{
-      // setProfile(result.data)
-      WorkerId,
-      City,
-      firstName,
-      LasttName,
-      Email,
-      phoneNumber,
-      imageUrl,
-      CVUrl,
-      availibility,
-      password,
-      console.log(profile,"===============")
-    }).catch((err)=> {
-      console.log(err)
-    })
+    var URL = `${server.Ip}/workers/updateprofile/${1}`;
+    axios
+      .post(URL)
+      .then((result) => {
+        // setProfile(result.data)
+        WorkerId,
+          City,
+          firstName,
+          LasttName,
+          Email,
+          phoneNumber,
+          imageUrl,
+          CVUrl,
+          availibility,
+          password,
+          console.log(profile, "===============");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-  
+
   // const onUpdateFormHandler = async (event) => {
   //   axios
   //     .post("/update", {
@@ -109,12 +111,6 @@ export default function EditProfileScreen({ navigation }) {
   //       console.log(error);
   //     });
   // };
-
-
-
-
-
-
 
   const { colors } = useTheme();
 
@@ -302,8 +298,7 @@ export default function EditProfileScreen({ navigation }) {
           />
         </View>
 
-
-  {/* <View style={styles.action}  >
+        {/* <View style={styles.action}  >
   <Icon name="map-marker-outline" color={colors.text} size={20} />
         <Picker
            placeholder="City"
@@ -313,11 +308,8 @@ export default function EditProfileScreen({ navigation }) {
         >
           <Picker.Item label={"Tunis"} value="Tunis" />
           <Picker.Item label={"sfax"} value="sfax" />
-
         </Picker>
       </View> */}
-
-
 
         <TouchableOpacity
           style={styles.commandButton}
@@ -420,6 +412,5 @@ const styles = StyleSheet.create({
     height: 50,
     width: 150,
     borderRadius: 60,
-    
   },
 });

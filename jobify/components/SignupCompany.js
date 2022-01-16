@@ -1,89 +1,125 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View,Alert,TextInput } from "react-native";
+import { Button, StyleSheet, Text, View, Alert, TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useState } from "react";
 import axios from "axios";
 
-
 export default function SignupCompany({ navigation }) {
-  const sendmsg=()=>{
+  const sendmsg = () => {
     var mailOptions = {
-      from:"bob479402@gmail.com",
-      to: Email,
-      subject:"jobify",
-      text: "bob"
-  }
-    axios.post('http://localhost:4000/nodemailer/nodemailer',mailOptions).then(data=>{
-      console.log(data)
-      console.log('==========',Email)
-    })
-    .catch(error=>{
-      console.error('/////////////////////////////////////////',error)
-    })
-  }
+      from: "bob479402@gmail.com",
+      to: email,
+      subject: "jobify",
+      text: "bob",
+    };
+    axios
+      .post("http://localhost:4000/nodemailer/nodemailer", mailOptions)
+      .then((data) => {
+        console.log(data);
+        console.log("==========", Email);
+      })
+      .catch((error) => {
+        console.error("/////////////////////////////////////////", error);
+      });
+  };
   const post = () => {
     // axios.post('http://localhost:4000/worker/signup/',data,(req,res)=>{
     //   console.log(req.body)
     //   res.send(data)
     // })
-    var bob = { firstName:FirstName, LastName: LastName, Email: Email, password: Password, phoneNumber: PhoneNumber };
-    
-    axios.post("http://localhost:4000/company/signup",bob)
+    var newCompany = { firstName, lastName, email, password, phoneNumber };
+
+    axios
+      .post("http://localhost:4000/company/signup", newCompany)
       .then(function (response) {
         console.log(response);
       })
       .catch(function (error) {
         console.log(error);
       });
-      Alert.alert(
-        "Confirm",
-        "Are You Sure About Your Informations ?",  
-        [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel"
-          },
-          { text: "Confirme", onPress: () => navigation.navigate("Login") }
-        ],
-        { cancelable: false }
-      )
-      
-      
-      sendmsg()
+    Alert.alert(
+      "Confirm",
+      "Are You Sure About Your Informations ?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel",
+        },
+        { text: "Confirme", onPress: () => navigation.navigate("Login") },
+      ],
+      { cancelable: false }
+    );
+
+    sendmsg();
   };
-  const [Bussinessfield, onChangeBussinessfield] = useState(null);
+  const [bussinessField, onChangeBussinessfield] = useState(null);
   const [label, onChangelabel] = useState(null);
-  const [Email, onChangeEmail] = useState(null);
-  const [passWord, onChangepassWord] = useState(null);
-  const [PhoneNumber, onChangePhoneNumber] = useState(null);
+  const [email, onChangeEmail] = useState(null);
+  const [password, onChangepassWord] = useState(null);
+  const [phoneNumber, onChangePhoneNumber] = useState(null);
   return (
     <View style={styles.container}>
-      <Text style={styles.signup}>Sign Up</Text>v
+      <Text style={styles.signup}>Sign Up</Text>
       <View style={styles.blockInput}>
-        <TextInput placeholder="Bussinessfield" onChangeText={onChangeBussinessfield} value={Bussinessfield} style={styles.inputs}></TextInput>
+        <TextInput
+          placeholder="Bussiness Field"
+          onChangeText={onChangeBussinessfield}
+          value={bussinessField}
+          style={styles.inputs}
+        ></TextInput>
       </View>
       <View style={styles.blockInput}>
-        <TextInput placeholder="label" onChangeText={onChangelabel} value={label} style={styles.inputs}></TextInput>
+        <TextInput
+          placeholder="Label"
+          onChangeText={onChangelabel}
+          value={label}
+          style={styles.inputs}
+        ></TextInput>
       </View>
       <View style={styles.blockInput}>
-        <TextInput placeholder="Email" onChangeText={onChangeEmail} value={Email} style={styles.inputs}></TextInput>
+        <TextInput
+          placeholder="Email"
+          onChangeText={onChangeEmail}
+          value={email}
+          style={styles.inputs}
+        ></TextInput>
       </View>
       <View style={styles.blockInput}>
-        <TextInput placeholder="Phone Number" onChangeText={onChangePhoneNumber} value={PhoneNumber} secureTextEntry={true} style={styles.inputs}></TextInput>
+        <TextInput
+          placeholder="Phone Number"
+          onChangeText={onChangePhoneNumber}
+          value={phoneNumber}
+          secureTextEntry={true}
+          style={styles.inputs}
+        ></TextInput>
       </View>
       <View style={(styles.blockInput, styles.one)}>
-        <TextInput placeholder="passWord" onChangeText={onChangepassWord} value={passWord} secureTextEntry={true} style={styles.inputs}></TextInput>
+        <TextInput
+          placeholder="passWord"
+          onChangeText={onChangepassWord}
+          value={password}
+          secureTextEntry={true}
+          style={styles.inputs}
+        ></TextInput>
       </View>
 
       <Button color="#5FCFFF" title="Sign Up" onPress={() => post()} />
       <StatusBar style="auto" />
       <Text style={styles.signuptext}>Or You Can Singup With</Text>
       <View style={styles.passport}>
-        <Button color="#5FCFFF" title="Facebook" onPress={() => navigation.navigate("Login")} />
-        <Button color="#5FCFFF" title="Google" onPress={() => navigation.navigate("Login")} />
+        <Button
+          color="#5FCFFF"
+          title="Facebook"
+          onPress={() => navigation.navigate("Login")}
+        />
+        <Button
+          color="#5FCFFF"
+          title="Google"
+          onPress={() => navigation.navigate("Login")}
+        />
       </View>
       <Text onPress={() => navigation.navigate("Login")} style={styles.text}>
         I Already Have An Account
