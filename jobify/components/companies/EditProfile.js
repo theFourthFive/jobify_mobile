@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -18,30 +18,25 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
 
-export default function EditProfileScreen({ navigation }) {
-  const [WorkerId, setWorkerId] = useState("");
-  const [firstName, setfirstName] = useState("");
-  const [LasttName, setLastName] = useState("");
+export default function EditProfile({ navigation }) {
+
+  const [ companyId, setcompanyId] = useState("");
+  const [Bussinessfield, setBussinessfield] = useState("");
+  const [label, setlabel] = useState("");
   const [Email, setEmail] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
   const [imageUrl, setimageUrl] = useState("");
-  const [City, setCity] = useState("");
-  const [CVUrl, setCVUrl] = useState("");
-  const [availibility, setavailibility] = useState("");
   const [password, setpassword] = useState("");
-  const [avgRating, setavgRating] = useState("");
+  
 
-  const handelChangeCity = (City) => {
-    setCity(City);
+  const handelChangecompanyId = ( companyId) => {
+    setcompanyId( companyId);
   };
-  const handelChangeWorkerId = (WorkerId) => {
-    setWorkerId(WorkerId);
+  const handelChangeBussinessfield = (Bussinessfield) => {
+    setBussinessfield(Bussinessfield);
   };
-  const handelChangefirstName = (firstName) => {
-    setfirstName(firstName);
-  };
-  const handelChangeLasttName = (LasttName) => {
-    setLastName(LasttName);
+  const handelChangelabel = (label) => {
+    setLastName(label);
   };
   const handelChangeEmail = (Email) => {
     setEmail(Email);
@@ -52,43 +47,31 @@ export default function EditProfileScreen({ navigation }) {
   const handelChangeimageUrl = (imageUrl) => {
     setimageUrl(imageUrl);
   };
-  const handelChangeCVUrl = (CVUrl) => {
-    setCVUrl(CVUrl);
-  };
-  const handelChangeavailibility = (availibility) => {
-    setavailibility(availibility);
-  };
   const handelChangepassword = (password) => {
     setpassword(password);
   };
 
   useEffect(() => {
-    UpdateInfo(1);
-  }, []);
+    UpdateInfo(1)
+  },[])
 
   function UpdateInfo(id) {
-    var URL = `${server.Ip}/workers/updateprofile/${1}`;
-    axios
-      .post(URL)
-      .then((result) => {
-        // setProfile(result.data)
-        WorkerId,
-          City,
-          firstName,
-          LasttName,
-          Email,
-          phoneNumber,
-          imageUrl,
-          CVUrl,
-          availibility,
-          password,
-          console.log(profile, "===============");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    var  URL = `${server.Ip}/company/updateprofile/${1}`
+    axios.post(URL).then((result)=>{
+      // setProfile(result.data)
+      companyId,
+      Bussinessfield,
+      label,
+      Email,
+      phoneNumber,
+      imageUrl,
+      password,
+      console.log(profile,"===============")
+    }).catch((err)=> {
+      console.log(err)
+    })
   }
-
+  
   // const onUpdateFormHandler = async (event) => {
   //   axios
   //     .post("/update", {
@@ -111,6 +94,12 @@ export default function EditProfileScreen({ navigation }) {
   //       console.log(error);
   //     });
   // };
+
+
+
+
+
+
 
   const { colors } = useTheme();
 
@@ -213,7 +202,7 @@ export default function EditProfileScreen({ navigation }) {
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="First Name"
+            placeholder="Label"
             placeholderTextColor="#666666"
             autoCorrect={false}
             style={[
@@ -227,7 +216,7 @@ export default function EditProfileScreen({ navigation }) {
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="Last Name"
+            placeholder="Bussinessfield"
             placeholderTextColor="#666666"
             autoCorrect={false}
             style={[
@@ -283,22 +272,9 @@ export default function EditProfileScreen({ navigation }) {
             // onChangeText={handelChangephoneNumber}
           />
         </View>
-        <View style={styles.action}>
-          <Icon name="map-marker-outline" color={colors.text} size={20} />
-          <TextInput
-            placeholder="City"
-            placeholderTextColor="#666666"
-            autoCorrect={false}
-            style={[
-              styles.textInput,
-              {
-                color: colors.text,
-              },
-            ]}
-          />
-        </View>
 
-        {/* <View style={styles.action}  >
+
+  {/* <View style={styles.action}  >
   <Icon name="map-marker-outline" color={colors.text} size={20} />
         <Picker
            placeholder="City"
@@ -308,18 +284,13 @@ export default function EditProfileScreen({ navigation }) {
         >
           <Picker.Item label={"Tunis"} value="Tunis" />
           <Picker.Item label={"sfax"} value="sfax" />
+
         </Picker>
       </View> */}
 
-        <TouchableOpacity
-          style={styles.commandButton}
-          onPress={() => navigation.navigate("SetAvailabilityWorker")}
-        >
-          <Text style={styles.panelButtonTitle}>Availability</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-          <Text style={styles.panelButtonTitle}>Submit</Text>
+          <Text style={styles.panelButtonTitle}>Update</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
@@ -412,5 +383,6 @@ const styles = StyleSheet.create({
     height: 50,
     width: 150,
     borderRadius: 60,
+    
   },
 });

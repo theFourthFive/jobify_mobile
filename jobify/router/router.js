@@ -15,6 +15,8 @@ import EventList from "../components/Workers/EventsList";
 import AboutUs from "../components/AboutUs";
 import MapComp from "../components/MapComp";
 import Onboarding from "../componetOnboarding/Onboarding";
+import companieProfileScreen from "../components/companies/companieProfileScreen";
+import EditProfile from "../components/companies/EditProfile.js";
 console.log("AAAAAAAA", Onboarding);
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +28,7 @@ const Router = () => {
         component={FilterPage}
         options={{
           headerShown: false,
-          title: "My availabilities",
+          title: "Account type",
           headerLeft: () => <View />,
         }}
       />
@@ -35,7 +37,7 @@ const Router = () => {
         component={Signup}
         options={{
           headerShown: false,
-          title: "My availabilities",
+          title: "Signup",
           headerLeft: () => <View />,
         }}
       />
@@ -44,7 +46,7 @@ const Router = () => {
         component={Login}
         options={{
           headerShown: false,
-          title: "My availabilities",
+          title: "Login",
           headerLeft: () => <View />,
         }}
       />
@@ -53,7 +55,7 @@ const Router = () => {
         component={HomePage}
         options={{
           headerShown: false,
-          title: "My availabilities",
+          title: "Home Page",
           headerLeft: () => <View />,
         }}
       />
@@ -77,6 +79,22 @@ const Router = () => {
       <Stack.Screen
         name="EditProfile"
         component={EditProfilScreen}
+        options={{
+          headerShown: false,
+          title: "Edit your Profile",
+        }}
+      />
+      <Stack.Screen
+        name="Profilcompany"
+        component={companieProfileScreen}
+        options={{
+          headerShown: false,
+          title: "My profile",
+        }}
+      />
+      <Stack.Screen
+        name="companyEditProfile"
+        component={EditProfile}
         options={{
           headerShown: false,
           title: "Edit your Profile",
@@ -112,6 +130,22 @@ const Router = () => {
         options={{
           headerShown: false,
           title: "About us",
+        }}
+      />
+      <Stack.Screen
+        name="MapComp"
+        component={MapComp}
+        options={{
+          headerShown: false,
+          title: "Map",
+        }}
+      />
+      <Stack.Screen
+        name="RoutesMenuScreen"
+        component={RoutesMenuScreen}
+        options={{
+          headerShown: false,
+          title: "router",
         }}
       />
       <Stack.Screen

@@ -162,7 +162,7 @@ const Worker = () => {
           },
         })}
       />
-      {/* <TabWorker.Screen
+      <TabWorker.Screen
         name={"Routes"}
         component={AllRouter}
         options={{
@@ -185,7 +185,7 @@ const Worker = () => {
             }).start();
           },
         })}
-      /> */}
+      />
     </TabWorker.Navigator>
   );
 };

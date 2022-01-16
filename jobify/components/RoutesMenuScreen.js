@@ -63,14 +63,19 @@ export default function RoutesMenuScreen({ navigation }) {
         />
         <Button
           style={styles.button}
+          title="Company: Profile"
+          onPress={() => navigation.navigate("Profilcompany")}
+        />
+        <Button
+          style={styles.button}
           title="Onboarding"
           onPress={() => navigation.navigate("Onboarding")}
         />
-        {/* <Button
-        style={styles.button}
-        title="AddEvent"
-        onPress={() => navigation.navigate("AddEvent")}
-      /> */}
+        <Button
+          style={styles.button}
+          title="AddEvent"
+          onPress={() => navigation.navigate("AddEvent")}
+        />
         <Button
           title="AboutUs"
           onPress={() => navigation.navigate("AboutUs")}
