@@ -26,6 +26,14 @@ const Authentication = () => {
         }}
       /> */}
       <AuthStack.Screen
+        name="Onboarding"
+        component={Onboarding}
+        options={{
+          headerShown: false,
+          title: "About us",
+        }}
+      />
+      <AuthStack.Screen
         name="Login"
         component={Login}
         options={{
@@ -68,14 +76,7 @@ const Authentication = () => {
           title: "About us",
         }}
       />
-      <AuthStack.Screen
-        name="Onboarding"
-        component={Onboarding}
-        options={{
-          headerShown: false,
-          title: "About us",
-        }}
-      />
+
       <AuthStack.Screen
         name="HomeWorker"
         component={Worker}

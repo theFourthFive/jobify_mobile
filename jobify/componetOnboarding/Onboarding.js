@@ -89,6 +89,7 @@ const Onboarding = (props) => {
         showPrevButton
         // onDone={handleDone}
         onDone={() => {
+          console.log("Hiiiiiii");
           props.navigation.navigate("Login");
         }}
       />

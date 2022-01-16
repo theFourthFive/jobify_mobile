@@ -12,6 +12,7 @@ import Onboarding from "./componetOnboarding/Onboarding";
 import AllRoutes from "./_navigator/_stacks/AllRoutes";
 import Authentication from "./_navigator/_stacks/Authentication";
 import Workers from "./_navigator/_tabs/Worker";
+console.warn = () => {};
 
 const Stack = createNativeStackNavigator();
 
