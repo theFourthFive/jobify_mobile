@@ -13,6 +13,7 @@ import EventList from "../components/Workers/EventsList";
 import AboutUs from "../components/AboutUs";
 import MapComp from "../components/MapComp";
 import Onboarding from "../componetOnboarding/Onboarding";
+import WorkerEvents from "../components/Workers/Workerhistory"
 console.log("AAAAAAAA", Onboarding);
 const Stack = createNativeStackNavigator();
 
@@ -77,6 +78,11 @@ const Router = () => {
           name="Onboarding"
           component={Onboarding}
           options={{ title: "Onboarding" }}
+        />
+          <Stack.Screen
+          name="myevents"
+          component={WorkerEvents}
+          options={{ title: "myevents" }}
         />
 
         <Stack.Screen name="SignupCompany" component={SignupCompany} />

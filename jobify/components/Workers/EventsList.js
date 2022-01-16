@@ -6,9 +6,18 @@ import server from "../ipConfig/serverIp"
 
 const styles = StyleSheet.create({
  container: {
-     marginTop:80,
-     alignItems: "center"
+     marginTop:30,
+     alignItems: "center",
+     width: "100%",
+    display: "flex"
   
+ },
+ scroll : {
+  width: "100%"
+ },
+ header : {
+   fontSize : 25,
+   fontWeight : "bold"
  }
 })
 
@@ -56,7 +65,10 @@ var subscribe = async(eventID) => {
 
   return (
  <View style={styles.container} >
- <ScrollView >
+       <View>
+       <Text style={styles.header}> there is {events.length } event </Text>
+      </View>
+ <ScrollView style={styles.scroll} >
 
  {events.map((ele,i)=><CardItem key={i} event={ele} reff={refresh} sub={subscribe} />)}
 
