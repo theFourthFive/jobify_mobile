@@ -1,8 +1,8 @@
 const colors = {
-  black: '#000000',
-  gray: '#666666',
-  blue: '#1C215D',
-  blueFaded: '#8D8FAD',
+  gold: '#FFB156',
+  gray: '#979FAD',
+  blue: '#1E4E5F',
+  blueDark: '#979FAD',
   white: '#FFFFFF',
 };
 

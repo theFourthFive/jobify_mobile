@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 // import DatePicker from "react-native-datepicker";
 // import DateTimePicker from "@react-native-community/datetimepicker";
-
+import server from "../ipConfig/serverIp";
 import {
   StyleSheet,
   Text,
@@ -14,7 +15,7 @@ import {
   Image,
 } from "react-native";
 export default function AddEvent() {
-  const [companyId, setCompanyId] = useState("");
+  const [companyId, setCompanyId] = useState("Aziz");
   const [eventName, setEventName] = useState("");
   const [location, setLocation] = useState("");
   const [date_time, setDate_time] = useState("");
@@ -85,10 +86,11 @@ export default function AddEvent() {
     setNbrCleaningWorker(nbrCleaningWorker);
   };
   const onSubmitFormHandler = async (event) => {
+    const companyId = await AsyncStorage.getItem("session");
     let url = `${server.Ip}/addEvent`
     axios
       .post(url, {
-      
+        companyId,
         eventName,
         location,
         date_time,
@@ -100,15 +102,16 @@ export default function AddEvent() {
         nbrCleaningWorker,
       })
       .then(function (response) {
+        console.log("aziz 5dem");
         console.log("response",response);
       })
       .catch(function (error) {
-        console.log("===>");
+        console.log("aziz ma5demch");
         console.log(error);
       });
   };
   return (
-    // <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
     <View Style={styles.container}>
       <View style={styles.wrapper}>
         {/* {isLoading ? (
@@ -137,22 +140,13 @@ export default function AddEvent() {
         />
       </View>
      
-      <View style={styles.wrapper}>
-        <TextInput
-          placeholder="Img"
-          placeholderTextColor="#252526"
-          style={styles.input}
-          value={imageUri}
-          // editable={!isLoading}
-          onChangeText={onChangeimageUriHandler}
-        />
-      </View>
-      
+     
+      <View style={{display:'flex', flexDirection: 'row wrap'}}>
       <View style={styles.wrapper}>
         <TextInput
           placeholder=" date_time"
           placeholderTextColor="#252526"
-          style={styles.input}
+          style={styles.inputHalf}
           value={date_time}
           // editable={!isLoading}
           onChangeText={onChangedate_timeHandler}
@@ -163,11 +157,12 @@ export default function AddEvent() {
         <TextInput
           placeholder=" Duration"
           placeholderTextColor="#252526"
-          style={styles.input}
+          style={styles.inputHalf}
           value={duration}
           // editable={!isLoading}
           onChangeText={onChangedurationHandler}
         />
+      </View>
       </View>
       <View style={styles.wrapper}>
         <TextInput
@@ -210,7 +205,16 @@ export default function AddEvent() {
           onChangeText={onChangenbrCleaningWorkerHandler}
         />
       </View>
-     
+      <View style={styles.wrapper}>
+        <TextInput
+          placeholder="Img"
+          placeholderTextColor="#252526"
+          style={styles.input}
+          value={imageUri}
+          // editable={!isLoading}
+          onChangeText={onChangeimageUriHandler}
+        />
+      </View>
 
       <View>
         <Button
@@ -220,17 +224,18 @@ export default function AddEvent() {
           // disabled={isLoading}
         />
       </View>
+      <StatusBar style="auto" />
     </View>
-    // </ScrollView>
+     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: "#F2F2F2",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     // width:"100%"
     // marginTop: Platform.OS === "android" ? 0 : Constants.statusBarHeight,
   },
@@ -241,12 +246,25 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-    width: 250,
-    backgroundColor: "#fff",
-    borderRadius: 60,
-    borderWidth: 1,
+    height: 50,
+    width: '80%',
+    borderRadius: 20,
+    backgroundColor: "#EFEFEF",
+    padding: 15,
+    // bottom:90,
+    left:40,
+    top:20,
+  },
+  inputHalf:{
+    height: 50,
+    width: '30%',
+    borderRadius: 20,
+    backgroundColor: "#EFEFEF",
+    padding: 15,
+    
+    // bottom:90,
+    left:40,
+    top:20,
   },
   submitButton: {
     backgroundColor: "gray",
