@@ -3,7 +3,8 @@ import { Button, StyleSheet, Text, View, Alert, TextInput } from "react-native";
 
 import { useState } from "react";
 import Axios from "axios";
-import server from "./ipConfig/serverIp";
+// import server from "./ipConfig/serverIp";
+import server from "../settings";
 
 export default function Signup({ navigation }) {
   const sendmsg = () => {
@@ -14,10 +15,10 @@ export default function Signup({ navigation }) {
       text: "bob",
     };
 
-    Axios.post(`${server.Ip}/nodemailer/nodemailer`, mailOptions)
+    Axios.post(`${server.url}/nodemailer/nodemailer`, mailOptions)
       .then((data) => {
         console.log(data);
-        console.log("==========", Email);
+        console.log("==========", email);
       })
       .catch((error) => {
         console.error("/////////////////////////////////////////", error);
@@ -29,9 +30,11 @@ export default function Signup({ navigation }) {
     //   console.log(req.body)
     //   res.send(data)
     // })
-    var worker = { firstName, lastName, email, password, phoneNumber };
+    const role = "worker";
+    var worker = { firstName, lastName, email, password, phoneNumber, role };
     console.log(worker);
-    Axios.post(`${server.Ip}/workers/signup`, worker)
+    // Axios.post(`${server.Ip}/workers/signup`, worker)
+    Axios.post(`${server.url}/auth/signup`, worker)
       .then((response) => {
         console.log(response.data, "<==================================");
         if (response.data === "user exists") {
