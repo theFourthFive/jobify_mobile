@@ -15,6 +15,7 @@ import {
 } from "react-native";
 export default function ProfilScreen({ navigation }) {
   var [profile, setProfile] = useState({});
+  
   useEffect(async () => {
     var URL = `${server.Ip}/workers/profile/${10}`;
     var prof = await axios.get(URL);

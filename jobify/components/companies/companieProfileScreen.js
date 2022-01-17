@@ -8,8 +8,9 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { Text, StyleSheet, Image, View, SafeAreaView, ScrollView,ImageBackground, TouchableOpacity } from "react-native";
 export default function companieProfileScreen({ navigation }) {
   var [profile, setProfile] = useState({});
+
   useEffect(async () => {
-    var URL = `${server.Ip}/company/profile`;
+    var URL = `${server.Ip}/company/profile${10}`;
     var prof = await axios.get(URL);
   
     setProfile(prof.data);
