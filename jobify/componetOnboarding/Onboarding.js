@@ -1,30 +1,30 @@
-import React from 'react';
-import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, StatusBar, Image } from "react-native";
 
-import AppIntroSlider from 'react-native-app-intro-slider';
-import {LinearGradient} from 'react-native-linear-gradient';
-import colors from '../assets/colors/colors';
+import AppIntroSlider from "react-native-app-intro-slider";
+import { LinearGradient } from "react-native-linear-gradient";
+import colors from "../assets/colors/colors";
 
 const data = [
   {
-    title: 'Are you tired of job searching',
-    text: 'Since covid started a lot of people lost their jobs',
-    image: require('../assets/images/Onboard1.png'),
+    title: "Are you tired of job searching",
+    text: "Since covid started a lot of people lost their jobs",
+    image: require("../assets/images/Onboard1.png"),
   },
   {
-    title: 'Jobify can help you find one',
-    text: 'this is world we created this app just to help you',
-    image: require('../assets/images/Onboard2.png'),
+    title: "Jobify can help you find one",
+    text: "this is world we created this app just to help you",
+    image: require("../assets/images/Onboard2.png"),
   },
   {
-    title: 'Spend more time doing the things you love',
-    text: 'So what are you waiting for',
-    image: require('../assets/images/Onboard3.png'),
+    title: "Spend more time doing the things you love",
+    text: "So what are you waiting for",
+    image: require("../assets/images/Onboard3.png"),
   },
 ];
 
 const Onboarding = (props) => {
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>
         <Image source={item.image} style={styles.image} />
@@ -75,7 +75,7 @@ const Onboarding = (props) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <StatusBar translucent backgroundColor="transparent" />
       <AppIntroSlider
         keyExtractor={keyExtractor}
@@ -87,7 +87,11 @@ const Onboarding = (props) => {
         renderNextButton={renderNextButton}
         renderPrevButton={renderPrevButton}
         showPrevButton
-        onDone={handleDone}
+        // onDone={handleDone}
+        onDone={() => {
+          console.log("Hiiiiiii");
+          props.navigation.navigate("Login");
+        }}
       />
     </View>
   );
@@ -96,8 +100,8 @@ const Onboarding = (props) => {
 const styles = StyleSheet.create({
   slide: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: colors.white,
   },
   image: {
@@ -106,14 +110,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     color: colors.black,
-    textAlign: 'center',
+    textAlign: "center",
     // fontFamily: 'OpenSans-Bold',
     marginHorizontal: 60,
   },
   text: {
     fontSize: 14,
     color: colors.gray,
-    textAlign: 'center',
+    textAlign: "center",
     // fontFamily: 'OpenSans-SemiBold',
     marginHorizontal: 60,
     marginTop: 20,
@@ -128,9 +132,9 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginRight: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
   },
   rightText: {
     color: colors.blue,
@@ -141,9 +145,9 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginLeft: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
   },
   leftText: {
     color: colors.blue,
@@ -161,7 +165,7 @@ const styles = StyleSheet.create({
   doneButtonText: {
     fontSize: 14,
     // fontFamily: 'OpenSans-SemiBold',
-    textAlign: 'center',
+    textAlign: "center",
     color: colors.black,
   },
 });

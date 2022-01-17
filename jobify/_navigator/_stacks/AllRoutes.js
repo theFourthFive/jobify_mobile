@@ -1,23 +1,20 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Button, View } from "react-native";
 
-import Signup from "../components/Signup.js";
-import Login from "../components/Login.js";
-import FilterPage from "../components/FilterPage.js";
-import HomePage from "../components/HomePage.js";
-import SignupCompany from "../components/SignupCompany.js";
-import RoutesMenuScreen from "../components/RoutesMenuScreen";
-import AddEvent from "../components/companies/AddEvent";
-import ProfilScreen from "../components/Workers/ProfilScreen";
-import EditProfilScreen from "../components/Workers/EditProfilScreen";
-import SetAvailabilityWorkerScreen from "../components/Workers/SetAvailabilityWorkerScreen";
-import EventList from "../components/Workers/EventsList";
-import AboutUs from "../components/AboutUs";
-import MapComp from "../components/MapComp";
-import Onboarding from "../componetOnboarding/Onboarding";
-import companieProfileScreen from "../components/companies/companieProfileScreen";
-import EditProfile from "../components/companies/EditProfile.js";
-console.log("AAAAAAAA", Onboarding);
+import Signup from "../../components/Signup.js";
+import Login from "../../components/Login.js";
+import FilterPage from "../../components/FilterPage.js";
+import HomePage from "../../components/HomePage.js";
+import SignupCompany from "../../components/SignupCompany.js";
+import RoutesMenuScreen from "../../components/RoutesMenuScreen";
+import AddEvent from "../../components/companies/AddEvent";
+import ProfilScreen from "../../components/Workers/ProfilScreen";
+import EditProfilScreen from "../../components/Workers/EditProfilScreen";
+import SetAvailabilityWorkerScreen from "../../components/Workers/SetAvailabilityWorkerScreen";
+import EventList from "../../components/Workers/EventsList";
+import AboutUs from "../../components/AboutUs";
+import MapComp from "../../components/MapComp";
+import Onboarding from "../../componetOnboarding/Onboarding";
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -28,7 +25,7 @@ const Router = () => {
         component={FilterPage}
         options={{
           headerShown: false,
-          title: "Account type",
+          title: "My availabilities",
           headerLeft: () => <View />,
         }}
       />
@@ -37,7 +34,7 @@ const Router = () => {
         component={Signup}
         options={{
           headerShown: false,
-          title: "Signup",
+          title: "My availabilities",
           headerLeft: () => <View />,
         }}
       />
@@ -46,7 +43,7 @@ const Router = () => {
         component={Login}
         options={{
           headerShown: false,
-          title: "Login",
+          title: "My availabilities",
           headerLeft: () => <View />,
         }}
       />
@@ -55,7 +52,7 @@ const Router = () => {
         component={HomePage}
         options={{
           headerShown: false,
-          title: "Home Page",
+          title: "My availabilities",
           headerLeft: () => <View />,
         }}
       />
@@ -79,22 +76,6 @@ const Router = () => {
       <Stack.Screen
         name="EditProfile"
         component={EditProfilScreen}
-        options={{
-          headerShown: false,
-          title: "Edit your Profile",
-        }}
-      />
-      <Stack.Screen
-        name="Profilcompany"
-        component={companieProfileScreen}
-        options={{
-          headerShown: false,
-          title: "My profile",
-        }}
-      />
-      <Stack.Screen
-        name="companyEditProfile"
-        component={EditProfile}
         options={{
           headerShown: false,
           title: "Edit your Profile",
@@ -130,22 +111,6 @@ const Router = () => {
         options={{
           headerShown: false,
           title: "About us",
-        }}
-      />
-      <Stack.Screen
-        name="MapComp"
-        component={MapComp}
-        options={{
-          headerShown: false,
-          title: "Map",
-        }}
-      />
-      <Stack.Screen
-        name="RoutesMenuScreen"
-        component={RoutesMenuScreen}
-        options={{
-          headerShown: false,
-          title: "router",
         }}
       />
       <Stack.Screen
