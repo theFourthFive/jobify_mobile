@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button,Image, StyleSheet, Text, TextInput, View,ScrollView,FlatList } from 'react-native';
 import { Rating, AirbnbRating } from 'react-native-ratings'
+import colors from '../assets/colors/colors';
 
 const UsersHomePage=(props)=> {
     return (
@@ -8,10 +9,10 @@ const UsersHomePage=(props)=> {
             <View style={styles.user}>
                 <Image style={styles.img} source={{ uri: props.user.imageUrl }}></Image>
                 <View style={styles.userr}>
-                    <Text>{props.user.firstName} {props.user.LastName}</Text>
-                    <Text>Adress.....</Text>
+                    <Text style={{color:colors.blue,fontWeight: 'bold',}}>{props.user.firstName} {props.user.LastName}</Text>
+                    <Text style={{color:colors.blueDark}} >Adress.....</Text>
                 </View>
-                    <AirbnbRating style={styles.star} count={props.user.avgRating} isDisabled={true} onFinishRating={(x)=>{alert("thanks for your help" , x)}} reviews = {['Terrible', 'Bad', 'Okay', 'Good', 'Great']} defaultRating={9} size={25} showRating={true} startingValue={5}  ratingColor='#f94368' ratingBackgroundColor='#f9b313' type='custom' />
+                    <AirbnbRating style={styles.star} count={props.user.avgRating} isDisabled={true} onFinishRating={(x)=>{alert("thanks for your help" , x)}} reviews = {['Terrible', 'Bad', 'Okay', 'Good', 'Great']} defaultRating={9} size={25} showRating={true} startingValue={5}  ratingColor={colors.gold} ratingBackgroundColor={colors.gold} type='custom' />
                     
             </View>
         </View>
@@ -45,8 +46,12 @@ const styles = StyleSheet.create({
       userr:{
         flex:1,
         flexDirection:"column",
-        marginLeft:15
+        marginLeft:15,
+        
       },
+      star:{
+          color:colors.gold,
+      }
       
       
 });

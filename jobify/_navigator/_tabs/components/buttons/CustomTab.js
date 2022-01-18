@@ -1,5 +1,6 @@
 import { View, TouchableOpacity, StyleSheet } from "react-native";
-
+import { color } from "react-native-reanimated";
+import colors from '../../../../assets/colors/colors' 
 export default ({ children, onPress }) => (
   <TouchableOpacity style={styles.TouchOpac} onPress={onPress}>
     <View style={styles.plusButton}>{children}</View>
@@ -23,6 +24,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 35,
-    backgroundColor: "blue",
+    backgroundColor: colors.gold,
   },
 });

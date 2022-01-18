@@ -57,7 +57,7 @@ const Onboarding = (props) => {
       //   <Text style={styles.doneButtonText}>Done</Text>
       // </LinearGradient>
       <View style={styles.doneButtonWrapper}>
-        <Text style={styles.doneButtonText}>Done</Text>
+        <Text style={styles.doneButtonText}>Let's Go</Text>
       </View>
     );
   };
