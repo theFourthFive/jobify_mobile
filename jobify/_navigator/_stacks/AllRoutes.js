@@ -15,6 +15,9 @@ import EventList from "../../components/Workers/EventsList";
 import AboutUs from "../../components/AboutUs";
 import MapComp from "../../components/MapComp";
 import Onboarding from "../../componetOnboarding/Onboarding";
+import Hire from "../../components/Hire.js";
+import UserHire from "../../components/UserHire.js";
+
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -124,6 +127,22 @@ const Router = () => {
         options={{
           headerShown: false,
           title: "About us",
+        }}
+      />
+      <Stack.Screen
+        name="Hire"
+        component={Hire}
+        options={{
+          headerShown: false,
+          title: "Rename me",
+        }}
+      />
+      <Stack.Screen
+        name="UserHire"
+        component={UserHire}
+        options={{
+          headerShown: false,
+          title: "UserHire",
         }}
       />
     </Stack.Navigator>

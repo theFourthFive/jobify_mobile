@@ -17,6 +17,7 @@ import MapComp from "../components/MapComp";
 import Onboarding from "../componetOnboarding/Onboarding";
 import companieProfileScreen from "../components/companies/companieProfileScreen";
 import EditProfile from "../components/companies/EditProfile.js";
+
 console.log("AAAAAAAA", Onboarding);
 const Stack = createNativeStackNavigator();
 
@@ -165,3 +166,5 @@ const Router = () => {
   );
 };
 export default Router;
+
+
