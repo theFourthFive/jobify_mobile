@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import server from "../ipConfig/serverIp";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Feather from "react-native-vector-icons/Feather";
 import {
   Text,
   StyleSheet,
@@ -15,18 +16,13 @@ import {
 } from "react-native";
 export default function ProfilScreen({ navigation }) {
   var [profile, setProfile] = useState({});
-  
   useEffect(async () => {
     var URL = `${server.Ip}/workers/profile/${10}`;
     var prof = await axios.get(URL);
     console.log(prof.data);
     setProfile(prof.data);
   }, []);
-  // const getInfo = async (id) => {
-  //   var URL = `${server.Ip}/workers/profile/${id}`;
-  //   const res = await axios.get(URL);
-  //   setProfile(res.data);
-  // };
+;
 
   return (
     <View style={styles.container}>
@@ -70,11 +66,30 @@ export default function ProfilScreen({ navigation }) {
             </TouchableOpacity> */}
           </View>
           <View>
+            <View style={styles.action}>
+            <FontAwesome name="user-o" size={20} />
             <Text>FirstName:       {profile.firstName}</Text>
+            </View>
+
+            <View style={styles.action}>
+            <FontAwesome name="user-o" size={20} />
             <Text>LastName:        {profile.LastName}</Text>
+            </View>
+           
+            <View style={styles.action}>
+            <FontAwesome name="envelope-o"  size={20} />
             <Text>Email:           {profile.Email}</Text>
+            </View>
+           
+            <View style={styles.action}>
+            <Feather name="phone"  size={20} />
             <Text>PhoneNumber:     {profile.phoneNumber}</Text>
-            {/* <Text>updatedAt:           {profile.updatedAt}</Text> */}
+            </View>
+           
+            <View style={styles.action}>
+            <Text>updatedAt:           {profile.updatedAt}</Text>
+            </View>
+           
 
           </View>
         </View>
@@ -84,11 +99,19 @@ export default function ProfilScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  action: {
+    flexDirection: "row",
+    marginTop: 10,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f2f2f2",
+    paddingBottom: 5,
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   Img: {
     width: 100,

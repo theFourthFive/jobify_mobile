@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -10,7 +10,6 @@ import {
 import server from "../ipConfig/serverIp";
 import axios from "axios";
 import { useTheme } from "react-native-paper";
-// import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
@@ -19,24 +18,23 @@ import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
 
 export default function EditProfile({ navigation }) {
+  const [companyId, setcompanyId] = useState("");
+  const [Bussinessfield, setBussinessfield] = useState(null);
+  const [label, setlabel] = useState(null);
+  const [Email, setEmail] = useState(null);
+  const [phoneNumber, setphoneNumber] = useState(null);
+  const [imageUrl, setimageUrl] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
+  const [password, setpassword] = useState(null);
+  const [update,setUpdated]=useState("")
 
-  const [ companyId, setcompanyId] = useState("");
-  const [Bussinessfield, setBussinessfield] = useState("");
-  const [label, setlabel] = useState("");
-  const [Email, setEmail] = useState("");
-  const [phoneNumber, setphoneNumber] = useState("");
-  const [imageUrl, setimageUrl] = useState("");
-  const [password, setpassword] = useState("");
-  
-
-  const handelChangecompanyId = ( companyId) => {
-    setcompanyId( companyId);
+  const handelChangecompanyId = (companyId) => {
+    setcompanyId(companyId);
   };
   const handelChangeBussinessfield = (Bussinessfield) => {
     setBussinessfield(Bussinessfield);
   };
   const handelChangelabel = (label) => {
-    setLastName(label);
+    setlabel(label);
   };
   const handelChangeEmail = (Email) => {
     setEmail(Email);
@@ -50,56 +48,48 @@ export default function EditProfile({ navigation }) {
   const handelChangepassword = (password) => {
     setpassword(password);
   };
+  
+   useEffect(() => {
 
-  useEffect(() => {
-    UpdateInfo(1)
+    handelChange(1)
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
   },[])
 
-  function UpdateInfo(id) {
-    var  URL = `${server.Ip}/company/updateprofile/${1}`
-    axios.post(URL).then((result)=>{
-      // setProfile(result.data)
+  const handelChange = async (id) => {
+    var  URL = `${server.Ip}/company/updateprofile/${37}`
+    var info={  
       companyId,
       Bussinessfield,
       label,
       Email,
       phoneNumber,
       imageUrl,
-      password,
-      console.log(profile,"===============")
-    }).catch((err)=> {
-      console.log(err)
-    })
-  }
-  
-  // const onUpdateFormHandler = async (event) => {
-  //   axios
-  //     .post("/update", {
-  //       WorkerId,
-  //       City,
-  //       firstName,
-  //       LasttName,
-  //       Email,
-  //       phoneNumber,
-  //       imageUrl,
-  //       CVUrl,
-  //       availibility,
-  //       password,
-  //     })
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log("===>");
-  //       console.log(error);
-  //     });
-  // };
+      password,}
+    axios
+      .put(URL,info )
+      .then((response) =>
+       
+      setUpdated(response.data.update),
+      console.log(response,'it workes')
+      ).catch((err)=> console.log("nooooo",err)
+      )
+  };
 
+ 
 
-
-
-
-
+  // useEffect(() => {
+    // PUT request using axios inside useEffect React hook
+  //   var info={  
+  //     companyId,
+  //     Bussinessfield,
+  //     label,
+  //     Email,
+  //     phoneNumber,
+  //     imageUrl,
+  //     password,}
+  //   var URL = `${server.Ip}/company/updateprofile/${1}`;
+  //   axios.put(URL,info).then((response) => setUpdated(response.data.updated));
+  // }, []);
 
   const { colors } = useTheme();
 
@@ -165,8 +155,9 @@ export default function EditProfile({ navigation }) {
             >
               <ImageBackground
                 source={{
-                  uri: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                  uri: imageUrl,
                 }}
+                 
                 style={{ height: 100, width: 100 }}
                 imageStyle={{ borderRadius: 15 }}
               >
@@ -202,8 +193,10 @@ export default function EditProfile({ navigation }) {
         <View style={styles.action}>
           <FontAwesome name="user-o" color={colors.text} size={20} />
           <TextInput
-            placeholder="Label"
+            placeholder="Legal Business"
             placeholderTextColor="#666666"
+            onChangeText={handelChangelabel}
+            value={label}
             autoCorrect={false}
             style={[
               styles.textInput,
@@ -218,6 +211,8 @@ export default function EditProfile({ navigation }) {
           <TextInput
             placeholder="Bussinessfield"
             placeholderTextColor="#666666"
+            onChangeText={handelChangeBussinessfield}
+            value={Bussinessfield}
             autoCorrect={false}
             style={[
               styles.textInput,
@@ -230,8 +225,10 @@ export default function EditProfile({ navigation }) {
         <View style={styles.action}>
           <Feather name="phone" color={colors.text} size={20} />
           <TextInput
-            placeholder="Phone"
+            placeholder="Phone_Number "
             placeholderTextColor="#666666"
+            onChangeText={handelChangephoneNumber}
+            value={phoneNumber}
             keyboardType="number-pad"
             autoCorrect={false}
             style={[
@@ -247,6 +244,8 @@ export default function EditProfile({ navigation }) {
           <TextInput
             placeholder="Email"
             placeholderTextColor="#666666"
+            onChangeText={handelChangeEmail}
+            value={Email}
             keyboardType="email-address"
             autoCorrect={false}
             style={[
@@ -256,7 +255,26 @@ export default function EditProfile({ navigation }) {
               },
             ]}
           />
+          
         </View>
+        <View style={styles.action}>
+          <Feather name="lock" color={colors.text} size={20} />
+          <TextInput
+            placeholder="password "
+            placeholderTextColor="#666666"
+            onChangeText={handelChangepassword}
+            value={password}
+            // keyboardType="number-pad"
+            autoCorrect={false}
+            style={[
+              styles.textInput,
+              {
+                color: colors.text,
+              },
+            ]}
+          />
+        </View>
+
         <View style={styles.action}>
           <Ionicons
             name="ios-clipboard-outline"
@@ -267,30 +285,28 @@ export default function EditProfile({ navigation }) {
             placeholder="About_Me"
             placeholderTextColor="##666666"
             style={styles.textInput}
-            // value={phoneNumber}
             autoCorrect={false}
-            // onChangeText={handelChangephoneNumber}
           />
         </View>
 
-
-  {/* <View style={styles.action}  >
-  <Icon name="map-marker-outline" color={colors.text} size={20} />
-        <Picker
-           placeholder="City"
-            placeholderTextColor="#666666"
-          style={styles.picker}
+        <View style={styles.action}>
+        <Icon
+            name="map-marker-outline"
+            color={colors.text}
+            size={20}
+          />
+          <TextInput
+            placeholder="Location "
+            placeholderTextColor="##666666"
+            style={styles.textInput}
+            autoCorrect={false}
+          />
+        </View>
         
-        >
-          <Picker.Item label={"Tunis"} value="Tunis" />
-          <Picker.Item label={"sfax"} value="sfax" />
-
-        </Picker>
-      </View> */}
-
 
         <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-          <Text style={styles.panelButtonTitle}>Update</Text>
+          <Text style={styles.panelButtonTitle}
+          onPress={handelChange}>Update</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
@@ -383,6 +399,5 @@ const styles = StyleSheet.create({
     height: 50,
     width: 150,
     borderRadius: 60,
-    
   },
 });

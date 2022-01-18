@@ -10,11 +10,12 @@ export default function companieProfileScreen({ navigation }) {
   var [profile, setProfile] = useState({});
 
   useEffect(async () => {
+    
     var URL = `${server.Ip}/company/profile${10}`;
     var prof = await axios.get(URL);
   
     setProfile(prof.data);
-    console.log(prof.data,);
+    console.log(prof.data,"i'm feathing data");
   });
 
   return (
@@ -62,7 +63,7 @@ export default function companieProfileScreen({ navigation }) {
             </TouchableOpacity> */}
           </View>
           <View>
-            <Text>label</Text>
+            <Text>label: {profile.label}</Text>
             <Text>LastName:</Text>
             <Text>Email:</Text>
           </View>

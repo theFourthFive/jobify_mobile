@@ -64,7 +64,7 @@ export default function RoutesMenuScreen({ navigation }) {
         <Button
           style={styles.button}
           title="Company: Profile"
-          onPress={() => navigation.navigate("Profilcompany")}
+          onPress={() => navigation.navigate("companyProfile")}
         />
         <Button
           style={styles.button}
