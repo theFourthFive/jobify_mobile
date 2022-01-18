@@ -16,6 +16,8 @@ import AboutUs from "../../components/AboutUs";
 import MapComp from "../../components/MapComp";
 import Onboarding from "../../componetOnboarding/Onboarding";
 import eventList from "../../components/companies/eventList"
+import History from "../../components/companies/CompaniesHistory/history";
+import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers"
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -135,7 +137,24 @@ const Router = () => {
           title: "eventList",
         }}
       />
+    <Stack.Screen
+        name="CHistory"
+        component={History}
+        options={{
+          headerShown: false,
+          title: "history",
+        }}
+      />
+         <Stack.Screen
+        name="EventWorker"
+        component={EventWorker}
+        options={{
+          headerShown: false,
+          title: "workers",
+        }}
+      />
     </Stack.Navigator>
+    
   );
 };
 export default Router;

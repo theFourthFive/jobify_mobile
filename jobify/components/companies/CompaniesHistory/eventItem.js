@@ -1,5 +1,5 @@
 import React,{useEffect} from "react";
-import server from "../ipConfig/serverIp"
+import server from "../../ipConfig/serverIp"
 import {
   Text,
   ScrollView,
@@ -7,7 +7,8 @@ import {
   Image,
   StyleSheet,
   Button,
-  AsyncStorage
+  AsyncStorage,
+  TouchableOpacity
 
 } from "react-native";
 import moment from "moment";
@@ -59,26 +60,31 @@ const styles = StyleSheet.create({
   cardContainer :{
     backgroundColor : "#E9E5E3",
     marginBottom : "5%",
-    borderRadius : 100
+    borderRadius : 100, 
+    width : "100%"
     
   }
 });
 
-const CardItem = (props) => {
+const EventItem = (props) => {
 useEffect(()=>{
-  console.log(props);
+
 })
 
 
-
+const Goto = (e)=>{
+  props.nav.navigate("EventWorker" , {data:props});
+}
   
   return (
     <View style={styles.cardContainer}>
+      <TouchableOpacity onPress={Goto}>
     <View style={styles.card_template}>
       <Image style={styles.card_image} source={{ uri: props.event.imageUri }} />
       <View>
         <Text style={styles.card_title}>
           {props.event.eventName} {"\n"}
+          
         </Text>
 
         <Text style={styles.price}>
@@ -101,16 +107,12 @@ useEffect(()=>{
 <Text style={styles.card_title}>
           {props.event.label} {"\n"}
         </Text>
-        <Button
-          title="Subscribe"
-          style={styles.submitButton}
-          // disabled={isLoading}
-          onPress={()=>props.sub(props.event.eventID)}
-        />
+      
       </View>
     </View>
+    </TouchableOpacity>
     </View>
   );
 };
 
-export default CardItem;
+export default EventItem;
