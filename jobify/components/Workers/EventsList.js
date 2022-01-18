@@ -68,17 +68,12 @@ const EventList = ({ navigation }) => {
       });
 
     Alert.alert(`Success`, "Subscription passed successfully", [
-      // {
-      //   text: "Cancel",
-      //   onPress: () => console.log("Cancel Pressed"),
-      // },
-      // { text: "Home", onPress: () => navigation.goBack() },
+
       {
         text: "Ok",
-        // onPress: () => navigation.push("EventList"),
+       
       },
     ]);
-    // alert("subscription passed successfully");
   };
 
   return (
