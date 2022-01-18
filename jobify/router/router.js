@@ -17,7 +17,7 @@ import MapComp from "../components/MapComp";
 import Onboarding from "../componetOnboarding/Onboarding";
 import companieProfileScreen from "../components/companies/companieProfileScreen";
 import EditProfile from "../components/companies/EditProfile.js";
-import v from "../components/companies/companiesHistory"
+
 console.log("AAAAAAAA", Onboarding);
 const Stack = createNativeStackNavigator();
 
@@ -162,22 +162,10 @@ const Router = () => {
           title: "About us",
         }}
       />
-            <Stack.Screen
-        name="SignupCompany"
-        component={SignupCompany}
-        options={{
-          headerShown: false,
-          title: "About us",
-        }}
-      />
-        <Stack.Screen
-        name="CompaniesHistory"
-        component={SignupCompany}
-        options={{
-          headerShown: false,
-          title: "About us",
-        }}
-      />
+      
+     
+
+
     </Stack.Navigator>
   );
 };

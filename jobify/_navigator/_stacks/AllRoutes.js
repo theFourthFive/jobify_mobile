@@ -15,7 +15,8 @@ import EventList from "../../components/Workers/EventsList";
 import AboutUs from "../../components/AboutUs";
 import MapComp from "../../components/MapComp";
 import Onboarding from "../../componetOnboarding/Onboarding";
-import CompaniesHistory from "../../components/companies/companiesHistory";
+import History from "../../components/companies/CompaniesHistory/history";
+import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers"
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -128,11 +129,19 @@ const Router = () => {
         }}
       />
     <Stack.Screen
-        name="History"
-        component={CompaniesHistory}
+        name="CHistory"
+        component={History}
         options={{
           headerShown: false,
           title: "history",
+        }}
+      />
+         <Stack.Screen
+        name="EventWorker"
+        component={EventWorker}
+        options={{
+          headerShown: false,
+          title: "workers",
         }}
       />
     </Stack.Navigator>
