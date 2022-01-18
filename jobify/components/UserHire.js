@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button,Image, StyleSheet, Text, TextInput, Alert , View,ScrollView,FlatList } from 'react-native';
+import { Button,Image, StyleSheet, Text, TextInput, Alert , View,ScrollView,FlatList,TouchableOpacity } from 'react-native';
 import { Rating, AirbnbRating } from 'react-native-ratings'
 import { useState, useEffect } from 'react';
 import server from "./ipConfig/serverIp.js";
@@ -18,6 +18,30 @@ const UserHire=(props)=> {
       console.log(err)
       })
     },[])
+
+    const hire=(e)=>{
+      const URL = `${server.Ip}/hire/one`
+      axios.post(URL,{from_day:e.date_time,
+        duration_days:e.duration,
+        dailyPayement:e.dailyPay,
+        validation:"pending",
+        createdAt:e.createdAt,
+        updatedAt:e.updatedAt,
+        companyCompanyId:38,
+        workerWorkerId:props.route.params.workerId,
+        eventEventID:e.eventID
+      }).then((res)=>{
+        console.log("invitation sent")
+      }).catch((err)=>{
+        console.log(err)
+      })
+      Alert.alert(
+        "sent",
+        "you picked" + " _ " + props.route.params.firstName + " " + props.route.params.LastName + " _ " + "for this event, He will recive your invitation ",
+        [{ text: "Okay", onPress: () => console.log("Okay Pressed") }],
+        { cancelable: false }
+      )
+    }
     return (
       <ScrollView>
       <View style={styles.users}  >
@@ -41,12 +65,12 @@ const UserHire=(props)=> {
         <View style={styles.wait}>
           {offers.filter(e=>e.companyCompanyId===38).map((e,i)=>{
             return (
-                <View key={i} style={styles.off}>
-                  <Image style={styles.image} source={{ uri: e.imageUri }}></Image>
+                <TouchableOpacity key={i} style={styles.off} onPress={()=>hire(e)}>
+                  <Image style={styles.image}  source={{ uri: e.imageUri }}></Image>
                   <Text style={styles.text}>Type : {e.eventName}</Text>
                   <Text style={styles.text}>Place : {e.location}</Text>
                   <Text style={styles.text}>Posted At : {moment(e.createdAt).fromNow()}</Text>
-                </View>
+                </TouchableOpacity>
             )
           })}
         </View>
@@ -87,12 +111,14 @@ const styles = StyleSheet.create({
         width: b100,
         height: 234,
         borderRadius:15,
+        borderWidth:5
       
       },
       image:{
         flex:1,
         width: 290,
         borderRadius:15,
+        
       },
       text:{
         color:'#00BFFF',

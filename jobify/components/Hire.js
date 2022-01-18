@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
-import { StyleSheet, Text, Alert, View, ScrollView,Image, Button } from "react-native";
+import { StyleSheet, Text, Alert, View, ScrollView,Image, Button,TouchableOpacity } from "react-native";
 import { Rating, AirbnbRating } from 'react-native-ratings'
 import server from "./ipConfig/serverIp.js";
 import axios from "axios";
@@ -32,7 +32,7 @@ const Hire = ({ navigation }) => {
             {users.map((u, i) => {
               return (
                 <ScrollView key={i}>
-                <View  style={styles.users}>
+                <TouchableOpacity onPress={()=>navigation.navigate("UserHire",u)}  style={styles.users}>
                   <View style={styles.user} onPress={()=>sethire(!hire)}>
                     <Image style={styles.img}  source={{ uri: u.imageUrl }}></Image>
                     <View style={styles.userr}>
@@ -58,8 +58,8 @@ const Hire = ({ navigation }) => {
                       type="custom"
                     />
                   </View>
-                </View>
-                  <Button title='Hire Me' onPress={()=>navigation.navigate("UserHire",u)} ></Button>
+                </TouchableOpacity>
+                  
               </ScrollView>
               );
             })}
