@@ -23,7 +23,7 @@ const WorkerEvents = () => {
         name="HomePage"
         component={HomePage}
         options={{
-          headerShown: true,
+          headerShown: false,
           title: "Home page",
           // headerLeft: () => <View />,
         }}
@@ -32,7 +32,7 @@ const WorkerEvents = () => {
         name="EventList"
         component={EventList}
         options={{
-          headerShown: true,
+          headerShown: false,
           title: "Events list",
         }}
       />
@@ -40,7 +40,7 @@ const WorkerEvents = () => {
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
-          headerShown: true,
+          headerShown: false,
           title: "My profile",
           // headerLeft: () => <View />,
         }}

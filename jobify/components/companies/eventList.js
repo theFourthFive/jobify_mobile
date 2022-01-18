@@ -1,35 +1,27 @@
 import React,{useState, useEffect} from 'react';
-import { View, Text, Image, ScrollView,StyleSheet, TextInput } from 'react-native';
+import { View, Text, Image, ScrollView,StyleSheet,AsyncStorage, TextInput } from 'react-native';
 import OneAddedEvent from "./OneAddedEvent";
 import axios from "axios";
 import server from "../ipConfig/serverIp";
 const eventList = () => {
-    var [events, setevents] = useState([]);
-
+    var [events, setEvents] = useState([]);
     useEffect(async () => {
-      await refresh();
+      var URL = `${server.Ip}/eventsComp/events/${37}`;
+      var eve = await axios.get(URL);
+      console.log(eve.data);
+      setEvents(eve.data);
     }, []);
-  
-    async function refresh() {
-      try {
-        const connectedComp = await AsyncStorage.getItem("session");
-        const URL = `${server.Ip}/eventsComp/${connectedComp}`;
-        const res = await axios.get(URL);
-        setevents(res.data[0]);
-      } catch (err) {
-        console.log(err);
-      }
-    }
+   
     var deleted = async (eventID) => {
-        const companyId = await AsyncStorage.getItem("session");
-        const deletedEvent = { companyId, eventID };
-        const URL = `${server.Ip}/events/deleted`;
+       
+   
+        const URL = `${server.Ip}/events/deleted/${37}`;
         axios
-          .post(URL, deletedEvent)
+          .post(URL, eventID)
           .then((res) => {
              events.pop();
             
-            setevents(events);
+             setEvents(events);
             console.log("events.eventID", events.eventID);
           })
           .catch((err) => {
@@ -42,12 +34,12 @@ const eventList = () => {
     
     return (
       <View style={styles.container}>
-        <View>
+        <View >
           <Text style={styles.header}> you have posted {events.length} event </Text>
         </View>
         <ScrollView style={styles.scroll}>
           {events.map((ele, i) => (
-            <OneAddedEvent key={i} event={ele} reff={refresh} del ={deleted} />
+            <OneAddedEvent key={i} event={ele}  del ={deleted} />
           ))}
         </ScrollView>
       </View>

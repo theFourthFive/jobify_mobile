@@ -292,7 +292,7 @@ export default function Login({ navigation }) {
                 <TextInput 
                     placeholder="Your Password"
                     placeholderTextColor="#666666"
-                  
+                    secureTextEntry={true}
                     style={[styles.textInput, {
                         color: colors.gray
                     }]}
