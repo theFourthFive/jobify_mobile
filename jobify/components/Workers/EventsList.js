@@ -12,22 +12,7 @@ import {
 import CardItem from "./CardItem";
 import axios from "axios";
 import server from "../ipConfig/serverIp";
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 30,
-    alignItems: "center",
-    width: "100%",
-    display: "flex",
-  },
-  scroll: {
-    width: "100%",
-  },
-  header: {
-    fontSize: 25,
-    fontWeight: "bold",
-  },
-});
+import colors from '../../assets/colors/colors'
 
 const EventList = ({ navigation }) => {
   var [events, setevents] = useState([]);
@@ -68,10 +53,8 @@ const EventList = ({ navigation }) => {
       });
 
     Alert.alert(`Success`, "Subscription passed successfully", [
-
       {
         text: "Ok",
-       
       },
     ]);
   };
@@ -89,5 +72,20 @@ const EventList = ({ navigation }) => {
     </View>
   );
 };
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 30,
+    alignItems: "center",
+    width: "100%",
+    display: "flex",
+  },
+  scroll: {
+    width: "100%",
+  },
+  header: {
+    fontSize: 25,
+    fontWeight: "bold",
+  },
+});
 
 export default EventList;

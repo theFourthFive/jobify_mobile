@@ -21,7 +21,7 @@ const WorkerProfile = () => {
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
-          headerShown: true,
+          headerShown: false,
           title: "My profile",
           // headerLeft: () => <View />,
         }}
