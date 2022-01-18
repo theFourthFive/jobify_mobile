@@ -80,10 +80,11 @@ export default function RoutesMenuScreen({ navigation }) {
           title="AboutUs"
           onPress={() => navigation.navigate("AboutUs")}
         />
-           <Button
+        <Button
           title="CompaniesHistory"
-          onPress={() => navigation.navigate("CompaniesHistory")}
+          onPress={() => navigation.navigate("CHistory")}
         />
+     
       </View>
     </>
   );
