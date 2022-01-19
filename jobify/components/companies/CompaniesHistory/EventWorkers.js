@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect , useState} from "react";
 import server from "../../ipConfig/serverIp"
 import {
   Text,
@@ -7,7 +7,8 @@ import {
   Image,
   StyleSheet,
   Button,
-  AsyncStorage
+  AsyncStorage,
+  TouchableOpacity
 
 } from "react-native";
 import moment from "moment";
@@ -18,15 +19,15 @@ const styles = StyleSheet.create({
   card_template: {
     flex: 1,
     width: "100%",
-    height: "80%",
+    height: "50%",
     marginBottom : 480,
     marginTop: "30%",
 
   },
   card_image: {
-    width: "100%",
-    height: "60%",
-    borderRadius: 30,
+    width: "40%",
+    height: "30%",
+    borderRadius: 20,
  
   },
   card_title: {
@@ -48,8 +49,9 @@ const styles = StyleSheet.create({
     padding: "1%",
   },
   campany_image: {
-    height: 150,
-    width: 150,
+    
+    height: "44%",
+    width:"50%",
     borderRadius: 100,
   },
   campany: {
@@ -59,26 +61,74 @@ const styles = StyleSheet.create({
   cardContainer :{
     backgroundColor : "#E9E5E3",
     marginBottom : "5%",
-    borderRadius : 100, 
-    width : "100%"
+    borderRadius : 10, 
+    width : "100%",
+    height : "35%"
     
   }
 });
 
-const EventWorkers = (props) => {
-useEffect(()=>{
+const EventWorkers = ({route , navigation}) => {
+
+var [feed , setFeed]= useState({})
+var [workers , setWorkers] = useState([])
+
+useEffect(async ()=>{ 
+  try{
+       const data = route.params.data
+       setFeed(data) 
+       const workers = await axios.get(`${server.Ip}/companyevetns/workers/${data.eventID}`)
+       setWorkers(workers.data)
   
-})
+  }
+  catch(err){
+    console.log(err);
+  }
+},[])
 
 
 
-  
   return (
     <View style={styles.cardContainer}>
-     <Text>HAAHAHA</Text>
+
+
+
+ 
+    <View>
+      <Text style={styles.card_title}>
+        {feed.eventName} 
+        
+      </Text>
+      <Image
+        style={styles.card_image}
+        source={{ uri: feed.imageUri }}
+      />
+
+ 
+      <Text style={styles.location}>
+        location {feed.location}
+        
+      </Text>
+      <Text style={styles.time}>
+        Posted at : {moment(feed.createdAt).fromNow()}
+   
+      </Text>
+
+      <Image
+        style={styles.campany_image}
+        source={{ uri: feed.imageUrl }}
+      />
+
+<Text style={styles.card_title}>
+        {feed.label} {"\n"}
+      </Text>
+    
     </View>
+
+ <Text>{workers.data[0][0].firstName} </Text>
+
+  </View>
   );
 };
 
 export default EventWorkers;
-
