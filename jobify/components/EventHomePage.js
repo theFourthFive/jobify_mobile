@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button,Image, StyleSheet, Text, TextInput, View,ScrollView,FlatList } from 'react-native';
 import moment from "moment";
-
+import colors from '../assets/colors/colors';
 const EventHomePage=(props)=> {
     return (
         <View style={styles.off}>
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
         borderRadius:15,
       },
       text:{
-        color:'#00BFFF',
-        
+        color:colors.blueDark,
+        fontWeight: 'bold',
       }
       
 });
