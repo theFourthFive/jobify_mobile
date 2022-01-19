@@ -73,7 +73,7 @@ useEffect(()=>{
 
 
 const Goto = (e)=>{
-  props.nav.navigate("EventWorker" , {data:props});
+  props.nav.navigate("EventWorker" , {data:props.event});
 }
   
   return (
