@@ -57,7 +57,7 @@ const Onboarding = (props) => {
       //   <Text style={styles.doneButtonText}>Done</Text>
       // </LinearGradient>
       <View style={styles.doneButtonWrapper}>
-        <Text style={styles.doneButtonText}>Done</Text>
+        <Text style={styles.doneButtonText}>Let's Go</Text>
       </View>
     );
   };
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    color: colors.black,
+    color: colors.blue,
     textAlign: "center",
     // fontFamily: 'OpenSans-Bold',
     marginHorizontal: 60,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   dotStyle: {
-    backgroundColor: colors.blueFaded,
+    backgroundColor: colors.blueDark,
   },
   activeDotStyle: {
     backgroundColor: colors.blue,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     // fontFamily: 'OpenSans-SemiBold',
     textAlign: "center",
-    color: colors.black,
+    color: colors.blue,
   },
 });
 

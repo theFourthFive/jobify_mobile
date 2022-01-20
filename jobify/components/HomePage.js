@@ -1,13 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { useState, useEffect } from 'react';
-import { Button, StyleSheet, Text, TextInput, View,ScrollView,FlatList } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  ImageBackground,
+  FlatList,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import server from "./ipConfig/serverIp.js"
 import axios from 'axios';
-
+import colors from '../assets/colors/colors'
 import EventHomePage from './EventHomePage.js';
 import UsersHomePage from './UsersHomePage.js';
-
-const HomePage=()=> {
+const {width} = Dimensions.get('screen');
+const HomeScreen = ({navigation}) => {
   var [offers , setoffers] = useState([])
   var [users,setusers] = useState([])
  useEffect( () =>{
@@ -27,31 +41,47 @@ const HomePage=()=> {
   })
  
 },[])
-
-
-
   return (
-    <View>
-      <ScrollView  vertical={true} >
-        <View style={styles.name} >
-            <Text style={styles.namein}>Jobify</Text>
+    <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
+      <StatusBar translucent={false} backgroundColor={colors.blue} />
+      <View style={styles.header}>
+        <Icon name="sort" size={28} color={colors.white} />
+        {/* <Icon name="notifications-none" size={28} color={colors.white} /> */}
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            backgroundColor: colors.blue,
+            height: 120,
+            paddingHorizontal: 20,
+           
+          }}>
+          <View style={{flex: 1}}>
+            <Text style={styles.headerTitle}>Jobify</Text>
+            <Text style={styles.headerTitle}>find a job Here</Text>
+            <View style={styles.inputContainer}>
+              <Icon name="search" size={28} color={colors.blueDark}/>
+              <TextInput
+                placeholder="Search place"
+                style={{color: colors.grey}}
+              />
+            </View>
+          </View>
         </View>
-        <View style={styles.desc}>
-            <Text style={styles.descdesc}>Welcome to our website!</Text>
-        </View>
-        <View style={styles.search} >
-            <TextInput style={styles.searchtext}  placeholder='search for a job ...' ></TextInput>
-            <View style={styles.icon} ></View>
-        </View>
-        <Text style={styles.offername}>Some Of Offers</Text>
-        <View style={styles.container} >
+       
+       
+        <Text style={styles.sectionTitle}>Closest events</Text>
+      
+        <View  >
+          
            <ScrollView  horizontal={true}>
+          
             <View style={styles.alloff}>
               {offers.map((e,i)=><EventHomePage key={i} offer={e}/>)}
             </View>
           </ScrollView>
         </View>
-        <Text style={styles.usersrate}>Some Of Users</Text>
+        <Text style={styles.sectionTitle}>Recommended Users</Text>
         <View style={styles.container1}>
           
             <View style={styles.alloff1}>
@@ -59,16 +89,73 @@ const HomePage=()=> {
             </View>
         </View>
           </ScrollView>
-      </View>
-    
+      
+      
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    marginTop:310,
-    alignItems: "center"
+  header: {
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: colors.blue,
+  },
+  headerTitle: {
+    color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 23,
+  },
+  inputContainer: {
+    height: 60,
+    width: '100%',
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    position: 'absolute',
+    top: 90,
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    elevation: 12,
+  },
+  categoryContainer: {
+    marginTop: 60,
+    marginHorizontal: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  iconContainer: {
+    height: 60,
+    width: 60,
+    backgroundColor: colors.secondary,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  sectionTitle: {
+    marginHorizontal: 20,
+    marginTop:40,
+    fontWeight: 'bold',
+    fontSize: 20,
+    color:colors.blue,
+  },
+  cardImage: {
+    height: 220,
+    width: width / 2,
+    marginRight: 20,
+    padding: 10,
+    overflow: 'hidden',
+    borderRadius: 10,
+  },
+  rmCardImage: {
+    width: width - 40,
+    height: 200,
+    marginRight: 20,
+    borderRadius: 10,
+    overflow: 'hidden',
+    padding: 10,
   },
   container1: {
     flex:1,
@@ -153,7 +240,7 @@ const styles = StyleSheet.create({
   alloff:{
     flex:1,
     flexDirection:"row",
-    marginTop: 10,
+    marginTop: 20,
     marginLeft:20
   },
   usersrate:{
@@ -161,7 +248,9 @@ const styles = StyleSheet.create({
     fontSize:14,
     lineHeight:16,
     left:25,
-    marginTop:20
+    marginTop:20,
+    color:colors.blue,
+    fontWeight: 'bold',
   },
   users:{
     flex:1,
@@ -179,4 +268,4 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
 });
-export default HomePage
+export default HomeScreen;

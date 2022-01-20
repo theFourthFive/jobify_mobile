@@ -64,7 +64,7 @@ export default function RoutesMenuScreen({ navigation }) {
         <Button
           style={styles.button}
           title="Company: Profile"
-          onPress={() => navigation.navigate("Profilcompany")}
+          onPress={() => navigation.navigate("companyProfile")}
         />
         <Button
           style={styles.button}
@@ -75,6 +75,11 @@ export default function RoutesMenuScreen({ navigation }) {
           style={styles.button}
           title="AddEvent"
           onPress={() => navigation.navigate("AddEvent")}
+        />
+        <Button
+          style={styles.button}
+          title="eventList"
+          onPress={() => navigation.navigate("eventList")}
         />
         <Button
           title="AboutUs"

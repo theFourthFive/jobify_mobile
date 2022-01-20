@@ -22,6 +22,12 @@ import OK from "../../components/Ok.js";
 
 import History from "../../components/companies/CompaniesHistory/history.js";
 import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers.js";
+import companieProfileScreen from "../../components/companies/companieProfileScreen.js";
+import EditProfile from "../../components/companies/EditProfile";
+
+import eventList from "../../components/companies/eventList"
+
+
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -89,6 +95,14 @@ const Router = () => {
         }}
       />
       <Stack.Screen
+        name="companyEditProfile"
+        component={EditProfile}
+        options={{
+          headerShown: false,
+          title: "Edit your Profile",
+        }}
+      />
+      <Stack.Screen
         name="Profil"
         component={ProfilScreen}
         options={{
@@ -96,6 +110,17 @@ const Router = () => {
           title: "My profile",
         }}
       />
+
+      <Stack.Screen
+        name="companyProfile"
+        component={companieProfileScreen}
+        options={{
+          headerShown: false,
+          title: "My profile",
+          headerLeft: () => <View />,
+        }}
+      />
+
       <Stack.Screen
         name="AddEvent"
         component={AddEvent}
@@ -133,12 +158,36 @@ const Router = () => {
         component={Onboarding}
         options={{ title: "Onboarding" }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="SignupCompany"
         component={SignupCompany}
         options={{
           headerShown: false,
           title: "About us",
+        }}
+      /> */}
+      <Stack.Screen
+        name="eventList"
+        component={eventList}
+        options={{
+          headerShown: false,
+          title: "eventList",
+        }}
+      />
+    <Stack.Screen
+        name="CHistory"
+        component={History}
+        options={{
+          headerShown: false,
+          title: "history",
+        }}
+      />
+         <Stack.Screen
+        name="EventWorker"
+        component={EventWorker}
+        options={{
+          headerShown: false,
+          title: "workers",
         }}
       />
       <Stack.Screen
@@ -163,22 +212,8 @@ const Router = () => {
           headerShown: false,
           title: "HomePageCompany",}}
       />
-      <Stack.Screen
-        name="CHistory"
-        component={History}
-        options={{
-          headerShown: false,
-          title: "history",
-        }}
-      />
-         <Stack.Screen
-        name="EventWorker"
-        component={EventWorker}
-        options={{
-          headerShown: false,
-          title: "workers",
-        }}
-      />
+      
+        
     </Stack.Navigator>
     
   );

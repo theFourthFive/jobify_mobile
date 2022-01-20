@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import server from "../ipConfig/serverIp";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Feather from "react-native-vector-icons/Feather";
+import Animated from "react-native-reanimated";
 import {
+  TextInput,
   Text,
   StyleSheet,
   Image,
@@ -13,6 +16,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
+import colors from "../../assets/colors/colors";
 export default function ProfilScreen({ navigation }) {
   var [profile, setProfile] = useState({});
   useEffect(async () => {
@@ -21,16 +25,12 @@ export default function ProfilScreen({ navigation }) {
     console.log(prof.data);
     setProfile(prof.data);
   }, []);
-  // const getInfo = async (id) => {
-  //   var URL = `${server.Ip}/workers/profile/${id}`;
-  //   const res = await axios.get(URL);
-  //   setProfile(res.data);
-  // };
+
+
+
 
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{ backgroundColor: "#fff" }}>
-        <View>
           <View style={styles.Icon}>
             <MaterialCommunityIcons.Button
               name="account-edit"
@@ -38,13 +38,33 @@ export default function ProfilScreen({ navigation }) {
               onPress={() => navigation.navigate("EditProfile")}
             />
           </View>
+   
+<View style={styles.header}>
 
+        </View>
+      <Animated.View
+        animation="fadeInUpBig"
+        style={[
+          styles.footer,
+          {
+            backgroundColor: colors.white,
+          },
+        ]}
+      >
+          
+        <View>
           <ImageBackground
             source={{
               uri: profile.imageUrl,
             }}
-            style={{ height: 100, width: 100, marginLeft: 25 }}
-            imageStyle={{ borderRadius: 15 }}
+            style={{
+              height: 140,
+              width: 140,
+              marginLeft: 90,
+              marginTop: -100,
+              alignItems: "center",
+            }}
+            imageStyle={{ borderRadius: 100 }}
           >
             <View
               style={{
@@ -54,40 +74,103 @@ export default function ProfilScreen({ navigation }) {
               }}
             ></View>
           </ImageBackground>
+      
 
-          <Text style={styles.formHeading}></Text>
+          <Text style={styles.formHeading}>
+          
+            {profile.firstName} {profile.LastName}
+          </Text>
 
-          <View style={styles.userBtnWrapper}>
-            <TouchableOpacity style={styles.userbtn}>
-              <Text style={styles.userbtntxt}>follow</Text>
-            </TouchableOpacity>
-            {/* <TouchableOpacity
-              onPress={() => getInfo(10)}
-              style={styles.userbtn}
-            >
-              <Text style={styles.userbtntxt}>Edit</Text>
-            </TouchableOpacity> */}
-          </View>
           <View>
-            <Text>FirstName:       {profile.firstName}</Text>
-            <Text>LastName:        {profile.LastName}</Text>
-            <Text>Email:           {profile.Email}</Text>
-            <Text>PhoneNumber:     {profile.phoneNumber}</Text>
-            {/* <Text>updatedAt:           {profile.updatedAt}</Text> */}
+            {/* <View style={styles.action}>
+              <FontAwesome name="user-o" size={20} />
+              <Text>FirstName: {profile.firstName}</Text>
+            </View>
 
+            <View style={styles.action}>
+              <FontAwesome name="user-o" size={20} />
+              <Text>LastName: {profile.LastName}</Text>
+            </View> */}
+
+            <View style={styles.action}>
+              <FontAwesome name="envelope-o" size={20} />
+              <Text
+                style={[
+                  styles.text_footer,
+                  {
+                    color: colors.blue,
+                  },
+                ]}
+              >
+                Email: {profile.Email}
+              </Text>
+            </View>
+
+            <View style={styles.action}>
+              <Feather name="phone" size={20} />
+                <Text
+                style={[
+                  styles.text_footer,
+                  {
+                    color: colors.blue,
+                  },
+                ]}
+              >PhoneNumber: {profile.phoneNumber}</Text>
+            </View>
+
+            <View style={styles.action}>
+                <Text
+                style={[
+                  styles.text_footer,
+                  {
+                    color: colors.blue,
+                  },
+                ]}
+              >updatedAt: {profile.updatedAt}</Text>
+            </View>
           </View>
         </View>
-      </SafeAreaView>
+      </Animated.View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  header: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingHorizontal: 20,
+    paddingBottom: 50,
+  
+},
+  text_footer: {
+    color: '#05375a',
+    fontSize: 18
+},
+  footer: {
+    flex: 3,
+    backgroundColor: "#252526",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    paddingBottom: 50,
+  },
+
+  action: {
+    flexDirection: "row",
+    marginTop: 10,
+    marginBottom: 10,
+    borderBottomWidth: 10,
+    borderBottomColor: "#f2f2f2",
+    paddingBottom: 5,
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: colors.gray,
+    // backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   Img: {
     width: 100,
@@ -96,20 +179,20 @@ const styles = StyleSheet.create({
     marginLeft: 285,
   },
   Icon: {
-    backgroundColor: "#fff",
+    // marginTop:300,
+    marginLeft: 300,
     height: 50,
     width: 50,
-    color: "#000",
+    color: "#252526",
   },
 
   formHeading: {
     color: "#252526",
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 105,
-
+    marginLeft: 100,
     color: "#1C0D33",
   },
   aboutuser: {
@@ -119,12 +202,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 10,
   },
-  userBtnWrapper: {
-    flexDirection: "row",
-    justifyContent: "center",
-    width: "100%",
-    marginBottom: 10,
-  },
+
   userbtn: {
     borderColor: "#2e64e5",
     borderWidth: 2,

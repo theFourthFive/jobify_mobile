@@ -12,9 +12,10 @@ import {
   Platform,
   TextInput,
   Image,
+  SafeAreaView,
 } from "react-native";
 export default function AddEvent() {
-  const [companyId, setCompanyId] = useState("");
+  const [companyId, setCompanyId] = useState("37");
   const [eventName, setEventName] = useState("");
   const [location, setLocation] = useState("");
   const [date_time, setDate_time] = useState("");
@@ -25,37 +26,10 @@ export default function AddEvent() {
   const [nbrChef, setNbrChef] = useState("");
   const [nbrCleaningWorker, setNbrCleaningWorker] = useState("");
   const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState("date");
-  const [show, setShow] = useState(false);
-  const [text, setText] = useState("Empty");
-  const [textTime, setTextTime] = useState("Empty");
+  
 
   /* handelChange functions here*/
-  const onChange = (eventt, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.Version === "android");
-    setDate(currentDate);
-    let tempDate = new Date(currentDate);
-    let fDate =
-      tempDate.getDate() +
-      "/" +
-      (tempDate.getMonth() + 1) +
-      "/" +
-      tempDate.getFullYear();
-    let fTime =
-      
-      tempDate.getHours() +
-      " h : " +
-      tempDate.getMinutes() +
-      " m ";
-    setText(fDate);
-    setTextTime(fTime);
-    console.log(fDate + "(" + fTime + ")");
-  };
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
+  
   const onChangeeventNameHandler = (eventName) => {
     setEventName(eventName);
     console.log(eventName);
@@ -85,10 +59,11 @@ export default function AddEvent() {
     setNbrCleaningWorker(nbrCleaningWorker);
   };
   const onSubmitFormHandler = async (event) => {
-    let url = `${server.Ip}/addEvent`
+  ;
+    
     axios
-      .post(url, {
-      
+      .post(`${server.Ip}/addEvent/${37}`, {
+        companyId,
         eventName,
         location,
         date_time,
@@ -100,22 +75,44 @@ export default function AddEvent() {
         nbrCleaningWorker,
       })
       .then(function (response) {
-        console.log("response",response);
+        
+        console.log(response);
       })
       .catch(function (error) {
-        console.log("===>");
+       
+         console.log('work plz')
         console.log(error);
       });
   };
   return (
-    // <ScrollView contentContainerStyle={styles.container}>
+    
+    <ScrollView contentContainerStyle={styles.container}>
     <View Style={styles.container}>
+        
       <View style={styles.wrapper}>
         {/* {isLoading ? (
             <Text style={styles.formHeading}> Creating resource </Text>
           ) : ( */}
         <Text style={styles.formHeading}>Create new Event</Text>
       </View>
+    {/**<View class="input-group col-lg-6 mb-4">
+                        <View class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </View>
+                        <input id="firstName" type="text" name="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
+                    </View>
+
+                    <!-- Last Name -->
+                    <View class="input-group col-lg-6 mb-4">
+                        <View class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </View>
+                        <input id="lastName" type="text" name="lastname" placeholder="Last Name" class="form-control bg-white border-left-0 border-md">
+                    </View> */}
       <View style={styles.wrapper}>
         <TextInput
           placeholder="Event Name"
@@ -219,9 +216,12 @@ export default function AddEvent() {
           style={styles.submitButton}
           // disabled={isLoading}
         />
+        
       </View>
+      
     </View>
-    // </ScrollView>
+   </ScrollView>
+   
   );
 }
 
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     
   },
   addWrapper: {
-    width: 250,
+    width: 150,
     height: 60,
     justifyContent: "center",
     alignItems: "center",

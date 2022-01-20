@@ -25,7 +25,7 @@ import WorkerProfile from "../_stacks/WorkerProfile";
 import WorkerHome from "../_stacks/HomeWorker";
 import WorkerEvents from "../_stacks/WorkerEvents";
 import Notification from "../_stacks/Notifications";
-
+import colors from "../../assets/colors/colors";
 const Worker = () => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
   return (
@@ -47,7 +47,7 @@ const Worker = () => {
               <FontAwesome5
                 name={"home"}
                 size={20}
-                color={focused ? "blue" : "gray"}
+                color={focused ? colors.blue : colors.gray}
               />
             </View>
           ),
@@ -74,7 +74,7 @@ const Worker = () => {
               <FontAwesome5
                 name="search"
                 size={20}
-                color={focused ? "blue" : "gray"}
+                color={focused ? colors.blue : colors.gray}
               ></FontAwesome5>
             </View>
           ),
@@ -121,7 +121,7 @@ const Worker = () => {
               <FontAwesome5
                 name="bell"
                 size={20}
-                color={focused ? "blue" : "gray"}
+                color={focused ? colors.blue : colors.gray}
               />
             </View>
           ),
@@ -147,7 +147,7 @@ const Worker = () => {
               <FontAwesome5
                 name="user-alt"
                 size={20}
-                color={focused ? "blue" : "gray"}
+                color={focused ? colors.blue : colors.gray}
               />
             </View>
           ),
@@ -171,7 +171,7 @@ const Worker = () => {
               <Ionicons
                 name="settings"
                 size={24}
-                color={focused ? "blue" : "gray"}
+                color={focused ? colors.blue : colors.gray}
               />
             </View>
           ),
@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    
   },
   bottomTab: {
     backgroundColor: "white",
@@ -211,6 +212,7 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 10,
       height: 10,
+      
     },
     paddingHorizontal: 20,
   },
