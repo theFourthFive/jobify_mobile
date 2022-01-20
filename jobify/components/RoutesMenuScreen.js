@@ -97,12 +97,16 @@ export default function RoutesMenuScreen({ navigation }) {
           title="CompaniesHistory"
           onPress={() => navigation.navigate("CHistory")}
         />
+        <Button
+          title="EventListForCompany"
+          onPress={() => navigation.navigate("EventListForCompany")}
+        />
      
       </View>
     </>
   );
 }
-
+//EventListForCompany
 // prettier ignore
 const styles = StyleSheet.create({
   container: {

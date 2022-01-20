@@ -12,8 +12,9 @@ import {
 
 import axios from "axios";
 import server from "../../ipConfig/serverIp";
-import EventItem from "./eventItem"
-function History({navigation}){  
+import EventItemForCompany from "./eventItemForCompany"
+
+function EventsListForCompany({navigation}){  
  let [events , setevents] = useState([])
  useEffect(async()=>{
    const URL = `${server.Ip}/companyevetns/events/${37}`
@@ -27,7 +28,7 @@ function History({navigation}){
       </View>
       <ScrollView style={styles.scroll}>
         {events.map((ele, i) => (
-          <EventItem key={i} event={ele} nav = {navigation} />
+          <EventItemForCompany key={i} event={ele} nav = {navigation} />
         ))}
       </ScrollView>
     </View>
@@ -53,4 +54,4 @@ function History({navigation}){
   });
 
 
-  export default History
+  export default EventsListForCompany
