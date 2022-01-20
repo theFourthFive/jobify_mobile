@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    
   },
   bottomTab: {
     backgroundColor: "white",
@@ -211,6 +212,7 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 10,
       height: 10,
+      
     },
     paddingHorizontal: 20,
   },

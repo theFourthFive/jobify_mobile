@@ -78,6 +78,7 @@ const EventList = ({ navigation }) => {
             backgroundColor: colors.blue,
             height: 120,
             paddingHorizontal: 20,
+           
           }}
         >
           <View style={{ flex: 1 }}>

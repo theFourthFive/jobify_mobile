@@ -17,7 +17,7 @@ import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
-
+import ourcolors from '../../assets/colors/colors'
 export default function EditProfileScreen({ navigation }) {
   const [WorkerId, setWorkerId] = useState("");
   const [firstName, setfirstName] = useState("");
@@ -191,13 +191,13 @@ export default function EditProfileScreen({ navigation }) {
                   <Icon
                     name="camera"
                     size={35}
-                    color="#fff"
+                    color={ourcolors.blue}
                     style={{
                       opacity: 0.7,
                       alignItems: "center",
                       justifyContent: "center",
                       borderWidth: 1,
-                      borderColor: "#fff",
+                      borderColor: ourcolors.blue,
                       borderRadius: 10,
                     }}
                   />
@@ -205,13 +205,13 @@ export default function EditProfileScreen({ navigation }) {
               </ImageBackground>
             </View>
           </TouchableOpacity>
-          <Text style={{ marginTop: 10, fontSize: 18, fontWeight: "bold" }}>
+          <Text style={{ marginTop: 10, fontSize: 18, fontWeight: "bold",color:ourcolors.blue }}>
             Edit Image
           </Text>
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <FontAwesome name="user-o" color={ourcolors.blue} size={20} />
           <TextInput
             placeholder="First Name"
             placeholderTextColor="#666666"

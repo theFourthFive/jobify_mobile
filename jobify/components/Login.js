@@ -156,6 +156,7 @@ export default function Login({ navigation }) {
         alert("Login ERROR");
       }
     } catch (error) {
+      
       Alert.alert("Network Error", "Please check your network connection", [
         {
           text: "",
