@@ -21,6 +21,8 @@ import EditProfile from "../../components/companies/EditProfile";
 import eventList from "../../components/companies/eventList"
 import History from "../../components/companies/CompaniesHistory/history";
 import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers"
+import EventListForCompany from "../../components/companies/checksubscriptions/eventListForCompany"
+import EventWorkerForComapny from "../../components/companies/checksubscriptions/EventWorkersForCompany"
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -167,7 +169,7 @@ const Router = () => {
           title: "history",
         }}
       />
-         <Stack.Screen
+       <Stack.Screen
         name="EventWorker"
         component={EventWorker}
         options={{
@@ -175,8 +177,26 @@ const Router = () => {
           title: "workers",
         }}
       />
+
+
+      <Stack.Screen
+        name="EventListForCompany"
+        component={EventListForCompany}
+        options={{
+          headerShown: false,
+          title: "Events List",
+        }}
+      />
+       <Stack.Screen
+        name="EventWorkerForComapny"
+        component={EventWorkerForComapny}
+        options={{
+          headerShown: false,
+          title: "Events List",
+        }}
+      />
     </Stack.Navigator>
-    
+
   );
 };
 export default Router;
