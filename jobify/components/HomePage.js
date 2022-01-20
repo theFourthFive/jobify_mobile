@@ -54,10 +54,11 @@ const HomeScreen = ({navigation}) => {
             backgroundColor: colors.blue,
             height: 120,
             paddingHorizontal: 20,
+           
           }}>
           <View style={{flex: 1}}>
             <Text style={styles.headerTitle}>Jobify</Text>
-            <Text style={styles.headerTitle}>find your dream job</Text>
+            <Text style={styles.headerTitle}>find a job Here</Text>
             <View style={styles.inputContainer}>
               <Icon name="search" size={28} color={colors.blueDark}/>
               <TextInput
