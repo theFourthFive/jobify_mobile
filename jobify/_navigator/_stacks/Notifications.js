@@ -24,7 +24,7 @@ const Notifications = () => {
         name="Workerhistory"
         component={Workerhistory}
         options={{
-          headerShown: true,
+          headerShown: false,
           title: "Home page",
           headerLeft: () => <View />,
         }}

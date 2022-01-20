@@ -1,11 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 // prettier-ignore
-import { Button, StyleSheet,ScrollView, Text,Image, View,AsyncStorage, TouchableWithoutFeedback, Alert} from 'react-native';
+import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage, TouchableWithoutFeedback, Alert} from 'react-native';
 import { Rating, AirbnbRating } from "react-native-ratings";
 import moment from "moment";
 import server from "../ipConfig/serverIp";
 import axios from "axios";
+import colors from "../../assets/colors/colors";
+import Icon from "react-native-vector-icons/MaterialIcons";
 const b10 = "10%";
 const b3 = "3%";
 const b20 = "20%";
@@ -19,7 +21,7 @@ const b75 = "75%";
 const b80 = "80%";
 const b90 = "90%";
 const b100 = "100%";
-
+const { width } = Dimensions.get("screen");
 const Workerhistory = ({ navigation }) => {
   var [events, setevents] = useState([]);
   var [user, setuser] = useState([]);
@@ -79,17 +81,36 @@ const Workerhistory = ({ navigation }) => {
     }
   };
   return (
-    <View style={styles.container}>
-      <View style={styles.user}>
-        <View style={styles.userrrr}>
-          <Image style={styles.img} source={{ uri: user.imageUrl }}></Image>
-          <View style={styles.userr}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
+      <StatusBar translucent={false} backgroundColor={colors.blue} />
+      <View style={style.header}>
+        <Icon name="sort" size={28} color={colors.white} />
+        {/* <Icon name="notifications-none" size={28} color={colors.white} /> */}
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            backgroundColor: colors.blue,
+            height: 120,
+            paddingHorizontal: 20,
+          }}
+        >
+          <View style={{ flex: 1 }}>
+            <Text style={style.headerTitle}>Explore all</Text>
+            <Text style={style.headerTitle}>of our Events</Text>
+          </View>
+        </View>
+    <View style={style.container}>
+      <View style={style.user}>
+        <View style={style.userrrr}>
+          <Image style={style.img} source={{ uri: user.imageUrl }}></Image>
+          <View style={style.userr}>
             <Text>{user.firstName}</Text>
             <Text>{user.LastName}</Text>
           </View>
           <Text>{user.avgRating}/5</Text>
           <AirbnbRating
-            style={styles.star}
+            style={style.star}
             count={1}
             size={30}
             showRating={false}
@@ -100,27 +121,27 @@ const Workerhistory = ({ navigation }) => {
           />
         </View>
       </View>
-      <ScrollView style={styles.userhis} vertical={true}>
+      <ScrollView style={style.userhis} vertical={true}>
         {events.map((ele, i) => (
-          <View style={styles.userhiss} key={i}>
-            <View style={styles.alloff1}>
-              <Image style={styles.imgg} source={{ uri: ele.imageUri }}></Image>
-              <View style={styles.userrhis}>
+          <View style={style.userhiss} key={i}>
+            <View style={style.alloff1}>
+              <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image>
+              <View style={style.userrhis}>
                 <Text>name:{ele.eventName}</Text>
                 <Text>FROM:{moment(ele.createdAt).fromNow()}</Text>
                 <Text>location:{ele.location}</Text>
               </View>
-              <View style={styles.userrhis}>
+              <View style={style.userrhis}>
                 <Text> {ele.label}</Text>
                 <Image
-                  style={styles.imgggg}
+                  style={style.imgggg}
                   source={{ uri: ele.imageUrl }}
                 ></Image>
                 <TouchableWithoutFeedback
                   onPress={() => unsubscribe(ele.eventID)}
                 >
                   <Image
-                    style={styles.imggg}
+                    style={style.imggg}
                     source={{
                       uri: "https://pngset.com/images/cancel-icon-first-aid-symbol-text-logo-transparent-png-1419157.png",
                     }}
@@ -128,14 +149,16 @@ const Workerhistory = ({ navigation }) => {
                 </TouchableWithoutFeedback>
               </View>
             </View>
-            <Text style={styles.line}>__________________________________</Text>
+            <Text style={style.line}>__________________________________</Text>
           </View>
         ))}
       </ScrollView>
     </View>
+    </ScrollView>
+    </SafeAreaView>
   );
 };
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   line: {
     alignSelf: "center",
     marginBottom: 30,
@@ -143,7 +166,7 @@ const styles = StyleSheet.create({
   user: {
     height: b25,
     width: b100,
-    backgroundColor: "#E7E7E7",
+    backgroundColor: colors.white,
     // alignItems: 'center',
     // justifyContent: 'center',
   },
@@ -151,7 +174,7 @@ const styles = StyleSheet.create({
     height: b25,
     width: b100,
     marginBottom: 50,
-    backgroundColor: "#e1f5fc",
+    backgroundColor: colors.gray,
   },
   userhiss: {},
   container: {
@@ -172,12 +195,13 @@ const styles = StyleSheet.create({
   },
   img: {
     width: b40,
-    height: b70,
+    height: b50,
     borderRadius: 250,
   },
   imgg: {
-    width: b30,
-    height: b100,
+    width: b40,
+    height: b70,
+    
   },
   imggg: {
     width: b20,
@@ -205,6 +229,68 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: b3,
   },
+  header: {
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: colors.blue,
+  },
+  headerTitle: {
+    color: colors.white,
+    fontWeight: "bold",
+    fontSize: 23,
+  },
+  inputContainer: {
+    height: 60,
+    width: "100%",
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    position: "absolute",
+    top: 90,
+    flexDirection: "row",
+    paddingHorizontal: 20,
+    alignItems: "center",
+    elevation: 12,
+  },
+  categoryContainer: {
+    marginTop: 60,
+    marginHorizontal: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  iconContainer: {
+    height: 60,
+    width: 60,
+    backgroundColor: colors.gold,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  sectionTitle: {
+    marginHorizontal: 20,
+    // marginVertical: 10,
+    fontWeight: "bold",
+    fontSize: 20,
+    color: colors.blue,
+  },
+  cardImage: {
+    height: 220,
+    width: width / 2,
+    marginRight: 20,
+    padding: 10,
+    overflow: "hidden",
+    borderRadius: 10,
+  },
+  rmCardImage: {
+    width: width - 40,
+    height: 200,
+    marginRight: 20,
+    borderRadius: 10,
+    overflow: "hidden",
+    padding: 10,
+  },
 });
+
 
 export default Workerhistory;

@@ -22,7 +22,7 @@ const WorkerHome = () => {
         name="HomePage"
         component={HomePage}
         options={{
-          headerShown: true,
+          headerShown: false,
           title: "Home page",
           // headerLeft: () => <View />,
         }}
@@ -31,7 +31,7 @@ const WorkerHome = () => {
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
-          headerShown: true,
+          headerShown: false,
           title: "My profile",
           // headerLeft: () => <View />,
         }}

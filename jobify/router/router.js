@@ -17,7 +17,7 @@ import MapComp from "../components/MapComp";
 import Onboarding from "../componetOnboarding/Onboarding";
 import companieProfileScreen from "../components/companies/companieProfileScreen";
 import EditProfile from "../components/companies/EditProfile.js";
-console.log("AAAAAAAA", Onboarding);
+import eventList from "../components/companies/eventList"
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -154,6 +154,11 @@ const Router = () => {
         options={{ title: "Onboarding" }}
       />
       <Stack.Screen
+        name="eventList"
+        component={eventList}
+        options={{ title: "eventList" }}
+      />
+      <Stack.Screen
         name="SignupCompany"
         component={SignupCompany}
         options={{
@@ -161,6 +166,10 @@ const Router = () => {
           title: "About us",
         }}
       />
+      
+     
+
+
     </Stack.Navigator>
   );
 };

@@ -18,6 +18,9 @@ import Onboarding from "../../componetOnboarding/Onboarding";
 import companieProfileScreen from "../../components/companies/companieProfileScreen.js";
 import EditProfile from "../../components/companies/EditProfile";
 
+import eventList from "../../components/companies/eventList"
+import History from "../../components/companies/CompaniesHistory/history";
+import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers"
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -140,15 +143,40 @@ const Router = () => {
         component={Onboarding}
         options={{ title: "Onboarding" }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="SignupCompany"
         component={SignupCompany}
         options={{
           headerShown: false,
           title: "About us",
         }}
+      /> */}
+      <Stack.Screen
+        name="eventList"
+        component={eventList}
+        options={{
+          headerShown: false,
+          title: "eventList",
+        }}
+      />
+    <Stack.Screen
+        name="CHistory"
+        component={History}
+        options={{
+          headerShown: false,
+          title: "history",
+        }}
+      />
+         <Stack.Screen
+        name="EventWorker"
+        component={EventWorker}
+        options={{
+          headerShown: false,
+          title: "workers",
+        }}
       />
     </Stack.Navigator>
+    
   );
 };
 export default Router;
