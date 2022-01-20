@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import moment from "moment";
 import axios from "axios";
+import WorkerRateItem from "./WorkerRateItem";
+import { log } from "react-native-reanimated";
 
 
 const styles = StyleSheet.create({
@@ -33,13 +35,16 @@ const styles = StyleSheet.create({
   card_title: {
     fontSize: 20,
     fontWeight: "bold",
+    color : "white",
+    margin : 5
 
   },
   price: {
     marginTop: 10,
     fontSize: 20,
+    backgroundColor:"white"
   },
-  time: { fontSize: 20, paddingBottom: 10 },
+  time: { fontSize: 20, paddingBottom: 10 , color : "white" },
 
   button: {
     height: "20%",
@@ -59,13 +64,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   cardContainer :{
-    backgroundColor : "#E9E5E3",
+    backgroundColor : "#004d4f",
     marginBottom : "5%",
     borderRadius : 10, 
     width : "100%",
     height : "35%"
     
-  }
+  },
+  workers :{
+    marginTop : "10%"
+  } , 
+ location : {
+   color : "white" ,
+  fontSize : 10 , 
+  margin: 1
+ }
 });
 
 const EventWorkers = ({route , navigation}) => {
@@ -73,25 +86,41 @@ const EventWorkers = ({route , navigation}) => {
 var [feed , setFeed]= useState({})
 var [workers , setWorkers] = useState([])
 
-useEffect(async ()=>{ 
-  try{
-       const data = route.params.data
-       setFeed(data) 
-       const workers = await axios.get(`${server.Ip}/companyevetns/workers/${data.eventID}`)
-       setWorkers(workers.data)
-  
-  }
-  catch(err){
-    console.log(err);
-  }
+useEffect(()=>{ 
+ (
+  async()=>{
+    await fetchWorks()
+   }
+ )()
 },[])
 
 
 
+ var fetchWorks = async ()=>{
+  try{
+    const data = route.params.data
+    setFeed(()=>{return data}) 
+    const result = await axios.get(`${server.Ip}/companyevetns/workers/${data.eventID}`)
+    setWorkers(result.data[0] )
+ 
+}
+catch(err){
+ console.log(err);
+}
+   
+
+
+ }
+
+ var feedbacked=(id)=>{
+  var nonfeedbacked = workers
+  console.log(nonfeedbacked[0].workerId)
+   var nonfeedbacked = nonfeedbacked.filter((ele)=>ele.workerId!==id)
+   setWorkers(()=>nonfeedbacked) 
+ }
   return (
+<View>
     <View style={styles.cardContainer}>
-
-
 
  
     <View>
@@ -119,14 +148,18 @@ useEffect(async ()=>{
         source={{ uri: feed.imageUrl }}
       />
 
-<Text style={styles.card_title}>
+    <Text style={styles.card_title}>
         {feed.label} {"\n"}
       </Text>
     
     </View>
 
- <Text>{workers.data[0][0].firstName} </Text>
-
+  </View>
+  <ScrollView style={styles.workers} >
+  {workers.map((ele,i)=>
+     <WorkerRateItem key={i} feedbacked={feedbacked} user={ele}/>
+   )}
+   </ScrollView>
   </View>
   );
 };
