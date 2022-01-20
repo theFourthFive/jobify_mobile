@@ -84,6 +84,15 @@ export default function RoutesMenuScreen({ navigation }) {
           title="Hire a worker"
           onPress={() => navigation.navigate("Hire")}
         />
+        <Button
+          title="HomePageCompany"
+          onPress={() => navigation.navigate("HomePageCompany")}
+        />
+        <Button
+          title="CompaniesHistory"
+          onPress={() => navigation.navigate("CHistory")}
+        />
+     
       </View>
     </>
   );

@@ -3,7 +3,7 @@ import {
   _SERVER_IP_ADDRESS_,
   _SERVER_PORT_NUMBER_,
 } from "@env";
-console.log("POOOOOOOOOOOOO", _SERVER_IP_ADDRESS_);
+
 
 let serverProtocol, hostname_ip, serverPort;
 

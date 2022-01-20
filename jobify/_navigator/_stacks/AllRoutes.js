@@ -17,7 +17,11 @@ import MapComp from "../../components/MapComp";
 import Onboarding from "../../componetOnboarding/Onboarding";
 import Hire from "../../components/Hire.js";
 import UserHire from "../../components/UserHire.js";
+import HomePageCompany from '../../components/HomePageCompany.js'
+import OK from "../../components/Ok.js";
 
+import History from "../../components/companies/CompaniesHistory/history.js";
+import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers.js";
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -117,6 +121,14 @@ const Router = () => {
         }}
       />
       <Stack.Screen
+        name="OK"
+        component={OK}
+        options={{
+          headerShown: false,
+          title: "OK",
+        }}
+      />
+      <Stack.Screen
         name="Onboarding"
         component={Onboarding}
         options={{ title: "Onboarding" }}
@@ -142,10 +154,33 @@ const Router = () => {
         component={UserHire}
         options={{
           headerShown: false,
-          title: "UserHire",
+          title: "UserHire",}}
+      />
+      <Stack.Screen
+        name="HomePageCompany"
+        component={HomePageCompany}
+        options={{
+          headerShown: false,
+          title: "HomePageCompany",}}
+      />
+      <Stack.Screen
+        name="CHistory"
+        component={History}
+        options={{
+          headerShown: false,
+          title: "history",
+        }}
+      />
+         <Stack.Screen
+        name="EventWorker"
+        component={EventWorker}
+        options={{
+          headerShown: false,
+          title: "workers",
         }}
       />
     </Stack.Navigator>
+    
   );
 };
 export default Router;

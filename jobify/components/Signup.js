@@ -4,7 +4,7 @@ import { Button, StyleSheet, Text, View, Alert, TextInput } from "react-native";
 import { useState } from "react";
 import Axios from "axios";
 // import server from "./ipConfig/serverIp";
-import server from "../settings";
+import server from "./ipConfig/serverIp";
 
 export default function Signup({ navigation }) {
   const sendmsg = () => {
@@ -34,7 +34,7 @@ export default function Signup({ navigation }) {
     var worker = { firstName, lastName, email, password, phoneNumber, role };
     console.log(worker);
     // Axios.post(`${server.Ip}/workers/signup`, worker)
-    Axios.post(`${server.url}/auth/signup`, worker)
+    Axios.post(`${server.Ip}/worker/signup`, worker)
       .then((response) => {
         console.log(response.data, "<==================================");
         if (response.data === "user exists") {

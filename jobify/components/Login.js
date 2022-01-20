@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 
-// import server from "./ipConfig/serverIp";
-import server from "../settings";
+import server from "./ipConfig/serverIp";
+
 
 // prettier-ignore
 import { Button, StyleSheet, Text, View, TextInput, AsyncStorage, Alert } from "react-native";
@@ -10,7 +10,7 @@ import axios from "axios";
 
 export default function Login({ navigation }) {
   const login = async () => {
-    const URL = `${server.url}/auth/login`;
+    const URL = `${server.Ip}/auth/login`;
     console.log(URL);
     const worker = { email_or_PhoneNumber, password };
     try {

@@ -37,7 +37,7 @@ const UserHire=(props)=> {
       })
       Alert.alert(
         "sent",
-        "you picked" + " _ " + props.route.params.firstName + " " + props.route.params.LastName + " _ " + "for this event, He will recive your invitation ",
+        "you picked" + " _ " + props.route.params.firstName + " " + props.route.params.LastName + " _ " + "for this event, He will recive your offer ",
         [{ text: "Okay", onPress: () => console.log("Okay Pressed") }],
         { cancelable: false }
       )
@@ -63,7 +63,7 @@ const UserHire=(props)=> {
         </View>
       <ScrollView >
         <View style={styles.wait}>
-          {offers.filter(e=>e.companyCompanyId===38).map((e,i)=>{
+          {offers.filter(e=>e.companyCompanyId===37).map((e,i)=>{
             return (
                 <TouchableOpacity key={i} style={styles.off} onPress={()=>hire(e)}>
                   <Image style={styles.image}  source={{ uri: e.imageUri }}></Image>
