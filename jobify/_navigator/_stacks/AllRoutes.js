@@ -15,12 +15,18 @@ import EventList from "../../components/Workers/EventsList";
 import AboutUs from "../../components/AboutUs";
 import MapComp from "../../components/MapComp";
 import Onboarding from "../../componetOnboarding/Onboarding";
+import Hire from "../../components/Hire.js";
+import UserHire from "../../components/UserHire.js";
+import HomePageCompany from '../../components/HomePageCompany.js'
+import OK from "../../components/Ok.js";
+
+import History from "../../components/companies/CompaniesHistory/history.js";
+import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers.js";
 import companieProfileScreen from "../../components/companies/companieProfileScreen.js";
 import EditProfile from "../../components/companies/EditProfile";
 
 import eventList from "../../components/companies/eventList"
-import History from "../../components/companies/CompaniesHistory/history";
-import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers"
+
 import EventListForCompany from "../../components/companies/checksubscriptions/eventListForCompany"
 import EventWorkerForComapny from "../../components/companies/checksubscriptions/EventWorkersForCompany"
 const Stack = createNativeStackNavigator();
@@ -141,6 +147,14 @@ const Router = () => {
         }}
       />
       <Stack.Screen
+        name="OK"
+        component={OK}
+        options={{
+          headerShown: false,
+          title: "OK",
+        }}
+      />
+      <Stack.Screen
         name="Onboarding"
         component={Onboarding}
         options={{ title: "Onboarding" }}
@@ -177,6 +191,30 @@ const Router = () => {
           title: "workers",
         }}
       />
+      <Stack.Screen
+        name="Hire"
+        component={Hire}
+        options={{
+          headerShown: false,
+          title: "Rename me",
+        }}
+      />
+      <Stack.Screen
+        name="UserHire"
+        component={UserHire}
+        options={{
+          headerShown: false,
+          title: "UserHire",}}
+      />
+      <Stack.Screen
+        name="HomePageCompany"
+        component={HomePageCompany}
+        options={{
+          headerShown: false,
+          title: "HomePageCompany",}}
+      />
+      
+        
 
 
       <Stack.Screen
