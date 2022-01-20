@@ -2,127 +2,203 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import server from "../ipConfig/serverIp";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import colors from "../../assets/colors/colors";
+import Animated from "react-native-reanimated";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Feather from "react-native-vector-icons/Feather";
 
 
 
 import { Text, StyleSheet, Image, View, SafeAreaView, ScrollView,ImageBackground, TouchableOpacity } from "react-native";
 export default function companieProfileScreen({ navigation }) {
   var [profile, setProfile] = useState({});
+
   useEffect(async () => {
-    var URL = `${server.Ip}/company/profile`;
+    
+    var URL = `${server.Ip}/company/profile/${10}`;
     var prof = await axios.get(URL);
   
     setProfile(prof.data);
-    console.log(prof.data,);
-  });
+    console.log(prof.data,"i'm feathing data");
+  },[]);
 
-  return (
-    <View style={styles.container}>
-      <SafeAreaView style={{ backgroundColor: "#fff" }}>
-        <View>
+
+return (
+  <View style={styles.container}>
           <View style={styles.Icon}>
-            <MaterialCommunityIcons.Button
-              name="account-edit"
-              size={25}
+  <MaterialCommunityIcons.Button
+    name="account-edit"
+    size={25}
 
-              onPress={() => navigation.navigate("companyEditProfile")}
-            />
-          </View>
+    onPress={() => navigation.navigate("companyEditProfile")}
+  />
+</View>
+ 
+<View style={styles.header}>
 
-          <ImageBackground
-            source={{
-              uri: "https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png",
+      </View>
+    <Animated.View
+      animation="fadeInUpBig"
+      style={[
+        styles.footer,
+        {
+          backgroundColor: colors.white,
+        },
+      ]}
+    >
+        
+      <View>
+        <ImageBackground
+          source={{
+            uri: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+          }}
+          style={{
+            height: 140,
+            width: 140,
+            marginLeft: 90,
+            marginTop: -100,
+            alignItems: "center",
+          }}
+          imageStyle={{ borderRadius: 100 }}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
             }}
-            style={{ height: 100, width: 100, marginLeft: 25 }}
-            imageStyle={{ borderRadius: 15 }}
-          >
-            <View
-              style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-             
-            </View>
-          </ImageBackground>
+          ></View>
+        </ImageBackground>
+      
+  
 
-          <Text style={styles.formHeading}>label:{profile.label} </Text>
+        <Text style={styles.formHeading}>
+        
+         company name:
+        </Text>
 
-          <View style={styles.userBtnWrapper}>
-            <TouchableOpacity style={styles.userbtn}>
-              <Text style={styles.userbtntxt}>follow</Text>
-            </TouchableOpacity>
-            {/* <TouchableOpacity
-              onPress={() => navigation.navigate("EditProfile")}
-              style={styles.userbtn}
+        <View>
+          {/* <View style={styles.action}>
+            <FontAwesome name="user-o" size={20} />
+            <Text>FirstName: {profile.firstName}</Text>
+          </View>
+
+          <View style={styles.action}>
+            <FontAwesome name="user-o" size={20} />
+            <Text>LastName: {profile.LastName}</Text>
+          </View> */}
+
+          <View style={styles.action}>
+            <FontAwesome name="envelope-o" size={20} />
+            <Text
+              style={[
+                styles.text_footer,
+                {
+                  color: colors.blue,
+                },
+              ]}
             >
-              <Text style={styles.userbtntxt}>Edit</Text>
-            </TouchableOpacity> */}
+              Email: {profile.Email}
+            </Text>
           </View>
-          <View>
-            <Text>label</Text>
-            <Text>LastName:</Text>
-            <Text>Email:</Text>
+
+          <View style={styles.action}>
+            <Feather name="phone" size={20} />
+              <Text
+              style={[
+                styles.text_footer,
+                {
+                  color: colors.blue,
+                },
+              ]}
+            >PhoneNumber: {profile.phoneNumber}</Text>
           </View>
+
+       
         </View>
-      </SafeAreaView>
-    </View>
-  );
+      </View>
+    </Animated.View>
+  </View>
+);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  Img: {
-    width: 100,
-    height: 100,
-    borderRadius: 80,
-    marginLeft: 285,
-  },
-  Icon: {
-    backgroundColor: "#fff",
-    height:50,
-    width: 50,
-    color:"#000"
-  },
+header: {
+  flex: 1,
+  justifyContent: 'flex-end',
+  paddingHorizontal: 20,
+  paddingBottom: 50,
 
-  formHeading: {
-    color: "#252526",
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 105,
+},
+text_footer: {
+  color: '#05375a',
+  fontSize: 18
+},
+footer: {
+  flex: 3,
+  backgroundColor: "#252526",
+  borderTopLeftRadius: 30,
+  borderTopRightRadius: 30,
+  paddingHorizontal: 20,
+  paddingVertical: 30,
+  paddingBottom: 50,
+},
 
-    color: "#1C0D33",
-  },
-  aboutuser: {
-    fontSize: 12,
-    fontWeight: "600",
-    color: "#666",
-    textAlign: "center",
-    marginBottom: 10,
-  },
-  userBtnWrapper: {
-    flexDirection: "row",
-    justifyContent: "center",
-    width: "100%",
-    marginBottom: 10,
-  },
-  userbtn: {
-    borderColor: "#2e64e5",
-    borderWidth: 2,
-    borderRadius: 3,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    marginHorizontal: 5,
-  },
-  userbtntxt: {
-    color: "#2e64e5",
-  },
+action: {
+  flexDirection: "row",
+  marginTop: 10,
+  marginBottom: 10,
+  borderBottomWidth: 10,
+  borderBottomColor: "#f2f2f2",
+  paddingBottom: 5,
+},
+container: {
+  flex: 1,
+  backgroundColor: colors.gray,
+  // backgroundColor: "#fff",
+  // alignItems: "center",
+  // justifyContent: "center",
+},
+Img: {
+  width: 100,
+  height: 100,
+  borderRadius: 80,
+  marginLeft: 285,
+},
+Icon: {
+  // marginTop:300,
+  marginLeft: 300,
+  height: 50,
+  width: 50,
+  color: "#252526",
+},
+
+formHeading: {
+  color: "#252526",
+  fontSize: 20,
+  fontWeight: "bold",
+  marginTop: 10,
+  marginBottom: 10,
+  marginLeft: 100,
+  color: "#1C0D33",
+},
+aboutuser: {
+  fontSize: 12,
+  fontWeight: "600",
+  color: "#666",
+  textAlign: "center",
+  marginBottom: 10,
+},
+
+userbtn: {
+  borderColor: "#2e64e5",
+  borderWidth: 2,
+  borderRadius: 3,
+  paddingVertical: 8,
+  paddingHorizontal: 12,
+  marginHorizontal: 5,
+},
+userbtntxt: {
+  color: "#2e64e5",
+},
 });
