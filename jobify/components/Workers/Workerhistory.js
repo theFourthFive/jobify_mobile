@@ -8,6 +8,7 @@ import server from "../ipConfig/serverIp";
 import axios from "axios";
 import colors from "../../assets/colors/colors";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 const b10 = "10%";
 const b3 = "3%";
 const b20 = "20%";
@@ -93,11 +94,12 @@ const Workerhistory = ({ navigation }) => {
             backgroundColor: colors.blue,
             height: 120,
             paddingHorizontal: 20,
+            
           }}
         >
           <View style={{ flex: 1 }}>
-            <Text style={style.headerTitle}>Explore all</Text>
-            <Text style={style.headerTitle}>of our Events</Text>
+            <Text style={style.headerTitle}>Your</Text>
+            <Text style={style.headerTitle}>History</Text>
           </View>
         </View>
     <View style={style.container}>
@@ -116,20 +118,20 @@ const Workerhistory = ({ navigation }) => {
             showRating={false}
             startingValue={1}
             ratingColor="#f94368"
-            ratingBackgroundColor="#f9b313"
+            ratingBackgroundColor={Colors.gold}
             type="custom"
           />
         </View>
       </View>
-      <ScrollView style={style.userhis} vertical={true}>
+      <View style={style.userhis} vertical={true}>
         {events.map((ele, i) => (
           <View style={style.userhiss} key={i}>
             <View style={style.alloff1}>
               <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image>
               <View style={style.userrhis}>
-                <Text>name:{ele.eventName}</Text>
-                <Text>FROM:{moment(ele.createdAt).fromNow()}</Text>
-                <Text>location:{ele.location}</Text>
+                <Text>Name:{ele.eventName}</Text>
+                <Text>Form:{moment(ele.createdAt).fromNow()}</Text>
+                <Text>Location:{ele.location}</Text>
               </View>
               <View style={style.userrhis}>
                 <Text> {ele.label}</Text>
@@ -152,7 +154,7 @@ const Workerhistory = ({ navigation }) => {
             <Text style={style.line}>__________________________________</Text>
           </View>
         ))}
-      </ScrollView>
+      </View>
     </View>
     </ScrollView>
     </SafeAreaView>
@@ -174,7 +176,7 @@ const style = StyleSheet.create({
     height: b25,
     width: b100,
     marginBottom: 50,
-    backgroundColor: colors.gray,
+    backgroundColor: colors.white,
   },
   userhiss: {},
   container: {
@@ -194,9 +196,9 @@ const style = StyleSheet.create({
     marginBottom: 10,
   },
   img: {
-    width: b40,
+    width: b30,
     height: b50,
-    borderRadius: 250,
+    borderRadius: 20,
   },
   imgg: {
     width: b40,
@@ -244,7 +246,7 @@ const style = StyleSheet.create({
   inputContainer: {
     height: 60,
     width: "100%",
-    backgroundColor: colors.white,
+    backgroundColor: colors.gold,
     borderRadius: 10,
     position: "absolute",
     top: 90,

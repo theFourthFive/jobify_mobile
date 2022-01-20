@@ -10,30 +10,28 @@ import {
 import server from "../ipConfig/serverIp";
 import axios from "axios";
 import { useTheme } from "react-native-paper";
-// import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
-
+import ourcolors from '../../assets/colors/colors'
 export default function EditProfileScreen({ navigation }) {
   const [WorkerId, setWorkerId] = useState("");
-  const [firstName, setfirstName] = useState("");
+  const [firstName, setfirstName] = useState();
   const [LasttName, setLastName] = useState("");
   const [Email, setEmail] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
-  const [imageUrl, setimageUrl] = useState("");
+  const [imageUrl, setimageUrl] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
   const [City, setCity] = useState("");
   const [CVUrl, setCVUrl] = useState("");
   const [availibility, setavailibility] = useState("");
   const [password, setpassword] = useState("");
   const [avgRating, setavgRating] = useState("");
 
-  const handelChangeCity = (City) => {
-    setCity(City);
-  };
+  const [update,setUpdated]=useState("")
+
   const handelChangeWorkerId = (WorkerId) => {
     setWorkerId(WorkerId);
   };
@@ -55,62 +53,45 @@ export default function EditProfileScreen({ navigation }) {
   const handelChangeCVUrl = (CVUrl) => {
     setCVUrl(CVUrl);
   };
-  const handelChangeavailibility = (availibility) => {
-    setavailibility(availibility);
-  };
+
   const handelChangepassword = (password) => {
     setpassword(password);
   };
+  const handelChangeCity = (City) => {
+    setCity(City);
+  };
+  const handelChangeavailibility = (availibility) => {
+    setavailibility(availibility);
+  };
 
-  useEffect(() => {
-    UpdateInfo(1);
-  }, []);
+  // useEffect(() => {
+  //   UpdateInfo(1);
+  // }, []);
 
   function UpdateInfo(id) {
     var URL = `${server.Ip}/workers/updateprofile/${1}`;
+    var info = {    
+      WorkerId,
+      City,
+      firstName,
+      LasttName,
+      Email,
+      phoneNumber,
+      imageUrl,
+      CVUrl,
+      availibility,
+      password,}
     axios
-      .post(URL)
+      .put(URL,info)
+      
       .then((result) => {
-        // setProfile(result.data)
-        WorkerId,
-          City,
-          firstName,
-          LasttName,
-          Email,
-          phoneNumber,
-          imageUrl,
-          CVUrl,
-          availibility,
-          password,
-          console.log(profile, "===============");
+        setUpdated(result.data.update)
+          console.log( "work work work ");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err,'there is an err');
       });
   }
-
-  // const onUpdateFormHandler = async (event) => {
-  //   axios
-  //     .post("/update", {
-  //       WorkerId,
-  //       City,
-  //       firstName,
-  //       LasttName,
-  //       Email,
-  //       phoneNumber,
-  //       imageUrl,
-  //       CVUrl,
-  //       availibility,
-  //       password,
-  //     })
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log("===>");
-  //       console.log(error);
-  //     });
-  // };
 
   const { colors } = useTheme();
 
@@ -176,7 +157,7 @@ export default function EditProfileScreen({ navigation }) {
             >
               <ImageBackground
                 source={{
-                  uri: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                  uri: imageUrl,
                 }}
                 style={{ height: 100, width: 100 }}
                 imageStyle={{ borderRadius: 15 }}
@@ -191,13 +172,13 @@ export default function EditProfileScreen({ navigation }) {
                   <Icon
                     name="camera"
                     size={35}
-                    color="#fff"
+                    color={ourcolors.blue}
                     style={{
                       opacity: 0.7,
                       alignItems: "center",
                       justifyContent: "center",
                       borderWidth: 1,
-                      borderColor: "#fff",
+                      borderColor: ourcolors.blue,
                       borderRadius: 10,
                     }}
                   />
@@ -205,16 +186,18 @@ export default function EditProfileScreen({ navigation }) {
               </ImageBackground>
             </View>
           </TouchableOpacity>
-          <Text style={{ marginTop: 10, fontSize: 18, fontWeight: "bold" }}>
+          <Text style={{ marginTop: 10, fontSize: 18, fontWeight: "bold",color:ourcolors.blue }}>
             Edit Image
           </Text>
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={colors.text} size={20} />
+          <FontAwesome name="user-o" color={ourcolors.blue} size={20} />
           <TextInput
             placeholder="First Name"
             placeholderTextColor="#666666"
+            onChangeText={handelChangefirstName}
+            value={firstName}
             autoCorrect={false}
             style={[
               styles.textInput,
@@ -229,6 +212,8 @@ export default function EditProfileScreen({ navigation }) {
           <TextInput
             placeholder="Last Name"
             placeholderTextColor="#666666"
+            onChangeText={handelChangeLasttName}
+            value={LasttName}
             autoCorrect={false}
             style={[
               styles.textInput,
@@ -243,6 +228,8 @@ export default function EditProfileScreen({ navigation }) {
           <TextInput
             placeholder="Phone"
             placeholderTextColor="#666666"
+            onChangeText={handelChangephoneNumber}
+            value={phoneNumber}
             keyboardType="number-pad"
             autoCorrect={false}
             style={[
@@ -258,6 +245,8 @@ export default function EditProfileScreen({ navigation }) {
           <TextInput
             placeholder="Email"
             placeholderTextColor="#666666"
+            onChangeText={handelChangeEmail}
+            value={Email}
             keyboardType="email-address"
             autoCorrect={false}
             style={[
@@ -268,6 +257,28 @@ export default function EditProfileScreen({ navigation }) {
             ]}
           />
         </View>
+
+
+       
+        {/* <View style={styles.action}>
+          <Feather name="lock" color={colors.text} size={20} />
+          <TextInput
+            placeholder="password "
+            placeholderTextColor="#666666"
+            onChangeText={handelChangepassword}
+            value={password}
+            // keyboardType="number-pad"
+            autoCorrect={false}
+            style={[
+              styles.textInput,
+              {
+                color: colors.text,
+              },
+            ]}
+          />
+        </View> */}
+
+        
         <View style={styles.action}>
           <Ionicons
             name="ios-clipboard-outline"
@@ -284,7 +295,7 @@ export default function EditProfileScreen({ navigation }) {
           />
         </View>
         <View style={styles.action}>
-          <Icon name="map-marker-outline" color={colors.text} size={20} />
+          <Ionicons name="map-marker-outline" color={colors.text} size={20} />
           <TextInput
             placeholder="City"
             placeholderTextColor="#666666"
@@ -298,19 +309,6 @@ export default function EditProfileScreen({ navigation }) {
           />
         </View>
 
-        {/* <View style={styles.action}  >
-  <Icon name="map-marker-outline" color={colors.text} size={20} />
-        <Picker
-           placeholder="City"
-            placeholderTextColor="#666666"
-          style={styles.picker}
-        
-        >
-          <Picker.Item label={"Tunis"} value="Tunis" />
-          <Picker.Item label={"sfax"} value="sfax" />
-        </Picker>
-      </View> */}
-
         <TouchableOpacity
           style={styles.commandButton}
           onPress={() => navigation.navigate("SetAvailabilityWorker")}
@@ -319,7 +317,7 @@ export default function EditProfileScreen({ navigation }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-          <Text style={styles.panelButtonTitle}>Submit</Text>
+          <Text style={styles.panelButtonTitle} onPress={UpdateInfo}>Update</Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
@@ -333,7 +331,7 @@ const styles = StyleSheet.create({
   commandButton: {
     padding: 10,
     borderRadius: 10,
-    backgroundColor: "#000",
+    backgroundColor: "#FFB156",
     alignItems: "center",
     marginTop: 10,
   },

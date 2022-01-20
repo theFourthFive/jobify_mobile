@@ -15,6 +15,9 @@ import EventList from "../../components/Workers/EventsList";
 import AboutUs from "../../components/AboutUs";
 import MapComp from "../../components/MapComp";
 import Onboarding from "../../componetOnboarding/Onboarding";
+import companieProfileScreen from "../../components/companies/companieProfileScreen.js";
+import EditProfile from "../../components/companies/EditProfile";
+
 import eventList from "../../components/companies/eventList"
 import History from "../../components/companies/CompaniesHistory/history";
 import EventWorker from "../../components/companies/CompaniesHistory/EventWorkers"
@@ -85,6 +88,14 @@ const Router = () => {
         }}
       />
       <Stack.Screen
+        name="companyEditProfile"
+        component={EditProfile}
+        options={{
+          headerShown: false,
+          title: "Edit your Profile",
+        }}
+      />
+      <Stack.Screen
         name="Profil"
         component={ProfilScreen}
         options={{
@@ -92,6 +103,17 @@ const Router = () => {
           title: "My profile",
         }}
       />
+
+      <Stack.Screen
+        name="companyProfile"
+        component={companieProfileScreen}
+        options={{
+          headerShown: false,
+          title: "My profile",
+          headerLeft: () => <View />,
+        }}
+      />
+
       <Stack.Screen
         name="AddEvent"
         component={AddEvent}
