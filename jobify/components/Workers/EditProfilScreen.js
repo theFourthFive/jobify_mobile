@@ -19,7 +19,7 @@ import Animated from "react-native-reanimated";
 
 export default function EditProfileScreen({ navigation }) {
   const [WorkerId, setWorkerId] = useState("");
-  const [firstName, setfirstName] = useState("");
+  const [firstName, setfirstName] = useState();
   const [LasttName, setLastName] = useState("");
   const [Email, setEmail] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
@@ -64,9 +64,9 @@ export default function EditProfileScreen({ navigation }) {
     setavailibility(availibility);
   };
 
-  useEffect(() => {
-    UpdateInfo(1);
-  }, []);
+  // useEffect(() => {
+  //   UpdateInfo(1);
+  // }, []);
 
   function UpdateInfo(id) {
     var URL = `${server.Ip}/workers/updateprofile/${1}`;
@@ -83,8 +83,9 @@ export default function EditProfileScreen({ navigation }) {
       password,}
     axios
       .put(URL,info)
+      
       .then((result) => {
-        setUpdated(result.data)
+        setUpdated(result.data.update)
           console.log( "work work work ");
       })
       .catch((err) => {

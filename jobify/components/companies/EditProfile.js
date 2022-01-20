@@ -49,11 +49,7 @@ export default function EditProfile({ navigation }) {
     setpassword(password);
   };
   
-   useEffect(() => {
 
-    handelChange(1)
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  },[])
 
   const handelChange = async (id) => {
     var  URL = `${server.Ip}/company/updateprofile/${37}`
