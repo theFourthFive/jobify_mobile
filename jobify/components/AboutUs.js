@@ -1,6 +1,6 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet,TouchableOpacity,Image, Text, View, Button } from "react-native";
 // import getGalleryImageAsync from "./AddEvent";
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -20,5 +20,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#F2F2F2",
     alignItems: "center",
     justifyContent: "center",
+  },
+  ourimag:{
+    width:500,
+    height:500,
   },
 });

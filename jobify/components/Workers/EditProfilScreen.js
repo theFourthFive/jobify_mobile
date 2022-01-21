@@ -17,6 +17,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
 import ourcolors from '../../assets/colors/colors'
+import colors from "../../assets/colors/colors";
 export default function EditProfileScreen({ navigation }) {
   const [WorkerId, setWorkerId] = useState("");
   const [firstName, setfirstName] = useState();
@@ -310,13 +311,13 @@ export default function EditProfileScreen({ navigation }) {
         </View>
 
         <TouchableOpacity
-          style={styles.commandButton}
+          style={styles.commandButtonOne}
           onPress={() => navigation.navigate("SetAvailabilityWorker")}
         >
           <Text style={styles.panelButtonTitle}>Availability</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
+        <TouchableOpacity style={styles.commandButtonTwo} onPress={() => {}}>
           <Text style={styles.panelButtonTitle} onPress={UpdateInfo}>Update</Text>
         </TouchableOpacity>
       </Animated.View>
@@ -328,12 +329,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  commandButton: {
+  commandButtonOne: {
     padding: 10,
     borderRadius: 10,
-    backgroundColor: "#FFB156",
+    borderTopLeftRadius:30,
+    backgroundColor: colors.blueDark,
     alignItems: "center",
     marginTop: 10,
+    width:'50%',
+  },
+  commandButtonTwo:{
+    padding: 10,
+    borderRadius: 10,
+    borderTopRightRadius:30,
+    backgroundColor: colors.blueDark,
+    alignItems: "center",
+    marginTop: 20,
+    width:'50%',
+    left:150,
   },
   panel: {
     padding: 20,
@@ -364,6 +377,7 @@ const styles = StyleSheet.create({
   panelTitle: {
     fontSize: 27,
     height: 35,
+    color:ourcolors.blueDark
   },
   panelSubtitle: {
     fontSize: 14,
@@ -374,7 +388,7 @@ const styles = StyleSheet.create({
   panelButton: {
     padding: 13,
     borderRadius: 10,
-    backgroundColor: "#000",
+    backgroundColor: ourcolors.blueDark,
     alignItems: "center",
     marginVertical: 7,
   },
@@ -382,6 +396,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "bold",
     color: "white",
+    
   },
   action: {
     flexDirection: "row",

@@ -46,7 +46,7 @@ const HomeScreen = ({navigation}) => {
       <StatusBar translucent={false} backgroundColor={colors.blue} />
       <View style={styles.header}>
         <Icon name="sort" size={28} color={colors.white} />
-        {/* <Icon name="notifications-none" size={28} color={colors.white} /> */}
+       
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View

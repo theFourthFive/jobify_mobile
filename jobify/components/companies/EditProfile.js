@@ -314,11 +314,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   commandButton: {
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: "#000",
-    alignItems: "center",
-    marginTop: 10,
+    
+      padding: 10,
+      borderRadius: 10,
+      borderTopLeftRadius:30,
+      backgroundColor: "#FFB156",
+      alignItems: "center",
+      marginTop: 20,
+      width:'70%',
+      left: 50,
+    
   },
   panel: {
     padding: 20,
@@ -367,6 +372,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "bold",
     color: "white",
+
   },
   action: {
     flexDirection: "row",

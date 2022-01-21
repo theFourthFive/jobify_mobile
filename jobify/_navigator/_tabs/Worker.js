@@ -166,6 +166,7 @@ const Worker = () => {
         name={"Routes"}
         component={AllRouter}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <Ionicons
@@ -193,7 +194,7 @@ const Worker = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
     
@@ -212,6 +213,7 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 10,
       height: 10,
+     
       
     },
     paddingHorizontal: 20,

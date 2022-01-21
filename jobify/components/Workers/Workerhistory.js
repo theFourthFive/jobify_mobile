@@ -105,10 +105,10 @@ const Workerhistory = ({ navigation }) => {
     <View style={style.container}>
       <View style={style.user}>
         <View style={style.userrrr}>
-          <Image style={style.img} source={{ uri: user.imageUrl }}></Image>
+          {/* <Image style={style.img} source={{ uri: user.imageUrl }}/> */}
           <View style={style.userr}>
             <Text>{user.firstName}</Text>
-            <Text>{user.LastName}</Text>
+            <Text>{user.LastName} 's rating</Text>
           </View>
           <Text>{user.avgRating}/5</Text>
           <AirbnbRating
@@ -127,7 +127,7 @@ const Workerhistory = ({ navigation }) => {
         {events.map((ele, i) => (
           <View style={style.userhiss} key={i}>
             <View style={style.alloff1}>
-              <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image>
+              {/* <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image>  */}
               <View style={style.userrhis}>
                 <Text>Name:{ele.eventName}</Text>
                 <Text>Form:{moment(ele.createdAt).fromNow()}</Text>
@@ -224,6 +224,7 @@ const style = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     marginLeft: b10,
+    
   },
   userrhis: {
     flex: 1,
