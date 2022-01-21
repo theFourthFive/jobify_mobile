@@ -66,11 +66,7 @@ export default function RoutesMenuScreen({ navigation }) {
           title="Company: Profile"
           onPress={() => navigation.navigate("companyProfile")}
         />
-        <Button
-          style={styles.button}
-          title="Onboarding"
-          onPress={() => navigation.navigate("Onboarding")}
-        />
+
         <Button
           style={styles.button}
           title="AddEvent"
@@ -101,7 +97,17 @@ export default function RoutesMenuScreen({ navigation }) {
           title="EventListForCompany"
           onPress={() => navigation.navigate("EventListForCompany")}
         />
-     
+     <Button
+          title="SignupCompany"
+          onPress={() => navigation.navigate("SignupCompany")}
+        />
+         <Button
+          title="loginCompany"
+          onPress={() => navigation.navigate("loginCompany")}
+        />
+
+
+
       </View>
     </>
   );
