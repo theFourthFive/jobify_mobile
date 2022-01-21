@@ -1,4 +1,7 @@
 import { StatusBar } from "expo-status-bar";
+
+import server from "./ipConfig/serverIp";
+
 //////////////////////////////////
 // new dependencis
 import * as Animatable from 'react-native-animatable';
@@ -8,7 +11,7 @@ import Feather from 'react-native-vector-icons/Feather';
 //npm i react-native-vector-icons to install teb3aeli fou9ha
 //////////////////////////////////////
 // import server from "./ipConfig/serverIp";
-import server from "../settings";
+
 
 // prettier-ignore
 import { 
@@ -29,7 +32,7 @@ import colors from "../assets/colors/colors";
 
 export default function Login({ navigation }) {
   const login = async () => {
-    const URL = `${server.url}/auth/login`;
+    const URL = `${server.Ip}/auth/login`;
     console.log(URL);
     const worker = { email_or_PhoneNumber, password };
     try {

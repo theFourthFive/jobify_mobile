@@ -18,6 +18,12 @@ import { log } from "react-native-reanimated";
 
 
 const styles = StyleSheet.create({
+  subscriptionsCounter:{
+    fontSize: 24,
+    color: 'orange',
+    textAlign: 'center',
+    padding: 2,
+  },
   card_template: {
     flex: 1,
     width: "100%",
@@ -100,7 +106,7 @@ useEffect(()=>{
   try{
     const data = route.params.data
     setFeed(()=>{return data}) 
-    const result = await axios.get(`${server.Ip}/companyevetns/workers/${data.eventID}`)
+    const result = await axios.get(`${server.Ip}/companyevetns/subscribers/${data.eventID}`)
     setWorkers(result.data[0] )
  
 }
@@ -112,7 +118,14 @@ catch(err){
 
  }
 
- var feedbacked=(id)=>{
+ var hired=(id)=>{
+  var nonfeedbacked = workers
+  console.log(nonfeedbacked[0].workerId)
+   var nonfeedbacked = nonfeedbacked.filter((ele)=>ele.workerId!==id)
+   setWorkers(()=>nonfeedbacked) 
+ }
+ 
+ var denyed=(id)=>{
   var nonfeedbacked = workers
   console.log(nonfeedbacked[0].workerId)
    var nonfeedbacked = nonfeedbacked.filter((ele)=>ele.workerId!==id)
@@ -121,7 +134,7 @@ catch(err){
   return (
 <View>
     <View style={styles.cardContainer}>
-
+    
  
     <View>
       <Text style={styles.card_title}>
@@ -140,9 +153,11 @@ catch(err){
       </Text>
       <Text style={styles.time}>
         Posted at : {moment(feed.createdAt).fromNow()}
-   
+       
       </Text>
-
+      <Text style={styles.subscriptionsCounter}>
+      {"\n"} you have : {workers.length} subscriptions
+      </Text>
       <Image
         style={styles.campany_image}
         source={{ uri: feed.imageUrl }}
@@ -157,7 +172,7 @@ catch(err){
   </View>
   <ScrollView style={styles.workers} >
   {workers.map((ele,i)=>
-     <WorkerRateItem key={i} feedbacked={feedbacked} user={ele}/>
+     <WorkerRateItem key={i} eventID={feed.eventID} denyed={denyed} hired={hired} user={ele}/>
    )}
    </ScrollView>
   </View>

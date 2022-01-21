@@ -25,7 +25,6 @@ function History({navigation}){
    const URL = `${server.Ip}/companyevetns/events/${37}`
    const res = await axios.get(URL);
    setevents(res.data)
-   console.log(res.data);
  },[])
     return (
     //   <View style={styles.container}>
