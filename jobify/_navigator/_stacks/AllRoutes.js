@@ -5,7 +5,7 @@ import Signup from "../../components/Signup.js";
 import Login from "../../components/Login.js";
 import FilterPage from "../../components/FilterPage.js";
 import HomePage from "../../components/HomePage.js";
-import SignupCompany from "../../components/SignupCompany.js";
+import SignupCompany from "../../components/companies/authCompanie/signupCompany";
 import RoutesMenuScreen from "../../components/RoutesMenuScreen";
 import AddEvent from "../../components/companies/AddEvent";
 import ProfilScreen from "../../components/Workers/ProfilScreen";
@@ -29,6 +29,7 @@ import eventList from "../../components/companies/eventList"
 
 import EventListForCompany from "../../components/companies/checksubscriptions/eventListForCompany"
 import EventWorkerForComapny from "../../components/companies/checksubscriptions/EventWorkersForCompany"
+import loginCompany from "../../components/companies/authCompanie/loginCompanie"
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -159,14 +160,7 @@ const Router = () => {
         component={Onboarding}
         options={{ title: "Onboarding" }}
       />
-      {/* <Stack.Screen
-        name="SignupCompany"
-        component={SignupCompany}
-        options={{
-          headerShown: false,
-          title: "About us",
-        }}
-      /> */}
+
       <Stack.Screen
         name="eventList"
         component={eventList}
@@ -233,6 +227,24 @@ const Router = () => {
           title: "Events List",
         }}
       />
+      
+    <Stack.Screen
+        name="SignupCompany"
+        component={SignupCompany}
+        options={{
+          headerShown: false,
+          title: "Events List",
+        }}
+      />
+    <Stack.Screen
+        name="loginCompany"
+        component={loginCompany}
+        options={{
+          headerShown: false,
+          title: "loginCompany",
+        }}
+      />
+
     </Stack.Navigator>
 
   );

@@ -10,22 +10,34 @@ import server from "../../ipConfig/serverIp"
 const WorkerRateItem=(props)=> {
    var [rate , setrate] = useState()
    var [feedback , setfeedback] = useState()
+
+ useEffect(() => {
+     console.log(props.eventID);
+ })
+
+
     const getrating = (rating)=>{
          setrate(rating);
     }
-const handlesubmit = async()=>{
+const hire = async()=>{
 
    const userId = props.user.workerId
-   alert("thak you for your feed back")
-   props.feedbacked(props.user.workerId);
-   const URL = `${server.Ip}/companyevetns/rate/${37}/${userId}`
-
+   alert("subscription for this job has been accepted")
+   props.hired(props.user.workerId);
+   const URL = `${server.Ip}/companyevetns/hire/${props.eventID}/${userId}`
    const res = await axios.post(URL, {rate,feedback});
-
-   
-  
   
 }
+
+const deny = async()=>{
+
+    const userId = props.user.workerId
+    alert("subscription for this job has been denied")
+    props.denyed(props.user.workerId);
+    const URL = `${server.Ip}/companyevetns/deny/${props.eventID}/${userId}`
+    const res = await axios.post(URL, {rate,feedback});
+   
+ }
 
 
     return (
@@ -36,21 +48,32 @@ const handlesubmit = async()=>{
                     <Text style={{color:colors.blue,fontWeight: 'bold',}}>{props.user.firstName} {props.user.LastName}</Text>
                     <Text style={{color:colors.blueDark}} >Adress.....</Text>
                 </View>
-                  
+                
                     <Rating
+                    count={5}
                      showRating
                      ratingCount={5}
                      onFinishRating={getrating}
                      style={{ paddingVertical: 10 }}
+                     isDisabled={true}
+                     startingValue = {props.user.avgRating}
+                     readonly = {true}
+                     fractions = {2}
                     />
             </View>
-            <View style = {styles.inputsContainer}>
-            <TextInput style={styles.feedbackInput} onChangeText={text => {setfeedback(text);}} />
-            </View>
+       
             <Button
-               title="confirm Feedback"
-               color="#ff7f00"
-               onPress={handlesubmit}
+               title="Hire"
+               color = "#1fb500"
+               onPress={hire}
+               styles={styles.hireButton}
+           />
+          <Button
+               title="deny"
+               color="#FF5733"
+               onPress={deny}
+               styles={styles.denyButton}
+               
            />
         </View>
     );
@@ -61,7 +84,7 @@ const styles = StyleSheet.create({
         
         flex:1,
         width: "100%",
-        height: 250,
+        height: 300,
         marginTop:10,
         borderWidth:2,
         backgroundColor: "white",
@@ -73,9 +96,9 @@ const styles = StyleSheet.create({
         color:'#00BFFF',
       },
       img:{
-          width:70,
-          height:80,
-          borderRadius:15
+          width:100,
+          height:100,
+          borderRadius:60
       },
       user:{
           flex:1,
@@ -104,6 +127,14 @@ const styles = StyleSheet.create({
        alignSelf : "center",
         width : "80%",
         height: 85
+      },
+
+      denyButton : {
+        color : "#fff",
+     borderRadius : 50
+      },
+      hireButton:{
+        
       }
       
       
