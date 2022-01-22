@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 // prettier-ignore
-import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage, TouchableWithoutFeedback, Alert} from 'react-native';
+import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage , Animated,TouchableWithoutFeedback, Alert} from 'react-native';
 import { Rating, AirbnbRating } from "react-native-ratings";
 import moment from "moment";
 import server from "../ipConfig/serverIp";
@@ -49,38 +49,20 @@ const HiringOffers = ({ navigation }) => {
       const connectedUser = await AsyncStorage.getItem("session");
       const URL = `${server.Ip}/events/offers/${connectedUser}`;
       const res = await axios.get(URL);
-      setevents(res.data[0]);
+      setevents(()=>res.data[0]);
     } catch (err) {
       console.log(err);
     }
   }
 
-  var unsubscribe = async (id) => {
-    try {
-      const connectedUser = await AsyncStorage.getItem("session");
-      const URL = `${server.Ip}/events/unsubscribe/${id}/${connectedUser}`;
-      Alert.alert(`Success`, "This subscription will be canceled", [
-        // {
-        //   text: "Cancel",
-        //   onPress: () => console.log("Cancel Pressed"),
-        // },
-        // { text: "Home", onPress: () => navigation.goBack() },
-        {
-          text: "Continue",
-          onPress: () => navigation.push("Workerhistory"),
-        },
-      ]);
-      // alert("this subscription will be canceled");
-      axios
-        .delete(URL)
-        .then((res) => {
-          refresh();
-        })
-        .catch((err) => console.log(err));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const accept = async(event,company)=>{
+  const connectedUser = await AsyncStorage.getItem("session");
+  console.log(connectedUser);
+ const URL = `${server.Ip}/events/offers/accept/${connectedUser}/${event}/${company}`;
+ await axios.post(URL)
+
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar translucent={false} backgroundColor={colors.blue} />
@@ -139,16 +121,21 @@ const HiringOffers = ({ navigation }) => {
                   style={style.imgggg}
                   source={{ uri: ele.imageUrl }}
                 ></Image>
-                <TouchableWithoutFeedback
-                  onPress={() => unsubscribe(ele.eventID)}
-                >
-                <Button 
-                 title ="accept"
-                 />
-                </TouchableWithoutFeedback>
               </View>
+              
             </View>
-            <Text style={style.line}>__________________________________</Text>
+            <Button 
+                 title ="accept"
+                 color= {"#228B22"}
+                 onPress={()=>accept(ele.eventEventID , ele.companyCompanyId)}
+                 />
+                 
+                 <Button 
+                 title ="deny"
+                 color= {"#ff6347"}
+                 
+                 />
+            <Text style={style.line}>_________________________________________________</Text>
           </View>
         ))}
       </View>
@@ -193,9 +180,9 @@ const style = StyleSheet.create({
     marginBottom: 10,
   },
   img: {
-    width: b30,
-    height: b50,
-    borderRadius: 20,
+    width: 150,
+    height: 150,
+    borderRadius: 150,
   },
   imgg: {
     width: b40,
@@ -208,9 +195,10 @@ const style = StyleSheet.create({
     borderRadius: 50,
   },
   imgggg: {
-    width: b60,
-    height: b50,
-    borderRadius: 50,
+    width: 120,
+    height: 120,
+    borderRadius: 150,
+    marginBottom : 25
   },
   userrrr: {
     flex: 1,
