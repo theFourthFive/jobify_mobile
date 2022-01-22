@@ -71,6 +71,15 @@ const Router = () => {
         }}
       />
       <Stack.Screen
+        name="MapComp"
+        component={MapComp}
+        options={{
+          headerShown: false,
+          title: "MapComp",
+          headerLeft: () => <View />,
+        }}
+      />
+      <Stack.Screen
         name="Routes"
         component={RoutesMenuScreen}
         options={{
