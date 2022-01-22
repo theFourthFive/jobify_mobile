@@ -186,7 +186,6 @@ export default function AddEvent() {
         <Text
           style={{
             marginTop: 8,
-            marginBottom:20,
             fontSize: 18,
             fontWeight: "bold",
             color: ourcolors.blue,
@@ -231,14 +230,29 @@ export default function AddEvent() {
           onChangeText={onChangelocationHandler}
         />
       </View>
-      <View style={styles.goupp1} >
+
+      <View style={styles.action}>
+        <TextInput
+          placeholder=" Img"
+          placeholderTextColor="#666666"
+          style={[
+            styles.textInput,
+            {
+              color: colors.text,
+            },
+          ]}
+          value={imageUri}
+          onChangeText={onChangeimageUriHandler}
+        />
+      </View>
+
       <View style={styles.action}>
         {/* <Icon name="calendar-outline"></Icon> */}
         <TextInput
           placeholder=" Date_time"
           placeholderTextColor="#666666"
           style={[
-            styles.textInputG1,
+            styles.textInput,
             {
               color: colors.text,
             },
@@ -253,7 +267,7 @@ export default function AddEvent() {
           placeholder=" Duration"
           placeholderTextColor="#666666"
           style={[
-            styles.textInputG1,
+            styles.textInput,
             {
               color: colors.text,
             },
@@ -262,13 +276,12 @@ export default function AddEvent() {
           onChangeText={onChangedurationHandler}
         />
       </View>
-      </View>
       <View style={styles.action}>
         <TextInput
           placeholder=" DailyPay"
           placeholderTextColor="#666666"
           style={[
-            styles.textInputpayday,
+            styles.textInput,
             {
               color: colors.text,
             },
@@ -277,7 +290,7 @@ export default function AddEvent() {
           onChangeText={onChangedailyPayHandler}
         />
       </View>
-      <View style={styles.group2}>
+
       <View style={styles.action}>
         <TextInput
           placeholder=" nbrWaiter"
@@ -285,7 +298,7 @@ export default function AddEvent() {
           keyboardType="number-pad"
           autoCorrect={false}
           style={[
-            styles.textInputnbr,
+            styles.textInput,
             {
               color: colors.text,
             },
@@ -301,7 +314,7 @@ export default function AddEvent() {
           keyboardType="number-pad"
           autoCorrect={false}
           style={[
-            styles.textInputnbr,
+            styles.textInput,
             {
               color: colors.text,
             },
@@ -310,7 +323,6 @@ export default function AddEvent() {
           onChangeText={onChangenbrChefHandler}
         />
       </View>
-      </View>
       <View style={styles.action}>
         <TextInput
           placeholder=" nbrCleaningWorker"
@@ -318,7 +330,7 @@ export default function AddEvent() {
           keyboardType="number-pad"
           autoCorrect={false}
           style={[
-            styles.textInputclean,
+            styles.textInput,
             {
               color: colors.text,
             },
@@ -327,20 +339,7 @@ export default function AddEvent() {
           onChangeText={onChangenbrCleaningWorkerHandler}
         />
       </View>
-      <View style={styles.action}>
-        <TextInput
-          placeholder=" Img"
-          placeholderTextColor="#666666"
-          style={[
-            styles.textInput,
-            {
-              color: colors.text,
-            },
-          ]}
-          value={imageUri}
-          onChangeText={onChangeimageUriHandler}
-        />
-      </View>
+
       <TouchableOpacity style={styles.commandButton}>
         <Text style={styles.panelButtonTitle} onPress={onSubmitFormHandler}>
           Submit
@@ -368,78 +367,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 10,
     width: 200,
-    marginLeft: 100,
+    marginLeft: 80,
   },
   textInput: {
-    // flex: 1,
+    flex: 1,
     marginTop: Platform.OS === "ios" ? 0 : -12,
     paddingLeft: 10,
     // color: "#05375a",
-    // marginBottom:20,
-    marginLeft:60,
+    // marginLeft:10,
     paddingVertical: 5,
     paddingHorizontal: 15,
     backgroundColor: "#fff",
-    borderRadius: 10,
-    width:300,
+    borderRadius: 60,
   },
-  textInputG1:{
-    // flex: 1,
-    flexDirection:'row',
-    marginTop: Platform.OS === "ios" ? 0 : -12,
-    paddingLeft: 10,
-    // color: "#05375a",
-    marginLeft:10,
-    paddingVertical: 5,
-    paddingHorizontal: 30,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    width:190,
-  },
-  goupp1:{
-    flexDirection:'row',
-  },
-  textInputpayday:{
-    marginTop: Platform.OS === "ios" ? 0 : -12,
-    // paddingLeft: 90,
-    // color: "#05375a",
-    marginLeft:100,
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    width:190,
-    marginBottom:10,
-  },
-  textInputclean:{
-    marginTop: Platform.OS === "ios" ? 0 : -12,
-    // paddingLeft: 90,
-    // color: "#05375a",
-    marginLeft:100,
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    width:190,
-    marginBottom:10,
-  },
-  textInputnbr:{
-    // flex: 1,
-    flexDirection:'row',
-    marginTop: Platform.OS === "ios" ? 0 : -12,
-    paddingLeft: 10,
-    // color: "#05375a",
-    marginLeft:10,
-    paddingVertical: 5,
-    paddingHorizontal: 30,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    width:190,
-  },
-  group2:{
-    flexDirection:'row',
-  },
-  
   formHeading: {
     color: "#252526",
   },
