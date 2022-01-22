@@ -30,6 +30,7 @@ import eventList from "../../components/companies/eventList"
 import EventListForCompany from "../../components/companies/checksubscriptions/eventListForCompany"
 import EventWorkerForComapny from "../../components/companies/checksubscriptions/EventWorkersForCompany"
 import loginCompany from "../../components/companies/authCompanie/loginCompanie"
+
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -245,7 +246,9 @@ const Router = () => {
         }}
       />
 
+
     </Stack.Navigator>
+
 
   );
 };

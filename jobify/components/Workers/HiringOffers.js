@@ -23,7 +23,7 @@ const b80 = "80%";
 const b90 = "90%";
 const b100 = "100%";
 const { width } = Dimensions.get("screen");
-const Workerhistory = ({ navigation }) => {
+const HiringOffers = ({ navigation }) => {
   var [events, setevents] = useState([]);
   var [user, setuser] = useState([]);
   useEffect(() => {
@@ -47,7 +47,7 @@ const Workerhistory = ({ navigation }) => {
   async function refresh() {
     try {
       const connectedUser = await AsyncStorage.getItem("session");
-      const URL = `${server.Ip}/events/worker/history/${connectedUser}`;
+      const URL = `${server.Ip}/events/offers/${connectedUser}`;
       const res = await axios.get(URL);
       setevents(res.data[0]);
     } catch (err) {
@@ -87,7 +87,6 @@ const Workerhistory = ({ navigation }) => {
       <View style={style.header}>
         <Icon name="sort" size={28} color={colors.white} />
         {/* <Icon name="notifications-none" size={28} color={colors.white} /> */}
-        <Button title="got to my offers" onPress={()=>navigation.push("HiringOffers")}/>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
@@ -100,7 +99,7 @@ const Workerhistory = ({ navigation }) => {
         >
           <View style={{ flex: 1 }}>
             <Text style={style.headerTitle}>Your</Text>
-            <Text style={style.headerTitle}>History</Text>
+            <Text style={style.headerTitle}>Offers</Text>
           </View>
         </View>
     <View style={style.container}>
@@ -143,13 +142,9 @@ const Workerhistory = ({ navigation }) => {
                 <TouchableWithoutFeedback
                   onPress={() => unsubscribe(ele.eventID)}
                 >
-                  
-                  <Image
-                    style={style.imggg}
-                    source={{
-                      uri: "https://pngset.com/images/cancel-icon-first-aid-symbol-text-logo-transparent-png-1419157.png",
-                    }}
-                  ></Image>
+                <Button 
+                 title ="accept"
+                 />
                 </TouchableWithoutFeedback>
               </View>
             </View>
@@ -297,4 +292,4 @@ const style = StyleSheet.create({
 });
 
 
-export default Workerhistory;
+export default HiringOffers;

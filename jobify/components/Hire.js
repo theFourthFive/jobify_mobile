@@ -17,7 +17,7 @@ const Hire = ({ navigation }) => {
   var [offers , setoffers] = useState([])
   useEffect(() => {
     const URL1 = `${server.Ip}/workers/`;
-    const URL = `${server.Ip}/events/`
+    const URL = `${server.Ip}/eventsComp/events/${37}`
     axios
       .get(URL1)
       .then((res) => {

@@ -95,24 +95,7 @@ export default function AddEvent() {
           ) : ( */}
         <Text style={styles.formHeading}>Create new Event</Text>
       </View>
-    {/**<View class="input-group col-lg-6 mb-4">
-                        <View class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </View>
-                        <input id="firstName" type="text" name="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md">
-                    </View>
 
-                    <!-- Last Name -->
-                    <View class="input-group col-lg-6 mb-4">
-                        <View class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-user text-muted"></i>
-                            </span>
-                        </View>
-                        <input id="lastName" type="text" name="lastname" placeholder="Last Name" class="form-control bg-white border-left-0 border-md">
-                    </View> */}
       <View style={styles.wrapper}>
         <TextInput
           placeholder="Event Name"

@@ -9,6 +9,7 @@ import RoutesMenuScreen from "../../components/RoutesMenuScreen";
 import Onboarding from "../../componetOnboarding/Onboarding";
 // import SetAvailabilityWorker from "../../components/Workers/SetAvailabilityWorkerScreen";
 import Worker from "../_tabs/Worker";
+import Company from "../_tabs/Company"
 
 const AuthStack = createNativeStackNavigator();
 
@@ -83,6 +84,15 @@ const Authentication = () => {
         options={{
           headerShown: false,
           title: "About us",
+        }}
+      />
+      
+      <AuthStack.Screen
+        name="Company"
+        component={Company}
+        options={{
+          headerShown: false,
+          title: "Company",
         }}
       />
     </AuthStack.Navigator>
