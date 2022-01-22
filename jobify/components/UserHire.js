@@ -57,7 +57,7 @@ const UserHire=(props)=> {
         
         <View style={styles.center}>
         <Text style={styles.text}>
-          Chose The Event That You Want This Woker To Work On In Just One Click On It
+          Chose The Event That You Want This Worker To Work On In Just One Click On It
         </Text>
         </View>
         </View>

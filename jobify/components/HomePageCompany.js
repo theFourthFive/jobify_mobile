@@ -1,28 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState, useEffect } from 'react';
-import { Button, StyleSheet, Text, TextInput, View,ScrollView,FlatList,TouchableOpacity, Image } from 'react-native';
+import { Button, StyleSheet, Text, TextInput,
+   View,ScrollView,FlatList,TouchableOpacity,
+   SafeAreaView, Image } from 'react-native';
 import server from "./ipConfig/serverIp.js"
 import axios from 'axios';
-
-
+import colors from '../assets/colors/colors'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 const HomePageCompany=({navigation})=>{
 
 return (
-  <View >
-  <ScrollView  vertical={true} >
-    <View style={styles.name} >
-        <Text style={styles.namein}>Jobify</Text>
-    </View>
-    <View style={styles.desc}>
-        <Text style={styles.descdesc}>Welcome to our website!</Text>
-    </View>
-    <View style={styles.search} >
+  <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
+  <StatusBar translucent={false} backgroundColor={colors.blue} />
+  <View style={styles.header}>
+  <Icon name="sort" size={28} color={colors.white} />
+   
+  </View>
+  <ScrollView showsVerticalScrollIndicator={false}>
+    <View
+      style={{
+        backgroundColor: colors.blue,
+        height: 120,
+        paddingHorizontal: 20,
+       
+      }}>
+      <View style={{flex: 1}}>
+        <Text style={styles.headerTitle}>Jobify</Text>
+        <Text style={styles.headerTitle}>find a job Here</Text>
+        <View style={styles.inputContainer} >
         <TouchableOpacity  onPress={()=>navigation.navigate('Hire')}  >
-          <Text style={styles.searchtext} >The List Of Workers That You Can Hire</Text>
+          <Text style={{color:colors.blueDark,left:40,}} >The List Of Workers That You Can Hire</Text>
         </TouchableOpacity>
-        <View style={styles.icon} ></View>
+        
     </View>
-    <Text style={styles.offername}>The Workers Categories ▼ </Text>
+      </View>
+    </View>
+  <ScrollView  vertical={true} >
+    
+    <Text style={styles.offername}>The Workers Categories </Text>
     <View style={styles.container} >
       <View style={styles.speciality}>
         <Text style={styles.descdesc}>Waiters</Text>
@@ -39,8 +54,8 @@ return (
     </View>
     <View style={styles.steps} >
       <Text style={styles.stepss}>Steps:</Text> 
-      <View>
-        <Text>(1)  :  Post Your Work Offer To recive The Subscriptions Of The Works That Want To Work With You</Text>
+      <View >
+        <Text style={styles.steps1}> (1)  :  Post Your Work Offer To recive The Subscriptions Of The Works That Want To Work With You</Text>
         <View  >
           <ScrollView  horizontal={true}>
             <Image style={styles.imgg} source={{uri:"https://scontent.ftun2-1.fna.fbcdn.net/v/t1.15752-9/271605007_887604215255103_8003493087516100448_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=ae9488&_nc_ohc=xR2wVnv8kCEAX8sfSHX&_nc_ht=scontent.ftun2-1.fna&oh=03_AVK9TwnJSl7WnRH0pIiuszbZ5xe7XiCqVGZOpXJ1PXVdmA&oe=620FE0FC"}}></Image> 
@@ -52,7 +67,7 @@ return (
         </View>
       </View> 
       <View>
-        <Text>(2)  :  If You Are Harry You Can Pick The Worker That You Like And Hire Him To An Event That You Already Posted And He Will Recive Your Offer </Text>
+        <Text style={styles.steps1}>(2)  :  If You Are Harry You Can Pick The Worker That You Like And Hire Him To An Event That You Already Posted And He Will Recive Your Offer </Text>
         <View  >
           <ScrollView  horizontal={true}>
             <Image style={styles.imgg} source={{uri:"https://scontent.ftun2-1.fna.fbcdn.net/v/t1.15752-9/271528660_897582757573609_8165689785749751942_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=oOP-M4zXkRAAX_Ci-eg&tn=sGtSemn8yBd_Mbao&_nc_ht=scontent.ftun2-1.fna&oh=03_AVJQx8evBdHw6XSA6n_9_OBVS0RmIjv7Y535MawwwpLHsA&oe=620F690B"}}></Image> 
@@ -64,10 +79,10 @@ return (
         </View>
       </View>
       <View>
-        <Text>(3)  :  You Will Recive All Of Hes Information When You Both Agree On The Offer To Contact Him </Text>
+        <Text style={styles.steps1}>(3)  :  You Will Recive All Of Hes Information When You Both Agree On The Offer To Contact Him </Text>
       </View>
       <View>
-        <Text>(4)  :  Have A Nice Experience With Our Workers :))) </Text>
+        <Text style={styles.steps4}>(4)  :  Have A Nice Experience With Our Workers : </Text>
       </View>
     </View>
     
@@ -79,7 +94,8 @@ return (
         </View>
     </View> */}
       </ScrollView>
-  </View>
+      </ScrollView>
+      </SafeAreaView>
 );
 }
 
@@ -87,7 +103,7 @@ const styles = StyleSheet.create({
   container: {
     display:'flex',
     flexDirection:'row',
-    marginTop:310,
+    marginTop:50,
     alignItems: "center",
     margin:10
   
@@ -104,7 +120,7 @@ const styles = StyleSheet.create({
   imgg:{
     width:150,
     height:320,
-    marginTop:10
+    top:30,
   },
   container1: {
     flex:1,
@@ -143,10 +159,11 @@ const styles = StyleSheet.create({
     top: 117,
   },
   descdesc:{
-    fontSize:28,
+    fontSize:18,
     fontWeight:"700",
     lineHeight: 26,
     letterSpacing: 0.5,
+    color:colors.gold,
   },
   search:{
     position: "absolute",
@@ -169,14 +186,18 @@ const styles = StyleSheet.create({
     // borderWidth:1
   },
   offername:{
-    width:340,
-    height:26,
-    top:297,
+    // width:340,
+    // height:26,
+    fontSize:20,
+    top:40,
     left:24,
-    fontWeight:'700'
+    fontWeight:'700',
+    color:colors.blue
   },
   stepss:{
-    fontWeight:'700'
+    fontWeight:'700',
+    fontSize:18,
+    color:colors.blue,
   },
   icon:{
     position: "absolute",
@@ -189,6 +210,43 @@ const styles = StyleSheet.create({
   speciality:{
     alignItems:'center',
     margin:10
+  },
+  header: {
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: colors.blue,
+  },
+  headerTitle: {
+    color: colors.white,
+    fontWeight: 'bold',
+    fontSize: 23,
+  },
+  inputContainer: {
+    height: 60,
+    width: '100%',
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    position: 'absolute',
+    top: 90,
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    elevation: 12,
+  },
+  steps1:{
+    fontWeight:'700',
+    fontSize:14,
+    color:colors.blueDark,
+    top:20,
+  },
+  steps4:{
+    fontWeight:'700',
+    fontSize:14,
+    color:colors.blueDark,
+    top:40,
+    marginBottom:40,
   },
 
   });

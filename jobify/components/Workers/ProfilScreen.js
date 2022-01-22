@@ -4,7 +4,9 @@ import server from "../ipConfig/serverIp";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
-import Animated from "react-native-reanimated";
+import Animated, { color } from "react-native-reanimated";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import {
   TextInput,
   Text,
@@ -31,16 +33,17 @@ export default function ProfilScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-          <View style={styles.Icon}>
-            <MaterialCommunityIcons.Button
-              name="account-edit"
-              size={25}
-              onPress={() => navigation.navigate("EditProfile")}
-            />
-          </View>
+          
    
 <View style={styles.header}>
-
+<View style={styles.Icon}>
+          <FontAwesome5
+                name="bars"
+                size={20}
+                color ={colors.white}
+                onPress={() => navigation.navigate("EditProfile")}
+              />
+          </View>
         </View>
       <Animated.View
         animation="fadeInUpBig"
@@ -105,7 +108,7 @@ export default function ProfilScreen({ navigation }) {
                 Email: {profile.Email}
               </Text>
             </View>
-
+            
             <View style={styles.action}>
               <Feather name="phone" size={20} />
                 <Text
@@ -149,7 +152,7 @@ const styles = StyleSheet.create({
 },
   footer: {
     flex: 3,
-    backgroundColor: "#252526",
+    backgroundColor: colors.white,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
@@ -167,10 +170,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: colors.gray,
-    // backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
+    backgroundColor:colors.blue,
   },
   Img: {
     width: 100,
@@ -179,13 +179,12 @@ const styles = StyleSheet.create({
     marginLeft: 285,
   },
   Icon: {
-    // marginTop:300,
-    marginLeft: 300,
+    marginBottom:40,
+    marginLeft: 350,
     height: 50,
     width: 50,
-    color: "#252526",
+   
   },
-
   formHeading: {
     color: "#252526",
     fontSize: 20,
@@ -202,7 +201,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 10,
   },
-
   userbtn: {
     borderColor: "#2e64e5",
     borderWidth: 2,
