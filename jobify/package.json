@@ -20,6 +20,7 @@
     "axios": "^0.24.0",
     "expo": "~44.0.0",
     "expo-linear-gradient": "^11.0.0",
+    "expo-location": "~14.0.1",
     "expo-status-bar": "~1.2.0",
     "link": "^0.1.5",
     "moment": "^2.29.1",
@@ -40,6 +41,7 @@
     "react-native-screens": "~3.10.1",
     "react-native-vector-icons": "^9.0.0",
     "react-native-web": "0.17.1",
+    "react-native-webview": "11.15.0",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22",
     "upgrade": "^1.1.0"
   },

@@ -40,6 +40,11 @@ export default function RoutesMenuScreen({ navigation }) {
           title="HomePage"
           onPress={() => navigation.navigate("HomePage")}
         />
+        <Button
+          style={styles.button}
+          title="MapComp"
+          onPress={() => navigation.navigate("MapComp")}
+        />
 
         <Button
           style={styles.button}
