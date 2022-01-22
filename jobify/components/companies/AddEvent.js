@@ -195,7 +195,8 @@ export default function AddEvent() {
         </Text>
       </View>
 
-      <View style={styles.action}>
+
+   <View style={styles.action}>
         {/* <FontAwesome name="user-o" size={20} /> */}
 
         <TextInput

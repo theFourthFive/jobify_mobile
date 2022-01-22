@@ -14,7 +14,7 @@ import ProfilScreen from "../../components/Workers/ProfilScreen";
 import HomePage from "../../components/HomePage";
 import EventList from "../../components/Workers/EventsList";
 import Workerhistory from "../../components/Workers/Workerhistory";
-
+import HiringOffers from "../../components/Workers/HiringOffers"
 const NotificationsStack = createNativeStackNavigator();
 
 const Notifications = () => {
@@ -26,6 +26,15 @@ const Notifications = () => {
         options={{
           headerShown: false,
           title: "Home page",
+          headerLeft: () => <View />,
+        }}
+      />
+    <NotificationsStack.Screen
+        name="HiringOffers"
+        component={HiringOffers}
+        options={{
+          headerShown: false,
+          title: "HiringOffers",
           headerLeft: () => <View />,
         }}
       />

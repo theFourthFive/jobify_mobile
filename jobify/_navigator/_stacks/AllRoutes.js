@@ -30,6 +30,7 @@ import eventList from "../../components/companies/eventList"
 import EventListForCompany from "../../components/companies/checksubscriptions/eventListForCompany"
 import EventWorkerForComapny from "../../components/companies/checksubscriptions/EventWorkersForCompany"
 import loginCompany from "../../components/companies/authCompanie/loginCompanie"
+
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
@@ -156,14 +157,7 @@ const Router = () => {
           title: "About us",
         }}
       />
-      <Stack.Screen
-        name="OK"
-        component={OK}
-        options={{
-          headerShown: false,
-          title: "OK",
-        }}
-      />
+
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}
@@ -254,7 +248,9 @@ const Router = () => {
         }}
       />
 
+
     </Stack.Navigator>
+
 
   );
 };

@@ -4,11 +4,12 @@ import { Button, View } from "react-native";
 import Signup from "../../components/Signup.js";
 import Login from "../../components/Login.js";
 import FilterPage from "../../components/FilterPage.js";
-import SignupCompany from "../../components/SignupCompany.js";
+import SignupCompany from "../../components/companies/authCompanie/loginCompanie";
 import RoutesMenuScreen from "../../components/RoutesMenuScreen";
 import Onboarding from "../../componetOnboarding/Onboarding";
 // import SetAvailabilityWorker from "../../components/Workers/SetAvailabilityWorkerScreen";
 import Worker from "../_tabs/Worker";
+import Company from "../_tabs/Company"
 
 const AuthStack = createNativeStackNavigator();
 
@@ -83,6 +84,15 @@ const Authentication = () => {
         options={{
           headerShown: false,
           title: "About us",
+        }}
+      />
+      
+      <AuthStack.Screen
+        name="Company"
+        component={Company}
+        options={{
+          headerShown: false,
+          title: "Company",
         }}
       />
     </AuthStack.Navigator>

@@ -10,7 +10,7 @@ const UserHire=(props)=> {
     console.log("===============>",props)
     var [offers , setoffers] = useState([])
     useEffect( () =>{
-      const URL = `${server.Ip}/events/`
+      const URL = `${server.Ip}/eventsComp/events/${37}`
       axios.get(URL).then((response)=>{
       setoffers(response.data)
       console.log('here is the events',response.data)
@@ -63,7 +63,7 @@ const UserHire=(props)=> {
         </View>
       <ScrollView >
         <View style={styles.wait}>
-          {offers.filter(e=>e.companyCompanyId===37).map((e,i)=>{
+          {offers.map((e,i)=>{
             return (
                 <TouchableOpacity key={i} style={styles.off} onPress={()=>hire(e)}>
                   <Image style={styles.image}  source={{ uri: e.imageUri }}></Image>

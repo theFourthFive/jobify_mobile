@@ -90,7 +90,7 @@ const Onboarding = (props) => {
         // onDone={handleDone}
         onDone={() => {
           console.log("Hiiiiiii");
-          props.navigation.navigate("Login");
+          props.navigation.navigate("FilterPage");
         }}
       />
     </View>
