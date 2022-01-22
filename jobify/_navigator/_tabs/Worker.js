@@ -90,26 +90,7 @@ const Worker = () => {
         })}
       />
 
-      <TabWorker.Screen
-        name={"AddEvent"}
-        component={AddEvent}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Image source={plus} resizeMode="contain" style={styles.plusIcon} />
-          ),
-          tabBarButton: (props) => <CustomTabButton {...props} />,
-        }}
-        listeners={({ navigation, route }) => ({
-          // Onpress Update....
-          tabPress: (e) => {
-            Animated.spring(tabOffsetValue, {
-              toValue: getWidth() * 2, // it was : 0
-              useNativeDriver: true,
-            }).start();
-          },
-        })}
-      />
+  
 
       <TabWorker.Screen
         name={"Notifications"}
@@ -166,6 +147,7 @@ const Worker = () => {
         name={"Routes"}
         component={AllRouter}
         options={{
+          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <Ionicons
@@ -193,7 +175,7 @@ const Worker = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.white,
     alignItems: "center",
     justifyContent: "center",
     
@@ -212,6 +194,7 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 10,
       height: 10,
+     
       
     },
     paddingHorizontal: 20,

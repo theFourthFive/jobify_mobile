@@ -22,10 +22,12 @@ import EventsList from "../../components/Workers/EventsList";
 import AddEvent from "../../components/companies/AddEvent";
 import ProfileScreen from "../../components/Workers/ProfilScreen";
 import WorkerProfile from "../_stacks/WorkerProfile";
-import WorkerHome from "../_stacks/HomeWorker";
+import HomeCompany from "../_stacks/HomeCompany"
 import WorkerEvents from "../_stacks/WorkerEvents";
 import Notification from "../_stacks/Notifications";
 import colors from "../../assets/colors/colors";
+import Hire from "../_stacks/Hire"
+import Subscription from "../_stacks/Subscriptions"
 const Company = () => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
   return (
@@ -36,10 +38,10 @@ const Company = () => {
       }}
     >
       <TabCompany.Screen
-        name={"HomeWorker"}
+        name={"CompanyHome"}
         // component={AllRouter}
         // component={HomePage}
-        component={WorkerHome}
+        component={HomeCompany}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -66,13 +68,13 @@ const Company = () => {
       <TabCompany.Screen
         name={"Event list"}
         // component={SearchScreen}
-        component={WorkerEvents}
+        component={Hire}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <FontAwesome5
-                name="search"
+                name="handshake"
                 size={20}
                 color={focused ? colors.blue : colors.gray}
               ></FontAwesome5>
@@ -112,14 +114,14 @@ const Company = () => {
       />
 
       <TabCompany.Screen
-        name={"Notifications"}
-        component={Notification}
+        name={"Subscription"}
+        component={Subscription}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <FontAwesome5
-                name="bell"
+                name="list"
                 size={20}
                 color={focused ? colors.blue : colors.gray}
               />
@@ -162,7 +164,7 @@ const Company = () => {
           },
         })}
       />
-      <TabCompany.Screen
+      {/* <TabCompany.Screen
         name={"Routes"}
         component={AllRouter}
         options={{
@@ -185,7 +187,7 @@ const Company = () => {
             }).start();
           },
         })}
-      />
+      /> */}
     </TabCompany.Navigator>
   );
 };

@@ -40,7 +40,7 @@ const WorkerHome = () => {
         name="EditProfile"
         component={EditProfilScreen}
         options={{
-          // headerShown: false,
+          headerShown: false,
           title: "My profile",
           // headerLeft: () => <View />,
         }}

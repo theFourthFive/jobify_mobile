@@ -142,19 +142,13 @@ export default function Login({ navigation }) {
           `Welcome ${data.firstName}`,
           "You're now connected to your account",
           [
-            // {
-            //   text: "Cancel",
-            //   onPress: () => console.log("Cancel Pressed"),
-            // },
-            // { text: "Home", onPress: () => navigation.goBack() },
             {
               text: "Continue",
               onPress: () => navigation.navigate("HomeWorker"),
             },
           ]
         );
-        // alert("Welcome" + " " + data.firstName);
-        // navigation.navigate("HomeWorker");
+        
       } else {
         alert("Login ERROR");
       }
@@ -207,45 +201,6 @@ export default function Login({ navigation }) {
 
   const [email_or_PhoneNumber, onChangeEmail] = useState(null);
   const [password, onChangePassword] = useState(null);
-  /*
-  this is the origin work
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
-      <StatusBar translucent={false} backgroundColor={colors.blue} />
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>login</Text>
-      </View>
-      <SafeAreaView style={styles.loginCont}>
-        <View style={styles.blockInput}>
-          <TextInput
-            placeholder="Email"
-            onChangeText={onChangeEmail}
-            value={email_or_PhoneNumber}
-            style={styles.inputs}
-          />
-        </View>
-        <View style={(styles.blockInput, styles.one)}>
-          <TextInput
-            placeholder="Password"
-            onChangeText={onChangePassword}
-            value={password}
-            secureTextEntry={true}
-            style={styles.inputs}
-          />
-        </View>
-        <Button color={colors.gold} title="Login" onPress={handlePressLogin} />
-        <View style={styles.space} />
-        <Button
-          color={colors.gold}
-          style={styles.thetwobutton}
-          title="Signup"
-          onPress={() => navigation.navigate("FilterPage")}
-        />
-      </SafeAreaView>
-    </SafeAreaView>
-  );
-  */
-  
      return (
       <View style={styles.container}>
           <StatusBar backgroundColor={colors.blue} barStyle="light-content"/>
@@ -342,73 +297,7 @@ export default function Login({ navigation }) {
       </View>
     );
 }
-/*
-this is the original
-///////////////////////
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.blue,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  header: {
-    top: -43,
-    paddingVertical: 200,
-    paddingHorizontal: 170,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: colors.blue,
-    borderRadius: 40,
-  },
-  headerTitle: {
-    color: colors.white,
-    fontSize: 25,
-    fontWeight: "bold",
-    bottom: -40,
-  },
-  loginCont: {
-    backgroundColor: colors.white,
-    bottom: 130,
-    borderRadius: 50,
-    width: "90%",
-    height: 320,
-    left: 25,
-  },
-  space: {
-    height: 20,
-  },
-  button: {
-    marginBottom: 20,
-    padding: 30,
-  },
 
-  inputs: {
-    height: 50,
-    width: "80%",
-    borderRadius: 20,
-    backgroundColor: "#EFEFEF",
-    padding: 15,
-    // bottom:90,
-    left: 40,
-    top: 20,
-  },
-
-  signup: {
-    fontFamily: "Roboto",
-    fontWeight: "bold",
-    fontSize: 24,
-    lineHeight: 24,
-    marginBottom: 60,
-    color: "white",
-  },
-  one: {
-    marginBottom: 30,
-    marginTop: 10,
-  },
-});
-////////////////////
-*/
 
   const styles = StyleSheet.create({
     container: {

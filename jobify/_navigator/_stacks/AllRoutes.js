@@ -157,14 +157,7 @@ const Router = () => {
           title: "About us",
         }}
       />
-      <Stack.Screen
-        name="OK"
-        component={OK}
-        options={{
-          headerShown: false,
-          title: "OK",
-        }}
-      />
+
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}

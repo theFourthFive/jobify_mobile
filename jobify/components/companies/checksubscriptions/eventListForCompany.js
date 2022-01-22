@@ -23,6 +23,8 @@ function EventsListForCompany({navigation}){
  },[])
     return (
       <View style={styles.container}>
+        
+        <Button title={"Hitory"} onPress={()=>navigation.navigate("History")}/>
       <View>
         <Text style={styles.header}> there is {events.length} event </Text>
       </View>

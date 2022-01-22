@@ -141,7 +141,9 @@ const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: '#E5E5E5',
     marginBottom: "5%",
-    borderRadius: 20,
+    borderRadius: 5,
+    borderTopLeftRadius: 30,
+    borderBottomRightRadius:30,
 
     width: 370,
     height: 430,

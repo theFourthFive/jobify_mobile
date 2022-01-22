@@ -4,7 +4,7 @@ import { Button, View } from "react-native";
 import Signup from "../../components/Signup.js";
 import Login from "../../components/Login.js";
 import FilterPage from "../../components/FilterPage.js";
-import SignupCompany from "../../components/SignupCompany.js";
+import SignupCompany from "../../components/companies/authCompanie/loginCompanie";
 import RoutesMenuScreen from "../../components/RoutesMenuScreen";
 import Onboarding from "../../componetOnboarding/Onboarding";
 // import SetAvailabilityWorker from "../../components/Workers/SetAvailabilityWorkerScreen";
