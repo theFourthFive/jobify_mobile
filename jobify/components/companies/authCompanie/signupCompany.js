@@ -164,7 +164,7 @@ export default function SignupCompany({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate("Login")}
+              onPress={() => navigation.navigate("loginCompany")}
               style={[
                 styles.signIn,
                 {

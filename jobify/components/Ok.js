@@ -5,6 +5,7 @@ import { Rating, AirbnbRating } from 'react-native-ratings'
 import server from "./ipConfig/serverIp.js";
 import axios from "axios";
 import moment from "moment";
+import colors from '../assets/colors/colors'
 const b100 = "100%"
 
 const OK =()=>{

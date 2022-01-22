@@ -50,16 +50,16 @@ export default function FilterPage({ navigation }) {
            
           }}>
           <View style={{flex: 1}}>
-            <Text style={styles.headerTitle}>Welcome </Text>
-            <Text style={styles.headerTitle}>To Our Application</Text>
+            <Text style={styles.headerTitle}>Choose which  </Text>
+            <Text style={styles.headerTitle}>One are you! </Text>
             <View style={styles.inputContainer}>
               
               <View style={styles.pick}>
-              <TouchableOpacity onPress={() => setworker(!woker)} >
+              <TouchableOpacity onPress={() => navigation.navigate("Signup")} >
                 <Image style={styles.workerImg} source={require('../assets/business-3d-man-standing-1.png')}/>
               <Text style={styles.workername}>I'm a worker</Text>
               </TouchableOpacity>
-              <TouchableOpacity  onPress={() => setShouldShow(!shouldShow)} >
+              <TouchableOpacity  onPress={() =>  navigation.navigate("SignupCompany")} >
                 <Image style={styles.employerImg} source={require('../assets/business-3d-new-conquered-peak-man.png')}/>
                 <Text style={styles.employername}>I'm an Employer</Text>
               </TouchableOpacity>
@@ -94,7 +94,7 @@ export default function FilterPage({ navigation }) {
           style={styles.commandButtonOne}
           onPress={() => Bobify()}
         >
-          <Text style={styles.panelButtonTitle}>Next Step!</Text>
+          <Text style={styles.panelButtonTitle}></Text>
         </TouchableOpacity>
         
           </ScrollView>
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     borderTopLeftRadius:30,
-    backgroundColor: colors.blue,
+    backgroundColor: colors.white,
     alignItems: "center",
     marginTop: 250,
     width:'50%',
