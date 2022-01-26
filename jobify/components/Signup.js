@@ -42,7 +42,7 @@ export default function Signup({ navigation }) {
     //   console.log(req.body)
     //   res.send(data)
     // })
-    var worker = { firstName, lastName, email, password, phoneNumber };
+    var worker = { firstName:firstName, lastName:lastName, Email : email, password : password, phoneNumber:phoneNumber };
     console.log(worker);
     Axios.post(`${server.Ip}/workers/signup`, worker)
       .then((response) => {
@@ -65,6 +65,7 @@ export default function Signup({ navigation }) {
   const [email, onChangeEmail] = useState(null);
   const [password, onChangePassword] = useState(null);
   const [phoneNumber, onChangePhoneNumber] = useState(null);
+
 
   return (
     <View style={styles.container}>
@@ -133,7 +134,7 @@ export default function Signup({ navigation }) {
               placeholder="Your Password"
               style={styles.textInput}
               autoCapitalize="none"
-              onChangeText={(val) => handlePasswordChange(val)}
+              onChangeText={onChangePassword}
             />
           </View>
 
