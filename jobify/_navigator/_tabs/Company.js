@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { View, StyleSheet, Image, Animated } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-const TabWorker = createBottomTabNavigator();
+const TabCompany = createBottomTabNavigator();
 
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -22,24 +22,26 @@ import EventsList from "../../components/Workers/EventsList";
 import AddEvent from "../../components/companies/AddEvent";
 import ProfileScreen from "../../components/Workers/ProfilScreen";
 import WorkerProfile from "../_stacks/WorkerProfile";
-import WorkerHome from "../_stacks/HomeWorker";
+import HomeCompany from "../_stacks/HomeCompany"
 import WorkerEvents from "../_stacks/WorkerEvents";
 import Notification from "../_stacks/Notifications";
 import colors from "../../assets/colors/colors";
-const Worker = () => {
+import Hire from "../_stacks/Hire"
+import Subscription from "../_stacks/Subscriptions"
+const Company = () => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
   return (
-    <TabWorker.Navigator
+    <TabCompany.Navigator
       screenOptions={{
         tabBarShowLabel: false,
         style: styles.bottomTab, // Floating Tab Bar...
       }}
     >
-      <TabWorker.Screen
-        name={"HomeWorker"}
+      <TabCompany.Screen
+        name={"CompanyHome"}
         // component={AllRouter}
         // component={HomePage}
-        component={WorkerHome}
+        component={HomeCompany}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -63,16 +65,16 @@ const Worker = () => {
         })}
       />
 
-      <TabWorker.Screen
+      <TabCompany.Screen
         name={"Event list"}
         // component={SearchScreen}
-        component={WorkerEvents}
+        component={Hire}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <FontAwesome5
-                name="search"
+                name="handshake"
                 size={20}
                 color={focused ? colors.blue : colors.gray}
               ></FontAwesome5>
@@ -90,17 +92,36 @@ const Worker = () => {
         })}
       />
 
-  
+      <TabCompany.Screen
+        name={"AddEvent"}
+        component={AddEvent}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <Image source={plus} resizeMode="contain" style={styles.plusIcon} />
+          ),
+          tabBarButton: (props) => <CustomTabButton {...props} />,
+        }}
+        listeners={({ navigation, route }) => ({
+          // Onpress Update....
+          tabPress: (e) => {
+            Animated.spring(tabOffsetValue, {
+              toValue: getWidth() * 2, // it was : 0
+              useNativeDriver: true,
+            }).start();
+          },
+        })}
+      />
 
-      <TabWorker.Screen
-        name={"Notifications"}
-        component={Notification}
+      <TabCompany.Screen
+        name={"Subscription"}
+        component={Subscription}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <FontAwesome5
-                name="bell"
+                name="list"
                 size={20}
                 color={focused ? colors.blue : colors.gray}
               />
@@ -118,7 +139,7 @@ const Worker = () => {
         })}
       />
 
-      <TabWorker.Screen
+      <TabCompany.Screen
         name={"Profile"}
         component={WorkerProfile}
         options={{
@@ -143,11 +164,10 @@ const Worker = () => {
           },
         })}
       />
-      <TabWorker.Screen
+      {/* <TabCompany.Screen
         name={"Routes"}
         component={AllRouter}
         options={{
-          headerShown: false,
           tabBarIcon: ({ focused }) => (
             <View style={styles.icon}>
               <Ionicons
@@ -167,15 +187,15 @@ const Worker = () => {
             }).start();
           },
         })}
-      />
-    </TabWorker.Navigator>
+      /> */}
+    </TabCompany.Navigator>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     
@@ -194,7 +214,6 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 10,
       height: 10,
-     
       
     },
     paddingHorizontal: 20,
@@ -211,4 +230,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Worker;
+export default Company;

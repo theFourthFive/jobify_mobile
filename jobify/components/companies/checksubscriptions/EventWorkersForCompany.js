@@ -146,7 +146,7 @@ catch(err){
         source={{ uri: feed.imageUri }}
       />
 
- 
+
       <Text style={styles.location}>
         location {feed.location}
         

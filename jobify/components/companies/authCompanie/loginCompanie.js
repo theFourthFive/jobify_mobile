@@ -8,6 +8,7 @@ import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+
 //npm i react-native-vector-icons to install teb3aeli fou9ha
 //////////////////////////////////////
 // import server from "./ipConfig/serverIp";
@@ -35,128 +36,25 @@ export default function loginCompanie({ navigation }) {
         const URL = `${server.Ip}/authcompany/login`;
         console.log(URL);
         const worker = { email_or_PhoneNumber, password };
-        try {
+
        
           // const { data } = await axios.post(URL, worker);
           const { data } = await axios.post(URL, worker);
           console.log("DATA", data);
-    
-          // if the response is not a string (not an error message)
-          if (typeof data !== "string") {
-            // then it's an object containing data
-    
-            // the provided login, belongs to a registered company or to a registered worker
-            const { workerId, id } = data;
-            const userId = id ?? workerId;
-
-            await AsyncStorage.setItem("session", JSON.stringify(userId));
-
-
-            
-            let role;
-            if (workerId) {
-              role = "Worker";
-            } else if (companyId) {
-              role = "Company";
-            } else {
-              role = "admin";
-            }
-    
-            Alert.alert(
-              `Welcome ${data.firstName}`,
-              "You're now connected to your account",
-              [
-    
-                {
-                  text: "Continue",
-                  onPress: () => navigation.navigate(`Home${role}`),
-                },
-              ]
-            );
-          } else {
- 
-            let title, content, leftButtonLabel, rightButtonLabel, leftButtonAction, rightButtonAction;
-    
-            if (data === "Wrong login and password combination") {
-              title = "Incorrect login & password combination";
-              content = `Please try again, or click on forgot password`;
-              leftButtonLabel = "Forgot password";
-              leftButtonAction = () => {
-                // navigation.navigate("forgotPassword")
-              };
-              rightButtonLabel = "Ok";
-              rightButtonAction = () => {};
-            } else if (data === "If you are a company, please enter your email") {
-              title = "Incorrect login / password";
-              content = `${data}.\nPlease try again, or click on forgot password`;
-              leftButtonLabel = "Forgot password";
-              leftButtonAction = () => {
-                // navigation.navigate("forgotPassword")
-              };
-              rightButtonLabel = "Close";
-              rightButtonAction = () => {};
-            } else if (data === "(500) Internal Server Error") {
-              title = "Network Error";
-              content = `${data}.\nPlease check your network connection`;
-              leftButtonLabel = "";
-              leftButtonAction = () => {
-                // navigation.navigate("forgotPassword")
-              };
-              rightButtonLabel = "Ok";
-              rightButtonAction = () => {};
-            }
-    
-            Alert.alert(title, content, [
-              {
-                text: leftButtonLabel,
-                onPress: leftButtonAction,
-              },
-              { text: "", onPress: () => null },
-              {
-                text: rightButtonLabel,
-                onPress: rightButtonAction,
-              },
-            ]);
-            console.log(data);
+          if(data==="false")
+          {
+            alert("login or password Error")
           }
-    
-          if (!String(data).includes("false")) {
-            const workerId = JSON.stringify(data.id);
-            await AsyncStorage.setItem("session", workerId);
-            Alert.alert(
-              `Welcome ${data.firstName}`,
-              "You're now connected to your account",
-              [
-                // {
-                //   text: "Cancel",
-                //   onPress: () => console.log("Cancel Pressed"),
-                // },
-                // { text: "Home", onPress: () => navigation.goBack() },
-                {
-                  text: "Continue",
-                  onPress: () => navigation.navigate("HomeWorker"),
-                },
-              ]
-            );
-            // alert("Welcome" + " " + data.firstName);
-            // navigation.navigate("HomeWorker");
-          } else {
-            alert("Login ERROR");
-          }
-        } catch (error) {
+          else
+          {
+            alert(`welcome ${data.lastName}`)
+            await AsyncStorage.setItem("session",JSON.stringify(data.id))
+            navigation.navigate("Company")
           
-          Alert.alert("Network Error", "Please check your network connection", [
-            {
-              text: "",
-              onPress: () => {},
-            },
-            { text: "", onPress: () => null },
-            {
-              text: "ok",
-              onPress: () => {},
-            },
-          ]);
-        }
+          }
+          
+
+   
       };
     
       const handlePressLogin = () => {

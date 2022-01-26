@@ -27,7 +27,7 @@ const WorkerHome = () => {
           // headerLeft: () => <View />,
         }}
       />
-      <WorkerHomeStack.Screen
+      {/* <WorkerHomeStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
@@ -53,7 +53,7 @@ const WorkerHome = () => {
           title: "My availabilities",
           // headerLeft: () => <View />,
         }}
-      />
+      /> */}
       <WorkerHomeStack.Screen
         name="Profil"
         component={ProfilScreen}
@@ -62,56 +62,7 @@ const WorkerHome = () => {
           title: "My profile",
         }}
       />
-      {/* <WorkerHomeStack.Screen
-        name="Signup"
-        component={Signup}
-        options={{
-          headerShown: false,
-          title: "My availabilities",
-          headerLeft: () => <View />,
-        }}
-      />
-      <WorkerHomeStack.Screen
-        name="FilterPage"
-        component={FilterPage}
-        options={{
-          headerShown: false,
-          title: "My availabilities",
-          headerLeft: () => <View />,
-        }}
-      />
-      <WorkerHomeStack.Screen
-        name="Routes"
-        component={RoutesMenuScreen}
-        options={{
-          headerShown: false,
-          title: "Routes Menu Screen",
-        }}
-      />
-      <WorkerHomeStack.Screen
-        name="SignupCompany"
-        component={SignupCompany}
-        options={{
-          headerShown: false,
-          title: "About us",
-        }}
-      />
-      <WorkerHomeStack.Screen
-        name="Onboarding"
-        component={Onboarding}
-        options={{
-          headerShown: false,
-          title: "About us",
-        }}
-      />
-      <WorkerHomeStack.Screen
-        name="HomeWorker"
-        component={Worker}
-        options={{
-          headerShown: false,
-          title: "About us",
-        }}
-      /> */}
+
     </WorkerHomeStack.Navigator>
   );
 };

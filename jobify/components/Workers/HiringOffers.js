@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 // prettier-ignore
-import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage, TouchableWithoutFeedback, Alert} from 'react-native';
+import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage , Animated,TouchableWithoutFeedback, Alert} from 'react-native';
 import { Rating, AirbnbRating } from "react-native-ratings";
 import moment from "moment";
 import server from "../ipConfig/serverIp";
@@ -23,7 +23,7 @@ const b80 = "80%";
 const b90 = "90%";
 const b100 = "100%";
 const { width } = Dimensions.get("screen");
-const Workerhistory = ({ navigation }) => {
+const HiringOffers = ({ navigation }) => {
   var [events, setevents] = useState([]);
   var [user, setuser] = useState([]);
   useEffect(() => {
@@ -47,47 +47,28 @@ const Workerhistory = ({ navigation }) => {
   async function refresh() {
     try {
       const connectedUser = await AsyncStorage.getItem("session");
-      const URL = `${server.Ip}/events/worker/history/${connectedUser}`;
+      const URL = `${server.Ip}/events/offers/${connectedUser}`;
       const res = await axios.get(URL);
-      setevents(res.data[0]);
+      setevents(()=>res.data[0]);
     } catch (err) {
       console.log(err);
     }
   }
 
-  var unsubscribe = async (id) => {
-    try {
-      const connectedUser = await AsyncStorage.getItem("session");
-      const URL = `${server.Ip}/events/unsubscribe/${id}/${connectedUser}`;
-      Alert.alert(`Success`, "This subscription will be canceled", [
-        // {
-        //   text: "Cancel",
-        //   onPress: () => console.log("Cancel Pressed"),
-        // },
-        // { text: "Home", onPress: () => navigation.goBack() },
-        {
-          text: "Continue",
-          onPress: () => navigation.push("Workerhistory"),
-        },
-      ]);
-      // alert("this subscription will be canceled");
-      axios
-        .delete(URL)
-        .then((res) => {
-          refresh();
-        })
-        .catch((err) => console.log(err));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const accept = async(event,company)=>{
+  const connectedUser = await AsyncStorage.getItem("session");
+  console.log(connectedUser);
+ const URL = `${server.Ip}/events/offers/accept/${connectedUser}/${event}/${company}`;
+ await axios.post(URL)
+
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar translucent={false} backgroundColor={colors.blue} />
       <View style={style.header}>
         <Icon name="sort" size={28} color={colors.white} />
         {/* <Icon name="notifications-none" size={28} color={colors.white} /> */}
-        <Button title="got to my offers" onPress={()=>navigation.push("HiringOffers")}/>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
@@ -100,16 +81,16 @@ const Workerhistory = ({ navigation }) => {
         >
           <View style={{ flex: 1 }}>
             <Text style={style.headerTitle}>Your</Text>
-            <Text style={style.headerTitle}>History</Text>
+            <Text style={style.headerTitle}>Offers</Text>
           </View>
         </View>
     <View style={style.container}>
       <View style={style.user}>
         <View style={style.userrrr}>
-          {/* <Image style={style.img} source={{ uri: user.imageUrl }}/> */}
+          <Image style={style.img} source={{ uri: user.imageUrl }}></Image>
           <View style={style.userr}>
             <Text>{user.firstName}</Text>
-            <Text>{user.LastName} 's rating</Text>
+            <Text>{user.LastName}</Text>
           </View>
           <Text>{user.avgRating}/5</Text>
           <AirbnbRating
@@ -128,7 +109,7 @@ const Workerhistory = ({ navigation }) => {
         {events.map((ele, i) => (
           <View style={style.userhiss} key={i}>
             <View style={style.alloff1}>
-              {/* <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image>  */}
+              <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image>
               <View style={style.userrhis}>
                 <Text>Name:{ele.eventName}</Text>
                 <Text>Form:{moment(ele.createdAt).fromNow()}</Text>
@@ -140,20 +121,21 @@ const Workerhistory = ({ navigation }) => {
                   style={style.imgggg}
                   source={{ uri: ele.imageUrl }}
                 ></Image>
-                <TouchableWithoutFeedback
-                  onPress={() => unsubscribe(ele.eventID)}
-                >
-                  
-                  <Image
-                    style={style.imggg}
-                    source={{
-                      uri: "https://pngset.com/images/cancel-icon-first-aid-symbol-text-logo-transparent-png-1419157.png",
-                    }}
-                  ></Image>
-                </TouchableWithoutFeedback>
               </View>
+              
             </View>
-            <Text style={style.line}>__________________________________</Text>
+            <Button 
+                 title ="accept"
+                 color= {"#228B22"}
+                 onPress={()=>accept(ele.eventEventID , ele.companyCompanyId)}
+                 />
+                 
+                 <Button 
+                 title ="deny"
+                 color= {"#ff6347"}
+                 
+                 />
+            <Text style={style.line}>_________________________________________________</Text>
           </View>
         ))}
       </View>
@@ -198,9 +180,9 @@ const style = StyleSheet.create({
     marginBottom: 10,
   },
   img: {
-    width: b30,
-    height: b50,
-    borderRadius: 20,
+    width: 150,
+    height: 150,
+    borderRadius: 150,
   },
   imgg: {
     width: b40,
@@ -213,9 +195,10 @@ const style = StyleSheet.create({
     borderRadius: 50,
   },
   imgggg: {
-    width: b60,
-    height: b50,
-    borderRadius: 50,
+    width: 120,
+    height: 120,
+    borderRadius: 150,
+    marginBottom : 25
   },
   userrrr: {
     flex: 1,
@@ -226,7 +209,6 @@ const style = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     marginLeft: b10,
-    
   },
   userrhis: {
     flex: 1,
@@ -298,4 +280,4 @@ const style = StyleSheet.create({
 });
 
 
-export default Workerhistory;
+export default HiringOffers;
