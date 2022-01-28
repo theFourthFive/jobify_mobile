@@ -48,9 +48,15 @@ export default function loginCompanie({ navigation }) {
           else
           {
             alert(`welcome ${data.lastName}`)
-            await AsyncStorage.setItem("session",JSON.stringify(data.id))
+            await AsyncStorage.setItem("sessionC",JSON.stringify(data.id))
+            const connectedcomp = await AsyncStorage.getItem("sessionC")
+            if(connectedcomp){
             navigation.navigate("Company")
-          
+            console.log(connectedcomp);
+            }
+            else{
+                alert("login Error")
+            }
           }
           
 
