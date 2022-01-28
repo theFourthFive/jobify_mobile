@@ -15,9 +15,11 @@ import server from "../../ipConfig/serverIp";
 import EventItemForCompany from "./eventItemForCompany"
 
 function EventsListForCompany({navigation}){  
+ let [connected , setconnected ] = useState()
  let [events , setevents] = useState([])
  useEffect(async()=>{
-   const URL = `${server.Ip}/companyevetns/events/${37}`
+  const company = await AsyncStorage.getItem("sessionC")
+   const URL = `${server.Ip}/companyevetns/events/${company}`
    const res = await axios.get(URL);
    setevents(res.data)
  },[])
