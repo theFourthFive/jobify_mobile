@@ -105,8 +105,8 @@ export default function EditProfileScreen({ navigation }) {
       <TouchableOpacity style={styles.panelButton}>
         <Text style={styles.panelButtonTitle}>Take Photo</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.panelButton}>
-        <Text style={styles.panelButtonTitle}>Choose From Gallery</Text>
+      <TouchableOpacity style={styles.panelButtono}>
+        <Text style={styles.panelButtonTitleo}>Choose From Gallery</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.panelButton}
@@ -309,17 +309,46 @@ export default function EditProfileScreen({ navigation }) {
             ]}
           />
         </View>
+        <View style={styles.button}>
+            <TouchableOpacity style={[styles.signIn,{backgroundColor:ourcolors.gold}]}
+              onPress={() => navigation.navigate("SetAvailabilityWorker")}
+              >
+              <Text
+                style={[
+                  styles.textSign,
+                  {
+                    color: ourcolors.white,
+                  },
+                ]}
+              >
+                  Availability
+              </Text>
+            </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.commandButtonOne}
-          onPress={() => navigation.navigate("SetAvailabilityWorker")}
-        >
-          <Text style={styles.panelButtonTitle}>Availability</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.commandButtonTwo} onPress={() => {}}>
-          <Text style={styles.panelButtonTitle} onPress={UpdateInfo}>Update</Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+               onPress={() => {}}
+              style={[
+                styles.signIn,
+                {
+                  borderColor: ourcolors.gold,
+                  borderWidth: 1,
+                  marginTop: 15,
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.textSign,
+                  {
+                    color: ourcolors.gold,
+                  },
+                ]}
+              >
+                 Update
+              </Text>
+            </TouchableOpacity>
+          </View>
+       
       </Animated.View>
     </View>
   );
@@ -328,6 +357,30 @@ export default function EditProfileScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  button: {
+    alignItems: 'center',
+    marginTop: 30
+  },
+  signIn: {
+    width: "100%",
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  textSign: {
+    fontSize: 18,
+    fontWeight: "bold",
+    
+  },
+  textPrivate: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    
+},
+  color_textPrivate: {
+    color: colors.gray,
   },
   commandButtonOne: {
     padding: 10,
@@ -385,18 +438,33 @@ const styles = StyleSheet.create({
     height: 30,
     marginBottom: 10,
   },
+  
   panelButton: {
     padding: 13,
     borderRadius: 10,
-    backgroundColor: ourcolors.blueDark,
+    backgroundColor: ourcolors.gold,
     alignItems: "center",
     marginVertical: 7,
+  },
+  panelButtono: {
+    padding: 13,
+    borderRadius: 10,
+    backgroundColor: ourcolors.white,
+    alignItems: "center",
+    marginVertical: 7,
+    borderColor: colors.gold,
+    borderWidth: 1,
   },
   panelButtonTitle: {
     fontSize: 17,
     fontWeight: "bold",
     color: "white",
     
+  },
+  panelButtonTitleo:{
+    fontSize: 17,
+    fontWeight: "bold",
+    color: ourcolors.gold,
   },
   action: {
     flexDirection: "row",

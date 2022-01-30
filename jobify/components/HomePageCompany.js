@@ -29,7 +29,7 @@ return (
         <Text style={styles.headerTitle}>find a job Here</Text>
         <View style={styles.inputContainer} >
         <TouchableOpacity  onPress={()=>navigation.navigate('Hire')}  >
-          <Text style={{color:colors.blueDark,left:40,}} >The List Of Workers That You Can Hire</Text>
+          <Text style={{color:colors.blueDark,alignContent:'center'}} >The List Of Workers That You Can Hire</Text>
         </TouchableOpacity>
         
     </View>
