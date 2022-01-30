@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
-import Toggle from 'react-native-toggle-element';
+import ButtonToggleGroup from 'react-native-button-toggle-group';
 import {
   StyleSheet,
   Text,
@@ -28,6 +28,7 @@ const Hire = ({ navigation }) => {
   var [hire, sethire] = useState(false);
   var [pick, setpick] = useState(true);
   var [offers, setoffers] = useState([]);
+  const [value, setValue] = React.useState('Light');
   useEffect(() => {
     const URL1 = `${server.Ip}/workers/`;
     const URL = `${server.Ip}/events/`;
@@ -74,6 +75,15 @@ const Hire = ({ navigation }) => {
       </ScrollView>
        
       <ScrollView vertical={true}>
+      <ButtonToggleGroup
+    highlightBackgroundColor={'blue'}
+    highlightTextColor={'white'}
+    inactiveBackgroundColor={'transparent'}
+    inactiveTextColor={'grey'}
+    values={['Auto', 'Light', 'Dark']}
+    value={value}
+    onSelect={val => setValue(val)}
+/>
         <View style={styles.pick}>
           <TouchableOpacity onPress={() => setpick(true)}>
             <Text style={styles.usersrate}>
@@ -86,7 +96,7 @@ const Hire = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
           
-        </View>
+        </View> 
         {pick ? (
           <View style={styles.container1}>
             <View style={styles.alloff1}>
@@ -106,7 +116,7 @@ const Hire = ({ navigation }) => {
                           <Text>
                             {u.firstName} {u.LastName}
                           </Text>
-                          <Text>Adress.....</Text>
+                          <Text>Adress...</Text>
                         </View>
                         <AirbnbRating
                           style={styles.star}

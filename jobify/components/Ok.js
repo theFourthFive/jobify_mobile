@@ -64,7 +64,7 @@ return (
                         <Text>
                           {u.firstName} {u.LastName}
                         </Text>
-                        <Text>Adress.....</Text>
+                        <Text>Adress...</Text>
                       </View>
                       <AirbnbRating
                         style={styles.star}

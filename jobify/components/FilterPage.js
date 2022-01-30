@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import colors from "../assets/colors/colors";
 import { Button, StyleSheet, Text, View, Image,Alert, TextInput,SafeAreaView,ScrollView,TouchableOpacity } from "react-native";
 // import { RadioButton } from 'react-native-paper';
-
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function FilterPage({ navigation }) {
   const [woker, setworker] = useState(false);
@@ -194,26 +194,27 @@ const styles = StyleSheet.create({
     
   },
   employerImg:{
-    width:170,
-    height:320,
+    width:180,
+    height:240,
     left:20,
-    top:65,
+    top:90,
     // backgroundColor:"red"
   },
   workerImg:{
-    width:120,
-    height:335,
+    width:180,
+    height:240,
+    left:-15,
     // backgroundColor:"blue",
-    top:50,
+    top:100,
   },
   workername:{
-    top:50,
+    top:70,
    
   },
 employername:{
-  // top:50,
-  color:colors.blueDark
- 
+  top:80,
+  color:colors.blueDark,
+ left:50,
 },
 
 });

@@ -87,7 +87,7 @@ const HiringOffers = ({ navigation }) => {
     <View style={style.container}>
       <View style={style.user}>
         <View style={style.userrrr}>
-          <Image style={style.img} source={{ uri: user.imageUrl }}></Image>
+          {/* <Image style={style.img} source={{ uri: user.imageUrl }}></Image> */}
           <View style={style.userr}>
             <Text>{user.firstName}</Text>
             <Text>{user.LastName}</Text>
@@ -150,9 +150,9 @@ const style = StyleSheet.create({
     marginBottom: 30,
   },
   user: {
-    height: b25,
+    height: 100,
     width: b100,
-    backgroundColor: colors.white,
+    backgroundColor: '#E5E5E5',
     // alignItems: 'center',
     // justifyContent: 'center',
   },
