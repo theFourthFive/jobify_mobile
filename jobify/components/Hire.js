@@ -75,7 +75,7 @@ const Hire = ({ navigation }) => {
       </ScrollView>
 
       <ScrollView vertical={true}>
-        {/* <ButtonToggleGroup
+        <ButtonToggleGroup
           highlightBackgroundColor={"blue"}
           highlightTextColor={"white"}
           inactiveBackgroundColor={"transparent"}
@@ -83,7 +83,7 @@ const Hire = ({ navigation }) => {
           values={["Auto", "Light", "Dark"]}
           value={value}
           onSelect={(val) => setValue(val)}
-        /> */}
+        />
         <View style={styles.pick}>
           <TouchableOpacity onPress={() => setpick(true)}>
             <Text style={styles.usersrate}>

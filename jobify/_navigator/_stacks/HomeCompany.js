@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Button, View } from "react-native";
-import HomePageCompany from "../../components/HomePageCompany"
+import HomePageCompany from "../../components/HomePageCompany";
 
 const CompanyHomeStack = createNativeStackNavigator();
 
 const CompanyHome = () => {
   return (
-    <CompanyHomeStack.Navigator initialRouteName="HomePageCompany">      
+    <CompanyHomeStack.Navigator initialRouteName="HomePageCompany">
       <CompanyHomeStack.Screen
         name="HomePageCompany"
         component={HomePageCompany}
