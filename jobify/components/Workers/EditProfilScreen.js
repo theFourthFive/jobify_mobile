@@ -16,7 +16,7 @@ import Feather from "react-native-vector-icons/Feather";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
-import ourcolors from '../../assets/colors/colors'
+import ourcolors from "../../assets/colors/colors";
 import colors from "../../assets/colors/colors";
 export default function EditProfileScreen({ navigation }) {
   const [WorkerId, setWorkerId] = useState("");
@@ -24,14 +24,16 @@ export default function EditProfileScreen({ navigation }) {
   const [LasttName, setLastName] = useState("");
   const [Email, setEmail] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
-  const [imageUrl, setimageUrl] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
+  const [imageUrl, setimageUrl] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  );
   const [City, setCity] = useState("");
   const [CVUrl, setCVUrl] = useState("");
   const [availibility, setavailibility] = useState("");
   const [password, setpassword] = useState("");
   const [avgRating, setavgRating] = useState("");
 
-  const [update,setUpdated]=useState("")
+  const [update, setUpdated] = useState("");
 
   const handelChangeWorkerId = (WorkerId) => {
     setWorkerId(WorkerId);
@@ -71,7 +73,7 @@ export default function EditProfileScreen({ navigation }) {
 
   function UpdateInfo(id) {
     var URL = `${server.Ip}/workers/updateprofile/${1}`;
-    var info = {    
+    var info = {
       WorkerId,
       City,
       firstName,
@@ -81,16 +83,17 @@ export default function EditProfileScreen({ navigation }) {
       imageUrl,
       CVUrl,
       availibility,
-      password,}
+      password,
+    };
     axios
-      .put(URL,info)
-      
+      .put(URL, info)
+
       .then((result) => {
-        setUpdated(result.data.update)
-          console.log( "work work work ");
+        setUpdated(result.data.update);
+        console.log("work work work ");
       })
       .catch((err) => {
-        console.log(err,'there is an err');
+        console.log(err, "there is an err");
       });
   }
 
@@ -187,7 +190,14 @@ export default function EditProfileScreen({ navigation }) {
               </ImageBackground>
             </View>
           </TouchableOpacity>
-          <Text style={{ marginTop: 10, fontSize: 18, fontWeight: "bold",color:ourcolors.blue }}>
+          <Text
+            style={{
+              marginTop: 10,
+              fontSize: 18,
+              fontWeight: "bold",
+              color: ourcolors.blue,
+            }}
+          >
             Edit Image
           </Text>
         </View>
@@ -259,8 +269,6 @@ export default function EditProfileScreen({ navigation }) {
           />
         </View>
 
-
-       
         {/* <View style={styles.action}>
           <Feather name="lock" color={colors.text} size={20} />
           <TextInput
@@ -279,7 +287,6 @@ export default function EditProfileScreen({ navigation }) {
           />
         </View> */}
 
-        
         <View style={styles.action}>
           <Ionicons
             name="ios-clipboard-outline"
@@ -288,7 +295,7 @@ export default function EditProfileScreen({ navigation }) {
           />
           <TextInput
             placeholder="About_Me"
-            placeholderTextColor="##666666"
+            placeholderTextColor="#666666"
             style={styles.textInput}
             // value={phoneNumber}
             autoCorrect={false}
@@ -310,45 +317,45 @@ export default function EditProfileScreen({ navigation }) {
           />
         </View>
         <View style={styles.button}>
-            <TouchableOpacity style={[styles.signIn,{backgroundColor:ourcolors.gold}]}
-              onPress={() => navigation.navigate("SetAvailabilityWorker")}
-              >
-              <Text
-                style={[
-                  styles.textSign,
-                  {
-                    color: ourcolors.white,
-                  },
-                ]}
-              >
-                  Availability
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-               onPress={() => {}}
+          <TouchableOpacity
+            style={[styles.signIn, { backgroundColor: ourcolors.gold }]}
+            onPress={() => navigation.navigate("SetAvailabilityWorker")}
+          >
+            <Text
               style={[
-                styles.signIn,
+                styles.textSign,
                 {
-                  borderColor: ourcolors.gold,
-                  borderWidth: 1,
-                  marginTop: 15,
+                  color: ourcolors.white,
                 },
               ]}
             >
-              <Text
-                style={[
-                  styles.textSign,
-                  {
-                    color: ourcolors.gold,
-                  },
-                ]}
-              >
-                 Update
-              </Text>
-            </TouchableOpacity>
-          </View>
-       
+              Availability
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {}}
+            style={[
+              styles.signIn,
+              {
+                borderColor: ourcolors.gold,
+                borderWidth: 1,
+                marginTop: 15,
+              },
+            ]}
+          >
+            <Text
+              style={[
+                styles.textSign,
+                {
+                  color: ourcolors.gold,
+                },
+              ]}
+            >
+              Update
+            </Text>
+          </TouchableOpacity>
+        </View>
       </Animated.View>
     </View>
   );
@@ -359,8 +366,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   button: {
-    alignItems: 'center',
-    marginTop: 30
+    alignItems: "center",
+    marginTop: 30,
   },
   signIn: {
     width: "100%",
@@ -372,34 +379,32 @@ const styles = StyleSheet.create({
   textSign: {
     fontSize: 18,
     fontWeight: "bold",
-    
   },
   textPrivate: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    
-},
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
   color_textPrivate: {
     color: colors.gray,
   },
   commandButtonOne: {
     padding: 10,
     borderRadius: 10,
-    borderTopLeftRadius:30,
+    borderTopLeftRadius: 30,
     backgroundColor: colors.blueDark,
     alignItems: "center",
     marginTop: 10,
-    width:'50%',
+    width: "50%",
   },
-  commandButtonTwo:{
+  commandButtonTwo: {
     padding: 10,
     borderRadius: 10,
-    borderTopRightRadius:30,
+    borderTopRightRadius: 30,
     backgroundColor: colors.blueDark,
     alignItems: "center",
     marginTop: 20,
-    width:'50%',
-    left:150,
+    width: "50%",
+    left: 150,
   },
   panel: {
     padding: 20,
@@ -430,7 +435,7 @@ const styles = StyleSheet.create({
   panelTitle: {
     fontSize: 27,
     height: 35,
-    color:ourcolors.blueDark
+    color: ourcolors.blueDark,
   },
   panelSubtitle: {
     fontSize: 14,
@@ -438,7 +443,7 @@ const styles = StyleSheet.create({
     height: 30,
     marginBottom: 10,
   },
-  
+
   panelButton: {
     padding: 13,
     borderRadius: 10,
@@ -459,9 +464,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "bold",
     color: "white",
-    
   },
-  panelButtonTitleo:{
+  panelButtonTitleo: {
     fontSize: 17,
     fontWeight: "bold",
     color: ourcolors.gold,

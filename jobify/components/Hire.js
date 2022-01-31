@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
-import ButtonToggleGroup from 'react-native-button-toggle-group';
+import ButtonToggleGroup from "react-native-button-toggle-group";
 import {
   StyleSheet,
   Text,
@@ -11,7 +11,7 @@ import {
   Button,
   TouchableOpacity,
   SafeAreaView,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Rating, AirbnbRating } from "react-native-ratings";
 import server from "./ipConfig/serverIp.js";
@@ -21,14 +21,14 @@ import OK from "./Ok.js";
 import colors from "../assets/colors/colors.js";
 import * as Animatable from "react-native-animatable";
 const b100 = "100%";
- 
+
 const Hire = ({ navigation }) => {
   const [toggleValue, setToggleValue] = useState(false);
   var [users, setusers] = useState([]);
   var [hire, sethire] = useState(false);
   var [pick, setpick] = useState(true);
   var [offers, setoffers] = useState([]);
-  const [value, setValue] = React.useState('Light');
+  const [value, setValue] = useState("Light");
   useEffect(() => {
     const URL1 = `${server.Ip}/workers/`;
     const URL = `${server.Ip}/events/`;
@@ -54,7 +54,7 @@ const Hire = ({ navigation }) => {
         console.log(err);
       });
   }, []);
- 
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar translucent={false} backgroundColor={colors.blue} />
@@ -73,17 +73,17 @@ const Hire = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
-       
+
       <ScrollView vertical={true}>
-      <ButtonToggleGroup
-    highlightBackgroundColor={'blue'}
-    highlightTextColor={'white'}
-    inactiveBackgroundColor={'transparent'}
-    inactiveTextColor={'grey'}
-    values={['Auto', 'Light', 'Dark']}
-    value={value}
-    onSelect={val => setValue(val)}
-/>
+        <ButtonToggleGroup
+          highlightBackgroundColor={"blue"}
+          highlightTextColor={"white"}
+          inactiveBackgroundColor={"transparent"}
+          inactiveTextColor={"grey"}
+          values={["Auto", "Light", "Dark"]}
+          value={value}
+          onSelect={(val) => setValue(val)}
+        />
         <View style={styles.pick}>
           <TouchableOpacity onPress={() => setpick(true)}>
             <Text style={styles.usersrate}>
@@ -95,8 +95,7 @@ const Hire = ({ navigation }) => {
               Let's Start From Picking Your Event First
             </Text>
           </TouchableOpacity>
-          
-        </View> 
+        </View>
         {pick ? (
           <View style={styles.container1}>
             <View style={styles.alloff1}>
@@ -201,8 +200,8 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: colors.gray,
     borderRadius: 8,
-    color:colors.white,
-    borderTopLeftRadius:20,
+    color: colors.white,
+    borderTopLeftRadius: 20,
   },
   wait: {
     alignSelf: "center",
@@ -234,10 +233,10 @@ const styles = StyleSheet.create({
     margin: 20,
     width: 150,
     padding: 15,
-    backgroundColor:  colors.gray,
+    backgroundColor: colors.gray,
     borderRadius: 8,
-    color:colors.white,
-    borderTopLeftRadius:20,
+    color: colors.white,
+    borderTopLeftRadius: 20,
   },
   pick: {
     display: "flex",
