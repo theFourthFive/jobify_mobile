@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import server from "../ipConfig/serverIp";
 console.warn = () => {};
+import { AsyncStorage } from "react-native";
 
 // prettier-ignore
 import { StyleSheet, Text, View, Pressable, FlatList, TouchableWithoutFeedback, Keyboard, Button, Alert, TouchableOpacity } from "react-native";
@@ -10,7 +11,7 @@ import axios from "axios";
 // import DayItem from "./DaysItem";
 
 // prettier-ignore
-export default function SetAvailabilityWorkerScreen({ navigation, onPress, title = "Save", userId = 12, propsAvailibility }) {
+export default async function SetAvailabilityWorkerScreen({ navigation, onPress, title = "Save", userId = 18, propsAvailibility }) {
   // navigation.navigate("Login")
 
   // example: ["Monday", "Tuesday","Wednesday"]
@@ -31,6 +32,8 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
 
   // this function will get the availability of the worker from the database, & update the component of checkboxes
   useEffect(async () => {
+    const value = await AsyncStorage.getItem('session');
+    console.log("AAAAAAAAAAAAAAAAAa",value);
     if(!propsAvailibility){
       try {
         console.log(`waiting response from ${server.Ip}/workers/${userId}/availability/`)
