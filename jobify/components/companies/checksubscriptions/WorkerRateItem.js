@@ -1,6 +1,6 @@
 import React,{useEffect , useState} from "react";
 import { StatusBar } from 'expo-status-bar';
-import { Button,Image, StyleSheet, Text, TextInput, View,ScrollView,FlatList } from 'react-native';
+import { Button,Image, StyleSheet, Text, TextInput,TouchableOpacity, View,ScrollView,FlatList } from 'react-native';
 import { Rating, AirbnbRating } from 'react-native-ratings'
 import { log } from 'react-native-reanimated';
 import colors from '../../../assets/colors/colors';
@@ -61,8 +61,35 @@ const deny = async()=>{
                      fractions = {2}
                     />
             </View>
-       
-            <Button
+         
+            <View style={styles.button}>
+                <TouchableOpacity
+                    style={[styles.signIn,{backgroundColor:colors.gold}]}
+                    title="Login"
+                     onPress={hire}
+                >
+               
+                    <Text style={[styles.textSign, {
+                        color:colors.white
+                    }]}>Hire</Text>
+              
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={deny}
+                    style={[styles.signIn, {
+                        borderColor: colors.gold,
+                        borderWidth: 1,
+                        marginTop: 15
+                    }]}
+                >
+                    <Text style={[styles.textSign, {
+                        color: colors.gold
+                    }]}>Deny</Text>
+                </TouchableOpacity>
+            </View>
+         
+            {/* <Button
                title="Hire"
                color = "#1fb500"
                onPress={hire}
@@ -74,7 +101,7 @@ const deny = async()=>{
                onPress={deny}
                styles={styles.denyButton}
                
-           />
+           /> */}
         </View>
     );
 }
@@ -135,7 +162,25 @@ const styles = StyleSheet.create({
       },
       hireButton:{
         
-      }
+      },
+      button: {
+        alignItems: 'center',
+        marginTop: 50,
+        
+    },
+    signIn: {
+        width: '90%',
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        bottom:10,
+        
+    },
+    textSign: {
+        fontSize: 18,
+        fontWeight: 'bold'
+    }
       
       
 });

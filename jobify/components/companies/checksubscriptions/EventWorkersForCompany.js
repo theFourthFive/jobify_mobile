@@ -15,12 +15,13 @@ import moment from "moment";
 import axios from "axios";
 import WorkerRateItem from "./WorkerRateItem";
 import { log } from "react-native-reanimated";
-
+import colors from "../../../assets/colors/colors";
 
 const styles = StyleSheet.create({
   subscriptionsCounter:{
-    fontSize: 24,
-    color: 'orange',
+    color: colors.blue,
+    fontWeight: "bold",
+    fontSize: 23,
     textAlign: 'center',
     padding: 2,
   },
@@ -42,8 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color : "white",
-    margin : 5
-
+    margin : 5,
   },
   price: {
     marginTop: 10,
@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   cardContainer :{
-    backgroundColor : "#004d4f",
+    backgroundColor : colors.blue,
     marginBottom : "5%",
-    borderRadius : 10, 
+    // borderRadius : 10, 
     width : "100%",
     height : "35%"
     
