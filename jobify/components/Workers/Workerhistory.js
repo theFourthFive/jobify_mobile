@@ -128,7 +128,7 @@ const Workerhistory = ({ navigation }) => {
         {events.map((ele, i) => (
           <View style={style.userhiss} key={i}>
             <View style={style.alloff1}>
-              {/* <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image>  */}
+              <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image> 
               <View style={style.userrhis}>
                 <Text>Name:{ele.eventName}</Text>
                 <Text>Form:{moment(ele.createdAt).fromNow()}</Text>
