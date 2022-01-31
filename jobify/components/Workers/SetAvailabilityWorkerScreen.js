@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import server from "../ipConfig/serverIp";
+import { AsyncStorage } from "react-native";
+
 console.warn = () => {};
 
 // prettier-ignore
@@ -10,14 +12,7 @@ import axios from "axios";
 // import DayItem from "./DaysItem";
 
 // prettier-ignore
-export default function SetAvailabilityWorkerScreen({ navigation, onPress, title = "Save", userId = 12, propsAvailibility }) {
-  // navigation.navigate("Login")
-
-  // example: ["Monday", "Tuesday","Wednesday"]
-  // const [dayAvailable, setDayAvailable] = useState(async()=>{
-  //   const { data } = await axios.get(`${server.Ip}/workers/${userId}/availability/`)
-  //   return data.split(",").map((day)=>  day[0].toUpperCase() + day.slice(1).toLowerCase())
-  // })
+export default function SetAvailabilityWorkerScreen({ navigation, onPress, title = "Save", propsAvailibility }) {
 
   const [dayAvailability, setDayAvailability] = useState([
     { text: "Monday", key: 0, available: false },
@@ -31,6 +26,7 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
 
   // this function will get the availability of the worker from the database, & update the component of checkboxes
   useEffect(async () => {
+    const userId = await AsyncStorage.getItem('session');
     if(!propsAvailibility){
       try {
         console.log(`waiting response from ${server.Ip}/workers/${userId}/availability/`)
@@ -53,50 +49,8 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
         { text: "Sunday", key: 6, available: propsAvailibility.split(",").includes("Sunday") },
       ])
     }
-    // console.log("ZDKZFJZHFZFJZFZJFZJFJZJ", data)
-    // mappedDays = data.split(",").map((day)=>  day[0].toUpperCase() + day.slice(1).toLowerCase())
-
-    // return [
-    //   { text: "Monday", key: 0, available: mappedDays.includes("Monday") },
-    //   { text: "Tuesday", key: 1, available: mappedDays.includes("Tuesday") },
-    //   { text: "Wednesday", key: 2, available: mappedDays.includes("Wednesday") },
-    //   { text: "Thursday", key: 3, available: mappedDays.includes("Thursday") },
-    //   { text: "Friday", key: 4, available: mappedDays.includes("Friday") },
-    //   { text: "Saturday", key: 5, available: mappedDays.includes("Saturday") },
-    //   { text: "Sunday", key: 6, available: mappedDays.includes("Sunday") },
-    // ]
   },[])
 
-  // useEffect(async () => {
-  //   const { data } = await axios.get(`${server.Ip}/workers/${userId}/availability/`)
-  //   setDayAvailable(data.split(",").map((day)=>  day[0].toUpperCase() + day.slice(1).toLowerCase()))
-  //   console.log(dayAvailable)
-  //   setDayAvailability([
-  //     { text: "Monday", key: 0, available: dayAvailable.includes("Monday") },
-  //     { text: "Tuesday", key: 1, available: dayAvailable.includes("Tuesday") },
-  //     { text: "Wednesday", key: 2, available: dayAvailable.includes("Wednesday") },
-  //     { text: "Thursday", key: 3, available: dayAvailable.includes("Thursday") },
-  //     { text: "Friday", key: 4, available: dayAvailable.includes("Friday") },
-  //     { text: "Saturday", key: 5, available: dayAvailable.includes("Saturday") },
-  //     { text: "Sunday", key: 6, available: dayAvailable.includes("Sunday") },
-  //   ])
-
-  //   // for( let i =0; i < dayAvailability.length; i++ ){
-  //   //   dayAvailability[i].available = dayzzzAvailablity.includes(dayAvailability[i].text)
-  //   // }
-  //   // console.log("Inside the Use Effect:", dayAvailability)
-  //   // setDayAvailability(dayAvailability)
-
-  // }, []);
-
-  // setTimeout(() => {
-  //   alert(
-  //     'Error',
-  //     'Please Check Email and Password',
-  //     [{text: 'OK', onPress: () => dispatch(onLoginSuccess(false))}],
-  //     {cancelable: false},
-  //   );
-  // }, 100);
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
@@ -129,6 +83,7 @@ export default function SetAvailabilityWorkerScreen({ navigation, onPress, title
                   }).join()
                   console.log(availibility)
                   try {
+                    const userId = await AsyncStorage.getItem('session')
                     // let response = await axios.put(`http://localhost:3000/workers/${userId}/availability`)
                     console.log(`${server.Ip}/workers/${userId}/availability`)
                     let response = await axios.put(`${server.Ip}/workers/${userId}/availability`, { availibility })
