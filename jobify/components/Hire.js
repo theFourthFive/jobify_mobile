@@ -28,7 +28,7 @@ const Hire = ({ navigation }) => {
   var [hire, sethire] = useState(false);
   var [pick, setpick] = useState(true);
   var [offers, setoffers] = useState([]);
-  const [value, setValue] = useState('Light');
+  // const [value, setValue] = React.useState('Light');
   useEffect(() => {
     const URL1 = `${server.Ip}/workers/`;
     const URL = `${server.Ip}/events/`;
@@ -75,7 +75,7 @@ const Hire = ({ navigation }) => {
       </ScrollView>
        
       <ScrollView vertical={true}>
-      <ButtonToggleGroup
+      {/* <ButtonToggleGroup
     highlightBackgroundColor={'blue'}
     highlightTextColor={'white'}
     inactiveBackgroundColor={'transparent'}
@@ -83,7 +83,7 @@ const Hire = ({ navigation }) => {
     values={['Auto', 'Light', 'Dark']}
     value={value}
     onSelect={val => setValue(val)}
-/>
+/> */}
         <View style={styles.pick}>
           <TouchableOpacity onPress={() => setpick(true)}>
             <Text style={styles.usersrate}>
