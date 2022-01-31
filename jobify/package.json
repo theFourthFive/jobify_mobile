@@ -33,6 +33,7 @@
     "react-native-checkbox": "^2.0.0",
     "react-native-dotenv": "^3.3.1",
     "react-native-gesture-handler": "~2.1.0",
+    "react-native-image-picker": "^4.7.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-maps": "^0.29.4",
     "react-native-paper": "^4.11.1",
@@ -45,7 +46,8 @@
     "react-native-web": "0.17.1",
     "react-native-webview": "11.15.0",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22",
-    "upgrade": "^1.1.0"
+    "upgrade": "^1.1.0",
+    "expo-image-picker": "~12.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

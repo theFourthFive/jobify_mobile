@@ -34,13 +34,13 @@ const styles = StyleSheet.create({
 
   },
   card_image: {
-    width: "40%",
-    height: "30%",
-    borderRadius: 20,
+    width: "20%",
+    height: "20%",
+    borderRadius: 120
  
   },
   card_title: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: "bold",
     color : "white",
     margin : 5,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     
     height: "44%",
     width:"50%",
-    borderRadius: 100,
+    borderRadius: 250,
   },
   campany: {
     fontSize: 20,

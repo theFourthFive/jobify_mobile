@@ -8,17 +8,20 @@ import axios from 'axios'
 import server from "../../ipConfig/serverIp"
 
 const WorkerRateItem=(props)=> {
+
    var [rate , setrate] = useState()
    var [feedback , setfeedback] = useState()
+   let [connected , setconnected ] = useState()
+
     const getrating = (rating)=>{
          setrate(rating);
     }
 const handlesubmit = async()=>{
-
    const userId = props.user.workerId
    alert("thak you for your feed back")
    props.feedbacked(props.user.workerId);
-   const URL = `${server.Ip}/companyevetns/rate/${37}/${userId}`
+   const company = await AsyncStorage.getItem("sessionC")
+   const URL = `${server.Ip}/companyevetns/rate/${company}/${userId}`
 
    const res = await axios.post(URL, {rate,feedback});
 

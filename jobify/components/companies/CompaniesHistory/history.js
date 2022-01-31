@@ -21,8 +21,11 @@ import colors from "../../../assets/colors/colors";
 const { width } = Dimensions.get("screen");
 function History({navigation}){  
  let [events , setevents] = useState([])
+ let [connected , setconnected ] = useState()
  useEffect(async()=>{
-   const URL = `${server.Ip}/companyevetns/events/${37}`
+  const company = await AsyncStorage.getItem("sessionC")
+  setconnected(()=>company)
+   const URL = `${server.Ip}/companyevetns/events/${company}`
    const res = await axios.get(URL);
    setevents(res.data)
  },[])
