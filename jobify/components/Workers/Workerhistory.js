@@ -9,6 +9,8 @@ import axios from "axios";
 import colors from "../../assets/colors/colors";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { FontAwesome5 } from "@expo/vector-icons";
 const b10 = "10%";
 const b3 = "3%";
 const b20 = "20%";
@@ -85,21 +87,29 @@ const Workerhistory = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar translucent={false} backgroundColor={colors.blue} />
       <View style={style.header}>
-        <Icon name="sort" size={28} color={colors.white} />
-        {/* <Icon name="notifications-none" size={28} color={colors.white} /> */}
-        <Button title="got to my offers" onPress={()=>navigation.push("HiringOffers")}/>
+      <View style={style.Icon}>
+         
+         <FontAwesome5
+                   name="briefcase"
+                   size={20}
+                   color ={colors.white}
+                   onPress={() => navigation.navigate("HiringOffers")}
+                 />
+                 </View>
+        {/* <Button title="got to my offers" onPress={()=>navigation.push("HiringOffers")}/> */}
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
             backgroundColor: colors.blue,
-            height: 120,
+            height: 110,
             paddingHorizontal: 20,
             
           }}
         >
+         
           <View style={{ flex: 1 }}>
-            <Text style={style.headerTitle}>Your</Text>
+            <Text style={style.headerTitle}>My</Text>
             <Text style={style.headerTitle}>History</Text>
           </View>
         </View>
@@ -108,8 +118,8 @@ const Workerhistory = ({ navigation }) => {
         <View style={style.userrrr}>
           {/* <Image style={style.img} source={{ uri: user.imageUrl }}/> */}
           <View style={style.userr}>
-            <Text>{user.firstName}</Text>
-            <Text>{user.LastName} 's rating</Text>
+            {/* <Text>{user.firstName}</Text> */}
+            <Text>My rating is :</Text>
           </View>
           <Text>{user.avgRating}/5</Text>
           <AirbnbRating
@@ -118,8 +128,8 @@ const Workerhistory = ({ navigation }) => {
             size={30}
             showRating={false}
             startingValue={1}
-            ratingColor="#f94368"
-            ratingBackgroundColor={Colors.gold}
+            ratingColor={colors.gold}
+            ratingBackgroundColor={colors.gold}
             type="custom"
           />
         </View>
@@ -128,32 +138,29 @@ const Workerhistory = ({ navigation }) => {
         {events.map((ele, i) => (
           <View style={style.userhiss} key={i}>
             <View style={style.alloff1}>
-              <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image> 
-              <View style={style.userrhis}>
-                <Text>Name:{ele.eventName}</Text>
-                <Text>Form:{moment(ele.createdAt).fromNow()}</Text>
-                <Text>Location:{ele.location}</Text>
-              </View>
-              <View style={style.userrhis}>
-                <Text> {ele.label}</Text>
+              {/* <Image style={style.imgg} source={{ uri: ele.imageUri }}/>  */}
+              <View style={{flexDirection: 'row'}}>
+              <View>
                 <Image
                   style={style.imgggg}
                   source={{ uri: ele.imageUrl }}
                 ></Image>
-                <TouchableWithoutFeedback
+                <Text style={{top:-35,left:20,color:colors.blueDark,fontSize:15,fontWeight: "bold",}}> {ele.label}</Text>
+               </View>
+              </View>
+              <View>
+                <Text style={style.textevent}>{ele.eventName}</Text>
+                <Text style={style.textevent}>{moment(ele.createdAt).fromNow()}</Text>
+              </View>
+              <TouchableWithoutFeedback
                   onPress={() => unsubscribe(ele.eventID)}
+                  style={style.iconf}
                 >
                   
-                  <Image
-                    style={style.imggg}
-                    source={{
-                      uri: "https://pngset.com/images/cancel-icon-first-aid-symbol-text-logo-transparent-png-1419157.png",
-                    }}
-                  ></Image>
+                  <FontAwesome name="trash" color={'black'} size={20} />
                 </TouchableWithoutFeedback>
-              </View>
             </View>
-            <Text style={style.line}>__________________________________</Text>
+            
           </View>
         ))}
       </View>
@@ -168,11 +175,12 @@ const style = StyleSheet.create({
     marginBottom: 30,
   },
   user: {
-    height: b25,
+    height: 100,
     width: b100,
-    backgroundColor: colors.white,
+    backgroundColor: '#E5E5E5',
     // alignItems: 'center',
     // justifyContent: 'center',
+    marginBottom:20,
   },
   userhis: {
     height: b25,
@@ -189,13 +197,22 @@ const style = StyleSheet.create({
     color: "#00BFFF",
   },
   alloff1: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
     // marginTop: b10,
-    height: 150,
+    height: 120,
     marginBottom: 10,
+    backgroundColor:'#E5E5E5',
+    borderRadius:30,
+    width:b90,
+    left:20,
+    
+  },
+  imgcompnam:{
+    // flex: 1,
+    flexDirection: "row",
   },
   img: {
     width: b30,
@@ -208,14 +225,27 @@ const style = StyleSheet.create({
     
   },
   imggg: {
-    width: b20,
+    width: b10,
     height: b20,
     borderRadius: 50,
   },
   imgggg: {
-    width: b60,
-    height: b50,
-    borderRadius: 50,
+    width: b80,
+    height: b60,
+    borderRadius:50,
+    left:-40,
+    top:20
+  },
+  Icon: {
+    marginBottom:40,
+    marginLeft: 350,
+    height: 30,
+    width: 50,
+    top:20,
+   
+  },
+  IconText:{
+    marginLeft: -50 ,
   },
   userrrr: {
     flex: 1,
@@ -228,11 +258,14 @@ const style = StyleSheet.create({
     marginLeft: b10,
     
   },
-  userrhis: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    margin: b3,
+  textevent:{
+    fontSize:10,
+    left:-90,
+    top:10,
+  },
+  iconf:{
+    left:-30,
+    
   },
   header: {
     paddingVertical: 20,
