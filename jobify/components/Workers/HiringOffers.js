@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 // prettier-ignore
-import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage , Animated,TouchableWithoutFeedback, Alert} from 'react-native';
+import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage , Animated,TouchableWithoutFeedback,Alert, TouchableOpacity} from 'react-native';
 import { Rating, AirbnbRating } from "react-native-ratings";
 import moment from "moment";
 import server from "../ipConfig/serverIp";
@@ -56,8 +56,10 @@ const HiringOffers = ({ navigation }) => {
   }
 
   const accept = async(event,company)=>{
+   const newState = events.filter((ele)=>{return ele.eventID!==event})
+   setevents(()=>newState) 
   const connectedUser = await AsyncStorage.getItem("session");
-  console.log(connectedUser);
+  console.log(event);
  const URL = `${server.Ip}/events/offers/accept/${connectedUser}/${event}/${company}`;
  await axios.post(URL)
 
@@ -87,7 +89,7 @@ const HiringOffers = ({ navigation }) => {
     <View style={style.container}>
       <View style={style.user}>
         <View style={style.userrrr}>
-          {/* <Image style={style.img} source={{ uri: user.imageUrl }}></Image> */}
+          <Image style={style.img} source={{ uri: user.imageUrl }}></Image>
           <View style={style.userr}>
             <Text>{user.firstName}</Text>
             <Text>{user.LastName}</Text>
@@ -109,7 +111,9 @@ const HiringOffers = ({ navigation }) => {
         {events.map((ele, i) => (
           <View style={style.userhiss} key={i}>
             <View style={style.alloff1}>
+              <TouchableOpacity onPress={()=>navigation}>
               <Image style={style.imgg} source={{ uri: ele.imageUri }}></Image>
+              </TouchableOpacity>
               <View style={style.userrhis}>
                 <Text>Name:{ele.eventName}</Text>
                 <Text>Form:{moment(ele.createdAt).fromNow()}</Text>
@@ -180,8 +184,8 @@ const style = StyleSheet.create({
     marginBottom: 10,
   },
   img: {
-    width: 150,
-    height: 150,
+    width: 100,
+    height: 100,
     borderRadius: 150,
   },
   imgg: {

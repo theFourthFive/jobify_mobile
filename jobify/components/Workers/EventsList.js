@@ -40,6 +40,9 @@ const EventList = ({ navigation }) => {
   }
 
   var subscribe = async (eventID) => {
+    const newState = events.filter((ele)=>{return ele.eventID!==eventID})
+    setevents(()=>newState) 
+
     const workerId = await AsyncStorage.getItem("session");
     const subscribeData = { workerId, eventID };
     const URL = `${server.Ip}/events/subscribe`;

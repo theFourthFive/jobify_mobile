@@ -127,22 +127,7 @@ export default function AddEvent() {
     // const  fall = new Animated.Value(1);
   };
 
-  const upload = (image)=>{
 
-    var data = new FormData()
-    data.append('file', image);
-    data.append('upload_preset', "jobifiy");
-    data.append('cloud_name','jobify')
-  
-    fetch("https://api.cloudinary.com/v1_1/jobify/image/upload" ,{
-      method: "post",
-      body: data
-    }).then(res=>res.json()).then(res=>{
-       setImageUri(()=>res.url)
-       console.log(res);
-    })
-  
-  }
 
   const pickImage = async () => {
 

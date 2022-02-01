@@ -16,7 +16,7 @@ import {
 import { WebView } from "react-native-webview";
 import * as Location from 'expo-location';
 const MAP =
-"https://www.google.com/maps/search/restaurants/@36.8077182,10.1773244,16z/data=!3m1!4b1";
+"https://www.google.tn/maps/dir/36.8942605,10.1870804/M%C3%B6venpick+Hotel+Du+Lac+Tunis,+Rue+du+Lac+Huron,+Tunis/@36.8537801,10.1798939,13z/data=!3m1!4b1!4m10!4m9!1m1!4e1!1m5!1m1!1s0x12fd3543273b5a57:0x52b17bbbc7671af4!2m2!1d10.24847!2d36.835514!3e0?hl=fr";
 export default function NotificationScreen() {
   const { errorMsg, setErrorMsg } = React.useState('')
   const [longitude, setLongitude] = React.useState('')

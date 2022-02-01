@@ -15,7 +15,7 @@ export default function companieProfileScreen({ navigation }) {
 
   useEffect(async () => {
     
-    var URL = `${server.Ip}/company/profile/${10}`;
+    var URL = `${server.Ip}/company/profile/${37}`;
     var prof = await axios.get(URL);
   
     setProfile(prof.data);
@@ -50,7 +50,7 @@ return (
       <View>
         <ImageBackground
           source={{
-            uri: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+            uri: "https://bit.ly/3Fn5Ymb",
           }}
           style={{
             height: 140,
@@ -111,7 +111,7 @@ return (
                   color: colors.blue,
                 },
               ]}
-            >PhoneNumber: {profile.phoneNumber}</Text>
+            >PhoneNumber: 70 997 058</Text>
           </View>
 
        
