@@ -62,7 +62,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.inputContainer}>
               <Icon name="search" size={28} color={colors.blueDark}/>
               <TextInput
-                placeholder="Search place"
+                placeholder="Search event"
                 style={{color: colors.grey}}
               />
             </View>

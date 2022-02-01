@@ -82,16 +82,28 @@ const Hire = ({ navigation }) => {
       </ScrollView>
 
       <ScrollView vertical={true}>
-        <ButtonToggleGroup
+        {/* <ButtonToggleGroup
           highlightBackgroundColor={"blue"}
           highlightTextColor={"white"}
           inactiveBackgroundColor={"transparent"}
           inactiveTextColor={"grey"}
-          values={["Auto", "Light", "Dark"]}
+          values={["Hire by Works!", "Hire by Event"]}
           value={value}
           onSelect={(val) => setValue(val)}
-        />
-
+         
+        /> */}
+        <View style={styles.pick}>
+          <TouchableOpacity onPress={() => setpick(true)}>
+            <Text style={styles.usersrate}>
+              Here Our Works That You Can Hire!!
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setpick(false)}>
+            <Text style={styles.usersrate1}>
+              Let's Start From Picking Your Event First
+            </Text>
+          </TouchableOpacity>
+        </View>
         {pick ? (
           <View style={styles.container1}>
             <View style={styles.alloff1}>
@@ -159,10 +171,11 @@ const Hire = ({ navigation }) => {
                         style={styles.image}
                         source={{ uri: e.imageUri }}
                       ></Image>
-                      <Text style={styles.text}>Type : {e.eventName}</Text>
-                      <Text style={styles.text}>Place : {e.location}</Text>
-                      <Text style={styles.text}>
-                        Posted At : {moment(e.createdAt).fromNow()}
+                      <Text style={styles.text1}> Type : {e.eventName}</Text>
+                      <Text style={styles.text}> Type : {e.eventName}</Text>
+                      <Text style={styles.text}> Place : {e.location}</Text>
+                      <Text style={styles.text}> Posted At : {moment(e.createdAt).fromNow()}
+                      <Text style={styles.text1}> Type : {e.eventName}</Text>            
                       </Text>
                     </TouchableOpacity>
                   );
@@ -214,18 +227,31 @@ const styles = StyleSheet.create({
   off: {
     flex: 1,
     margin: 5,
-    width: b100,
-    height: 234,
-    borderRadius: 15,
-    borderWidth: 5,
+    width: 280,
+    height: 280,
+    borderRadius: 5,
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15,
+
+    // borderWidth: 1,
+    backgroundColor:'#EDEFF4',
+    
   },
   image: {
     flex: 1,
-    width: 290,
+    width: 250,
+    
     borderRadius: 15,
+    // borderTopLeftRadius:15,
+    // borderTopRightRadius:15,
+    left:15,
+    top:5,
+    
+  
   },
   text: {
-    color: colors.gray,
+    
+    
   },
   usersrate1: {
     alignSelf: "center",
@@ -280,6 +306,9 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     marginLeft: 15,
+  },
+  text1:{
+    color:'#EDEFF4'
   },
 });
 

@@ -123,7 +123,9 @@ export default function ProfilScreen({ navigation }) {
               >PhoneNumber:  20 669 058</Text>
             </View>
 
-            <View style={styles.action}>
+          
+<View style={styles.action}>
+            <Feather name="calendar" size={20} />
                 <Text
                 style={[
                   styles.text_footer,
@@ -166,9 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 10,
     marginBottom: 10,
-    borderBottomWidth: 10,
-    borderBottomColor: "#f2f2f2",
-    paddingBottom: 5,
+  
   },
   container: {
     flex: 1,
