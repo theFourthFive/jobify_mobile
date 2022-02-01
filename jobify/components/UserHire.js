@@ -49,7 +49,7 @@ const UserHire=(props)=> {
                 <Image  style={styles.img} source={{ uri: props.route.params.imageUrl }}></Image>
                 <View style={styles.userr}>
                     <Text>{props.route.params.firstName} {props.route.params.LastName}</Text>
-                    <Text>Adress.....</Text>
+                  
                 </View>
                 <AirbnbRating style={styles.star} count={props.route.params.avgRating} isDisabled={true} onFinishRating={(x)=>{alert("thanks for your help" , x)}} reviews = {['Terrible', 'Bad', 'Okay', 'Good', 'Great']} defaultRating={9} size={25} showRating={true} startingValue={5}  ratingColor='#f94368' ratingBackgroundColor='#f9b313' type='custom' />
                     
