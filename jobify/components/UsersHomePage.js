@@ -23,7 +23,7 @@ const UsersHomePage = (props) => {
           <Text style={{ color: colors.blue, fontWeight: "bold" }}>
             {props.user.firstName} {props.user.LastName}
           </Text>
-          <Text style={{ color: colors.blueDark }}>Adress.....</Text>
+        
         </View>
         <AirbnbRating
           style={styles.star}
