@@ -1,13 +1,15 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Button, View } from "react-native";
-import Hire from "../../components/Hire"
-import Ok from "../../components/Ok"
-const CompanyHomeStack = createNativeStackNavigator();
+import Hire from "../../components/Hire";
+import Ok from "../../components/Ok";
+import SelectEvent from "../../components/companies/SelectEvent";
+import SelectPayment from "../../components/companies/SelectPayment";
+const CompanyHireStack = createNativeStackNavigator();
 
 const HireStack = () => {
   return (
-    <CompanyHomeStack.Navigator initialRouteName="Hire">      
-      <CompanyHomeStack.Screen
+    <CompanyHireStack.Navigator initialRouteName="Hire">
+      <CompanyHireStack.Screen
         name="Hire"
         component={Hire}
         options={{
@@ -16,7 +18,7 @@ const HireStack = () => {
           // headerLeft: () => <View />,
         }}
       />
-    <CompanyHomeStack.Screen
+      <CompanyHireStack.Screen
         name="Ok"
         component={Ok}
         options={{
@@ -25,7 +27,25 @@ const HireStack = () => {
           // headerLeft: () => <View />,
         }}
       />
-    </CompanyHomeStack.Navigator>
+      <CompanyHireStack.Screen
+        name="SelectEvent"
+        component={SelectEvent}
+        options={{
+          headerShown: false,
+          title: "Hire worker",
+          // headerLeft: () => <View />,
+        }}
+      />
+      <CompanyHireStack.Screen
+        name="SelectPayment"
+        component={SelectPayment}
+        options={{
+          headerShown: false,
+          title: "Hire worker",
+          // headerLeft: () => <View />,
+        }}
+      />
+    </CompanyHireStack.Navigator>
   );
 };
-export default Hire;
+export default HireStack;

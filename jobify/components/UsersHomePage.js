@@ -16,8 +16,8 @@ import colors from "../assets/colors/colors";
 
 const UsersHomePage = (props) => {
   return (
-    <TouchableOpacity style={styles.users} onPress={() => console.log(props)}>
-      <View style={styles.user} onPress={() => console.log("AAAAAA")}>
+    <View style={styles.users}>
+      <View style={styles.user}>
         <Image style={styles.img} source={{ uri: props.user.imageUrl }}></Image>
         <View style={styles.userr}>
           <Text style={{ color: colors.blue, fontWeight: "bold" }}>
@@ -42,7 +42,7 @@ const UsersHomePage = (props) => {
           type="custom"
         />
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
