@@ -232,7 +232,7 @@ const style = StyleSheet.create({
     borderRadius: 50,
   },
   imgggg: {
-    width: b80,
+    width: b60,
     height: b60,
     borderRadius:50,
     left:-40,
