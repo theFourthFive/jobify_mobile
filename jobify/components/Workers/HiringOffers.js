@@ -128,7 +128,45 @@ const HiringOffers = ({ navigation }) => {
               </View>
               
             </View>
-            <Button 
+              <View style={style.button}>
+            <TouchableOpacity style={[style.signIn,{backgroundColor:colors.gold}]} onPress={()=>accept(ele.eventEventID , ele.companyCompanyId)}>
+              <Text
+                style={[
+                  style.textSign,
+                  {
+                    color: colors.white,
+                  },
+                ]}
+              >
+               Accept
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Login")}
+              style={[
+                style.signIn,
+                {
+                  borderColor: colors.gold,
+                  borderWidth: 1,
+                  marginTop: 15,
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  style.textSign,
+                  {
+                    color: colors.gold,
+                  },
+                ]}
+              >
+                Deny
+              </Text>
+            </TouchableOpacity>
+          </View>
+            
+            {/* <Button 
                  title ="accept"
                  color= {"#228B22"}
                  onPress={()=>accept(ele.eventEventID , ele.companyCompanyId)}
@@ -136,9 +174,9 @@ const HiringOffers = ({ navigation }) => {
                  
                  <Button 
                  title ="deny"
-                 color= {"#ff6347"}
+                 color= {"blue"}
                  
-                 />
+                 /> */}
             <Text style={style.line}>_________________________________________________</Text>
           </View>
         ))}
@@ -280,6 +318,22 @@ const style = StyleSheet.create({
     borderRadius: 10,
     overflow: "hidden",
     padding: 10,
+  },
+  button: {
+    alignItems: 'center',
+    marginTop: 30
+  },
+  signIn: {
+    width: "40%",
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  textSign: {
+    fontSize: 18,
+    fontWeight: "bold",
+    
   },
 });
 

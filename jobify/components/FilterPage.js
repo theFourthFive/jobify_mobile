@@ -56,11 +56,11 @@ export default function FilterPage({ navigation }) {
               
               <View style={styles.pick}>
               <TouchableOpacity onPress={() => navigation.navigate("Signup")} >
-                <Image style={styles.workerImg} source={require('../assets/business-3d-man-standing-1.png')}/>
+                <Image style={styles.workerImg} source={require('../assets/work.png')}/>
               <Text style={styles.workername}>I'm a worker</Text>
               </TouchableOpacity>
               <TouchableOpacity  onPress={() =>  navigation.navigate("SignupCompany")} >
-                <Image style={styles.employerImg} source={require('../assets/business-3d-new-conquered-peak-man.png')}/>
+                <Image style={styles.employerImg} source={require('../assets/comp.png')}/>
                 <Text style={styles.employername}>I'm an Employer</Text>
               </TouchableOpacity>
         {/* <Button title="Im A Worker" onPress={() => setworker(!woker)} /> */}
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:30,
     backgroundColor: colors.white,
     alignItems: "center",
-    marginTop: 250,
+    marginTop: 280,
     width:'50%',
     left:100,
   },
@@ -194,27 +194,35 @@ const styles = StyleSheet.create({
     
   },
   employerImg:{
-    width:180,
-    height:240,
-    left:20,
-    top:90,
-    // backgroundColor:"red"
-  },
-  workerImg:{
-    width:180,
-    height:240,
+    width:170,
+    height:320,
     left:-15,
     // backgroundColor:"blue",
-    top:100,
+    top:90,
+    left:10,
+  },
+  workerImg:{
+    width:115,
+    height:340,
+    left:-15,
+    // backgroundColor:"blue",
+    top:80,
   },
   workername:{
-    top:70,
-   
+    left:-30,
+    top:80,
+    // backgroundColor:'red'
+    color: colors.blue,
+    fontWeight: 'bold',
+    fontSize: 23,
   },
 employername:{
-  top:80,
-  color:colors.blueDark,
- left:50,
+  top:100,
+  color: colors.blue,
+    fontWeight: 'bold',
+    fontSize: 23,
+ left:20,
+ 
 },
 
 });
