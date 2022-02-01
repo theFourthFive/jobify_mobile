@@ -21,8 +21,15 @@ import OK from "./Ok.js";
 import colors from "../assets/colors/colors.js";
 import * as Animatable from "react-native-animatable";
 const b100 = "100%";
+import { AsyncStorage } from "react-native";
 
 const Hire = ({ navigation }) => {
+  const [companyId, setCompanyId] = useState("");
+  // setCompanyId(async () => {
+  //   const value = await AsyncStorage.getItem("session");
+  //   return value;
+  // });
+
   const [toggleValue, setToggleValue] = useState(false);
   var [users, setusers] = useState([]);
   var [hire, sethire] = useState(false);
@@ -75,7 +82,7 @@ const Hire = ({ navigation }) => {
       </ScrollView>
 
       <ScrollView vertical={true}>
-        {/* <ButtonToggleGroup
+        <ButtonToggleGroup
           highlightBackgroundColor={"blue"}
           highlightTextColor={"white"}
           inactiveBackgroundColor={"transparent"}
@@ -83,7 +90,7 @@ const Hire = ({ navigation }) => {
           values={["Auto", "Light", "Dark"]}
           value={value}
           onSelect={(val) => setValue(val)}
-        /> */}
+        />
         <View style={styles.pick}>
           <TouchableOpacity onPress={() => setpick(true)}>
             <Text style={styles.usersrate}>
@@ -103,7 +110,7 @@ const Hire = ({ navigation }) => {
                 return (
                   <ScrollView key={i}>
                     <TouchableOpacity
-                      onPress={() => navigation.navigate("UserHbire", u)}
+                      onPress={() => navigation.navigate("SelectEvent", u)}
                       style={styles.users}
                     >
                       <View style={styles.user} onPress={() => sethire(!hire)}>
@@ -115,7 +122,14 @@ const Hire = ({ navigation }) => {
                           <Text>
                             {u.firstName} {u.LastName}
                           </Text>
-                          <Text>Adress...</Text>
+                          <Text>
+                            {u.phoneNumber.toString().slice(0, 2) +
+                              " " +
+                              u.phoneNumber.toString().slice(2, 5) +
+                              " " +
+                              u.phoneNumber.toString().slice(5)}
+                          </Text>
+                          <Text>Joined {moment(u.createdAt).fromNow()}</Text>
                         </View>
                         <AirbnbRating
                           style={styles.star}
