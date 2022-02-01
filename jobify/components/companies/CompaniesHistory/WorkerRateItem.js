@@ -37,7 +37,7 @@ const handlesubmit = async()=>{
                 <Image style={styles.img} source={{ uri: props.user.imageUrl }}></Image>
                 <View style={styles.userr}>
                     <Text style={{color:colors.blue,fontWeight: 'bold',}}>{props.user.firstName} {props.user.LastName}</Text>
-                    <Text style={{color:colors.blueDark}} >Adress...</Text>
+                    <Text style={{color:colors.blueDark}} ></Text>
                 </View>
                   
                     <Rating

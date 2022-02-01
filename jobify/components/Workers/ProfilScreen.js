@@ -60,7 +60,7 @@ export default function ProfilScreen({ navigation }) {
         <View>
           <ImageBackground
             source={{
-              uri: profile.imageUrl,
+              uri: "https://bit.ly/3GdVFBp",
             }}
             style={{
               height: 140,
@@ -82,8 +82,8 @@ export default function ProfilScreen({ navigation }) {
       
 
           <Text style={styles.formHeading}>
-          
-            {profile.firstName} {profile.LastName}
+        
+            Amine Jelassi
           </Text>
 
           <View>
@@ -107,7 +107,7 @@ export default function ProfilScreen({ navigation }) {
                   },
                 ]}
               >
-                Email: {profile.Email}
+                Email:   aminejelassi95@gmail.com
               </Text>
             </View>
             
@@ -120,7 +120,7 @@ export default function ProfilScreen({ navigation }) {
                     color: colors.blue,
                   },
                 ]}
-              >PhoneNumber: {profile.phoneNumber}</Text>
+              >PhoneNumber:  20 669 058</Text>
             </View>
 
             <View style={styles.action}>
@@ -131,7 +131,7 @@ export default function ProfilScreen({ navigation }) {
                     color: colors.blue,
                   },
                 ]}
-              >updatedAt: {profile.updatedAt}</Text>
+              >joined : 3 days ago </Text>
             </View>
           </View>
         </View>

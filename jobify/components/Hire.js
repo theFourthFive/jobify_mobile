@@ -91,18 +91,7 @@ const Hire = ({ navigation }) => {
           value={value}
           onSelect={(val) => setValue(val)}
         />
-        <View style={styles.pick}>
-          <TouchableOpacity onPress={() => setpick(true)}>
-            <Text style={styles.usersrate}>
-              Here Our Works That You Can Hire!!
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setpick(false)}>
-            <Text style={styles.usersrate1}>
-              Let's Start From Picking Your Event First
-            </Text>
-          </TouchableOpacity>
-        </View>
+
         {pick ? (
           <View style={styles.container1}>
             <View style={styles.alloff1}>
