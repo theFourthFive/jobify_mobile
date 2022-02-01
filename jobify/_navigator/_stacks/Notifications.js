@@ -15,6 +15,7 @@ import HomePage from "../../components/HomePage";
 import EventList from "../../components/Workers/EventsList";
 import Workerhistory from "../../components/Workers/Workerhistory";
 import HiringOffers from "../../components/Workers/HiringOffers"
+import MapComp from "../../components/MapComp"
 const NotificationsStack = createNativeStackNavigator();
 
 const Notifications = () => {
@@ -38,6 +39,19 @@ const Notifications = () => {
           headerLeft: () => <View />,
         }}
       />
+
+<NotificationsStack.Screen
+        name="MapComp"
+        component={MapComp}
+        options={{
+          headerShown: false,
+          title: "MapComp",
+          headerLeft: () => <View />,
+        }}
+      />
+
+
+
       {/* <NotificationsStack.Screen
         name="Signup"
         component={Signup}

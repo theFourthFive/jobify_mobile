@@ -17,12 +17,14 @@ import {
   ScrollView,
   ImageBackground,
   TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import colors from "../../assets/colors/colors";
 export default function ProfilScreen({ navigation }) {
   var [profile, setProfile] = useState({});
   useEffect(async () => {
-    var URL = `${server.Ip}/workers/profile/${10}`;
+    const userId = await AsyncStorage("session")
+    var URL = `${server.Ip}/workers/profile/${userId}`;
     var prof = await axios.get(URL);
     console.log(prof.data);
     setProfile(prof.data);

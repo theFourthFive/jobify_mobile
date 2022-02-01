@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 // prettier-ignore
-import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage, TouchableWithoutFeedback, Alert} from 'react-native';
+import { Button, StyleSheet,ScrollView,Dimensions,SafeAreaView, Text,Image, View,AsyncStorage, TouchableWithoutFeedback,TouchableOpacity, Alert} from 'react-native';
 import { Rating, AirbnbRating } from "react-native-ratings";
 import moment from "moment";
 import server from "../ipConfig/serverIp";
@@ -141,10 +141,12 @@ const Workerhistory = ({ navigation }) => {
               {/* <Image style={style.imgg} source={{ uri: ele.imageUri }}/>  */}
               <View style={{flexDirection: 'row'}}>
               <View>
+              <TouchableOpacity onPress={()=>navigation.navigate("MapComp")}>
                 <Image
                   style={style.imgggg}
                   source={{ uri: ele.imageUrl }}
                 ></Image>
+                </TouchableOpacity>
                 <Text style={{top:-35,left:20,color:colors.blueDark,fontSize:15,fontWeight: "bold",}}> {ele.label}</Text>
                </View>
               </View>

@@ -23,9 +23,11 @@ export default function EditProfile({ navigation }) {
   const [label, setlabel] = useState(null);
   const [Email, setEmail] = useState(null);
   const [phoneNumber, setphoneNumber] = useState(null);
-  const [imageUrl, setimageUrl] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png");
+  const [imageUrl, setimageUrl] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  );
   const [password, setpassword] = useState(null);
-  const [update,setUpdated]=useState("")
+  const [update, setUpdated] = useState("");
 
   const handelChangecompanyId = (companyId) => {
     setcompanyId(companyId);
@@ -48,34 +50,30 @@ export default function EditProfile({ navigation }) {
   const handelChangepassword = (password) => {
     setpassword(password);
   };
-  
-
 
   const handelChange = async (id) => {
-    var  URL = `${server.Ip}/company/updateprofile/${37}`
-    var info={  
+    var URL = `${server.Ip}/company/updateprofile/${37}`;
+    var info = {
       companyId,
       Bussinessfield,
       label,
       Email,
       phoneNumber,
       imageUrl,
-      password,}
+      password,
+    };
     axios
-      .put(URL,info )
-      .then((response) =>
-       
-      setUpdated(response.data.update),
-      console.log(response,'it workes')
-      ).catch((err)=> console.log("nooooo",err)
+      .put(URL, info)
+      .then(
+        (response) => setUpdated(response.data.update),
+        console.log(response, "it workes")
       )
+      .catch((err) => console.log("nooooo", err));
   };
 
- 
-
   // useEffect(() => {
-    // PUT request using axios inside useEffect React hook
-  //   var info={  
+  // PUT request using axios inside useEffect React hook
+  //   var info={
   //     companyId,
   //     Bussinessfield,
   //     label,
@@ -153,7 +151,6 @@ export default function EditProfile({ navigation }) {
                 source={{
                   uri: imageUrl,
                 }}
-                 
                 style={{ height: 100, width: 100 }}
                 imageStyle={{ borderRadius: 15 }}
               >
@@ -251,7 +248,6 @@ export default function EditProfile({ navigation }) {
               },
             ]}
           />
-          
         </View>
         <View style={styles.action}>
           <Feather name="lock" color={colors.text} size={20} />
@@ -279,30 +275,26 @@ export default function EditProfile({ navigation }) {
           />
           <TextInput
             placeholder="About_Me"
-            placeholderTextColor="##666666"
+            placeholderTextColor="#666666"
             style={styles.textInput}
             autoCorrect={false}
           />
         </View>
 
         <View style={styles.action}>
-        <Icon
-            name="map-marker-outline"
-            color={colors.text}
-            size={20}
-          />
+          <Icon name="map-marker-outline" color={colors.text} size={20} />
           <TextInput
             placeholder="Location "
-            placeholderTextColor="##666666"
+            placeholderTextColor="#666666"
             style={styles.textInput}
             autoCorrect={false}
           />
         </View>
-        
 
         <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
-          <Text style={styles.panelButtonTitle}
-          onPress={handelChange}>Update</Text>
+          <Text style={styles.panelButtonTitle} onPress={handelChange}>
+            Update
+          </Text>
         </TouchableOpacity>
       </Animated.View>
     </View>
@@ -314,16 +306,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   commandButton: {
-    
-      padding: 10,
-      borderRadius: 10,
-      borderTopLeftRadius:30,
-      backgroundColor: "#FFB156",
-      alignItems: "center",
-      marginTop: 20,
-      width:'70%',
-      left: 50,
-    
+    padding: 10,
+    borderRadius: 10,
+    borderTopLeftRadius: 30,
+    backgroundColor: "#FFB156",
+    alignItems: "center",
+    marginTop: 20,
+    width: "70%",
+    left: 50,
   },
   panel: {
     padding: 20,
@@ -372,7 +362,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "bold",
     color: "white",
-
   },
   action: {
     flexDirection: "row",
